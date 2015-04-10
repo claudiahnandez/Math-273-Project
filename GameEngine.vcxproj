@@ -99,7 +99,7 @@
     <ClCompile Include="text.cpp" />
     <ClCompile Include="textureManager.cpp" />
     <ClCompile Include="input.cpp" />
-    <ClCompile Include="createThisClass.cpp" />
+    <ClCompile Include="SquirtleSquad.cpp" />
     <ClCompile Include="image.cpp" />
     <ClCompile Include="textDX.cpp" />
     <ClCompile Include="winmain.cpp" />

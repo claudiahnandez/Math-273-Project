@@ -57,13 +57,13 @@
     <ClCompile Include="inputDialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="createThisClass.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="text.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="net.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SquirtleSquad.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

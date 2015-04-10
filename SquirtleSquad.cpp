@@ -1,15 +1,15 @@
 // Programming 2D Games
 // Copyright (c) 2011 by: 
 // Charles Kelly
-// createThisClass.cpp v1.1
+// SquirtleSquadClass.cpp v1.1
 // This class is the core of the game
 
-#include "createThisClass.h"
+#include "SquirtleSquad.h"
 
 //=============================================================================
 // Constructor
 //=============================================================================
-CreateThis::CreateThis() : Game()
+SquirtleSquad::SquirtleSquad() : Game()
 {
     dxFont = new TextDX();  // DirectX font
     messageY = 0;
@@ -18,7 +18,7 @@ CreateThis::CreateThis() : Game()
 //=============================================================================
 // Destructor
 //=============================================================================
-CreateThis::~CreateThis()
+SquirtleSquad::~SquirtleSquad()
 {
     releaseAll();           // call onLostDevice() for every graphics item
     safeDelete(dxFont);
@@ -28,7 +28,7 @@ CreateThis::~CreateThis()
 // Initializes the game
 // Throws GameError on error
 //=============================================================================
-void CreateThis::initialize(HWND hwnd)
+void SquirtleSquad::initialize(HWND hwnd)
 {
     Game::initialize(hwnd); // throws GameError
 
@@ -77,7 +77,7 @@ void CreateThis::initialize(HWND hwnd)
 //=============================================================================
 // Update all game items
 //=============================================================================
-void CreateThis::update()
+void SquirtleSquad::update()
 {
     static float delay = 0;
     delay += frameTime;
@@ -109,19 +109,19 @@ void CreateThis::update()
 //=============================================================================
 // Artificial Intelligence
 //=============================================================================
-void CreateThis::ai()
+void SquirtleSquad::ai()
 {}
 
 //=============================================================================
 // Handle collisions
 //=============================================================================
-void CreateThis::collisions()
+void SquirtleSquad::collisions()
 {}
 
 //=============================================================================
 // Render game items
 //=============================================================================
-void CreateThis::render()
+void SquirtleSquad::render()
 {
     graphics->spriteBegin();                // begin drawing sprites
 
@@ -137,7 +137,7 @@ void CreateThis::render()
 // The graphics device was lost.
 // Release all reserved video memory so graphics device may be reset.
 //=============================================================================
-void CreateThis::releaseAll()
+void SquirtleSquad::releaseAll()
 {
     dxFont->onLostDevice();
     menuTexture.onLostDevice();
@@ -149,7 +149,7 @@ void CreateThis::releaseAll()
 // The grahics device has been reset.
 // Recreate all surfaces.
 //=============================================================================
-void CreateThis::resetAll()
+void SquirtleSquad::resetAll()
 {
     menuTexture.onResetDevice();
     dxFont->onResetDevice();
