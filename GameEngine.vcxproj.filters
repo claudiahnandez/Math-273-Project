@@ -113,10 +113,10 @@
     <ClInclude Include="text.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="createThisClass.h">
+    <ClInclude Include="net.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="net.h">
+    <ClInclude Include="SquirtleSquad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

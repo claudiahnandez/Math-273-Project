@@ -17,7 +17,7 @@
 //=============================================================================
 // This class is the core of the game
 //=============================================================================
-class CreateThis : public Game
+class SquirtleSquad : public Game
 {
 private:
     // game items
@@ -30,9 +30,9 @@ private:
 
 public:
     // Constructor
-    CreateThis();
+	SquirtleSquad();
     // Destructor
-    virtual ~CreateThis();
+	virtual ~SquirtleSquad();
     // Initialize the game
     void initialize(HWND hwnd);
     void update();      // must override pure virtual from Game
