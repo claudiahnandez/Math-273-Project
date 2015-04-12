@@ -34,6 +34,8 @@ const double PI = 3.14159265;
 const char MENU_IMAGE[] =     "pictures\\menu.png";      // menu texture
 const char BACKGROUND_IMAGE[] = "pictures\\background.png";  // background
 const char TEST_IMAGE1[] = "pictures\\test1.png";
+const char MARIO_IMAGE[] = "pictures\\Mario.png";
+
 
 
 // audio files required by audio.cpp

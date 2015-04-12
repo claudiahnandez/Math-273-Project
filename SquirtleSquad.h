@@ -21,6 +21,7 @@ class SquirtleSquad : public Game
 {
 private:
     // game items
+	
     TextureManager menuTexture_, backgroundTexture_; // textures
 	TextureManager testTexture1_;
 
