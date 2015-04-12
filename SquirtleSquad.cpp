@@ -11,8 +11,8 @@
 //=============================================================================
 SquirtleSquad::SquirtleSquad() : Game()
 {
-    dxFont = new TextDX();  // DirectX font
-    messageY = 0;
+    dxFont_ = new TextDX();  // DirectX font
+    messageY_ = 0;
 }
 
 //=============================================================================
@@ -21,7 +21,7 @@ SquirtleSquad::SquirtleSquad() : Game()
 SquirtleSquad::~SquirtleSquad()
 {
     releaseAll();           // call onLostDevice() for every graphics item
-    safeDelete(dxFont);
+    safeDelete(dxFont_);
 }
 
 //=============================================================================
@@ -32,44 +32,62 @@ void SquirtleSquad::initialize(HWND hwnd)
 {
     Game::initialize(hwnd); // throws GameError
 
+
+	//-------------------------------------------------------------------------
+	//Textures
     // background texture
-    if (!backgroundTexture.initialize(graphics, BACKGROUND_IMAGE))
+    if (!backgroundTexture_.initialize(graphics, BACKGROUND_IMAGE))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing background texture"));
 
     // menu texture
-    if (!menuTexture.initialize(graphics,MENU_IMAGE))
+    if (!menuTexture_.initialize(graphics,MENU_IMAGE))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu texture"));
 
+	// test texture1
+	if (!testTexture1_.initialize(graphics, TEST_IMAGE1))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu texture"));
+
+	//-------------------------------------------------------------------------
+	//Images
+
     // background image
-    if (!background.initialize(graphics, 0, 0, 0, &backgroundTexture))
+    if (!background_.initialize(graphics, 0, 0, 0, &backgroundTexture_))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing background"));
 
     // menu image
-    if (!menu.initialize(graphics,0,0,0,&menuTexture))
+    if (!menu_.initialize(graphics,0,0,0,&menuTexture_))
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu"));
+
+	// test image
+	if (!testImage1_.initialize(graphics, 25, 25, 0, &testTexture1_))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu"));
 
     // initialize DirectX font
     // 18 pixel high Arial
-    if(dxFont->initialize(graphics, 18, true, false, "Arial") == false)
+    if(dxFont_->initialize(graphics, 18, true, false, "Arial") == false)
         throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing DirectX font"));
 
-    menu.setDegrees(300);
-    menu.setScale(0.002861f);
+    menu_.setDegrees(300);
+    menu_.setScale(0.002861f);
 
-    message = "\n\n\nUtilizes Object Oriented C++ and DirectX\n\n";
-    message += "Sprites with Transparency\n\n";
-    message += "Collision Detection Supported:\n";
-    message += "     - Circular (Distance)\n";
-    message += "     - Axis-aligned bounding box\n";
-    message += "     - Rotated bounding box\n";
-    message += "     - Rotated bounding box and circle\n";
-    message += "     - Pixel Perfect\n\n";
-    message += "XACT Audio\n\n";
-    message += "Sprite and DirectX Text\n\n";
-    message += "Tile Based Graphics\n\n";
-    message += "Xbox 360 Controller Input\n\n";
-    message += "TCP/IP and UDP/IP Network Support\n\n";
-    messageY = GAME_HEIGHT;
+	testImage1_.setScale(5);
+
+
+	message_ = "\n\n\nTaking Over";
+    message_ += "\n\n\nUtilizes Object Oriented C++ and DirectX\n\n";
+    message_ += "Sprites with Transparency\n\n";
+    message_ += "Collision Detection Supported:\n";
+    message_ += "     - Circular (Distance)\n";
+    message_ += "     - Axis-aligned bounding box\n";
+    message_ += "     - Rotated bounding box\n";
+    message_ += "     - Rotated bounding box and circle\n";
+    message_ += "     - Pixel Perfect\n\n";
+    message_ += "XACT Audio\n\n";
+    message_ += "Sprite and DirectX Text\n\n";
+    message_ += "Tile Based Graphics\n\n";
+    message_ += "Xbox 360 Controller Input\n\n";
+    message_ += "TCP/IP and UDP/IP Network Support\n\n";
+    messageY_ = GAME_HEIGHT;
 
     return;
 }
@@ -82,28 +100,28 @@ void SquirtleSquad::update()
     static float delay = 0;
     delay += frameTime;
 
-    if(menu.getDegrees() > 0)
-    {
-        menu.setDegrees(menu.getDegrees() - frameTime * 120);
-        menu.setScale(menu.getScale() + frameTime * 0.4f);
-    }
-    else
-        menu.setDegrees(0);
+    //if(menu_.getDegrees() > 0)
+    //{
+    //    menu_.setDegrees(menu_.getDegrees() - frameTime * 120);
+    //    menu_.setScale(menu_.getScale() + frameTime * 0.4f);
+    //}
+    //else
+    //    menu_.setDegrees(0);
 
-    if(delay > 15)           // start over
-    {
-        menu.setDegrees(300);
-        menu.setScale(0.002861f);
-        menu.setY(0);
-        delay = 0;
-        messageY = GAME_HEIGHT;
-    }
-    else if(delay > 5)
-    {
-        menu.setY(menu.getY() - frameTime * 300);
-        if (messageY > 10)
-            messageY -= frameTime * 300;
-    }
+    //if(delay > 15)           // start over
+    //{
+    //    menu_.setDegrees(300);
+    //    menu_.setScale(0.002861f);
+    //    menu_.setY(0);
+    //    delay = 0;
+    //    messageY_ = GAME_HEIGHT;
+    //}
+    //else if(delay > 5)
+    //{
+    //    menu_.setY(menu_.getY() - frameTime * 300);
+    //    if (messageY_ > 10)
+    //        messageY_ -= frameTime * 300;
+    //}
 }
 
 //=============================================================================
@@ -125,10 +143,11 @@ void SquirtleSquad::render()
 {
     graphics->spriteBegin();                // begin drawing sprites
 
-    background.draw(graphicsNS::ALPHA50);
-    menu.draw();
-    dxFont->setFontColor(graphicsNS::ORANGE);
-    dxFont->print(message,20,(int)messageY);
+    //background_.draw(graphicsNS::ALPHA50);
+    //menu_.draw();
+	testImage1_.draw();
+    dxFont_->setFontColor(graphicsNS::ORANGE);
+    dxFont_->print(message_,20,(int)messageY_);
 
     graphics->spriteEnd();                  // end drawing sprites
 }
@@ -139,8 +158,8 @@ void SquirtleSquad::render()
 //=============================================================================
 void SquirtleSquad::releaseAll()
 {
-    dxFont->onLostDevice();
-    menuTexture.onLostDevice();
+    dxFont_->onLostDevice();
+    menuTexture_.onLostDevice();
     Game::releaseAll();
     return;
 }
@@ -151,8 +170,8 @@ void SquirtleSquad::releaseAll()
 //=============================================================================
 void SquirtleSquad::resetAll()
 {
-    menuTexture.onResetDevice();
-    dxFont->onResetDevice();
+    menuTexture_.onResetDevice();
+    dxFont_->onResetDevice();
     Game::resetAll();
     return;
 }

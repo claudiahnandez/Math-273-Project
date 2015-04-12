@@ -21,12 +21,16 @@ class SquirtleSquad : public Game
 {
 private:
     // game items
-    TextureManager menuTexture, backgroundTexture; // textures
-    Image   menu;               // menu image
-    Image   background;         // background image
-    TextDX  *dxFont;            // DirectX font
-    std::string  message;
-    float messageY;
+    TextureManager menuTexture_, backgroundTexture_; // textures
+	TextureManager testTexture1_;
+
+    Image   menu_;               // menu image
+    Image   background_;         // background image
+	Image	testImage1_;
+
+    TextDX  *dxFont_;            // DirectX font
+    std::string  message_;
+    float messageY_;
 
 public:
     // Constructor

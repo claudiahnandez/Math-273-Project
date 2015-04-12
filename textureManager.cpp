@@ -110,5 +110,3 @@ void TextureManager::onResetDevice()
             safeReleaseTexture(texture[i]);
     }
 }
-
-
