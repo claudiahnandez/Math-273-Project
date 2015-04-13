@@ -79,11 +79,13 @@ void SquirtleSquad::initialize(HWND hwnd)
     menu_.setScale(0.002861f);
 
 	testImage1_.setScale(1);
+
 	//test code (mario walk)
 	marioWalkRunImage_.setScale(3);
 	marioWalkRunImage_.setFrames(4, 5);
 	marioWalkRunImage_.setCurrentFrame(4);
 	marioWalkRunImage_.setFrameDelay(0.2);
+	marioWalkRunImage_.setY(GAME_HEIGHT / 2);
 
 	message_ = "\n\n\nTaking Over";
     message_ += "\n\n\nUtilizes Object Oriented C++ and DirectX\n\n";
