@@ -91,6 +91,7 @@
     <ClCompile Include="console.cpp" />
     <ClCompile Include="dashboard.cpp" />
     <ClCompile Include="entity.cpp" />
+    <ClCompile Include="Fighter.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="graphics.cpp" />
     <ClCompile Include="inputDialog.cpp" />
@@ -110,6 +111,7 @@
     <ClInclude Include="constants.h" />
     <ClInclude Include="dashboard.h" />
     <ClInclude Include="entity.h" />
+    <ClInclude Include="Fighter.h" />
     <ClInclude Include="gameError.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="graphics.h" />

@@ -66,6 +66,9 @@
     <ClCompile Include="SquirtleSquad.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Fighter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.h">
@@ -117,6 +120,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SquirtleSquad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Fighter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
