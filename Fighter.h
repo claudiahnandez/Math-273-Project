@@ -1,3 +1,8 @@
+#pragma once
+#include "constants.h"
+#include "textureManager.h"
+#include "image.h"
+
 struct Position
 {
 	int x;
@@ -37,6 +42,9 @@ public:
 protected:
 	Position position_;
 	Fighter_State state_;
-	int HealthPoints_;
+	int HP_;//Health Points
+
+	TextureManager texture_;
+	Image   image_;
 };
 
