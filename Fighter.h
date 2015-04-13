@@ -21,8 +21,6 @@ enum Fighter_State
 	FALLING
 };
 
-
-
 class Fighter
 {
 public:
@@ -36,9 +34,9 @@ public:
 	virtual void downB() = 0;//vB
 	virtual void standardAttack() = 0;//A 
 
-private:
+protected:
 	Position position_;
-	Fighter_State fighter_state_;
-
+	Fighter_State state_;
+	int HealthPoints_;
 };
 
