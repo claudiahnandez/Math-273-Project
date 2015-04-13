@@ -21,6 +21,8 @@ const char GAME_TITLE[] = "Game Engine v4.0 Demo";
 const bool FULLSCREEN = false;              // windowed or fullscreen
 const UINT GAME_WIDTH = 800;//640;               // width of game in pixels
 const UINT GAME_HEIGHT = 600;//480;               // height of game in pixels
+const int MARIO_WIDTH = 20;//Mario Sprite
+const int MARIO_HEIGHT = 32;//Mario Sprite
  
 // game
 const bool VSYNC = false;                   // true locks display to vertical sync rate
@@ -35,6 +37,7 @@ const char MENU_IMAGE[] =     "pictures\\menu.png";      // menu texture
 const char BACKGROUND_IMAGE[] = "pictures\\background.png";  // background
 const char TEST_IMAGE1[] = "pictures\\test1.png";
 const char MARIO_IMAGE[] = "pictures\\Mario.png";
+const char MARIO_WALK_RUN[] = "pictures\\Mario_Walk_Run_Test.png";
 
 
 
