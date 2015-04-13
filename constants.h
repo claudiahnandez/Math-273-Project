@@ -23,6 +23,7 @@ const UINT GAME_WIDTH = 800;//640;               // width of game in pixels
 const UINT GAME_HEIGHT = 600;//480;               // height of game in pixels
 const int MARIO_WIDTH = 20;//Mario Sprite
 const int MARIO_HEIGHT = 32;//Mario Sprite
+const int MARIO_SPEED = 150;//pixels per second
  
 // game
 const bool VSYNC = false;                   // true locks display to vertical sync rate
