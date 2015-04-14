@@ -16,7 +16,7 @@
 //=============================================================================
 
 // window
-const char CLASS_NAME[] = "createThisClass";
+const char CLASS_NAME[] = "whatever";
 const char GAME_TITLE[] = "Game Engine v4.0 Demo";
 const bool FULLSCREEN = false;              // windowed or fullscreen
 const UINT GAME_WIDTH = 800;//640;               // width of game in pixels
