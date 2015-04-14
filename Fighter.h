@@ -47,4 +47,3 @@ protected:
 	TextureManager texture_;
 	Image   image_;
 };
-

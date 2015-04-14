@@ -5,6 +5,7 @@
 // This class is the core of the game
 
 #include "SquirtleSquad.h"
+#include "input.h"
 
 //=============================================================================
 // Constructor
@@ -114,19 +115,52 @@ void SquirtleSquad::update()
     static float delay = 0;
     delay += frameTime;
 
+	//----------------------------------------------
+	//Keyboard Input
+	//To do: move code to fighter class 
+	//----------------------------------------------
+	if (input->isKeyDown(VK_RIGHT)) // If move right
+	{
+		marioWalkRunImage_.setX(marioWalkRunImage_.getX() + frameTime * MARIO_SPEED);
+		if (marioWalkRunImage_.getX() > GAME_WIDTH) // If offscreen right
+			marioWalkRunImage_.setX((float)-marioWalkRunImage_.getWidth()); // Position offscreen left
+	}
+	if (input->isKeyDown(VK_LEFT)) // If move left
+	{
+		marioWalkRunImage_.setX(marioWalkRunImage_.getX() - frameTime * MARIO_SPEED);
+		if (marioWalkRunImage_.getX() < -marioWalkRunImage_.getWidth()) // If offscreen left
+			marioWalkRunImage_.setX((float)GAME_WIDTH); // Position offscreen right
+	}
+	if (input->isKeyDown(VK_UP)) // If move up
+	{
+		marioWalkRunImage_.setY(marioWalkRunImage_.getY() - frameTime * MARIO_SPEED);
+		if (marioWalkRunImage_.getY() < -marioWalkRunImage_.getHeight()) // If offscreen top
+			marioWalkRunImage_.setY((float)GAME_HEIGHT); // Position offscreen
+		// bottom
+	}
+	if (input->isKeyDown(VK_DOWN)) // If move down
+	{
+		marioWalkRunImage_.setY(marioWalkRunImage_.getY() + frameTime * MARIO_SPEED);
+		if (marioWalkRunImage_.getY() > GAME_HEIGHT) // If offscreen bottom
+			marioWalkRunImage_.setY((float)-marioWalkRunImage_.getHeight());// Position offscreen top
+	}
+
+
 	marioWalkRunImage_.update(frameTime);
 
-	marioWalkRunImage_.setX(marioWalkRunImage_.getX() + frameTime * MARIO_SPEED); // Move mario right
-	if (marioWalkRunImage_.getX() > GAME_WIDTH) // If offscreen right
-	{
-		marioWalkRunImage_.setX((float)-marioWalkRunImage_.getWidth());// Position off screen left
-	}
+	//--------------
+	//automatic walk
+	//--------------
+	//marioWalkRunImage_.setX(marioWalkRunImage_.getX() + frameTime * MARIO_SPEED); // Move mario right
+	//if (marioWalkRunImage_.getX() > GAME_WIDTH) // If offscreen right
+	//{
+	//	marioWalkRunImage_.setX((float)-marioWalkRunImage_.getWidth());// Position off screen left
+	//}
 
 
 	//------------------------------------------
 	//Original Code Comented out
 	//------------------------------------------
-
     //if(menu_.getDegrees() > 0)
     //{
     //    menu_.setDegrees(menu_.getDegrees() - frameTime * 120);
@@ -134,7 +168,6 @@ void SquirtleSquad::update()
     //}
     //else
     //    menu_.setDegrees(0);
-
     //if(delay > 15)           // start over
     //{
     //    menu_.setDegrees(300);
