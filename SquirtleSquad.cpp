@@ -47,6 +47,10 @@ void SquirtleSquad::initialize(HWND hwnd)
 	if (!testTexture1_.initialize(graphics, TEST_IMAGE1))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu texture"));
 
+	// test texture2
+	if (!MarioWalkRunTexture_.initialize(graphics, MARIO_WALK_RUN))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu texture"));
+
 	//-------------------------------------------------------------------------
 	//Images
 
@@ -62,6 +66,10 @@ void SquirtleSquad::initialize(HWND hwnd)
 	if (!testImage1_.initialize(graphics, 25, 25, 0, &testTexture1_))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu"));
 
+	// test image 2 (mario)
+	if (!marioWalkRunImage_.initialize(graphics, MARIO_WIDTH, MARIO_HEIGHT, 9, &MarioWalkRunTexture_))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu"));
+
     // initialize DirectX font
     // 18 pixel high Arial
     if(dxFont_->initialize(graphics, 18, true, false, "Arial") == false)
@@ -70,8 +78,14 @@ void SquirtleSquad::initialize(HWND hwnd)
     menu_.setDegrees(300);
     menu_.setScale(0.002861f);
 
-	testImage1_.setScale(5);
+	testImage1_.setScale(1);
 
+	//test code (mario walk)
+	marioWalkRunImage_.setScale(3);
+	marioWalkRunImage_.setFrames(4, 5);
+	marioWalkRunImage_.setCurrentFrame(4);
+	marioWalkRunImage_.setFrameDelay(0.2);
+	marioWalkRunImage_.setY(GAME_HEIGHT / 2);
 
 	message_ = "\n\n\nTaking Over";
     message_ += "\n\n\nUtilizes Object Oriented C++ and DirectX\n\n";
@@ -99,6 +113,19 @@ void SquirtleSquad::update()
 {
     static float delay = 0;
     delay += frameTime;
+
+	marioWalkRunImage_.update(frameTime);
+
+	marioWalkRunImage_.setX(marioWalkRunImage_.getX() + frameTime * MARIO_SPEED); // Move mario right
+	if (marioWalkRunImage_.getX() > GAME_WIDTH) // If offscreen right
+	{
+		marioWalkRunImage_.setX((float)-marioWalkRunImage_.getWidth());// Position off screen left
+	}
+
+
+	//------------------------------------------
+	//Original Code Comented out
+	//------------------------------------------
 
     //if(menu_.getDegrees() > 0)
     //{
@@ -145,7 +172,9 @@ void SquirtleSquad::render()
 
     //background_.draw(graphicsNS::ALPHA50);
     //menu_.draw();
-	testImage1_.draw();
+	//testImage1_.draw();
+	marioWalkRunImage_.draw();
+
     dxFont_->setFontColor(graphicsNS::ORANGE);
     dxFont_->print(message_,20,(int)messageY_);
 
