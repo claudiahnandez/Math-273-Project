@@ -1,4 +1,4 @@
-// Programming 2D Games
+// Programming 2Dxc Games
 // Copyright (c) 2011 by: 
 // Charles Kelly
 // SquirtleSquadClass.cpp v1.1
@@ -11,6 +11,7 @@
 //=============================================================================
 SquirtleSquad::SquirtleSquad() : Game()
 {
+	dude_ = NULL;
     dxFont_ = new TextDX();  // DirectX font
     messageY_ = 0;
 }
@@ -20,6 +21,8 @@ SquirtleSquad::SquirtleSquad() : Game()
 //=============================================================================
 SquirtleSquad::~SquirtleSquad()
 {
+	delete dude_;
+	dude_ = NULL;
     releaseAll();           // call onLostDevice() for every graphics item
     safeDelete(dxFont_);
 }
@@ -31,76 +34,10 @@ SquirtleSquad::~SquirtleSquad()
 void SquirtleSquad::initialize(HWND hwnd)
 {
     Game::initialize(hwnd); // throws GameError
+	dude_ = new Mario;
+	dude_->run();
+	dude_->initialize(hwnd, graphics, MARIO_WALK_RUN);
 
-
-	//-------------------------------------------------------------------------
-	//Textures
-    // background texture
-    if (!backgroundTexture_.initialize(graphics, BACKGROUND_IMAGE))
-        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing background texture"));
-
-    // menu texture
-    if (!menuTexture_.initialize(graphics,MENU_IMAGE))
-        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu texture"));
-
-	// test texture1
-	if (!testTexture1_.initialize(graphics, TEST_IMAGE1))
-		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu texture"));
-
-	// test texture2
-	if (!MarioWalkRunTexture_.initialize(graphics, MARIO_WALK_RUN))
-		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu texture"));
-
-	//-------------------------------------------------------------------------
-	//Images
-
-    // background image
-    if (!background_.initialize(graphics, 0, 0, 0, &backgroundTexture_))
-        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing background"));
-
-    // menu image
-    if (!menu_.initialize(graphics,0,0,0,&menuTexture_))
-        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu"));
-
-	// test image
-	if (!testImage1_.initialize(graphics, 25, 25, 0, &testTexture1_))
-		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu"));
-
-	// test image 2 (mario)
-	if (!marioWalkRunImage_.initialize(graphics, MARIO_WIDTH, MARIO_HEIGHT, 9, &MarioWalkRunTexture_))
-		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu"));
-
-    // initialize DirectX font
-    // 18 pixel high Arial
-    if(dxFont_->initialize(graphics, 18, true, false, "Arial") == false)
-        throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing DirectX font"));
-
-    menu_.setDegrees(300);
-    menu_.setScale(0.002861f);
-
-	testImage1_.setScale(1);
-
-	//test code (mario walk)
-	marioWalkRunImage_.setScale(3);
-	marioWalkRunImage_.setFrames(4, 5);
-	marioWalkRunImage_.setCurrentFrame(4);
-	marioWalkRunImage_.setFrameDelay(0.2);
-	marioWalkRunImage_.setY(GAME_HEIGHT / 2);
-
-	message_ = "\n\n\nTaking Over";
-    message_ += "\n\n\nUtilizes Object Oriented C++ and DirectX\n\n";
-    message_ += "Sprites with Transparency\n\n";
-    message_ += "Collision Detection Supported:\n";
-    message_ += "     - Circular (Distance)\n";
-    message_ += "     - Axis-aligned bounding box\n";
-    message_ += "     - Rotated bounding box\n";
-    message_ += "     - Rotated bounding box and circle\n";
-    message_ += "     - Pixel Perfect\n\n";
-    message_ += "XACT Audio\n\n";
-    message_ += "Sprite and DirectX Text\n\n";
-    message_ += "Tile Based Graphics\n\n";
-    message_ += "Xbox 360 Controller Input\n\n";
-    message_ += "TCP/IP and UDP/IP Network Support\n\n";
     messageY_ = GAME_HEIGHT;
 
     return;
@@ -111,21 +48,18 @@ void SquirtleSquad::initialize(HWND hwnd)
 //=============================================================================
 void SquirtleSquad::update()
 {
+	//Is an inherited function and is called in Game::run()
+	//So is : ai(), collisions(), and input*
     static float delay = 0;
     delay += frameTime;
 
-	marioWalkRunImage_.update(frameTime);
+	dude_->update(frameTime);
 
-	marioWalkRunImage_.setX(marioWalkRunImage_.getX() + frameTime * MARIO_SPEED); // Move mario right
-	if (marioWalkRunImage_.getX() > GAME_WIDTH) // If offscreen right
-	{
-		marioWalkRunImage_.setX((float)-marioWalkRunImage_.getWidth());// Position off screen left
-	}
 
 
 	//------------------------------------------
 	//Original Code Comented out
-	//------------------------------------------
+	//------------------------------------------? 
 
     //if(menu_.getDegrees() > 0)
     //{
@@ -168,12 +102,24 @@ void SquirtleSquad::collisions()
 //=============================================================================
 void SquirtleSquad::render()
 {
+	//part of Game::renderGame(); (probably called in while(!done) in WinMain
+
+
     graphics->spriteBegin();                // begin drawing sprites
+
+	//---------------------------------
+	//will draw fighters here
+	//----------------------------------
+	dude_->draw(graphics);
 
     //background_.draw(graphicsNS::ALPHA50);
     //menu_.draw();
 	//testImage1_.draw();
-	marioWalkRunImage_.draw();
+
+	//marioWalkRunImage_.draw();
+	
+
+	//mario.draw();
 
     dxFont_->setFontColor(graphicsNS::ORANGE);
     dxFont_->print(message_,20,(int)messageY_);

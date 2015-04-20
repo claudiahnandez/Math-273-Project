@@ -13,6 +13,8 @@
 #include "textureManager.h"
 #include "image.h"
 #include "textDX.h"
+#include "Fighter.h"
+#include "Mario.h"
 
 //=============================================================================
 // This class is the core of the game
@@ -30,6 +32,8 @@ private:
     Image   background_;         // background image
 	Image	testImage1_;
 	Image	marioWalkRunImage_;
+
+	Fighter* dude_;
 
     TextDX  *dxFont_;            // DirectX font
     std::string  message_;
@@ -49,5 +53,6 @@ public:
     void releaseAll();
     void resetAll();
 };
+
 
 #endif
