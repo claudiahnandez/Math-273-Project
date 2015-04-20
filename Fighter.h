@@ -38,7 +38,7 @@ public:
 
 	// Pure virtual functions
 	// All characters must have these functions
-	virtual void neutralB() = 0;
+	virtual void neutralB() = 0;		// B
 	virtual void sideB() = 0;			// <B>
 	virtual void upB() = 0;				// ^B
 	virtual void downB() = 0;			// vB

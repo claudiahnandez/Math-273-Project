@@ -17,10 +17,10 @@
       <UniqueIdentifier>{75060048-bb16-4652-8bff-c0474d85d184}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Fighters">
-      <UniqueIdentifier>{7151f49c-afb4-4e0b-bd58-f3c07f38f048}</UniqueIdentifier>
+      <UniqueIdentifier>{2809b829-a001-4883-8210-aed1515c41af}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Fighter">
-      <UniqueIdentifier>{ee010876-ce09-4ade-bec8-fffff269af5b}</UniqueIdentifier>
+    <Filter Include="Source Files\Fighters">
+      <UniqueIdentifier>{8d6845ee-42b5-4c72-a0fa-46b91987b1a3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -73,7 +73,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Fighter.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Fighters</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -129,10 +129,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Fighter.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Fighters</Filter>
     </ClInclude>
     <ClInclude Include="Mario.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Fighters</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
