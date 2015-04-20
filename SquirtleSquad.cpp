@@ -119,6 +119,7 @@ void SquirtleSquad::update()
 	//Keyboard Input
 	//To do: move code to fighter class 
 	//----------------------------------------------
+	//mario.move(input,frameTime );
 
 	if (input->isKeyDown(VK_RIGHT))	// If move right
 	{
