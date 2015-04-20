@@ -17,6 +17,9 @@ void Fighter::move(Direction direction)
 	case UP:
 		break;
 	case RIGHT:
+		image_.setX(image_.getX() + frameTime * SPEED_);
+		if (image_.getX() > GAME_WIDTH) // If offscreen right
+			image_.setX((float)-image_.getWidth()); // Position offscreen left
 		break;
 	case DOWN:
 		break;

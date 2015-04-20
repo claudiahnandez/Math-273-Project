@@ -4,6 +4,7 @@
 #include "textureManager.h"
 #include "image.h"
 #include "entity.h"
+#include "game.h"
 
 struct Position
 {
