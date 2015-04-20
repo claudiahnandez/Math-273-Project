@@ -13,6 +13,8 @@
 #include "textureManager.h"
 #include "image.h"
 #include "textDX.h"
+#include "Fighter.h"
+#include "Mario.h"
 
 //=============================================================================
 // This class is the core of the game
@@ -34,21 +36,24 @@ public:
     void resetAll();
 
 private:
-	// game items
-
-	TextureManager menuTexture_, backgroundTexture_; // textures
+    // game items
+	
+    TextureManager menuTexture_, backgroundTexture_; // textures
 	//test
 	TextureManager testTexture1_;
 	TextureManager MarioWalkRunTexture_; // test
 
-	Image   menu_;               // menu image
-	Image   background_;         // background image
+    Image   menu_;               // menu image
+    Image   background_;         // background image
 	Image	testImage1_;
 	Image	marioWalkRunImage_;
 
-	TextDX  *dxFont_;            // DirectX font
-	std::string  message_;
-	float messageY_;
+	Fighter* dude_;
+
+    TextDX  *dxFont_;            // DirectX font
+    std::string  message_;
+    float messageY_;
 };
+
 
 #endif

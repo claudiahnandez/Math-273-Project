@@ -95,6 +95,7 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="graphics.cpp" />
     <ClCompile Include="inputDialog.cpp" />
+    <ClCompile Include="Mario.cpp" />
     <ClCompile Include="messageDialog.cpp" />
     <ClCompile Include="net.cpp" />
     <ClCompile Include="text.cpp" />

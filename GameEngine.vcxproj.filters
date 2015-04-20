@@ -75,6 +75,9 @@
     <ClCompile Include="Fighter.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Mario.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.h">
