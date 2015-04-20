@@ -4,7 +4,7 @@
 #include "textureManager.h"
 #include "image.h"
 #include "entity.h"
-#include "game.h"
+#include "SquirtleSquad"
 
 struct Position
 {
@@ -33,7 +33,7 @@ class Fighter : public Entity
 {
 public:
 	Fighter();
-	void move(Direction direction, float frameTime);
+	void move(const Input* input, float frameTime);
 
 	// Pure virtual functions
 	// All characters must have these functions

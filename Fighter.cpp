@@ -7,26 +7,31 @@ Fighter::Fighter()
 	HP_ = 100;
 }//comit
 
-void Fighter::move(Direction direction, float frameTime)
+void Fighter::move(const Input* input, float frameTime)
 {
-	switch (direction)
+	if (input->isKeyDown(VK_RIGHT))	// If move right
 	{
-	case LEFT:
-		image_.setX(image_.getX() - frameTime * SPEED_);
-		if (image_.getX() < -image_.getWidth()) // If offscreen left
-			image_.setX((float)GAME_WIDTH); // Position offscreen right
-		break;
-	case UP:
-		image_.setY(image_.getY() - frameTime * SPEED_);
-		if (image_.getY() < -image_.getHeight()) // If offscreen top
-			image_.setY((float)GAME_HEIGHT); // Position offscreen
-		break;
-	case RIGHT:
 		image_.setX(image_.getX() + frameTime * SPEED_);
 		if (image_.getX() > GAME_WIDTH) // If offscreen right
 			image_.setX((float)-image_.getWidth()); // Position offscreen left
-		break;
-	case DOWN:
-		break;
+	}
+	if (input->isKeyDown(VK_LEFT))	// If move left
+	{
+		image_.setX(image_.getX() - frameTime * SPEED_);
+		if (image_.getX() < -image_.getWidth()) // If offscreen left
+			image_.setX((float)GAME_WIDTH); // Position offscreen right
+	}
+	if (input->isKeyDown(VK_UP))	// If move up
+	{
+		image_.setY(image_.getY() - frameTime * SPEED_);
+		if (image_.getY() < -image_.getHeight()) // If offscreen top
+			image_.setY((float)GAME_HEIGHT); // Position offscreen
+		// bottom
+	}
+	if (input->isKeyDown(VK_DOWN))	// If move down
+	{
+		image_.setY(image_.getY() + frameTime * SPEED_);
+		if (image_.getY() > GAME_HEIGHT) // If offscreen bottom
+			image_.setY((float)-image_.getHeight());// Position offscreen top
 	}
 }
