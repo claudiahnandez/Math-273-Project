@@ -19,22 +19,6 @@
 //=============================================================================
 class SquirtleSquad : public Game
 {
-private:
-    // game items
-	
-    TextureManager menuTexture_, backgroundTexture_; // textures
-	TextureManager testTexture1_;
-	TextureManager MarioWalkRunTexture_;
-
-    Image   menu_;               // menu image
-    Image   background_;         // background image
-	Image	testImage1_;
-	Image	marioWalkRunImage_;
-
-    TextDX  *dxFont_;            // DirectX font
-    std::string  message_;
-    float messageY_;
-
 public:
     // Constructor
 	SquirtleSquad();
@@ -48,6 +32,23 @@ public:
     void render();      // "
     void releaseAll();
     void resetAll();
+
+private:
+	// game items
+
+	TextureManager menuTexture_, backgroundTexture_; // textures
+	//test
+	TextureManager testTexture1_;
+	TextureManager MarioWalkRunTexture_; // test
+
+	Image   menu_;               // menu image
+	Image   background_;         // background image
+	Image	testImage1_;
+	Image	marioWalkRunImage_;
+
+	TextDX  *dxFont_;            // DirectX font
+	std::string  message_;
+	float messageY_;
 };
 
 #endif
