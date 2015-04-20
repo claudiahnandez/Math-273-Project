@@ -4,7 +4,6 @@ Fighter::Fighter()
 	position_.x = GAME_WIDTH/2;
 	position_.y = GAME_HEIGHT / 2;
 	state_ = STANDING;
-	HP_ = 100;
 }//comit
 
 void Fighter::move(const Input* input, float frameTime)
