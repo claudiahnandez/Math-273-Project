@@ -34,10 +34,10 @@ class Game
 {
 protected:
     // common game properties
-    Graphics *graphics;             // pointer to the one and ONLY Graphics object
-    Input   *input;                 // pointer to Input
-    Audio   *audio;                 // pointer to Audio
-    Console *console;               // pointer to Console
+    Graphics	*graphics;          // pointer to the one and ONLY Graphics object
+    Input		*input;             // pointer to Input
+    Audio		*audio;             // pointer to Audio
+    Console		*console;           // pointer to Console
     MessageDialog *messageDialog;   // pointer to MessageDialog
     InputDialog *inputDialog;       // pointer to InputDialog
     HWND    hwnd;                   // window handle
