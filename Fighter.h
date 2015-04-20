@@ -26,7 +26,8 @@ enum Fighter_State
 	WALKING,
 	RUNNING,
 	JUMPING,
-	FALLING
+	FALLING, 
+	CROUCHING,
 };
 
 class Fighter : public Entity
