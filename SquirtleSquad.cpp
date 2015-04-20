@@ -83,10 +83,10 @@ void SquirtleSquad::initialize(HWND hwnd)
 
 	//test code (mario walk)
 	marioWalkRunImage_.setScale(3);
-	marioWalkRunImage_.setFrames(4, 5);
-	marioWalkRunImage_.setCurrentFrame(4);
-	marioWalkRunImage_.setFrameDelay(0.2);
-	marioWalkRunImage_.setY(GAME_HEIGHT / 2);
+	marioWalkRunImage_.setFrames(4, 5);//frames to cycle through
+	marioWalkRunImage_.setCurrentFrame(4);//starting frame
+	marioWalkRunImage_.setFrameDelay(0.2);//animation speed
+	marioWalkRunImage_.setY(GAME_HEIGHT / 2);//starting position
 
 	message_ = "\n\n\nTaking Over";
     message_ += "\n\n\nUtilizes Object Oriented C++ and DirectX\n\n";
@@ -119,6 +119,7 @@ void SquirtleSquad::update()
 	//Keyboard Input
 	//To do: move code to fighter class 
 	//----------------------------------------------
+
 	if (input->isKeyDown(VK_RIGHT)) // If move right
 	{
 		marioWalkRunImage_.setX(marioWalkRunImage_.getX() + frameTime * MARIO_SPEED);
