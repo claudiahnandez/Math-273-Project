@@ -68,7 +68,7 @@ bool Image::initialize(Graphics *g, int width, int height, int ncols,
         if(height == 0)
             height = textureManager->getHeight();   // use full height of texture
         spriteData.height = height;
-        cols = ncols;
+        cols = ncols;   
         if (cols == 0)
             cols = 1;                               // if 0 cols use 1
 

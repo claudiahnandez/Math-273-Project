@@ -16,7 +16,7 @@
 //=============================================================================
 
 // window
-const char CLASS_NAME[] = "createThisClass";
+const char CLASS_NAME[] = "whatever";
 const char GAME_TITLE[] = "Game Engine v4.0 Demo";
 const bool FULLSCREEN = false;              // windowed or fullscreen
 const UINT GAME_WIDTH = 800;//640;               // width of game in pixels
@@ -39,6 +39,7 @@ const char BACKGROUND_IMAGE[] = "pictures\\background.png";  // background
 const char TEST_IMAGE1[] = "pictures\\test1.png";
 const char MARIO_IMAGE[] = "pictures\\Mario.png";
 const char MARIO_WALK_RUN[] = "pictures\\Mario_Walk_Run_Test.png";
+//const char BACKGROUND_IMAGE[] = "pictures\\background_test.png";
 
 
 
