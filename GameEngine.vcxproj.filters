@@ -16,6 +16,12 @@
     <Filter Include="Documentation">
       <UniqueIdentifier>{75060048-bb16-4652-8bff-c0474d85d184}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Fighters">
+      <UniqueIdentifier>{7151f49c-afb4-4e0b-bd58-f3c07f38f048}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Fighter">
+      <UniqueIdentifier>{ee010876-ce09-4ade-bec8-fffff269af5b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">

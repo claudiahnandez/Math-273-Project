@@ -1,7 +1,10 @@
 #pragma once
+
 #include "constants.h"
 #include "textureManager.h"
 #include "image.h"
+#include "entity.h"
+#include "SquirtleSquad.h"
 
 struct Position
 {
@@ -24,23 +27,28 @@ enum Fighter_State
 	WALKING,
 	RUNNING,
 	JUMPING,
-	FALLING,
-
+	FALLING, 
+	CROUCHING,
 };
 
-class Fighter
+class Fighter : public Entity
 {
 public:
 	Fighter();
+	void move(const Input* input, float frameTime);
+
+	// Pure virtual functions
+	// All characters must have these functions
 	void move(Direction direction);
 	//Pure virtual functions
 	//All characters must have these functions
 	virtual void run()=0; 
 	virtual void neutralB() = 0;
-	virtual void sideB() = 0;//<B>
-	virtual void upB() = 0;  //^B
-	virtual void downB() = 0;//vB
-	virtual void standardAttack() = 0;//A 
+	virtual void sideB() = 0;			// <B>
+	virtual void upB() = 0;				// ^B
+	virtual void downB() = 0;			// vB
+	virtual void standardAttack() = 0;	// A 
+	virtual void jump() = 0;
 
 	//Include in SquirtlSquad::render()
 	void draw(Graphics*& graphics);
@@ -53,9 +61,8 @@ public:
 	void update(float frameTime);
 
 protected:
-	Position position_;
-	Fighter_State state_;
-	int HP_;//Health Points
+	Position position_;					// x and y top left of character
+	Fighter_State state_;				// scene
 
 	//picture width/height should be powers of 2
 	TextureManager fighter_;//saves image from sprite sheet
@@ -69,4 +76,3 @@ protected:
 	int height_;//how tall the sprite is
 	int scale_;
 };
-
