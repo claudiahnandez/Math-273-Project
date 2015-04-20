@@ -33,7 +33,7 @@ class Fighter : public Entity
 {
 public:
 	Fighter();
-	void move(Direction direction);
+	void move(Direction direction, float frameTime);
 
 	// Pure virtual functions
 	// All characters must have these functions

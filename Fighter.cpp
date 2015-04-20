@@ -1,5 +1,4 @@
 #include "Fighter.h"
-float frameTime = 0.00417180452;
 Fighter::Fighter()
 {
 	position_.x = GAME_WIDTH/2;
@@ -8,7 +7,7 @@ Fighter::Fighter()
 	HP_ = 100;
 }//comit
 
-void Fighter::move(Direction direction)
+void Fighter::move(Direction direction, float frameTime)
 {
 	switch (direction)
 	{
