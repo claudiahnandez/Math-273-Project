@@ -10,5 +10,15 @@ Fighter::Fighter()
 
 void Fighter::move(Direction direction)
 {
-
+	switch (direction)
+	{
+	case LEFT:
+		break;
+	case UP:
+		break;
+	case RIGHT:
+		break;
+	case DOWN:
+		break;
+	}
 }

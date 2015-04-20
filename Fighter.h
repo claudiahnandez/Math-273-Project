@@ -38,6 +38,7 @@ public:
 	virtual void upB() = 0;  //^B
 	virtual void downB() = 0;//vB
 	virtual void standardAttack() = 0;//A 
+	virtual void jump() = 0;
 
 protected:
 	Position position_;
