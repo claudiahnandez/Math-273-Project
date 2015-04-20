@@ -1,7 +1,9 @@
 #pragma once
+
 #include "constants.h"
 #include "textureManager.h"
 #include "image.h"
+#include "entity.h"
 
 struct Position
 {
@@ -26,11 +28,12 @@ enum Fighter_State
 	FALLING
 };
 
-class Fighter
+class Fighter : public Entity
 {
 public:
 	Fighter();
 	void move(Direction direction);
+
 	//Pure virtual functions
 	//All characters must have these functions
 	virtual void neutralB() = 0;
