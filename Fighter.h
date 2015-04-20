@@ -26,7 +26,8 @@ enum Fighter_State
 	WALKING,
 	RUNNING,
 	JUMPING,
-	FALLING
+	FALLING, 
+	CROUCHING,
 };
 
 class Fighter : public Entity
@@ -47,7 +48,6 @@ public:
 protected:
 	Position position_;					// x and y top left of character
 	Fighter_State state_;				// scene
-	int HP_;							// Health Points
 
 	TextureManager texture_;			// 
 	Image   image_;						
