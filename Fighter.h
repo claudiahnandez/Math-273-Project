@@ -35,7 +35,7 @@ class Fighter : public Entity
 public:
 	Fighter();
 	void move(const Input* input, float frameTime);
-
+	//
 	// Pure virtual functions
 	// All characters must have these functions
 	virtual void neutralB() = 0;
@@ -44,6 +44,7 @@ public:
 	virtual void downB() = 0;			// vB
 	virtual void standardAttack() = 0;	// A 
 	virtual void jump() = 0;
+
 
 protected:
 	Position position_;					// x and y top left of character

@@ -131,8 +131,11 @@
     <ClInclude Include="Fighter.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Luffy.h">
+      <Filter>Header Files\Fighters</Filter>
+    </ClInclude>
     <ClInclude Include="Mario.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Fighters</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

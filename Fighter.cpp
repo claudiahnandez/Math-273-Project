@@ -13,7 +13,6 @@ void Fighter::move(const Input* input, float frameTime)
 		image_.setX(image_.getX() + frameTime * SPEED_);
 		if (image_.getX() > GAME_WIDTH) // If offscreen right
 			image_.setX((float)-image_.getWidth()); // Position offscreen left
-		state_ = 
 	}
 	if (input->isKeyDown(VK_LEFT))	// If move left
 	{

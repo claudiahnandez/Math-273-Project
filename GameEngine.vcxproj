@@ -116,6 +116,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="graphics.h" />
     <ClInclude Include="inputDialog.h" />
+    <ClInclude Include="Luffy.h" />
     <ClInclude Include="Mario.h" />
     <ClInclude Include="messageDialog.h" />
     <ClInclude Include="net.h" />
