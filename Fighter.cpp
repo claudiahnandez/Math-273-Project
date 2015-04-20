@@ -44,6 +44,8 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics, const char sprite_locat
 	if (!fighter_draw_.initialize(graphics, width_, height_, images_per_column_, &fighter_))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu"));
 
+	
+
 	background_draw_.setX(0);
 	background_draw_.setY(0);
 
