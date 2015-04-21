@@ -21,8 +21,6 @@ const char GAME_TITLE[] = "Game Engine v4.0 Demo";
 const bool FULLSCREEN = false;              // windowed or fullscreen
 const UINT GAME_WIDTH = 800;//640;               // width of game in pixels
 const UINT GAME_HEIGHT = 600;//480;               // height of game in pixels
-const int MARIO_WIDTH = 20;//Mario Sprite
-const int MARIO_HEIGHT = 32;//Mario Sprite
 const int SPEED_ = 250;//pixels per second
  
 // game
@@ -33,14 +31,11 @@ const float MIN_FRAME_TIME = 1.0f/FRAME_RATE;   // minimum desired time for 1 fr
 const float MAX_FRAME_TIME = 1.0f/MIN_FRAME_RATE; // maximum time used in calculations
 const double PI = 3.14159265;
 
+
 // graphic images
 const char MENU_IMAGE[] =     "pictures\\menu.png";      // menu texture
 const char BACKGROUND_IMAGE[] = "pictures\\background.png";  // background
 const char TEST_IMAGE1[] = "pictures\\test1.png";
-const char MARIO_IMAGE[] = "pictures\\Mario.png";
-const char MARIO_WALK_RUN[] = "pictures\\Mario_Walk_Run_Test.png";
-//const char BACKGROUND_IMAGE[] = "pictures\\background_test.png";
-
 
 
 // audio files required by audio.cpp

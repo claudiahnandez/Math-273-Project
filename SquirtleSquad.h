@@ -37,18 +37,18 @@ public:
 
 private:
     // game items
-	
     TextureManager menuTexture_, backgroundTexture_; // textures
-	//test
-	TextureManager testTexture1_;
-	TextureManager MarioWalkRunTexture_; // test
-
     Image   menu_;               // menu image
     Image   background_;         // background image
-	Image	testImage1_;
-	Image	marioWalkRunImage_;
 
-	Fighter* dude_;
+	Fighter* player1_ = new Mario();
+	Fighter* player2_ = new Mario();
+
+
+
+	//stretch goals
+	//Fighter* player3_;
+	//Fighter* player4_;
 
     TextDX  *dxFont_;            // DirectX font
     std::string  message_;

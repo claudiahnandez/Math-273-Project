@@ -12,7 +12,7 @@
 //=============================================================================
 SquirtleSquad::SquirtleSquad() : Game()
 {
-	dude_ = NULL;
+	player1_ = NULL;
     dxFont_ = new TextDX();  // DirectX font
     messageY_ = 0;
 }
@@ -22,8 +22,8 @@ SquirtleSquad::SquirtleSquad() : Game()
 //=============================================================================
 SquirtleSquad::~SquirtleSquad()
 {
-	delete dude_;
-	dude_ = NULL;
+	delete player1_;
+	delete player2_;
     releaseAll();           // call onLostDevice() for every graphics item
     safeDelete(dxFont_);
 }
@@ -35,12 +35,8 @@ SquirtleSquad::~SquirtleSquad()
 void SquirtleSquad::initialize(HWND hwnd)
 {
     Game::initialize(hwnd); // throws GameError
-	dude_ = new Mario;
-	dude_->run();
-	dude_->initialize(hwnd, graphics, MARIO_WALK_RUN);
-
-    messageY_ = GAME_HEIGHT;
-
+	player1_ = new Mario(graphics);
+	player2_ = new Mario();
     return;
 }
 
@@ -54,12 +50,15 @@ void SquirtleSquad::update()
     static float delay = 0;
     delay += frameTime;
 
-	dude_->update(frameTime);
+	player1_->update(frameTime);
+	player2_->update(frameTime);
+
 	//----------------------------------------------
 	//Keyboard Input
-	//To do: move code to fighter class 
-	//----------------------------------------------
-	//mario.move(input,frameTime );
+	player1_->move(input,frameTime );
+	player2_->move(input, frameTime);
+
+/*//Old input code (moved to fighter class)
 
 	if (input->isKeyDown(VK_RIGHT))	// If move right
 	{
@@ -86,23 +85,20 @@ void SquirtleSquad::update()
 		if (marioWalkRunImage_.getY() > GAME_HEIGHT) // If offscreen bottom
 			marioWalkRunImage_.setY((float)-marioWalkRunImage_.getHeight());// Position offscreen top
 	}
+*/
 
 
-	marioWalkRunImage_.update(frameTime);
+/*// Automatic walk (left here for future reference)
 
-	//--------------
-	//automatic walk
-	//--------------
-	//marioWalkRunImage_.setX(marioWalkRunImage_.getX() + frameTime * MARIO_SPEED); // Move mario right
-	//if (marioWalkRunImage_.getX() > GAME_WIDTH) // If offscreen right
-	//{
-	//	marioWalkRunImage_.setX((float)-marioWalkRunImage_.getWidth());// Position off screen left
-	//}
+	marioWalkRunImage_.setX(marioWalkRunImage_.getX() + frameTime * MARIO_SPEED); // Move mario right
+	if (marioWalkRunImage_.getX() > GAME_WIDTH) // If offscreen right
+	{
+		marioWalkRunImage_.setX((float)-marioWalkRunImage_.getWidth());// Position off screen left
+	}
+*/
 
-
-	//------------------------------------------
-	//Original Code Comented out
-	//------------------------------------------? 
+/*
+	//Original Code (rotates text)
 
     //if(menu_.getDegrees() > 0)
     //{
@@ -125,6 +121,7 @@ void SquirtleSquad::update()
     //    if (messageY_ > 10)
     //        messageY_ -= frameTime * 300;
     //}
+*/
 }
 
 //=============================================================================
@@ -152,16 +149,14 @@ void SquirtleSquad::render()
 	//---------------------------------
 	//will draw fighters here
 	//----------------------------------
-	dude_->draw(graphics);
+	player1_->draw(graphics);
+	player2_->draw(graphics);
 
-    //background_.draw(graphicsNS::ALPHA50);
-    //menu_.draw();
-	//testImage1_.draw();
-
-	//marioWalkRunImage_.draw();
-	
-
-	//mario.draw();
+	/*
+		//Original Code
+		//background_.draw(graphicsNS::ALPHA50);
+		//menu_.draw();
+	*/
 
     dxFont_->setFontColor(graphicsNS::ORANGE);
     dxFont_->print(message_,20,(int)messageY_);

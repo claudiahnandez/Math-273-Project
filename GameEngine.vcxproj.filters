@@ -76,7 +76,7 @@
       <Filter>Source Files\Fighters</Filter>
     </ClCompile>
     <ClCompile Include="Mario.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Fighters</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

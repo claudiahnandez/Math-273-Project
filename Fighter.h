@@ -6,30 +6,35 @@
 #include "entity.h"
 #include "SquirtleSquad.h"
 
-struct Position
+namespace fighterNS
 {
-	int x;
-	int y;
-};
 
-enum  Direction
-{
-	LEFT,
-	RIGHT,
-	UP,
-	DOWN
-};
+	struct Position
+	{
+		int x;
+		int y;
+	};
 
-//this does not compensate for all the moves
-enum Fighter_State
-{
-	STANDING,
-	WALKING,
-	RUNNING,
-	JUMPING,
-	FALLING, 
-	CROUCHING,
-};
+	enum  Direction
+	{
+		LEFT,
+		RIGHT,
+		UP,
+		DOWN
+	};
+
+	//this does not compensate for all the moves
+	enum State
+	{
+		STANDING,
+		WALKING,
+		RUNNING,
+		JUMPING,
+		FALLING,
+		CROUCHING,
+	};
+
+}
 
 class Fighter : public Entity
 {
@@ -39,12 +44,12 @@ public:
 	//
 	// Pure virtual functions
 	// All characters must have these functions
-	virtual void neutralB() = 0;
+	virtual void neutralA() = 0;		// A
+	virtual void neutralB() = 0;		// B
 	virtual void sideB() = 0;			// <B>
 	virtual void upB() = 0;				// ^B
 	virtual void downB() = 0;			// vB
-	virtual void standardAttack() = 0;	// A 
-	virtual void jump() = 0;
+	virtual void jump() = 0;//do we need jump?
 
 	//Include in SquirtlSquad::render()
 	void draw(Graphics*& graphics);
@@ -57,18 +62,17 @@ public:
 	void update(float frameTime);
 
 protected:
-	Position position_;					// x and y top left of character
-	Fighter_State state_;				// scene
+	fighterNS::Position position_;	// x and y top left of character
+	fighterNS::State state_;		// scene
 
-	//picture width/height should be powers of 2
-	TextureManager fighter_;//saves image from sprite sheet
-	TextureManager background_;
-	Image   fighter_draw_;//draws the actual image
-	Image background_draw_;
-	int max_frame_;//up to what frame do you want to show
-	int min_frame_;//from where do you want to start
-	int images_per_column_;//the number of images per column
-	int width_;//how wide the sprite is
-	int height_;//how tall the sprite is
+								//picture width/height should be powers of 2
+	TextureManager texture_;	//saves image from sprite sheet
+	Image image_;				//draws the actual image
+	int image_width_;
+	int image_height_;
+	int num_cols_;//columns in image;
 	int scale_;
+	int first_frame_;
+	int last_frame_;
+	int animation_delay_;
 };
