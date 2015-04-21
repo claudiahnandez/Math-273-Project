@@ -6,6 +6,11 @@ Mario::Mario(Graphics*& graphics)
 	//initialize();
 }
 
+void Mario::run()
+{
+
+}
+
 void Mario::neutralA()
 {
 

@@ -93,6 +93,7 @@
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="Fighter.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="Goku.cpp" />
     <ClCompile Include="graphics.cpp" />
     <ClCompile Include="inputDialog.cpp" />
     <ClCompile Include="Mario.cpp" />
@@ -115,6 +116,7 @@
     <ClInclude Include="Fighter.h" />
     <ClInclude Include="gameError.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="Goku.h" />
     <ClInclude Include="graphics.h" />
     <ClInclude Include="inputDialog.h" />
     <ClInclude Include="Luffy.h" />
@@ -130,6 +132,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Change log.txt" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

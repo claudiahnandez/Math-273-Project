@@ -22,6 +22,7 @@ const bool FULLSCREEN = false;              // windowed or fullscreen
 const UINT GAME_WIDTH = 800;//640;               // width of game in pixels
 const UINT GAME_HEIGHT = 600;//480;               // height of game in pixels
 const int SPEED_ = 250;//pixels per second
+const int MARIO_SPEED = 250;//changed MARIO_SPEED
  
 // game
 const bool VSYNC = false;                   // true locks display to vertical sync rate
@@ -36,6 +37,7 @@ const double PI = 3.14159265;
 const char MENU_IMAGE[] =     "pictures\\menu.png";      // menu texture
 const char BACKGROUND_IMAGE[] = "pictures\\background.png";  // background
 const char TEST_IMAGE1[] = "pictures\\test1.png";
+const char GOKU_SPRITE[] = "pictures\\Goku.png";
 
 
 // audio files required by audio.cpp

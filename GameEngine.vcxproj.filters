@@ -78,6 +78,9 @@
     <ClCompile Include="Mario.cpp">
       <Filter>Source Files\Fighters</Filter>
     </ClCompile>
+    <ClCompile Include="Goku.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.h">
@@ -140,10 +143,14 @@
     <ClInclude Include="Mario.h">
       <Filter>Header Files\Fighters</Filter>
     </ClInclude>
+    <ClInclude Include="Goku.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Change log.txt">
       <Filter>Documentation</Filter>
     </None>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

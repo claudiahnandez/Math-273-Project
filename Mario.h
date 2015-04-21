@@ -16,6 +16,7 @@ class Mario :public Fighter
 public :
 	Mario();
 	Mario(Graphics*& graphics);
+	void run();
 	void neutralA();	// A
 	void neutralB();	// B
 	void sideB();		// <B>
