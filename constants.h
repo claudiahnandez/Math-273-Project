@@ -15,6 +15,22 @@
 //                  Constants
 //=============================================================================
 
+//=============================================================================
+//Useful Macros, TRANCPERANCY COLORS FOR SPRITES
+#define GOKU_TRANSCOLOR SETCOLOR_ARGB(255,0,64,128)
+#define ICHIAGO_TRANSCOLOR SETCOLOR_ARGB (255,0,128,0)
+#define KENSHIN_TRANSCOLOR SETCOLOR_ARGB (255,115,57,132)
+#define LUFFY_TRANSCOLOR SETCOLOR_ARGB (255,0,128,128)
+#define FIRE_MARIO__TRANSCOLOR SETCOLOR_ARGB (255,130,192,255)
+#define NARUTO_TRANSCOLOR SETCOLOR_ARGB (255,0,128,0)
+#define PICCOLO_TRANSCOLOR SETCOLOR_ARGB(255,57,115,255)
+#define SANJI_TRANSCOLOR SETCOLOR_ARGB (255,82,100,148)
+#define TSUNA_TRANSCOLOR SETCOLOR_ARGB (255,82,100,148)
+#define YUGI_TRANSCOLOR SETCOLOR_ARGB (255,0,102,0)
+#define ZORO_TRANSCOLOR SETCOLOR_ARGB (255,10,114,108)
+//=============================================================================
+
+
 // window
 const char CLASS_NAME[] = "whatever";
 const char GAME_TITLE[] = "Game Engine v4.0 Demo";
