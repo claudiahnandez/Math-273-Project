@@ -23,6 +23,7 @@ public :
 	void upB();			// ^B
 	void downB();		// vB
 	void jump();
+	void standardAttack();
 
 private:
 

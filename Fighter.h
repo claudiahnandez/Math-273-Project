@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 #include "constants.h"
 #include "textureManager.h"
 #include "image.h"
@@ -77,4 +78,7 @@ protected:
 	int scale_;
 	int HP_;
 	std::string sprite_location_;
+	//Option 2 get a vector of RECTS
+	//Rect will be set within the state;
+	std::vector<RECT> animation_;
 };

@@ -15,6 +15,7 @@
 #include "textDX.h"
 #include "Fighter.h"
 #include "Mario.h"
+#include "Goku.h"
 
 //=============================================================================
 // This class is the core of the game

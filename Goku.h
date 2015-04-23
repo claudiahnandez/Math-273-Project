@@ -2,6 +2,12 @@
 #include "Fighter.h"
 #include "constants.h"
 
+enum Status
+{
+	HUMAN,
+	SUPER_SAIYAN
+};
+
 class Goku :
 	public Fighter
 {
@@ -14,5 +20,6 @@ public:
 	void upB();			// ^B
 	void downB();		// vB
 	void jump();
+	void standardAttack();
 };
 

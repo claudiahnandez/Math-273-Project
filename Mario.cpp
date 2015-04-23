@@ -36,3 +36,5 @@ void Mario::downB()
 {
 
 }
+
+void standardAttack(){}
