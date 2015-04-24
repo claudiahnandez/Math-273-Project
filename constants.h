@@ -28,6 +28,7 @@
 #define TSUNA_TRANSCOLOR SETCOLOR_ARGB (255,82,100,148)
 #define YUGI_TRANSCOLOR SETCOLOR_ARGB (255,0,102,0)
 #define ZORO_TRANSCOLOR SETCOLOR_ARGB (255,10,114,108)
+#define TRANSCOLOR SETCOLOR_ARGB(255, 255, 0, 255)
 //=============================================================================
 
 
@@ -51,7 +52,7 @@ const double PI = 3.14159265;
 
 // graphic images
 const char MENU_IMAGE[] =     "pictures\\menu.png";      // menu texture
-const char BACKGROUND_IMAGE[] = "pictures\\background.png";  // background
+const char BACKGROUND_IMAGE[] = "pictures\\background_test.png";  // background
 const char TEST_IMAGE1[] = "pictures\\test1.png";
 const char GOKU_SPRITE[] = "pictures\\Goku.png";
 

@@ -12,6 +12,7 @@ class Image;
 
 #include "textureManager.h"
 #include "constants.h"
+#include <vector>
 
 class Image
 {
@@ -33,6 +34,7 @@ class Image
     bool    visible;        // true when visible
     bool    initialized;    // true when successfully initialized
     bool    animComplete;   // true when loop is false and endFrame has finished displaying
+	std::vector<RECT> animation_;
 
   public:
     // Constructor
@@ -197,6 +199,8 @@ class Image
 
     // Update the animation. frameTime is used to regulate the speed.
     virtual void update(float frameTime);
+
+	virtual void setVector(std::vector<RECT> animation);
 };
 
 #endif
