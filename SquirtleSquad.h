@@ -42,8 +42,8 @@ private:
     Image   menu_;               // menu image
     Image   background_;         // background image
 
-	Fighter* player1_ = new Mario();
-	Fighter* player2_ = new Mario();
+	Fighter* player1_;
+	Fighter* player2_;
 
 
 

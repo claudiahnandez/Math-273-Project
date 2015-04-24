@@ -1,4 +1,5 @@
 #include "Fighter.h"
+
 Fighter::Fighter()
 {
 	position_.x = GAME_WIDTH/2;
@@ -8,7 +9,7 @@ Fighter::Fighter()
 
 	HP_ = 100;
 	max_frame_ = 0;
-	min_frame_ = 0;
+	min_frame_ = 2;
 	width_ = 0;
 	height_ = 0;
 	scale_ = 0;

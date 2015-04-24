@@ -1,15 +1,14 @@
 #pragma once
 #include "Fighter.h"
 #include "constants.h"
+//
+//enum Status
+//{
+//	HUMAN,
+//	SUPER_SAIYAN
+//};
 
-enum Status
-{
-	HUMAN,
-	SUPER_SAIYAN
-};
-
-class Goku :
-	public Fighter
+class Goku :public Fighter
 {
 public:
 	Goku();

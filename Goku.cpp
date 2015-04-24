@@ -42,4 +42,4 @@ void Goku::sideB(){}	// <B>
 void Goku::upB(){}			// ^B
 void Goku::downB(){}		// vB
 void Goku::jump(){}
-void standardAttack(){}
+void Goku::standardAttack(){}

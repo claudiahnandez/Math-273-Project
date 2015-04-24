@@ -37,4 +37,6 @@ void Mario::downB()
 
 }
 
-void standardAttack(){}
+void Mario::standardAttack(){}
+
+void Mario::jump(){}

@@ -5,7 +5,6 @@
 #include "textureManager.h"
 #include "image.h"
 #include "entity.h"
-#include "SquirtleSquad.h"
 
 struct Position
 {
