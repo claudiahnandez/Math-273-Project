@@ -152,18 +152,6 @@ void Image::update(float frameTime)
     }
 }
 
-void Image::setVector(std::vector<RECT> animation)
-{
-	animation_.clear();
-
-	for (int i = 0; i < animation.size(); i++)
-	{
-		animation_.push_back(animation[i]);
-	}
-
-}
-
-
 //=============================================================================
 // Set the current frame of the image
 //=============================================================================
@@ -182,18 +170,12 @@ void Image::setCurrentFrame(int c)
 //=============================================================================
 inline void Image::setRect() 
 {
-    //// configure spriteData.rect to draw currentFrame
-    //spriteData.rect.left = (currentFrame % cols) * spriteData.width;
-    //// right edge + 1
-    //spriteData.rect.right = spriteData.rect.left + spriteData.width;
-    //spriteData.rect.top = (currentFrame / cols) * spriteData.height;
-    //// bottom edge + 1
-    //spriteData.rect.bottom = spriteData.rect.top + spriteData.height;
-
-	if (currentFrame < animation_.size())
-	{
-		spriteData.rect = animation_[currentFrame];
-	}
-
+    // configure spriteData.rect to draw currentFrame
+    spriteData.rect.left = (currentFrame % cols) * spriteData.width;
+    // right edge + 1
+    spriteData.rect.right = spriteData.rect.left + spriteData.width;
+    spriteData.rect.top = (currentFrame / cols) * spriteData.height;
+    // bottom edge + 1
+    spriteData.rect.bottom = spriteData.rect.top + spriteData.height;       
 }
 

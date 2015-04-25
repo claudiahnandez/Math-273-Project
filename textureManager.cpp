@@ -14,7 +14,6 @@ TextureManager::TextureManager()
 {
     graphics = NULL;
     initialized = false;            // set true when successfully initialized
-	tanscolor_ = graphicsNS::TRANSCOLOR;
 }
 
 //=============================================================================
@@ -32,9 +31,8 @@ TextureManager::~TextureManager()
 //       If file is a .txt file it is assumed to contain individual texture
 //       file names, one name per line.
 //=============================================================================
-bool TextureManager::initialize(Graphics *g, std::string file, COLOR_ARGB transcolor)
+bool TextureManager::initialize(Graphics *g, std::string file)
 {
-	tanscolor_ = transcolor;
     bool success = true;
     try{
         graphics = g;                       // the graphics object
@@ -68,7 +66,7 @@ bool TextureManager::initialize(Graphics *g, std::string file, COLOR_ARGB transc
         for(UINT i=0; i<fileNames.size(); i++)
         {
             hr = graphics->loadTexture(fileNames[i].c_str(), 
-				tanscolor_, width[i], height[i], texture[i]);
+                 graphicsNS::TRANSCOLOR, width[i], height[i], texture[i]);
             if (FAILED(hr))
                 success = false;    // at least one texture failed to load
         }
@@ -107,7 +105,7 @@ void TextureManager::onResetDevice()
     for(UINT i=0; i<fileNames.size(); i++)
     {
         hr = graphics->loadTexture(fileNames[i].c_str(), 
-			tanscolor_, width[i], height[i], texture[i]);
+             graphicsNS::TRANSCOLOR, width[i], height[i], texture[i]);
         if (FAILED(hr))
             safeReleaseTexture(texture[i]);
     }
