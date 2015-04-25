@@ -65,7 +65,7 @@ public:
 	void setPose();
 
 	//must be included in SquirtleSquad::initialize()
-	void initialize(HWND hwnd, Graphics*& graphics);
+	void initialize(HWND hwnd, Graphics*& graphics, COLOR_ARGB transcolor);
 
 	//include in SquirtleSquade::update();
 	//will be need to be updated with movement

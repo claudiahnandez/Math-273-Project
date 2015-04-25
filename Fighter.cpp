@@ -49,7 +49,7 @@ void Fighter::move(const Input* input, float frameTime)
 }
 
 
-void Fighter::initialize(HWND hwnd, Graphics*& graphics)
+void Fighter::initialize(HWND hwnd, Graphics*& graphics, COLOR_ARGB transcolor)
 {
 	setPose();
 
