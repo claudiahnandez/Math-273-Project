@@ -56,11 +56,11 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 
 	//texture=save the image
 	//Testing a back ground and transperancy
-	if (!background_.initialize(graphics, BACKGROUND_IMAGE))
+	if (!background_.initialize(graphics, BACKGROUND_IMAGE,TRANSCOLOR))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing background texture"));
 
 	//will initialize the texture og the fighter
-	if (!texture_.initialize(graphics, sprite_location_))
+	if (!texture_.initialize(graphics, sprite_location_,GOKU_TRANSCOLOR))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing background texture"));
 
 	//IMAGE

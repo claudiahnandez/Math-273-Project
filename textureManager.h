@@ -28,7 +28,7 @@ class TextureManager
     Graphics *graphics;     // save pointer to graphics
     bool    initialized;    // true when successfully initialized
     HRESULT hr;             // standard return type
-
+	COLOR_ARGB tanscolor_;
   public:
     // Constructor
     TextureManager();
@@ -67,7 +67,7 @@ class TextureManager
     //      contain a list of texture file names, one name
     //      per row.
     // Post: The texture file(s) are loaded
-    virtual bool initialize(Graphics *g, std::string file);
+    virtual bool initialize(Graphics *g, std::string file,COLOR_ARGB tanscolor);
 
     // Release resources, all texture memory is released.
     virtual void onLostDevice();
