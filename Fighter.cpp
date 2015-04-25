@@ -11,7 +11,7 @@ Fighter::Fighter()
 	min_frame_ = 2;
 	width_ = 0;
 	height_ = 0;
-	scale_ = 0;
+	scale_ = 3;
 	images_per_column_ = 0;
 	sprite_location_ = "";
 	transcolor_ = TRANSCOLORR;
@@ -79,8 +79,8 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 	background_draw_.setScale(3);
 	image_.setScale(scale_);
 	image_.setFrames(min_frame_, max_frame_);
-	image_.setX(400);
-	image_.setY(300);
+	image_.setX(200);
+	image_.setY(400);
 	//marioWalkRunImage_.setCurrentFrame(0);
 	image_.setFrameDelay(0.2);
 	

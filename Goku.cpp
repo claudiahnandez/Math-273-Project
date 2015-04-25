@@ -9,6 +9,9 @@ Goku::Goku()
 
 	state_ = STANDING;
 	max_frame_ = 4;
+	
+	position_.x = GAME_WIDTH / 3;
+	position_.y = GAME_HEIGHT-50;
 
 	//default
 	//goku_runnig
@@ -38,6 +41,9 @@ Goku::Goku()
 void Goku::standing()
 {
 	animation_.clear();
+
+	transcolor_ = GOKU_TRANSCOLOR;
+
 
 	image_.setWidth(55);
 	image_.setHeight(55);
