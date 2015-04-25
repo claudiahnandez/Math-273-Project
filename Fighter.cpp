@@ -51,12 +51,13 @@ void Fighter::move(const Input* input, float frameTime)
 
 void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 {
+	setPose();
 
 	//TEXTURE
 
 	//texture=save the image
 	//Testing a back ground and transperancy
-	if (!background_.initialize(graphics, BACKGROUND_IMAGE,TRANSCOLOR))
+	if (!background_.initialize(graphics, BACKGROUND_IMAGE,TRANSCOLORR))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing background texture"));
 
 	//will initialize the texture og the fighter
@@ -73,21 +74,24 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 	if (!image_.initialize(graphics, width_, height_, images_per_column_, &texture_))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu"));
 
-	
 
-	background_draw_.setX(0);
-	background_draw_.setY(0);
-
+	setPose();
+	background_draw_.setScale(3);
 	image_.setScale(scale_);
 	image_.setFrames(min_frame_, max_frame_);
+	image_.setX(400);
+	image_.setY(300);
 	//marioWalkRunImage_.setCurrentFrame(0);
 	image_.setFrameDelay(0.2);
-	image_.setY(200);
+	
+
+	return;
 }
 
 
 void Fighter::draw(Graphics*& graphics)
 {
+	setPose();
 	background_draw_.draw();
 	image_.draw();
 }
@@ -97,13 +101,53 @@ void Fighter::update(float frameTime)
 	//will need to be changed due to position
 	image_.update(frameTime);
 
-	image_.setX(image_.getX() + frameTime * MARIO_SPEED); // Move mario right
-	if (image_.getX() > GAME_WIDTH) // If offscreen right
+	//image_.setX(image_.getX() + frameTime * MARIO_SPEED); // Move mario right
+	//if (image_.getX() > GAME_WIDTH) // If offscreen right
+	//{
+	//	image_.setX((float)-image_.getWidth());// Position off screen left
+	//}
+	//	image_.setY(image_.getY() + frameTime * SPEED_);
+	//	if (image_.getY() > GAME_HEIGHT) // If offscreen bottom
+	//		image_.setY((float)-image_.getHeight());// Position offscreen top
+	//
+}
+
+void Fighter::setPose()
+{
+	switch (state_)
 	{
-		image_.setX((float)-image_.getWidth());// Position off screen left
+	case STANDING:
+		standing();
+		break;
+	case WALKING:
+		walking();
+		break;
+	case RUNNING:
+		running();
+		break;
+	case JUMPING:
+		jumping();
+		break;
+	case FALLING:
+		falling();
+		break;
+	case CROUCHING:
+		crouching();
+		break;
+	case NEUTRAL_B:
+		neutralB();
+		break;
+	case SIDE_B:
+		sideB();
+		break;
+	case UP_B:
+		upB();
+		break;
+	case DOWN_B:
+		downB();
+		break;
+	case STANDARD:
+		standardAttack();
+		break;
 	}
-		image_.setY(image_.getY() + frameTime * SPEED_);
-		if (image_.getY() > GAME_HEIGHT) // If offscreen bottom
-			image_.setY((float)-image_.getHeight());// Position offscreen top
-	
 }
