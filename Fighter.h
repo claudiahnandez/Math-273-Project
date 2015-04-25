@@ -65,7 +65,7 @@ public:
 	void setPose();
 
 	//must be included in SquirtleSquad::initialize()
-	void initialize(HWND hwnd, Graphics*& graphics, COLOR_ARGB transcolor);
+	void initialize(HWND hwnd, Graphics*& graphics);
 
 	//include in SquirtleSquade::update();
 	//will be need to be updated with movement
@@ -91,4 +91,5 @@ protected:
 	//Option 2 get a vector of RECTS
 	//Rect will be set within the state;
 	std::vector<RECT> animation_;
+	COLOR_ARGB transcolor_;
 };

@@ -15,6 +15,7 @@ Fighter::Fighter()
 	scale_ = 0;
 	images_per_column_ = 0;
 	sprite_location_ = "";
+	transcolor_ = TRANSCOLORR;
 }//comit
 
 
@@ -49,7 +50,7 @@ void Fighter::move(const Input* input, float frameTime)
 }
 
 
-void Fighter::initialize(HWND hwnd, Graphics*& graphics, COLOR_ARGB transcolor)
+void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 {
 	setPose();
 
@@ -61,7 +62,7 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics, COLOR_ARGB transcolor)
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing background texture"));
 
 	//will initialize the texture og the fighter
-	if (!texture_.initialize(graphics, sprite_location_,GOKU_TRANSCOLOR))
+	if (!texture_.initialize(graphics, sprite_location_, transcolor_))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing background texture"));
 
 	//IMAGE
