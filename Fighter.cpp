@@ -74,7 +74,7 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics, COLOR_ARGB transcolor)
 	if (!image_.initialize(graphics, width_, height_, images_per_column_, &texture_))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu"));
 
-
+	
 	setPose();
 	background_draw_.setScale(3);
 	image_.setScale(scale_);
@@ -113,7 +113,7 @@ void Fighter::update(float frameTime)
 }
 
 void Fighter::setPose()
-{
+	{
 	switch (state_)
 	{
 	case STANDING:
