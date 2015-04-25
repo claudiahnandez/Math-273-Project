@@ -80,7 +80,6 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 
 	image_.setScale(scale_);
 	image_.setFrames(min_frame_, max_frame_);
-	//marioWalkRunImage_.setCurrentFrame(0);
 	image_.setFrameDelay(0.2);
 	image_.setY(200);
 }
