@@ -7,7 +7,6 @@ Fighter::Fighter()
 
 	state_ = STANDING;
 
-	HP_ = 100;
 	max_frame_ = 0;
 	min_frame_ = 2;
 	width_ = 0;

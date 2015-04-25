@@ -86,7 +86,6 @@ protected:
 	int width_;//how wide the sprite is
 	int height_;//how tall the sprite is
 	int scale_;
-	int HP_;
 	std::string sprite_location_;
 	//Option 2 get a vector of RECTS
 	//Rect will be set within the state;
