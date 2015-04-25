@@ -55,13 +55,10 @@ void Fighter::move(const Input* input, float frameTime)
 			image_.setY((float)GAME_HEIGHT); // Position offscreen
 	}
 		// bottom
-
-	if (input->isKeyDown(VK_DOWN))	// If move down
+	if (!input->isKeyDown(VK_LEFT )&& !input->isKeyDown(VK_RIGHT))
 	{
 		state_ = STANDING;
 	}
-
-
 	
 
 }
