@@ -15,6 +15,8 @@ Fighter::Fighter()
 	images_per_column_ = 0;
 	sprite_location_ = "";
 	transcolor_ = TRANSCOLORR;
+	direction_ = RIGHT;
+	mirror_ = false;
 }//comit
 
 
@@ -22,6 +24,13 @@ void Fighter::move(const Input* input, float frameTime)
 {
 	if (input->isKeyDown(VK_RIGHT))	// If move right
 	{
+		//changes to walking state
+		state_ = WALKING;
+
+		//makes sure is facing the right direction
+		mirror_ = false;
+		image_.flipHorizontal(mirror_);
+
 		image_.setX(image_.getX() + frameTime * SPEED_);
 		if (image_.getX() > GAME_WIDTH) // If offscreen right
 			image_.setX((float)-image_.getWidth()); // Position offscreen left
@@ -29,6 +38,12 @@ void Fighter::move(const Input* input, float frameTime)
 	}
 	if (input->isKeyDown(VK_LEFT))	// If move left
 	{
+		//changes to walking
+		state_ = WALKING;
+		//makes sure is facing the right direction
+		mirror_ = true;
+		image_.flipHorizontal(mirror_);
+
 		image_.setX(image_.getX() - frameTime * SPEED_);
 		if (image_.getX() < -image_.getWidth()) // If offscreen left
 			image_.setX((float)GAME_WIDTH); // Position offscreen right
@@ -43,8 +58,11 @@ void Fighter::move(const Input* input, float frameTime)
 
 	if (input->isKeyDown(VK_DOWN))	// If move down
 	{
-
+		state_ = STANDING;
 	}
+
+
+	
 
 }
 
@@ -150,4 +168,9 @@ void Fighter::setPose()
 		standardAttack();
 		break;
 	}
+}
+
+void Fighter::mirror(bool state)
+{
+	image_.flipHorizontal(state);
 }

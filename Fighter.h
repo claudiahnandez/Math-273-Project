@@ -71,9 +71,14 @@ public:
 	//will be need to be updated with movement
 	void update(float frameTime);
 
+	void setState(int state);
+
+	void mirror(bool state);
+
 protected:
 	Position position_;					// x and y top left of character
 	Fighter_State state_;				// scene
+	Direction direction_;
 
 	//picture width/height should be powers of 2
 	TextureManager texture_;//saves image from sprite sheet
@@ -86,6 +91,7 @@ protected:
 	int width_;//how wide the sprite is
 	int height_;//how tall the sprite is
 	int scale_;
+	bool mirror_;
 	std::string sprite_location_;
 	//Option 2 get a vector of RECTS
 	//Rect will be set within the state;
