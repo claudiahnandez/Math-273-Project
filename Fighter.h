@@ -27,8 +27,13 @@ enum Fighter_State
 	WALKING,
 	RUNNING,
 	JUMPING,
-	FALLING, 
+	FALLING,
 	CROUCHING,
+	NEUTRAL_B,
+	SIDE_B,
+	UP_B,
+	DOWN_B,
+	STANDARD
 };
 
 class Fighter : public Entity
@@ -42,16 +47,22 @@ public:
 	void move(Direction direction);
 	//Pure virtual functions
 	//All characters must have these functions
-	virtual void run()=0; 
+	virtual void standing() = 0;
+	virtual void walking() = 0;
+	virtual void running()=0; 
+	virtual void falling() = 0;
+	virtual void jumping() = 0;
+	virtual void crouching() = 0;
 	virtual void neutralB() = 0;
 	virtual void sideB() = 0;			// <B>
 	virtual void upB() = 0;				// ^B
 	virtual void downB() = 0;			// vB
 	virtual void standardAttack() = 0;	// A 
-	virtual void jump() = 0;
 
 	//Include in SquirtlSquad::render()
-	void draw(Graphics*& graphics);
+	void draw(Graphics*& graphic);
+
+	void setPose();
 
 	//must be included in SquirtleSquad::initialize()
 	void initialize(HWND hwnd, Graphics*& graphics);

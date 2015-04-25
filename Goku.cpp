@@ -7,13 +7,13 @@ Goku::Goku()
 	height_ = 55;
 	width_ = 55;
 
-	state_ = RUNNING;
+	state_ = STANDING;
 	max_frame_ = 4;
 
 	//default
 	//goku_runnig
 	
-	//makes first rect as a basis
+	/*makes first rect as a basis
 	RECT run_goku;
 	run_goku.left = 10;
 	run_goku.top = 15;
@@ -21,7 +21,7 @@ Goku::Goku()
 	run_goku.bottom = run_goku.top + height_;
 	animation_.push_back(run_goku);
 
-	//the rest of the frames are drawn based on the width
+	the rest of the frames are drawn based on the width
 	for (int i = 1; i < max_frame_; i++)
 	{
 		RECT temp;
@@ -31,15 +31,47 @@ Goku::Goku()
 		animation_[i].right = animation_[0].right + (i*width_);
 		animation_[i].bottom = animation_[0].bottom;
 	}
-	
+	*/
 }
 
 
-void Goku::run(){}
+void Goku::standing()
+{
+	animation_.clear();
+
+	image_.setWidth(55);
+	image_.setHeight(55);
+
+	RECT run_goku;
+	run_goku.left = 10;
+	run_goku.top = 11;
+	run_goku.right = run_goku.left + width_;
+	run_goku.bottom = run_goku.top + height_;
+	animation_.push_back(run_goku);
+
+	//the rest of the frames are drawn based on the width
+	for (int i = 1; i < 4; i++)
+	{
+		RECT temp;
+		animation_.push_back(temp);
+		animation_[i].left = animation_[0].left + (i*width_);
+		animation_[i].top = animation_[0].top;
+		animation_[i].right = animation_[0].right + (i*width_);
+		animation_[i].bottom = animation_[0].bottom;
+	}
+
+	image_.setVector(animation_);
+	
+}
+
+void Goku::walking(){}
+void Goku::running(){}
+void Goku::falling(){}
+void Goku::jumping(){}
+void Goku::crouching(){}
 void Goku::neutralA(){}	// A
 void Goku::neutralB(){}	// B
-void Goku::sideB(){}	// <B>
+void Goku::sideB(){}		// <B>
 void Goku::upB(){}			// ^B
 void Goku::downB(){}		// vB
-void Goku::jump(){}
 void Goku::standardAttack(){}

@@ -12,7 +12,7 @@
 //=============================================================================
 SquirtleSquad::SquirtleSquad() : Game()
 {
-	player1_ = NULL;
+	player2_ = NULL;
     dxFont_ = new TextDX();  // DirectX font
     messageY_ = 0;
 }
@@ -22,7 +22,7 @@ SquirtleSquad::SquirtleSquad() : Game()
 //=============================================================================
 SquirtleSquad::~SquirtleSquad()
 {
-	delete player1_;
+	//delete player1_;
 	delete player2_;
     releaseAll();           // call onLostDevice() for every graphics item
     safeDelete(dxFont_);
@@ -35,8 +35,9 @@ SquirtleSquad::~SquirtleSquad()
 void SquirtleSquad::initialize(HWND hwnd)
 {
     Game::initialize(hwnd); // throws GameError
-	player1_ = new Mario(graphics);
+	//player1_ = new Mario(graphics);
 	player2_ = new Goku();
+	player2_->initialize(hwnd,graphics);
     return;
 }
 
@@ -50,12 +51,12 @@ void SquirtleSquad::update()
     static float delay = 0;
     delay += frameTime;
 
-	player1_->update(frameTime);
+	//player1_->update(frameTime);
 	player2_->update(frameTime);
 
 	//----------------------------------------------
 	//Keyboard Input
-	player1_->move(input,frameTime );
+	//player1_->move(input,frameTime );
 	player2_->move(input, frameTime);
 
 /*//Old input code (moved to fighter class)
@@ -149,7 +150,7 @@ void SquirtleSquad::render()
 	//---------------------------------
 	//will draw fighters here
 	//----------------------------------
-	player1_->draw(graphics);
+	//player1_->draw(graphics);
 	player2_->draw(graphics);
 
 	/*
@@ -165,7 +166,7 @@ void SquirtleSquad::render()
 }
 
 //=============================================================================
-// The graphics device was lost.
+// The graphics device was lost.-
 // Release all reserved video memory so graphics device may be reset.
 //=============================================================================
 void SquirtleSquad::releaseAll()

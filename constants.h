@@ -28,7 +28,7 @@
 #define TSUNA_TRANSCOLOR SETCOLOR_ARGB (255,82,100,148)
 #define YUGI_TRANSCOLOR SETCOLOR_ARGB (255,0,102,0)
 #define ZORO_TRANSCOLOR SETCOLOR_ARGB (255,10,114,108)
-#define TRANSCOLOR SETCOLOR_ARGB(255, 255, 0, 255)
+#define TRANSCOLORR SETCOLOR_ARGB(255, 255, 0, 255)
 //=============================================================================
 
 
@@ -36,8 +36,8 @@
 const char CLASS_NAME[] = "whatever";
 const char GAME_TITLE[] = "Game Engine v4.0 Demo";
 const bool FULLSCREEN = false;              // windowed or fullscreen
-const UINT GAME_WIDTH = 800;//640;               // width of game in pixels
-const UINT GAME_HEIGHT = 600;//480;               // height of game in pixels
+const UINT GAME_WIDTH = 750;//640;               // width of game in pixels
+const UINT GAME_HEIGHT = 550;//480;               // height of game in pixels
 const int SPEED_ = 250;//pixels per second
 const int MARIO_SPEED = 250;//changed MARIO_SPEED
  
@@ -52,7 +52,7 @@ const double PI = 3.14159265;
 
 // graphic images
 const char MENU_IMAGE[] =     "pictures\\menu.png";      // menu texture
-const char BACKGROUND_IMAGE[] = "pictures\\background_test.png";  // background
+const char BACKGROUND_IMAGE[] = "pictures\\background.png";  // background
 const char TEST_IMAGE1[] = "pictures\\test1.png";
 const char GOKU_SPRITE[] = "pictures\\Goku.png";
 
