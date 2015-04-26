@@ -27,11 +27,7 @@ void Goku::standing()
 
 void Goku::walking()
 {
-	animation_.clear();
-	max_frame_ = 3;
-
-	setStandardSprite(3, 50, 65, 0, 65);
-
+	setStandardSprite(3, 39, 55, 9, 65);
 }
 void Goku::running(){}
 void Goku::falling(){}
