@@ -75,7 +75,7 @@ public:
 
 	void mirror(bool state);
 
-	void setStandardSprite(int max_frame, int height, int width, int x, int y); 
+	void setStandardSprite(int max_frame, int height, int width, int width_gap, int height_gap);
 
 
 protected:
@@ -94,8 +94,6 @@ protected:
 	int width_;//how wide the sprite is
 	int height_;//how tall the sprite is
 	int scale_;
-	int width_gap;
-	int height_gap;
 	bool mirror_;
 	std::string sprite_location_;
 	//Option 2 get a vector of RECTS

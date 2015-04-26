@@ -172,34 +172,41 @@ void Fighter::mirror(bool state)
 	image_.flipHorizontal(state);
 }
 
-void Fighter::setStandardSprite(int max_frame, int height, int width, int x, int y)
+void Fighter::setStandardSprite(int max_frame, int height, int width, int width_gap, int height_gap)
 {
 	animation_.clear();
 	max_frame_ = max_frame;
-
-	height_ = height;
-	width_ = width;
 
 	image_.setWidth(width);
 	image_.setHeight(height);
 
 	RECT temp;
 
-	temp.left = x;
-	temp.top = y;
-	temp.right = temp.left + width_;
-	temp.bottom = temp.top + height_;
+	temp.left = width_gap - 1;
+	temp.top = height_gap;
+	temp.right = temp.left + width;
+	temp.bottom = temp.top + height;
 	animation_.push_back(temp);
 
 	//the rest of the frames are drawn based on the width
 	for (int i = 1; i <= max_frame; i++)
 	{
-		RECT temp_; //try this
-		animation_.push_back(temp_);
-		animation_[i].left = animation_[0].left + (i*width_);
-		animation_[i].top = animation_[0].top;
-		animation_[i].right = animation_[0].right + (i*width_);
-		animation_[i].bottom = animation_[0].bottom;
+		RECT temp;
+		animation_.push_back(temp);
+		animation_[i].left = animation_[i - 1].right + width_gap;
+		animation_[i].top = animation_[i - 1].top;
+		animation_[i].right = animation_[i].left + width;
+		animation_[i].bottom = animation_[i - 1].bottom;
+		if (i == 1)
+		{
+			animation_[i].left += 1;
+			animation_[i].right += 1;
+		}
+		if (i == 2)
+		{
+			animation_[i].left -= 1;
+			animation_[i].right -= 1;
+		}
 	}
 
 	image_.setVector(animation_);
