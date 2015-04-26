@@ -81,6 +81,9 @@
     <ClCompile Include="Goku.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Piccolo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.h">
@@ -144,7 +147,10 @@
       <Filter>Header Files\Fighters</Filter>
     </ClInclude>
     <ClInclude Include="Goku.h">
-      <Filter>Header Files\Fighters</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Piccolo.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -75,6 +75,9 @@ public:
 
 	void mirror(bool state);
 
+	void setStandardSprite(int max_frame, int height, int width, int x, int y);
+
+
 protected:
 	Position position_;					// x and y top left of character
 	Fighter_State state_;				// scene

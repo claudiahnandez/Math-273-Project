@@ -2,13 +2,13 @@
 
 Fighter::Fighter()
 {
-	position_.x = GAME_WIDTH/2;
-	position_.y = GAME_HEIGHT / 2;
+	position_.x = GAME_WIDTH / 3;
+	position_.y = GAME_HEIGHT - 50;
 
 	state_ = STANDING;
 
 	max_frame_ = 0;
-	min_frame_ = 2;
+	min_frame_ = 3;
 	width_ = 0;
 	height_ = 0;
 	scale_ = 3;
@@ -77,7 +77,7 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 
 	//will initialize the texture og the fighter
 	if (!texture_.initialize(graphics, sprite_location_, transcolor_))
-		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing background texture"));
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing Fighter texture"));
 
 	//IMAGE
 	// background image
@@ -170,4 +170,36 @@ void Fighter::setPose()
 void Fighter::mirror(bool state)
 {
 	image_.flipHorizontal(state);
+}
+
+void Fighter::setStandardSprite(int max_frame, int height, int width, int x, int y)
+{
+	animation_.clear();
+	max_frame_ = max_frame;
+
+	height_ = height;
+	width_ = width;
+
+	image_.setWidth(width);
+	image_.setHeight(height);
+
+	RECT temp;
+	temp.left = x;
+	temp.top = y;
+	temp.right = temp.left + width_;
+	temp.bottom = temp.top + height_;
+	animation_.push_back(temp);
+
+	//the rest of the frames are drawn based on the width
+	for (int i = 1; i <= max_frame; i++)
+	{
+		RECT temp_;
+		animation_.push_back(temp_);
+		animation_[i].left = animation_[0].left + (i*width_);
+		animation_[i].top = animation_[0].top;
+		animation_[i].right = animation_[0].right + (i*width_);
+		animation_[i].bottom = animation_[0].bottom;
+	}
+
+	image_.setVector(animation_);
 }

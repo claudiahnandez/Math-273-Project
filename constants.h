@@ -55,6 +55,7 @@ const char MENU_IMAGE[] =     "pictures\\menu.png";      // menu texture
 const char BACKGROUND_IMAGE[] = "pictures\\background.png";  // background
 const char TEST_IMAGE1[] = "pictures\\test1.png";
 const char GOKU_SPRITE[] = "pictures\\Goku.png";
+const char PICCOLO_SPRITE[] = "pictures\\Piccolo.png";
 
 
 // audio files required by audio.cpp
