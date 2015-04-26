@@ -23,7 +23,7 @@ Goku::Goku()
 void Goku::standing()
 {
 	setStandardSprite(3, 55, 55, 10, 11);
-	}
+}
 
 void Goku::walking()
 {
