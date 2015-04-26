@@ -82,7 +82,7 @@
       <Filter>Source Files\Fighters</Filter>
     </ClCompile>
     <ClCompile Include="Piccolo.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Fighters</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -147,10 +147,10 @@
       <Filter>Header Files\Fighters</Filter>
     </ClInclude>
     <ClInclude Include="Goku.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Fighters</Filter>
     </ClInclude>
     <ClInclude Include="Piccolo.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Fighters</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

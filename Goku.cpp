@@ -5,9 +5,9 @@ Goku::Goku()
 {
 	sprite_location_ = GOKU_SPRITE;
 	height_ = 49;
-	width_ = 47;
-	width_gap = 10;
-	height_gap = 26;
+	width_ = 48;
+	/*width_gap = 10;
+	height_gap = 26;*/
 
 	state_ = STANDING;
 	
@@ -22,8 +22,8 @@ Goku::Goku()
 
 void Goku::standing()
 {
-	setStandardSprite(3, 55, 55, 10, 11);
-}
+	setStandardSprite(3, 49, 47, 10, 11);
+	}
 
 void Goku::walking()
 {
