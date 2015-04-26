@@ -79,7 +79,7 @@
       <Filter>Source Files\Fighters</Filter>
     </ClCompile>
     <ClCompile Include="Goku.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Fighters</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
