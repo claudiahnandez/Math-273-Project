@@ -1,10 +1,10 @@
 #pragma once
-
 #include "Fighter.h"
-
-class Luffy : public Fighter
+class Piccolo :
+	public Fighter
 {
-	Luffy();
+public:
+	Piccolo();
 	void standing();
 	void walking();
 	void running();
@@ -17,5 +17,5 @@ class Luffy : public Fighter
 	void upB();			// ^B
 	void downB();		// vB
 	void standardAttack();
-
 };
+
