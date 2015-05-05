@@ -36,7 +36,7 @@ void SquirtleSquad::initialize(HWND hwnd)
 {
     Game::initialize(hwnd); // throws GameError
 	//player1_ = new Mario(graphics);
-	player2_ = new Goku();
+	player2_ = new Piccolo();
 	player2_->initialize(hwnd,graphics);
     return;
 }

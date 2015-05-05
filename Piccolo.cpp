@@ -7,6 +7,9 @@ Piccolo::Piccolo()
 	
 	state_ = STANDING;
 
+	scale_ = 1;
+
+
 	position_.x = GAME_WIDTH / 3;
 	position_.y = GAME_HEIGHT - 200;
 
@@ -16,7 +19,7 @@ Piccolo::Piccolo()
 
 void Piccolo::standing()
 {
-	setStandardSprite(3, 50, 60, 15, 45);
+	setStandardSprite(1, 5, 5, 1, 0);
 }
 void Piccolo::walking(){}
 void Piccolo::running(){}

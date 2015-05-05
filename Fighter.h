@@ -75,7 +75,7 @@ public:
 
 	void mirror(bool state);
 
-	void setStandardSprite(int max_frame, int height, int width, int width_gap, int height_gap);
+	void setStandardSprite(int max_frame, int height, int width, int x, int y);
 
 
 protected:

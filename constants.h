@@ -23,7 +23,7 @@
 #define LUFFY_TRANSCOLOR SETCOLOR_ARGB (255,0,128,128)
 #define FIRE_MARIO__TRANSCOLOR SETCOLOR_ARGB (255,130,192,255)
 #define NARUTO_TRANSCOLOR SETCOLOR_ARGB (255,0,128,0)
-#define PICCOLO_TRANSCOLOR SETCOLOR_ARGB(255,57,115,255)
+#define PICCOLO_TRANSCOLOR SETCOLOR_ARGB(255,120,98,157)
 #define SANJI_TRANSCOLOR SETCOLOR_ARGB (255,82,100,148)
 #define TSUNA_TRANSCOLOR SETCOLOR_ARGB (255,82,100,148)
 #define YUGI_TRANSCOLOR SETCOLOR_ARGB (255,0,102,0)
@@ -55,7 +55,7 @@ const char MENU_IMAGE[] =     "pictures\\menu.png";      // menu texture
 const char BACKGROUND_IMAGE[] = "pictures\\background.png";  // background
 const char TEST_IMAGE1[] = "pictures\\test1.png";
 const char GOKU_SPRITE[] = "pictures\\Goku.png";
-const char PICCOLO_SPRITE[] = "pictures\\Piccolo.png";
+const char PICCOLO_SPRITE[] = "pictures\\PiccoloJr.png";
 
 
 // audio files required by audio.cpp
