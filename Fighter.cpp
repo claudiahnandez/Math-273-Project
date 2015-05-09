@@ -25,7 +25,7 @@ void Fighter::move(const Input* input, float frameTime)
 	if (input->isKeyDown(VK_RIGHT))	// If move right
 	{
 		//changes to walking state
-		state_ = WALKING;
+		state_ =WALKING;
 
 		//makes sure is facing the right direction
 		mirror_ = false;
@@ -39,7 +39,7 @@ void Fighter::move(const Input* input, float frameTime)
 	if (input->isKeyDown(VK_LEFT))	// If move left
 	{
 		//changes to walking
-		state_ = WALKING;
+		state_ = NEUTRAL_B;
 		//makes sure is facing the right direction
 		mirror_ = true;
 		image_.flipHorizontal(mirror_);
@@ -50,6 +50,7 @@ void Fighter::move(const Input* input, float frameTime)
 	}
 	if (input->isKeyDown(VK_UP))	// If move up
 	{
+		state_ = JUMPING;
 		image_.setY(image_.getY() - frameTime * SPEED_);
 		if (image_.getY() < -image_.getHeight()) // If offscreen top
 			image_.setY((float)GAME_HEIGHT); // Position offscreen
@@ -149,6 +150,9 @@ void Fighter::setPose()
 	case CROUCHING:
 		crouching();
 		break;
+	case NEUTRAL_A:
+		neutralA();
+		 break;
 	case NEUTRAL_B:
 		neutralB();
 		break;
@@ -210,4 +214,69 @@ void Fighter::setStandardSprite(int max_frame, int height, int width, int width_
 	}
 
 	image_.setVector(animation_);
+}
+
+void Fighter::settingStandardSprite(int max_frame, int height, int width,int gap, int x, int y)
+{
+	animation_.clear();
+	max_frame_ = max_frame;
+
+	image_.setWidth(width);
+	image_.setHeight(height);
+
+	RECT temp;
+	temp.top = y;
+	temp.left = x;
+	temp.bottom = temp.top + height;
+	temp.right = temp.left + width;
+	animation_.push_back(temp);
+
+	for (int i = 1; i < max_frame; i++)
+	{
+		animation_.push_back(temp);
+		animation_[i].top = animation_[0].top;
+		animation_[i].left = animation_[i-1].right + gap;
+		animation_[i].bottom = animation_[0].bottom;
+		animation_[i].right = animation_[i].left+width;
+	}
+
+
+	image_.setVector(animation_);
+}
+
+void Fighter::unstandardSprite(int max_frame,Sprite_Info animation[])
+{
+	animation_.clear();
+	max_frame_ = max_frame;
+	image_.setFrames(min_frame_, max_frame_);
+	
+	//will eventually be changed for collision purposes
+	height_ = animation[0].height;
+	width_ = animation[0].width;
+
+
+	//will set the rects
+	for (int i = 0; i <=max_frame; i++)
+	{
+		animation_.push_back(animation[i].rect);
+		
+	}
+
+	image_.setVector(animation_);
+
+
+	
+}
+
+Sprite_Info Fighter::help_set_rect(int left, int bottom_y, int height, int width)
+{
+	Sprite_Info sprite;
+	sprite.rect.top = bottom_y-height;
+	sprite.rect.left = left;
+	sprite.rect.bottom = bottom_y;
+	sprite.rect.right = left+width;
+	sprite.width = width;
+	sprite.height = height;
+
+	return sprite;
 }

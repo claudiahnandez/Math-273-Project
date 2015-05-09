@@ -36,8 +36,8 @@ void SquirtleSquad::initialize(HWND hwnd)
 {
     Game::initialize(hwnd); // throws GameError
 	//player1_ = new Mario(graphics);
-	player2_ = new Piccolo();
-	player2_->initialize(hwnd,graphics);
+	player2_ = new Goku();
+	player2_->initialize(hwnd, graphics);
     return;
 }
 
@@ -135,7 +135,35 @@ void SquirtleSquad::ai()
 // Handle collisions
 //=============================================================================
 void SquirtleSquad::collisions()
-{}
+{
+	//VECTOR2 collisionVector;
+	//// If collision between ship and planet
+	//if (ship1.collidesWith(planet, collisionVector))
+	//{
+	//	// Bounce off planet
+	//	ship1.bounce(collisionVector, planet);
+	//	ship1.damage(PLANET);
+	//}
+	//if (ship2.collidesWith(planet, collisionVector))
+	//{
+	//	// Bounce off planet
+	//	ship2.bounce(collisionVector, planet);
+	//	ship2.damage(PLANET);
+	//}
+	//// If collision between ships
+	//if (ship1.collidesWith(ship2, collisionVector))
+	//{
+	//	// Bounce off ship
+	//	ship1.bounce(collisionVector, ship2);
+	//	ship1.damage(SHIP);
+	//	// Change the direction of the collisionVector for ship2
+	//	ship2.bounce(collisionVector*-1, ship1);
+	//	ship2.damage(SHIP);
+	//}
+
+
+
+}
 
 //=============================================================================
 // Render game items

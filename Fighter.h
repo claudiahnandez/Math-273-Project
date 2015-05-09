@@ -12,6 +12,13 @@ struct Position
 	int y;
 };
 
+struct Sprite_Info
+{
+	RECT rect;
+	int height;
+	int width;
+};
+
 enum  Direction
 {
 	LEFT,
@@ -29,6 +36,7 @@ enum Fighter_State
 	JUMPING,
 	FALLING,
 	CROUCHING,
+	NEUTRAL_A,
 	NEUTRAL_B,
 	SIDE_B,
 	UP_B,
@@ -52,6 +60,7 @@ public:
 	virtual void running()=0; 
 	virtual void falling() = 0;
 	virtual void jumping() = 0;
+	virtual void neutralA() = 0;
 	virtual void crouching() = 0;
 	virtual void neutralB() = 0;
 	virtual void sideB() = 0;			// <B>
@@ -75,7 +84,18 @@ public:
 
 	void mirror(bool state);
 
-	void setStandardSprite(int max_frame, int height, int width, int x, int y);
+	void setStandardSprite(int max_frame, int height, int width, int width_gap, int height_gap);
+
+	///Claudia's fancy function
+	void settingStandardSprite(int max_frame, int height, int width, int gap, int x, int y);
+
+
+	//
+	void unstandardSprite(int max_frame,Sprite_Info animation[]);
+
+
+	//helper function
+	Sprite_Info help_set_rect(int left, int bottom_y,int height, int width);
 
 
 protected:

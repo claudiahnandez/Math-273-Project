@@ -19,7 +19,7 @@ Piccolo::Piccolo()
 
 void Piccolo::standing()
 {
-	setStandardSprite(1, 5, 5, 1, 0);
+	//settingStandardSprite(1, 5, 5, 1, 0);
 }
 void Piccolo::walking(){}
 void Piccolo::running(){}
