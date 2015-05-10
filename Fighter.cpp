@@ -39,7 +39,7 @@ void Fighter::move(const Input* input, float frameTime)
 	if (input->isKeyDown(VK_LEFT))	// If move left
 	{
 		//changes to walking
-		state_ = NEUTRAL_B;
+		state_ = WALKING;
 		//makes sure is facing the right direction
 		mirror_ = true;
 		image_.flipHorizontal(mirror_);
@@ -55,8 +55,12 @@ void Fighter::move(const Input* input, float frameTime)
 		if (image_.getY() < -image_.getHeight()) // If offscreen top
 			image_.setY((float)GAME_HEIGHT); // Position offscreen
 	}
+	if (input->isKeyDown(VK_DOWN))
+	{
+		state_ = CROUCHING;
+	}
 		// bottom
-	if (!input->isKeyDown(VK_LEFT )&& !input->isKeyDown(VK_RIGHT))
+	if (!input->isKeyDown(VK_LEFT) && !input->isKeyDown(VK_RIGHT) && !input->isKeyDown(VK_DOWN))
 	{
 		state_ = STANDING;
 	}
