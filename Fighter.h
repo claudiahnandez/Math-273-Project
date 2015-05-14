@@ -28,6 +28,14 @@ enum  Direction
 	DOWN
 };
 
+enum Character
+{
+	GOKU,
+	LUFFY,
+	MARIO,
+	PICCOLO
+};
+
 //this does not compensate for all the moves
 enum Fighter_State
 {
@@ -37,6 +45,7 @@ enum Fighter_State
 	JUMPING,
 	FALLING,
 	CROUCHING,
+	BLOCKING,
 	NEUTRAL_A,
 	NEUTRAL_B,
 	SIDE_B,
@@ -102,6 +111,7 @@ protected:
 	int width_;//how wide the sprite is
 	int height_;//how tall the sprite is
 	int scale_;
+	Character character_;
 	bool mirror_;
 	std::string sprite_location_;
 	//Option 2 get a vector of RECTS
@@ -109,4 +119,5 @@ protected:
 	std::vector<RECT> animation_;
 	COLOR_ARGB transcolor_;
 	Size spriteSize_;
+	Frame interval_;
 };

@@ -26,5 +26,5 @@ public:
 	void standardAttack();
 private:
 	//helper
-	void fixSprite();
+	void fixSprite(Size size, Frame interval);
 };

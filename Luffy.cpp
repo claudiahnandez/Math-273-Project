@@ -11,9 +11,20 @@ Luffy::Luffy()
 	position_.x = GAME_WIDTH / 3;
 	position_.y = GAME_HEIGHT - 50;
 	transcolor_ = LUFFY_TRANSCOLOR;
+	character_ = LUFFY;
 }
 void Luffy::standing()
 {
+	state_ = STANDING;
+	Size spriteSize_(state_, character_);
+	Frame interval_(state_, character_);
+	fixSprite(spriteSize_, interval_);
+
+	animation_.clear();
+	image_.setWidth(width_);
+	image_.setHeight(height_);
+
+	RECT temp;
 
 }
 void Luffy::walking()
@@ -59,4 +70,12 @@ void Luffy::downB()		// vB
 void Luffy::standardAttack()
 {
 
+}
+//helper function
+void Luffy::fixSprite(Size size, Frame interval)
+{
+	width_ = size.width();
+	height_ = size.height();
+	min_frame_ = interval.start();
+	max_frame_ = interval.end();
 }
