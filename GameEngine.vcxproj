@@ -96,10 +96,12 @@
     <ClCompile Include="Goku.cpp" />
     <ClCompile Include="graphics.cpp" />
     <ClCompile Include="inputDialog.cpp" />
+    <ClCompile Include="Luffy.cpp" />
     <ClCompile Include="Mario.cpp" />
     <ClCompile Include="messageDialog.cpp" />
     <ClCompile Include="net.cpp" />
     <ClCompile Include="Piccolo.cpp" />
+    <ClCompile Include="Size.cpp" />
     <ClCompile Include="text.cpp" />
     <ClCompile Include="textureManager.cpp" />
     <ClCompile Include="input.cpp" />
@@ -125,6 +127,7 @@
     <ClInclude Include="messageDialog.h" />
     <ClInclude Include="net.h" />
     <ClInclude Include="Piccolo.h" />
+    <ClInclude Include="Size.h" />
     <ClInclude Include="text.h" />
     <ClInclude Include="textureManager.h" />
     <ClInclude Include="input.h" />
