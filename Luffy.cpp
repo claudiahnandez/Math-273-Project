@@ -15,17 +15,35 @@ Luffy::Luffy()
 }
 void Luffy::standing()
 {
+	animation_.clear();
 	state_ = STANDING;
-	Size spriteSize_(state_, character_);
+	/*Size spriteSize_(state_, character_);
 	Frame interval_(state_, character_);
-	fixSprite(spriteSize_, interval_);
-
+	fixSprite(spriteSize_, interval_);*/
+	width_ = 27;
+	height_ = 55;
 	animation_.clear();
 	image_.setWidth(width_);
 	image_.setHeight(height_);
 
 	RECT temp;
 
+	temp.left = 0;
+	temp.top = 0;
+	temp.right = temp.left + width_;
+	temp.bottom = temp.top + height_;
+	animation_.push_back(temp);
+
+	for (int i = 1; i < 3; i++)
+	{
+		RECT temp;
+		animation_.push_back(temp);
+		animation_[i].left = animation_[i - 1].right + 1;
+		animation_[i].top = animation_[i - 1].top;
+		animation_[i].right = animation_[i].left + width_;
+		animation_[i].bottom = animation_[i - 1].bottom;
+	}
+	image_.setVector(animation_);
 }
 void Luffy::walking()
 {

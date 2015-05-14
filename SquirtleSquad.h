@@ -17,6 +17,7 @@
 #include "Mario.h"
 #include "Goku.h"
 #include "Piccolo.h"
+#include "Luffy.h"
 
 //=============================================================================
 // This class is the core of the game

@@ -1,5 +1,5 @@
 #pragma once
-#include "Fighter.h"
+#include "constants.h"
 
 class Size
 {
@@ -22,7 +22,12 @@ public:
 	Frame(Fighter_State state, Character ch);
 	int start() const;
 	int end() const;
+	int getLeft() const;
+	int getTop() const;
+
 private:
 	int start_;
 	int end_;
+	int width_Start_;
+	int height_Start_;
 };

@@ -200,10 +200,14 @@ Frame::Frame(Fighter_State state, Character ch)
 		case STANDING:
 			start_ = 0;
 			end_ = 3;
+			width_Start_ = 0;
+			height_Start_ = 0;
 			break;
 		case WALKING:
 			start_ = 7;
 			end_ = 14;
+			width_Start_ = 232;
+			height_Start_ = 0;
 			break;
 		case RUNNING:
 			break;
@@ -216,6 +220,8 @@ Frame::Frame(Fighter_State state, Character ch)
 		case BLOCKING:
 			start_ = 4;
 			end_ = 6;
+			width_Start_ = 112;
+			height_Start_ = 0;
 			break;
 		case NEUTRAL_A:
 			break;
@@ -298,4 +304,12 @@ int Frame::start() const
 int Frame::end() const
 {
 	return end_;
+}
+int Frame::getLeft() const
+{
+	return width_Start_;
+}
+int Frame::getTop() const
+{
+	return height_Start_;
 }

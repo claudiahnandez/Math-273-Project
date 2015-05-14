@@ -137,4 +137,54 @@ inline void safeOnResetDevice(T& ptr)
 }
 #define SAFE_ON_RESET_DEVICE safeOnResetDevice  // for backward compatiblility
 
+
+
+/////enums
+enum Character
+{
+	GOKU,
+	LUFFY,
+	MARIO,
+	PICCOLO
+};
+
+//this does not compensate for all the moves
+struct Position
+{
+	int x;
+	int y;
+};
+
+struct Sprite_Info
+{
+	RECT rect;
+	int height;
+	int width;
+};
+
+enum  Direction
+{
+	LEFT,
+	RIGHT,
+	UP,
+	DOWN
+};
+
+enum Fighter_State
+{
+	STANDING,
+	WALKING,
+	RUNNING,
+	JUMPING,
+	FALLING,
+	CROUCHING,
+	BLOCKING,
+	NEUTRAL_A,
+	NEUTRAL_B,
+	SIDE_B,
+	UP_B,
+	DOWN_B,
+	STANDARD
+};
+
 #endif
