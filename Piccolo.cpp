@@ -7,7 +7,7 @@ Piccolo::Piccolo()
 	
 	state_ = STANDING;
 
-	scale_ = 2;
+	scale_ = 1;
 	min_frame_ = 0;
 
 	position_.x = GAME_WIDTH / 3;
