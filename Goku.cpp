@@ -220,6 +220,6 @@ void Goku::standardAttack()
 	kame[6] = help_set_rect(436, 535, 64, 99);//58
 	kame[7] = help_set_rect(542, 535, 64, 103);
 	kame[8] = help_set_rect(711, 535, 64, 172);//48
-	unstandardSprite(8, kame);
+	unstandardSprite(7, kame);
 
 }

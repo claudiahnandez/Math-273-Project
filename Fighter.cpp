@@ -39,7 +39,7 @@ void Fighter::move(const Input* input, float frameTime)
 	if (input->isKeyDown(VK_LEFT))	// If move left
 	{
 		//changes to walking
-		state_ = WALKING;
+		state_ = NEUTRAL_B;
 		//makes sure is facing the right direction
 		mirror_ = true;
 		image_.flipHorizontal(mirror_);
@@ -62,7 +62,7 @@ void Fighter::move(const Input* input, float frameTime)
 		// bottom
 	if (!input->isKeyDown(VK_LEFT) && !input->isKeyDown(VK_RIGHT) && !input->isKeyDown(VK_DOWN))
 	{
-		state_ = STANDING;
+		state_ = STANDARD;
 	}
 	
 
