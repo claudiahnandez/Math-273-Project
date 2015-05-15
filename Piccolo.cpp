@@ -14,7 +14,7 @@ Piccolo::Piccolo()
 	position_.y = GAME_HEIGHT - 200;
 
 	transcolor_ = PICCOLO_TRANSCOLOR;
-
+	character_ = PICCOLO;
 }
 void Piccolo::standing()
 {

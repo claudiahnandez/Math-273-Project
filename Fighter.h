@@ -5,44 +5,10 @@
 #include "textureManager.h"
 #include "image.h"
 #include "entity.h"
+#include "Size.h"
 
-struct Position
-{
-	int x;
-	int y;
-};
 
-struct Sprite_Info
-{
-	RECT rect;
-	int height;
-	int width;
-};
 
-enum  Direction
-{
-	LEFT,
-	RIGHT,
-	UP,
-	DOWN
-};
-
-//this does not compensate for all the moves
-enum Fighter_State
-{
-	STANDING,
-	WALKING,
-	RUNNING,
-	JUMPING,
-	FALLING,
-	CROUCHING,
-	NEUTRAL_A,
-	NEUTRAL_B,
-	SIDE_B,
-	UP_B,
-	DOWN_B,
-	STANDARD
-};
 
 class Fighter : public Entity
 {
@@ -67,36 +33,23 @@ public:
 	virtual void upB() = 0;				// ^B
 	virtual void downB() = 0;			// vB
 	virtual void standardAttack() = 0;	// A 
-
 	//Include in SquirtlSquad::render()
 	void draw(Graphics*& graphic);
-
 	void setPose();
-
 	//must be included in SquirtleSquad::initialize()
 	void initialize(HWND hwnd, Graphics*& graphics);
-
 	//include in SquirtleSquade::update();
 	//will be need to be updated with movement
 	void update(float frameTime);
-
 	void setState(int state);
-
 	void mirror(bool state);
-
 	void setStandardSprite(int max_frame, int height, int width, int width_gap, int height_gap);
-
 	///Claudia's fancy function
 	void settingStandardSprite(int max_frame, int height, int width, int gap, int x, int y);
-
-
 	//
 	void unstandardSprite(int max_frame,Sprite_Info animation[]);
-
-
 	//helper function
 	Sprite_Info help_set_rect(int left, int bottom_y,int height, int width);
-
 
 protected:
 	Position position_;					// x and y top left of character
@@ -106,7 +59,7 @@ protected:
 	//picture width/height should be powers of 2
 	TextureManager texture_;//saves image from sprite sheet
 	TextureManager background_;
-	Image   image_;//draws the actual image
+	Image image_;//draws the actual image
 	Image background_draw_;
 	int max_frame_;//up to what frame do you want to show
 	int min_frame_;//from where do you want to start
@@ -114,10 +67,13 @@ protected:
 	int width_;//how wide the sprite is
 	int height_;//how tall the sprite is
 	int scale_;
+	Character character_;
 	bool mirror_;
 	std::string sprite_location_;
 	//Option 2 get a vector of RECTS
 	//Rect will be set within the state;
 	std::vector<RECT> animation_;
 	COLOR_ARGB transcolor_;
+	Size spriteSize_;
+	Frame interval_;
 };

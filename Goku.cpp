@@ -17,6 +17,7 @@ Goku::Goku()
 	position_.y = GAME_HEIGHT-50;
 
 	transcolor_ = GOKU_TRANSCOLOR;
+	character_ = GOKU;
 }
 
 
