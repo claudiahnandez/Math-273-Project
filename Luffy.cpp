@@ -4,6 +4,7 @@
 Luffy::Luffy()
 {
 	sprite_location_ = LUFFY_TEST;
+	scale_ = 3;
 	height_ = 0;
 	width_ = 0;
 	state_ = STANDING;
@@ -44,6 +45,9 @@ void Luffy::standing()
 		animation_[i].bottom = animation_[i - 1].bottom;
 	}
 	image_.setVector(animation_);
+	//you forgot to change the max_frame
+	//remember it is in array notation so you have to subtract one from the actual amount
+	max_frame_ = 3;
 }
 void Luffy::walking()
 {
