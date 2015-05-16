@@ -22,6 +22,12 @@
     <Filter Include="Source Files\Fighters">
       <UniqueIdentifier>{8d6845ee-42b5-4c72-a0fa-46b91987b1a3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Custom">
+      <UniqueIdentifier>{1f69f979-25f3-4707-814f-c1ed64ae72fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Custom">
+      <UniqueIdentifier>{70904717-fe1f-4436-8511-634722e23c08}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">
@@ -83,6 +89,15 @@
     </ClCompile>
     <ClCompile Include="Piccolo.cpp">
       <Filter>Source Files\Fighters</Filter>
+    </ClCompile>
+    <ClCompile Include="Luffy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Size.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Platform.cpp">
+      <Filter>Source Files\Custom</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -151,6 +166,12 @@
     </ClInclude>
     <ClInclude Include="Piccolo.h">
       <Filter>Header Files\Fighters</Filter>
+    </ClInclude>
+    <ClInclude Include="Size.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform.h">
+      <Filter>Header Files\Custom</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

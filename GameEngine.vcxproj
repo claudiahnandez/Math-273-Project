@@ -101,6 +101,7 @@
     <ClCompile Include="messageDialog.cpp" />
     <ClCompile Include="net.cpp" />
     <ClCompile Include="Piccolo.cpp" />
+    <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Size.cpp" />
     <ClCompile Include="text.cpp" />
     <ClCompile Include="textureManager.cpp" />
@@ -127,6 +128,7 @@
     <ClInclude Include="messageDialog.h" />
     <ClInclude Include="net.h" />
     <ClInclude Include="Piccolo.h" />
+    <ClInclude Include="Platform.h" />
     <ClInclude Include="Size.h" />
     <ClInclude Include="text.h" />
     <ClInclude Include="textureManager.h" />

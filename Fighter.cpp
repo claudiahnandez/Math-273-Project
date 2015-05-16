@@ -36,7 +36,7 @@ void Fighter::move(const Input* input, float frameTime)
 	if (input->isKeyDown(VK_RIGHT))	// If move right
 	{
 		//changes to walking state
-		state_ =WALKING;
+		state_ = WALKING;
 
 		//makes sure is facing the right direction
 		mirror_ = false;
@@ -70,15 +70,20 @@ void Fighter::move(const Input* input, float frameTime)
 	{
 		state_ = CROUCHING;
 	}
-		// bottom
+	// bottom
 	if (!input->isKeyDown(VK_LEFT) && !input->isKeyDown(VK_RIGHT) && !input->isKeyDown(VK_DOWN))
 	{
-		state_ = STANDARD;
+		state_ = STANDING;
 	}
-	
+
 
 }
 
+void Fighter::setPosition(int x, int y)
+{
+	image_.setX(x);
+	image_.setY(y);
+}
 
 void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 {
@@ -88,7 +93,7 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 
 	//texture=save the image
 	//Testing a back ground and transperancy
-	if (!background_.initialize(graphics, BACKGROUND_IMAGE,TRANSCOLORR))
+	if (!background_.initialize(graphics, BACKGROUND_IMAGE, TRANSCOLORR))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing background texture"));
 
 	//will initialize the texture og the fighter
@@ -97,7 +102,7 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 
 	//IMAGE
 	// background image
-	if (!background_draw_.initialize(graphics, 0,0, 0, &background_))
+	if (!background_draw_.initialize(graphics, 0, 0, 0, &background_))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing background"));
 
 	// test image 2 (mario)
@@ -105,7 +110,7 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 	if (!image_.initialize(graphics, width_, height_, images_per_column_, &texture_))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu"));
 
-	
+
 	setPose();
 	background_draw_.setScale(3);
 	image_.setScale(scale_);
@@ -114,7 +119,7 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 	image_.setY(400);
 	//marioWalkRunImage_.setCurrentFrame(0);
 	image_.setFrameDelay(0.2);
-	
+
 
 	return;
 }
@@ -170,7 +175,7 @@ void Fighter::update(float frameTime)
 			velocity.x = 10;
 		}
 		velocity.y = -velocity.y;                   // reverse Y direction
-}
+	}
 	else if (spriteData.y < 0)                    // else if hit top screen edge
 	{
 		spriteData.y = 0;                           // position at top screen edge
@@ -178,10 +183,11 @@ void Fighter::update(float frameTime)
 	}
 
 	velocity.y += frameTime * GRAVITY;              // gravity
+	velocity.y += 5;
 }
 
 void Fighter::setPose()
-	{
+{
 	switch (state_)
 	{
 	case STANDING:
@@ -204,7 +210,7 @@ void Fighter::setPose()
 		break;
 	case NEUTRAL_A:
 		neutralA();
-		 break;
+		break;
 	case NEUTRAL_B:
 		neutralB();
 		break;
@@ -268,7 +274,7 @@ void Fighter::setStandardSprite(int max_frame, int height, int width, int width_
 	image_.setVector(animation_);
 }
 
-void Fighter::settingStandardSprite(int max_frame, int height, int width,int gap, int x, int y)
+void Fighter::settingStandardSprite(int max_frame, int height, int width, int gap, int x, int y)
 {
 	animation_.clear();
 	max_frame_ = max_frame;
@@ -287,46 +293,46 @@ void Fighter::settingStandardSprite(int max_frame, int height, int width,int gap
 	{
 		animation_.push_back(temp);
 		animation_[i].top = animation_[0].top;
-		animation_[i].left = animation_[i-1].right + gap;
+		animation_[i].left = animation_[i - 1].right + gap;
 		animation_[i].bottom = animation_[0].bottom;
-		animation_[i].right = animation_[i].left+width;
+		animation_[i].right = animation_[i].left + width;
 	}
 
 
 	image_.setVector(animation_);
 }
 
-void Fighter::unstandardSprite(int max_frame,Sprite_Info animation[])
+void Fighter::unstandardSprite(int max_frame, Sprite_Info animation[])
 {
 	animation_.clear();
 	max_frame_ = max_frame;
 	image_.setFrames(min_frame_, max_frame_);
-	
+
 	//will eventually be changed for collision purposes
 	height_ = animation[0].height;
 	width_ = animation[0].width;
 
 
 	//will set the rects
-	for (int i = 0; i <=max_frame; i++)
+	for (int i = 0; i <= max_frame; i++)
 	{
 		animation_.push_back(animation[i].rect);
-		
+
 	}
 
 	image_.setVector(animation_);
 
 
-	
+
 }
 
 Sprite_Info Fighter::help_set_rect(int left, int bottom_y, int height, int width)
 {
 	Sprite_Info sprite;
-	sprite.rect.top = bottom_y-height;
+	sprite.rect.top = bottom_y - height;
 	sprite.rect.left = left;
 	sprite.rect.bottom = bottom_y;
-	sprite.rect.right = left+width;
+	sprite.rect.right = left + width;
 	sprite.width = width;
 	sprite.height = height;
 

@@ -41,8 +41,30 @@ void SquirtleSquad::initialize(HWND hwnd)
 	player2_ = new Goku();
 	player2_->initialize(hwnd, graphics);
 
-	player1_->setPosition(50, 50);
 	player1_->flipHorizontal(true);
+	player1_->setVelocity(VECTOR2(10, -10));
+
+	player2_->flipHorizontal(false);
+	player2_->setVelocity(VECTOR2(10, -10));
+
+
+	player1_->setPosition(20, 400);
+	player2_->setPosition(GAME_WIDTH-150, 400);
+
+
+
+	//From Pedro: Please don't delete - I will move it to its own class later
+	//--------------------//
+	//--platform texture--//
+	//--------------------//
+	// paddle texture
+	if (!platformTexture_.initialize(graphics, PLATFORM_IMAGE, SETCOLOR_ARGB(0, 0, 0, 0)))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing platform texture"));
+
+	//platform
+	if (!platform_.initialize(this, platformNS::WIDTH, platformNS::HEIGHT, 0, &platformTexture_))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing paddle"));
+	//--------------------//
 
     return;
 }
@@ -62,8 +84,19 @@ void SquirtleSquad::update()
 
 	//----------------------------------------------
 	//Keyboard Input
-	//player1_->move(input,2*frameTime );
-	player2_->move(input, frameTime);
+	player1_->move(input,2*frameTime );
+	//player2_->move(input, frameTime);
+
+	//--------------------------//
+	//--Test Code for platform--//
+	//--------------------------//
+
+	//if (input->isKeyDown(VK_LEFT))
+	//	platform_.setX(platform_.getX() - platformNS::SPEED*frameTime);
+	//else if (input->isKeyDown(VK_RIGHT))
+	//	platform_.setX(platform_.getX() + platformNS::SPEED*frameTime);
+	platform_.update(frameTime);
+	//------------------------------
 
 /*//Old input code (moved to fighter class)
 
@@ -143,15 +176,19 @@ void SquirtleSquad::ai()
 void SquirtleSquad::collisions()
 {
 	VECTOR2 collisionVector;
+	VECTOR2 cv;
+	if (player1_->collidesWith(platform_, cv))
+		player1_->bounce(cv, platform_);
+
 
 	// If collision between fighters
 	if (player1_->collidesWith(*player2_, collisionVector))
 	{
-		// Bounce off ship
+		// Bounce off player2
 		player1_->bounce(collisionVector, *player2_);
 		//player1_.damage(ATTACK_A);
 
-		// Change the direction of the collisionVector for ship2
+		// Change the direction of the collisionVector for player2
 		player2_->bounce(collisionVector*-1, *player1_);
 		//player2_.damage(ATTACK_A);
 	}
@@ -190,6 +227,7 @@ void SquirtleSquad::render()
 	//----------------------------------
 	player1_->draw(graphics);
 	player2_->draw(graphics);
+	platform_.draw();
 
 	/*
 		//Original Code
@@ -209,6 +247,7 @@ void SquirtleSquad::render()
 //=============================================================================
 void SquirtleSquad::releaseAll()
 {
+	platformTexture_.onLostDevice();
     dxFont_->onLostDevice();
     menuTexture_.onLostDevice();
     Game::releaseAll();
@@ -221,6 +260,7 @@ void SquirtleSquad::releaseAll()
 //=============================================================================
 void SquirtleSquad::resetAll()
 {
+	platformTexture_.onResetDevice();
     menuTexture_.onResetDevice();
     dxFont_->onResetDevice();
     Game::resetAll();

@@ -18,6 +18,7 @@
 #include "Goku.h"
 #include "Piccolo.h"
 #include "Luffy.h"
+#include "Platform.h"
 
 //=============================================================================
 // This class is the core of the game
@@ -46,12 +47,14 @@ private:
 
 	Fighter* player1_;
 	Fighter* player2_;
-
-
-
 	//stretch goals
 	//Fighter* player3_;
 	//Fighter* player4_;
+
+	TextureManager platformTexture_;   //platform texture
+	Platform platform_;
+
+
 
     TextDX  *dxFont_;            // DirectX font
     std::string  message_;

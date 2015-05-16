@@ -48,7 +48,7 @@ const float MIN_FRAME_RATE = 10.0f;             // the minimum frame rate
 const float MIN_FRAME_TIME = 1.0f/FRAME_RATE;   // minimum desired time for 1 frame
 const float MAX_FRAME_TIME = 1.0f/MIN_FRAME_RATE; // maximum time used in calculations
 const double PI = 3.14159265;
-const float GRAVITY = 2000.0f; // Acceleration of gravity pixels/sec
+const float GRAVITY = 500.0f; // Acceleration of gravity pixels/sec
 
 // graphic images
 const char MENU_IMAGE[] =     "pictures\\menu.png";      // menu texture
@@ -57,7 +57,7 @@ const char TEST_IMAGE1[] = "pictures\\test1.png";
 const char GOKU_SPRITE[] = "pictures\\Goku.png";
 const char LUFFY_TEST[] = "pictures\\testLuffyStrip.png";
 const char PICCOLO_SPRITE[] = "pictures\\PiccoloJr.png";
-
+const char PLATFORM_IMAGE[] = "pictures\\default_platform.png";
 
 // audio files required by audio.cpp
 // WAVE_BANK must be location of .xwb file.
@@ -186,5 +186,4 @@ enum Fighter_State
 	DOWN_B,
 	STANDARD
 };
-
 #endif
