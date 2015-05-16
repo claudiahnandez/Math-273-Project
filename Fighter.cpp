@@ -81,6 +81,7 @@ void Fighter::move(const Input* input, float frameTime)
 
 void Fighter::setPosition(int x, int y)
 {
+	//Change so it  modifies the "internal" texture not the additional "image_"
 	image_.setX(x);
 	image_.setY(y);
 }
@@ -90,26 +91,13 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 	setPose();
 
 	//TEXTURE
-
-	//texture=save the image
-	//Testing a back ground and transperancy
-	if (!background_.initialize(graphics, BACKGROUND_IMAGE, TRANSCOLORR))
-		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing background texture"));
+	//will initialize the texture og the fighter
+	if (textureManager->initialize(graphics, sprite_location_, transcolor_))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing Fighter texture"));
 
 	//will initialize the texture og the fighter
 	if (!texture_.initialize(graphics, sprite_location_, transcolor_))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing Fighter texture"));
-
-	//IMAGE
-	// background image
-	if (!background_draw_.initialize(graphics, 0, 0, 0, &background_))
-		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing background"));
-
-	// test image 2 (mario)
-	//width and height are marios height
-	if (!image_.initialize(graphics, width_, height_, images_per_column_, &texture_))
-		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu"));
-
 
 	setPose();
 	background_draw_.setScale(3);
