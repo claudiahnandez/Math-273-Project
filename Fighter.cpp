@@ -17,6 +17,17 @@ Fighter::Fighter()
 	transcolor_ = TRANSCOLORR;
 	direction_ = RIGHT;
 	mirror_ = false;
+
+	velocity.x = 10;                 // velocity X
+	velocity.y = 10;                 // velocity Y
+	frameDelay = 1;
+	startFrame = 0;                             // first frame of animation
+	endFrame = 0;                           // last frame of animation
+	currentFrame = startFrame;
+	radius = 50;
+	collisionType = entityNS::CIRCLE;
+	mass = 5;
+
 }//comit
 
 
@@ -107,7 +118,7 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 void Fighter::draw(Graphics*& graphics)
 {
 	setPose();
-	background_draw_.draw();
+	//background_draw_.draw();
 	image_.draw();
 }
 
@@ -115,6 +126,9 @@ void Fighter::update(float frameTime)
 {
 	//will need to be changed due to position
 	image_.update(frameTime);
+
+	//Gravity
+	//velocity.y = frameTime * GRAVITY;
 
 	//image_.setX(image_.getX() + frameTime * MARIO_SPEED); // Move mario right
 	//if (image_.getX() > GAME_WIDTH) // If offscreen right
@@ -125,6 +139,40 @@ void Fighter::update(float frameTime)
 	//	if (image_.getY() > GAME_HEIGHT) // If offscreen bottom
 	//		image_.setY((float)-image_.getHeight());// Position offscreen top
 	//
+
+	Entity::update(frameTime);
+	spriteData.x += frameTime * velocity.x;         // move along X 
+	spriteData.y += frameTime * velocity.y;         // move along Y
+
+	// Bounce off walls
+	if (spriteData.x > GAME_WIDTH - 50)  // if hit right screen edge
+	{
+		spriteData.x = GAME_WIDTH - 50;  // position at right screen edge
+		velocity.x = -velocity.x;                   // reverse X direction
+	}
+	else if (spriteData.x < 0)                    // else if hit left screen edge
+	{
+		spriteData.x = 0;                           // position at left screen edge
+		velocity.x = -velocity.x;                   // reverse X direction
+	}
+	if (spriteData.y > GAME_HEIGHT - 50) // if hit bottom screen edge
+	{
+		spriteData.y = GAME_HEIGHT - 50; // position at bottom screen edge
+		velocity.y -= 100;
+		if (velocity.y < 1)            // if ball has small bounce
+		{
+			spriteData.y = GAME_HEIGHT / 4;
+			velocity.x = 10;
+		}
+		velocity.y = -velocity.y;                   // reverse Y direction
+	}
+	else if (spriteData.y < 0)                    // else if hit top screen edge
+	{
+		spriteData.y = 0;                           // position at top screen edge
+		velocity.y = -velocity.y;                   // reverse Y direction
+	}
+
+	velocity.y += frameTime * GRAVITY;              // gravity
 }
 
 void Fighter::setPose()
@@ -210,4 +258,10 @@ void Fighter::setStandardSprite(int max_frame, int height, int width, int width_
 	}
 
 	image_.setVector(animation_);
+}
+
+void Fighter::setPosition(int x, int y)
+{
+	image_.setX(x);
+	image_.setY(y);
 }

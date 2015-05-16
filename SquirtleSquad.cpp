@@ -12,6 +12,7 @@
 //=============================================================================
 SquirtleSquad::SquirtleSquad() : Game()
 {
+	player1_ = NULL;
 	player2_ = NULL;
     dxFont_ = new TextDX();  // DirectX font
     messageY_ = 0;
@@ -22,7 +23,7 @@ SquirtleSquad::SquirtleSquad() : Game()
 //=============================================================================
 SquirtleSquad::~SquirtleSquad()
 {
-	//delete player1_;
+	delete player1_;
 	delete player2_;
     releaseAll();           // call onLostDevice() for every graphics item
     safeDelete(dxFont_);
@@ -35,9 +36,14 @@ SquirtleSquad::~SquirtleSquad()
 void SquirtleSquad::initialize(HWND hwnd)
 {
     Game::initialize(hwnd); // throws GameError
-	//player1_ = new Mario(graphics);
+	player1_ = new Goku();
+	player1_->initialize(hwnd, graphics);
 	player2_ = new Goku();
 	player2_->initialize(hwnd, graphics);
+
+	player1_->setPosition(50, 50);
+	player1_->flipHorizontal(true);
+
     return;
 }
 
@@ -51,12 +57,12 @@ void SquirtleSquad::update()
     static float delay = 0;
     delay += frameTime;
 
-	//player1_->update(frameTime);
+	player1_->update(frameTime);
 	player2_->update(frameTime);
 
 	//----------------------------------------------
 	//Keyboard Input
-	//player1_->move(input,frameTime );
+	//player1_->move(input,2*frameTime );
 	player2_->move(input, frameTime);
 
 /*//Old input code (moved to fighter class)
@@ -136,29 +142,33 @@ void SquirtleSquad::ai()
 //=============================================================================
 void SquirtleSquad::collisions()
 {
-	//VECTOR2 collisionVector;
+	VECTOR2 collisionVector;
+
+	// If collision between fighters
+	if (player1_->collidesWith(*player2_, collisionVector))
+	{
+		// Bounce off ship
+		player1_->bounce(collisionVector, *player2_);
+		//player1_.damage(ATTACK_A);
+
+		// Change the direction of the collisionVector for ship2
+		player2_->bounce(collisionVector*-1, *player1_);
+		//player2_.damage(ATTACK_A);
+	}
+
 	//// If collision between ship and planet
-	//if (ship1.collidesWith(planet, collisionVector))
+	//if (player1_.collidesWith(player2_, collisionVector))
 	//{
 	//	// Bounce off planet
-	//	ship1.bounce(collisionVector, planet);
+	//	player1_.bounce(collisionVector, player2_);
 	//	ship1.damage(PLANET);
 	//}
+
 	//if (ship2.collidesWith(planet, collisionVector))
 	//{
 	//	// Bounce off planet
 	//	ship2.bounce(collisionVector, planet);
 	//	ship2.damage(PLANET);
-	//}
-	//// If collision between ships
-	//if (ship1.collidesWith(ship2, collisionVector))
-	//{
-	//	// Bounce off ship
-	//	ship1.bounce(collisionVector, ship2);
-	//	ship1.damage(SHIP);
-	//	// Change the direction of the collisionVector for ship2
-	//	ship2.bounce(collisionVector*-1, ship1);
-	//	ship2.damage(SHIP);
 	//}
 
 
@@ -178,7 +188,7 @@ void SquirtleSquad::render()
 	//---------------------------------
 	//will draw fighters here
 	//----------------------------------
-	//player1_->draw(graphics);
+	player1_->draw(graphics);
 	player2_->draw(graphics);
 
 	/*
