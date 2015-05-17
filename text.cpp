@@ -128,7 +128,7 @@ bool Text::initialize(Graphics *g, const char *file)
         if (!fontTexture.initialize(graphics, file, TRANSCOLORR))
             return false;                   // if error loading font texture
         // prepare the font image
-        if (!Image::initialize_I(graphics,textNS::FONT_WIDTH,textNS::FONT_HEIGHT,0,&fontTexture))
+        if (!Image::initialize(graphics,textNS::FONT_WIDTH,textNS::FONT_HEIGHT,0,&fontTexture))
             return false;                   // if failed
     }
     catch(...)

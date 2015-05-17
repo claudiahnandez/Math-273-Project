@@ -81,36 +81,39 @@ void Fighter::move(const Input* input, float frameTime)
 
 void Fighter::setPosition(int x, int y)
 {
-	//Change so it  modifies the "internal" texture not the additional "image_"
-	setX(x);
-	setY(y);
+	image_.setX(x);
+	image_.setY(y);
 }
 
-void Fighter::initialize_F(HWND hwnd, Graphics*& graphics)
+void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 {
 	setPose();
 
 	//TEXTURE
+
+	//texture=save the image
+	//Testing a back ground and transperancy
+	
+
 	//will initialize the texture og the fighter
-	//if (textureManager->initialize(graphics, sprite_location_, transcolor_))
-	//	throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing Fighter texture"));
+	if (!texture_.initialize(graphics, sprite_location_, transcolor_))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing Fighter texture"));
 
-	if (!initialize_I(graphics, 60, 55, 3, textureManager))
-		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing planet"));
+	//IMAGE
+	// test image 2 (mario)
+	//width and height are marios height
+	if (!image_.initialize(graphics, width_, height_, images_per_column_, &texture_))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu"));
 
-
-	////will initialize the texture og the fighter
-	//if (!texture_.initialize(graphics, sprite_location_, transcolor_))
-	//	throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing Fighter texture"));
 
 	setPose();
 	background_draw_.setScale(3);
-	setScale(scale_);
-	setFrames(min_frame_, max_frame_);
-	setX(200);
-	setY(400);
+	image_.setScale(scale_);
+	image_.setFrames(min_frame_, max_frame_);
+	image_.setX(200);
+	image_.setY(400);
 	//marioWalkRunImage_.setCurrentFrame(0);
-	setFrameDelay(0.2);
+	image_.setFrameDelay(0.2);
 
 
 	return;
@@ -124,10 +127,10 @@ void Fighter::draw(Graphics*& graphics)
 	image_.draw();
 }
 
-void Fighter::update_(float frameTime)
+void Fighter::update(float frameTime)
 {
 	//will need to be changed due to position
-	update(frameTime);
+	image_.update(frameTime);
 
 	//Gravity
 	//velocity.y = frameTime * GRAVITY;
@@ -223,7 +226,7 @@ void Fighter::setPose()
 
 void Fighter::mirror(bool state)
 {
-	flipHorizontal(state);
+	image_.flipHorizontal(state);
 }
 
 void Fighter::setStandardSprite(int max_frame, int height, int width, int width_gap, int height_gap)
@@ -231,8 +234,8 @@ void Fighter::setStandardSprite(int max_frame, int height, int width, int width_
 	animation_.clear();
 	max_frame_ = max_frame;
 
-	setWidth(width);
-	setHeight(height);
+	image_.setWidth(width);
+	image_.setHeight(height);
 
 	RECT temp;
 
@@ -263,7 +266,7 @@ void Fighter::setStandardSprite(int max_frame, int height, int width, int width_
 		}
 	}
 
-	setVector(animation_);
+	image_.setVector(animation_);
 }
 
 void Fighter::settingStandardSprite(int max_frame, int height, int width, int gap, int x, int y)
@@ -271,8 +274,8 @@ void Fighter::settingStandardSprite(int max_frame, int height, int width, int ga
 	animation_.clear();
 	max_frame_ = max_frame;
 
-	setWidth(width);
-	setHeight(height);
+	image_.setWidth(width);
+	image_.setHeight(height);
 
 	RECT temp;
 	temp.top = y;
@@ -291,14 +294,14 @@ void Fighter::settingStandardSprite(int max_frame, int height, int width, int ga
 	}
 
 
-	setVector(animation_);
+	image_.setVector(animation_);
 }
 
 void Fighter::unstandardSprite(int max_frame, Sprite_Info animation[])
 {
 	animation_.clear();
 	max_frame_ = max_frame;
-	setFrames(min_frame_, max_frame_);
+	image_.setFrames(min_frame_, max_frame_);
 
 	//will eventually be changed for collision purposes
 	height_ = animation[0].height;
@@ -312,7 +315,7 @@ void Fighter::unstandardSprite(int max_frame, Sprite_Info animation[])
 
 	}
 
-	setVector(animation_);
+	image_.setVector(animation_);
 
 
 

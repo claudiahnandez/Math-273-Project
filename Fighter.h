@@ -66,10 +66,10 @@ public:
 	void draw(Graphics*& graphic);
 	void setPose();
 	//must be included in SquirtleSquad::initialize()
-	void initialize_F(HWND hwnd, Graphics*& graphics);
+	void initialize(HWND hwnd, Graphics*& graphics);
 	//include in SquirtleSquade::update();
 	//will be need to be updated with movement
-	void update_(float frameTime);
+	void update(float frameTime);
 	void setState(int state);
 	void mirror(bool state);
 	void setStandardSprite(int max_frame, int height, int width, int width_gap, int height_gap);
