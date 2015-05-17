@@ -40,11 +40,11 @@ void Fighter::move(const Input* input, float frameTime)
 
 		//makes sure is facing the right direction
 		mirror_ = false;
-		image_.flipHorizontal(mirror_);
+		Image::flipHorizontal(mirror_);
 
-		image_.setX(image_.getX() + frameTime * SPEED_);
-		if (image_.getX() > GAME_WIDTH) // If offscreen right
-			image_.setX((float)-image_.getWidth()); // Position offscreen left
+		Image::setX(Image::getX() + frameTime * SPEED_);
+		if (Image::getX() > GAME_WIDTH) // If offscreen right
+			Image::setX((float)-Image::getWidth()); // Position offscreen left
 		//state_ = 
 	}
 	if (input->isKeyDown(VK_LEFT))	// If move left
@@ -53,18 +53,18 @@ void Fighter::move(const Input* input, float frameTime)
 		state_ = NEUTRAL_B;
 		//makes sure is facing the right direction
 		mirror_ = true;
-		image_.flipHorizontal(mirror_);
+		Image::flipHorizontal(mirror_);
 
-		image_.setX(image_.getX() - frameTime * SPEED_);
-		if (image_.getX() < -image_.getWidth()) // If offscreen left
-			image_.setX((float)GAME_WIDTH); // Position offscreen right
+		Image::setX(Image::getX() - frameTime * SPEED_);
+		if (Image::getX() < -Image::getWidth()) // If offscreen left
+			Image::setX((float)GAME_WIDTH); // Position offscreen right
 	}
 	if (input->isKeyDown(VK_UP))	// If move up
 	{
 		state_ = JUMPING;
-		image_.setY(image_.getY() - frameTime * SPEED_);
-		if (image_.getY() < -image_.getHeight()) // If offscreen top
-			image_.setY((float)GAME_HEIGHT); // Position offscreen
+		Image::setY(Image::getY() - frameTime * SPEED_);
+		if (Image::getY() < -Image::getHeight()) // If offscreen top
+			Image::setY((float)GAME_HEIGHT); // Position offscreen
 	}
 	if (input->isKeyDown(VK_DOWN))
 	{
@@ -82,8 +82,8 @@ void Fighter::move(const Input* input, float frameTime)
 void Fighter::setPosition(int x, int y)
 {
 	//Change so it  modifies the "internal" texture not the additional "image_"
-	image_.setX(x);
-	image_.setY(y);
+	Image::setX(x);
+	Image::setY(y);
 }
 
 void Fighter::initialize(HWND hwnd, Graphics*& graphics)
@@ -103,18 +103,18 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 	//IMAGE
 	// test image 2 (mario)
 	//width and height are marios height
-	if (!image_.initialize(graphics, width_, height_, images_per_column_, &texture_))
+	if (!Image::initialize(graphics, width_, height_, images_per_column_, &texture_))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu"));
 
 
 	setPose();
-	background_draw_.setScale(3);
-	image_.setScale(scale_);
-	image_.setFrames(min_frame_, max_frame_);
-	image_.setX(200);
-	image_.setY(400);
+	
+	Image::setScale(scale_);
+	Image::setFrames(min_frame_, max_frame_);
+	Image::setX(200);
+	Image::setY(400);
 	//marioWalkRunImage_.setCurrentFrame(0);
-	image_.setFrameDelay(0.2);
+	Image::setFrameDelay(0.2);
 
 
 	return;
@@ -124,14 +124,13 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 void Fighter::draw(Graphics*& graphics)
 {
 	setPose();
-	//background_draw_.draw();
-	image_.draw();
+	Image::draw();
 }
 
 void Fighter::update(float frameTime)
 {
 	//will need to be changed due to position
-	image_.update(frameTime);
+	Image::update(frameTime);
 
 	//Gravity
 	//velocity.y = frameTime * GRAVITY;
@@ -230,7 +229,7 @@ void Fighter::setPose()
 
 void Fighter::mirror(bool state)
 {
-	image_.flipHorizontal(state);
+	Image::flipHorizontal(state);
 }
 
 void Fighter::setStandardSprite(int max_frame, int height, int width, int width_gap, int height_gap)
@@ -238,10 +237,8 @@ void Fighter::setStandardSprite(int max_frame, int height, int width, int width_
 	animation_.clear();
 	max_frame_ = max_frame;
 
-
-
-	image_.setWidth(width);
-	image_.setHeight(height);
+	Image::setWidth(width);
+	Image::setHeight(height);
 
 	RECT temp;
 
@@ -272,7 +269,7 @@ void Fighter::setStandardSprite(int max_frame, int height, int width, int width_
 		}
 	}
 
-	image_.setVector(animation_);
+	Image::setVector(animation_);
 }
 
 void Fighter::settingStandardSprite(int max_frame, int height, int width, int gap, int x, int y)
@@ -280,8 +277,8 @@ void Fighter::settingStandardSprite(int max_frame, int height, int width, int ga
 	animation_.clear();
 	max_frame_ = max_frame;
 
-	image_.setWidth(width);
-	image_.setHeight(height);
+	Image::setWidth(width);
+	Image::setHeight(height);
 
 	RECT temp;
 	temp.top = y;
@@ -300,14 +297,14 @@ void Fighter::settingStandardSprite(int max_frame, int height, int width, int ga
 	}
 
 
-	image_.setVector(animation_);
+	Image::setVector(animation_);
 }
 
 void Fighter::unstandardSprite(int max_frame, Sprite_Info animation[])
 {
 	animation_.clear();
 	max_frame_ = max_frame;
-	image_.setFrames(min_frame_, max_frame_);
+	Image::setFrames(min_frame_, max_frame_);
 
 	//will eventually be changed for collision purposes
 	height_ = animation[0].height;
@@ -321,7 +318,7 @@ void Fighter::unstandardSprite(int max_frame, Sprite_Info animation[])
 
 	}
 
-	image_.setVector(animation_);
+	Image::setVector(animation_);
 
 
 

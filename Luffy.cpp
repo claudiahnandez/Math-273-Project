@@ -24,8 +24,8 @@ void Luffy::standing()
 	width_ = 27;
 	height_ = 55;
 	animation_.clear();
-	image_.setWidth(width_);
-	image_.setHeight(height_);
+	Image::setWidth(width_);
+	Image::setHeight(height_);
 
 	RECT temp;
 
@@ -44,7 +44,7 @@ void Luffy::standing()
 		animation_[i].right = animation_[i].left + width_;
 		animation_[i].bottom = animation_[i - 1].bottom;
 	}
-	image_.setVector(animation_);
+	Image::setVector(animation_);
 	//you forgot to change the max_frame
 	//remember it is in array notation so you have to subtract one from the actual amount
 	max_frame_ = 3;
