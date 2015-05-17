@@ -41,15 +41,14 @@ void SquirtleSquad::initialize(HWND hwnd)
 	player2_ = new Goku();
 	player2_->initialize(hwnd, graphics);
 
-	player1_->flipHorizontal(true);
-	player1_->setVelocity(VECTOR2(10, -10));
+	//player1_->flipHorizontal(true);
+	//player1_->setVelocity(VECTOR2(10, -10));
 
-	player2_->flipHorizontal(false);
-	player2_->setVelocity(VECTOR2(10, -10));
+	//player2_->flipHorizontal(false);
+	//player2_->setVelocity(VECTOR2(10, -10));
 
-
-	player1_->setPosition(20, 400);
-	player2_->setPosition(GAME_WIDTH-150, 400);
+	//player1_->setPosition(20, 400);
+	//player2_->setPosition(GAME_WIDTH-150, 400);
 
 
 
@@ -57,11 +56,11 @@ void SquirtleSquad::initialize(HWND hwnd)
 	//--------------------//
 	//--platform texture--//
 	//--------------------//
-	// paddle texture
+	//texture
 	if (!platformTexture_.initialize(graphics, PLATFORM_IMAGE, SETCOLOR_ARGB(0, 0, 0, 0)))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing platform texture"));
 
-	//platform
+	//image
 	if (!platform_.initialize(this, platformNS::WIDTH, platformNS::HEIGHT, 0, &platformTexture_))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing paddle"));
 	//--------------------//
@@ -179,7 +178,6 @@ void SquirtleSquad::collisions()
 	VECTOR2 cv;
 	if (player1_->collidesWith(platform_, cv))
 		player1_->bounce(cv, platform_);
-
 
 	// If collision between fighters
 	if (player1_->collidesWith(*player2_, collisionVector))

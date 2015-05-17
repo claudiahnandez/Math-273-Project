@@ -149,7 +149,6 @@ void Fighter::update(float frameTime)
 	Entity::update(frameTime);
 	spriteData.x += frameTime * velocity.x;         // move along X 
 	spriteData.y += frameTime * velocity.y;         // move along Y
-	//image_
 
 	// Bounce off walls
 	if (spriteData.x > GAME_WIDTH - 50)  // if hit right screen edge
@@ -166,11 +165,11 @@ void Fighter::update(float frameTime)
 	{
 		spriteData.y = GAME_HEIGHT - 50; // position at bottom screen edge
 		velocity.y -= 100;
-		if (velocity.y < 1)            // if ball has small bounce
-		{
-			spriteData.y = GAME_HEIGHT / 4;
-			velocity.x = 10;
-		}
+		//if (velocity.y < 1)            // if ball has small bounce
+		//{
+		//	spriteData.y = GAME_HEIGHT / 4;
+		//	velocity.x = 10;
+		//}
 		velocity.y = -velocity.y;                   // reverse Y direction
 	}
 	else if (spriteData.y < 0)                    // else if hit top screen edge
@@ -180,7 +179,10 @@ void Fighter::update(float frameTime)
 	}
 
 	velocity.y += frameTime * GRAVITY;              // gravity
-	velocity.y += 5;
+	if (image_.getY() < GAME_HEIGHT-150)
+	{
+		image_.setY(image_.getY() + frameTime *GRAVITY);
+	}
 }
 
 void Fighter::setPose()
@@ -235,6 +237,8 @@ void Fighter::setStandardSprite(int max_frame, int height, int width, int width_
 {
 	animation_.clear();
 	max_frame_ = max_frame;
+
+
 
 	image_.setWidth(width);
 	image_.setHeight(height);
