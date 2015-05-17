@@ -85,7 +85,7 @@ void Fighter::setPosition(int x, int y)
 	image_.setY(y);
 }
 
-void Fighter::initialize(HWND hwnd, Graphics*& graphics)
+void Fighter::initialize_(HWND hwnd, Graphics*& graphics)
 {
 	setPose();
 
