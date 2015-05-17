@@ -89,7 +89,7 @@ void Goku::crouching()
 }
 void Goku::neutralA()
 {
-	//image_.setFrames(0, 14);
+	//Image::setFrames(0, 14);
 	Sprite_Info gtfo[15];
 	gtfo[0] = help_set_rect(15, 1105, 47, 41);
 	gtfo[1] = help_set_rect(65, 1105, 47, 40);//44
@@ -154,7 +154,7 @@ void Goku::sideB()
 }
 void Goku::upB()
 {
-	//image_.setFrames(1, 1);
+	//Image::setFrames(1, 1);
 	Sprite_Info slash[5];
 	slash[0] = help_set_rect(16, 1003, 64, 39);
 	slash[1] = help_set_rect(65, 1003, 64, 43);//57
@@ -207,8 +207,8 @@ void Goku::downB()
 }	
 void Goku::standardAttack()
 {
-	image_.setFrames(0, 8);
-	image_.setWidth(43);
+	Image::setFrames(0, 8);
+	Image::setWidth(43);
 
 	Sprite_Info kame[9];
 	kame[0] = help_set_rect(15,535,64,43);//43

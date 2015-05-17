@@ -87,8 +87,6 @@ protected:
 
 	//picture width/height should be powers of 2
 	TextureManager texture_;//saves image from sprite sheet
-	TextureManager background_;
-	Image image_;//draws the actual image
 	int max_frame_;//up to what frame do you want to show
 	int min_frame_;//from where do you want to start
 	int images_per_column_;//the number of images per column

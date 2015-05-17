@@ -108,6 +108,7 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 
 
 	setPose();
+	
 	Image::setScale(scale_);
 	Image::setFrames(min_frame_, max_frame_);
 	Image::setX(200);
