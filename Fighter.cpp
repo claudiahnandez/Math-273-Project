@@ -81,6 +81,7 @@ void Fighter::move(const Input* input, float frameTime)
 
 void Fighter::setPosition(int x, int y)
 {
+	//Change so it  modifies the "internal" texture not the additional "image_"
 	image_.setX(x);
 	image_.setY(y);
 }
