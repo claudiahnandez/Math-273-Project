@@ -149,7 +149,7 @@ void Fighter::update(float frameTime)
 	Entity::update(frameTime);
 	spriteData.x += frameTime * velocity.x;         // move along X 
 	spriteData.y += frameTime * velocity.y;         // move along Y
-	image_
+	//image_
 
 	// Bounce off walls
 	if (spriteData.x > GAME_WIDTH - 50)  // if hit right screen edge
