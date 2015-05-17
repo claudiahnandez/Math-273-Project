@@ -79,8 +79,8 @@ void SquirtleSquad::update()
     static float delay = 0;
     delay += frameTime;
 
-	player1_->update_(frameTime);
-	player2_->update_(frameTime);
+	player1_->update(frameTime);
+	player2_->update(frameTime);
 
 	//----------------------------------------------
 	//Keyboard Input
