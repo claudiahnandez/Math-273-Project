@@ -94,18 +94,13 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 
 	//texture=save the image
 	//Testing a back ground and transperancy
-	if (!background_.initialize(graphics, BACKGROUND_IMAGE, TRANSCOLORR))
-		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing background texture"));
+	
 
 	//will initialize the texture og the fighter
 	if (!texture_.initialize(graphics, sprite_location_, transcolor_))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing Fighter texture"));
 
 	//IMAGE
-	// background image
-	if (!background_draw_.initialize(graphics, 0, 0, 0, &background_))
-		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing background"));
-
 	// test image 2 (mario)
 	//width and height are marios height
 	if (!image_.initialize(graphics, width_, height_, images_per_column_, &texture_))
