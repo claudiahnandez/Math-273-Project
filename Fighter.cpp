@@ -86,16 +86,16 @@ void Fighter::setPosition(int x, int y)
 	setY(y);
 }
 
-void Fighter::initialize_(HWND hwnd, Graphics*& graphics)
+void Fighter::initialize_F(HWND hwnd, Graphics*& graphics)
 {
 	setPose();
 
 	//TEXTURE
 	//will initialize the texture og the fighter
-	if (textureManager->initialize(graphics, sprite_location_, transcolor_))
-		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing Fighter texture"));
+	//if (textureManager->initialize(graphics, sprite_location_, transcolor_))
+	//	throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing Fighter texture"));
 
-	if (!initialize(graphics, 60, 55, 3, &textureManager))
+	if (!initialize_I(graphics, 60, 55, 3, textureManager))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing planet"));
 
 

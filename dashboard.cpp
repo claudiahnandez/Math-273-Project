@@ -18,7 +18,7 @@ bool Bar::initialize(Graphics *graphics, TextureManager *textureM, int left,
                      int top, float scale, COLOR_ARGB color)
 {
     try {
-        Image::initialize(graphics, dashboardNS::IMAGE_SIZE, dashboardNS::IMAGE_SIZE, 
+        Image::initialize_I(graphics, dashboardNS::IMAGE_SIZE, dashboardNS::IMAGE_SIZE, 
                           dashboardNS::TEXTURE_COLS, textureM);
         setCurrentFrame(dashboardNS::BAR_FRAME);
         spriteData.x = (float)left;

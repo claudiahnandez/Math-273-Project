@@ -37,9 +37,9 @@ void SquirtleSquad::initialize(HWND hwnd)
 {
     Game::initialize(hwnd); // throws GameError
 	player1_ = new Goku();
-	player1_->initialize(hwnd, graphics);
+	player1_->initialize_F(hwnd, graphics);
 	player2_ = new Goku();
-	player2_->initialize(hwnd, graphics);
+	player2_->initialize_F(hwnd, graphics);
 
 	player1_->flipHorizontal(true);
 	player1_->setVelocity(VECTOR2(10, -10));

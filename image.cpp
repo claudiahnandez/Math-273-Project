@@ -54,7 +54,7 @@ Image::~Image()
 // number of columns in texture (1 to n) (0 same as 1)
 // pointer to TextureManager
 //=============================================================================
-bool Image::initialize(Graphics *g, int width, int height, int ncols,
+bool Image::initialize_I(Graphics *g, int width, int height, int ncols,
                        TextureManager *textureM)
 {
     try{

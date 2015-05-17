@@ -66,7 +66,7 @@ public:
 	void draw(Graphics*& graphic);
 	void setPose();
 	//must be included in SquirtleSquad::initialize()
-	void initialize_(HWND hwnd, Graphics*& graphics);
+	void initialize_F(HWND hwnd, Graphics*& graphics);
 	//include in SquirtleSquade::update();
 	//will be need to be updated with movement
 	void update_(float frameTime);
