@@ -81,11 +81,12 @@ void Fighter::move(const Input* input, float frameTime)
 
 void Fighter::setPosition(int x, int y)
 {
+	//Change so it  modifies the "internal" texture not the additional "image_"
 	image_.setX(x);
 	image_.setY(y);
 }
 
-void Fighter::initialize_(HWND hwnd, Graphics*& graphics)
+void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 {
 	setPose();
 
