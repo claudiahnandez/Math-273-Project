@@ -36,7 +36,7 @@ SquirtleSquad::~SquirtleSquad()
 void SquirtleSquad::initialize(HWND hwnd)
 {
     Game::initialize(hwnd); // throws GameError
-	player1_ = new Goku();
+	player1_ = new Luffy();
 	player1_->initialize(hwnd, graphics);
 	player2_ = new Goku();
 	player2_->initialize(hwnd, graphics);

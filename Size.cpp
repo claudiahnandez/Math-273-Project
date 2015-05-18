@@ -12,9 +12,8 @@ Size::Size(int w, int h)
 }
 Size::Size(Fighter_State state, Character ch)
 {
-	switch (state)
+	switch (ch)
 	{
-
 	case GOKU:
 		switch (state)
 		{
@@ -27,8 +26,6 @@ Size::Size(Fighter_State state, Character ch)
 		case JUMPING:
 			break;
 		case FALLING:
-			break;
-		case CROUCHING:
 			break;
 		case NEUTRAL_A:
 			break;
@@ -61,8 +58,7 @@ Size::Size(Fighter_State state, Character ch)
 			break;
 		case FALLING:
 			break;
-		case CROUCHING:
-			break;
+
 		case BLOCKING:
 			width_ = 39;
 			height_ = 42;
@@ -94,8 +90,6 @@ Size::Size(Fighter_State state, Character ch)
 			break;
 		case FALLING:
 			break;
-		case CROUCHING:
-			break;
 		case NEUTRAL_A:
 			break;
 		case NEUTRAL_B:
@@ -122,8 +116,6 @@ Size::Size(Fighter_State state, Character ch)
 		case JUMPING:
 			break;
 		case FALLING:
-			break;
-		case CROUCHING:
 			break;
 		case NEUTRAL_A:
 			break;
@@ -154,15 +146,19 @@ Frame::Frame()
 {
 	start_ = 0; 
 	end_ = 0;
+	width_Start_ = 0;
+	height_Start_ = 0;
 }
 Frame::Frame(int s, int e)
 {
 	start_ = s;
 	end_ = e;
+	width_Start_ = 0;
+	height_Start_ = 0;
 }
 Frame::Frame(Fighter_State state, Character ch)
 {
-	switch (state)
+	switch (ch)
 	{
 	
 	case GOKU:
@@ -177,8 +173,6 @@ Frame::Frame(Fighter_State state, Character ch)
 		case JUMPING:
 			break;
 		case FALLING:
-			break;
-		case CROUCHING:
 			break;
 		case NEUTRAL_A:
 			break;
@@ -215,8 +209,6 @@ Frame::Frame(Fighter_State state, Character ch)
 			break;
 		case FALLING:
 			break;
-		case CROUCHING:
-			break;
 		case BLOCKING:
 			start_ = 4;
 			end_ = 6;
@@ -250,8 +242,6 @@ Frame::Frame(Fighter_State state, Character ch)
 			break;
 		case FALLING:
 			break;
-		case CROUCHING:
-			break;
 		case NEUTRAL_A:
 			break;
 		case NEUTRAL_B:
@@ -278,8 +268,6 @@ Frame::Frame(Fighter_State state, Character ch)
 		case JUMPING:
 			break;
 		case FALLING:
-			break;
-		case CROUCHING:
 			break;
 		case NEUTRAL_A:
 			break;

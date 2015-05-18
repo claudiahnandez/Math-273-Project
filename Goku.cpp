@@ -86,7 +86,7 @@ void Goku::jumping()
 	unstandardSprite(0, jumping);
 	
 }
-void Goku::crouching()
+void Goku::blocking()
 {
 	Sprite_Info shield[3];
 	shield[0] = help_set_rect(777, 290, 49, 44);

@@ -52,11 +52,11 @@ public:
 	//All characters must have these functions
 	virtual void standing() = 0;
 	virtual void walking() = 0;
+	virtual void blocking() = 0;
 	virtual void running()=0; 
 	virtual void falling() = 0;
 	virtual void jumping() = 0;
 	virtual void neutralA() = 0;
-	virtual void crouching() = 0;
 	virtual void neutralB() = 0;
 	virtual void sideB() = 0;			// <B>
 	virtual void upB() = 0;				// ^B

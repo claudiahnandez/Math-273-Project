@@ -108,7 +108,7 @@ void Piccolo::jumping()
 	
 
 }
-void Piccolo::crouching()
+void Piccolo::blocking()
 {
 	int bottom_y = 992;
 	Sprite_Info crouching[2];

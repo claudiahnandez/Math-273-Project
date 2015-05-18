@@ -14,10 +14,10 @@ public:
 	Luffy();
 	void standing();
 	void walking();
+	void blocking();
 	void running();
 	void falling();
 	void jumping();
-	void crouching();
 	void neutralA();	// A
 	void neutralB();	// B
 	void sideB();		// <B>
@@ -26,5 +26,5 @@ public:
 	void standardAttack();
 private:
 	//helper
-	void fixSprite(Size size, Frame interval);
+	void fixSprite();
 };
