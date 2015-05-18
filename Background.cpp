@@ -3,10 +3,10 @@
 
 Background::Background()
 {
-	width_ = 0;
-	height_ = 0;
-	floor_ = 0;
-	background_location_ = "";
+	width_ = 516;
+	height_ = 548;
+	floor_ = 38;
+	background_location_ = BACKGROUND_IMAGE;
 }
 
 void Background::initialize(HWND hwnd, Graphics*& graphics)

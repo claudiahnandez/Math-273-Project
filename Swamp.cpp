@@ -3,9 +3,10 @@
 
 Swamp::Swamp()
 {
-	width_ = 800;
-	height_ = 336;
-	background_location_ = SWAMP;
+	width_ = 516;
+	height_ = 548;
+	scale_ = 1;
+	background_location_ = BACKGROUND_IMAGE;
 }
 
 

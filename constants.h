@@ -52,7 +52,7 @@ const float GRAVITY = 10; // Acceleration of gravity pixels/sec
 
 // graphic images
 const char MENU_IMAGE[] =     "pictures\\menu.png";      // menu texture
-const char BACKGROUND_IMAGE[] = "pictures\\background.png";  // background
+const char BACKGROUND_IMAGE[] = "pictures\\NarutoBackgroundTest.png";  // background
 const char TEST_IMAGE1[] = "pictures\\test1.png";
 const char GOKU_SPRITE[] = "pictures\\Goku.png";
 const char LUFFY_TEST[] = "pictures\\testLuffyStrip.png";
