@@ -31,7 +31,6 @@ void Luffy::blocking()
 	animation_.clear();
 	state_ = BLOCKING;
 	fixSprite();
-
 }
 void Luffy::running()
 {

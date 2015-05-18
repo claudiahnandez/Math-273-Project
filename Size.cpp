@@ -58,7 +58,6 @@ Size::Size(Fighter_State state, Character ch)
 			break;
 		case FALLING:
 			break;
-
 		case BLOCKING:
 			width_ = 39;
 			height_ = 42;
@@ -201,7 +200,7 @@ Frame::Frame(Fighter_State state, Character ch)
 			start_ = 7;
 			end_ = 14;
 			width_Start_ = 232;
-			height_Start_ = 0;
+			height_Start_ = 7;
 			break;
 		case RUNNING:
 			break;
@@ -213,7 +212,7 @@ Frame::Frame(Fighter_State state, Character ch)
 			start_ = 4;
 			end_ = 6;
 			width_Start_ = 112;
-			height_Start_ = 0;
+			height_Start_ = 12;
 			break;
 		case NEUTRAL_A:
 			break;
