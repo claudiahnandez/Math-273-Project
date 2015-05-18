@@ -19,6 +19,8 @@
 #include "Piccolo.h"
 #include "Luffy.h"
 #include "Platform.h"
+#include "Background.h"
+#include "Swamp.h"
 
 //=============================================================================
 // This class is the core of the game
@@ -47,6 +49,7 @@ private:
 
 	Fighter* player1_;
 	Fighter* player2_;
+	Background* stage_;
 	//stretch goals
 	//Fighter* player3_;
 	//Fighter* player4_;

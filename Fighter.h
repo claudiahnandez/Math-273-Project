@@ -7,35 +7,7 @@
 #include "entity.h"
 #include "Size.h"
 
-//struct Position
-//{
-//	int x;
-//	int y;
-//};
-//
-//enum  Direction
-//{
-//	LEFT,
-//	RIGHT,
-//	UP,
-//	DOWN
-//};
-//
-////this does not compensate for all the moves
-//enum Fighter_State
-//{
-//	STANDING,
-//	WALKING,
-//	RUNNING,
-//	JUMPING,
-//	FALLING,
-//	CROUCHING,
-//	NEUTRAL_B,
-//	SIDE_B,
-//	UP_B,
-//	DOWN_B,
-//	STANDARD
-//};
+
 
 class Fighter : public Entity
 {

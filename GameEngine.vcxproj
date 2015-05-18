@@ -88,6 +88,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="audio.cpp" />
+    <ClCompile Include="Background.cpp" />
     <ClCompile Include="console.cpp" />
     <ClCompile Include="dashboard.cpp" />
     <ClCompile Include="entity.cpp" />
@@ -103,6 +104,7 @@
     <ClCompile Include="Piccolo.cpp" />
     <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Size.cpp" />
+    <ClCompile Include="Swamp.cpp" />
     <ClCompile Include="text.cpp" />
     <ClCompile Include="textureManager.cpp" />
     <ClCompile Include="input.cpp" />
@@ -113,6 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="audio.h" />
+    <ClInclude Include="Background.h" />
     <ClInclude Include="console.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="dashboard.h" />
@@ -130,6 +133,7 @@
     <ClInclude Include="Piccolo.h" />
     <ClInclude Include="Platform.h" />
     <ClInclude Include="Size.h" />
+    <ClInclude Include="Swamp.h" />
     <ClInclude Include="text.h" />
     <ClInclude Include="textureManager.h" />
     <ClInclude Include="input.h" />

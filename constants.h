@@ -59,6 +59,11 @@ const char LUFFY_TEST[] = "pictures\\testLuffyStrip.png";
 const char PICCOLO_SPRITE[] = "pictures\\PiccoloJr.png";
 const char PLATFORM_IMAGE[] = "pictures\\default_platform.png";
 
+//background images
+const char SWAMP[] = "pictures\\swamp.gif";
+
+
+
 // audio files required by audio.cpp
 // WAVE_BANK must be location of .xwb file.
 const char WAVE_BANK[]  = "";

@@ -14,6 +14,7 @@ SquirtleSquad::SquirtleSquad() : Game()
 {
 	player1_ = NULL;
 	player2_ = NULL;
+	stage_ = NULL;
     dxFont_ = new TextDX();  // DirectX font
     messageY_ = 0;
 }
@@ -25,6 +26,7 @@ SquirtleSquad::~SquirtleSquad()
 {
 	delete player1_;
 	delete player2_;
+	delete stage_;
     releaseAll();           // call onLostDevice() for every graphics item
     safeDelete(dxFont_);
 }
@@ -36,6 +38,10 @@ SquirtleSquad::~SquirtleSquad()
 void SquirtleSquad::initialize(HWND hwnd)
 {
     Game::initialize(hwnd); // throws GameError
+
+	stage_ = new Swamp;
+	stage_->initialize(hwnd, graphics);
+
 	player1_ = new Goku();
 	player1_->initialize(hwnd, graphics);
 	player2_ = new Goku();
@@ -221,6 +227,10 @@ void SquirtleSquad::render()
 
 
     graphics->spriteBegin();                // begin drawing sprites
+	//------------------------
+	//backgroundis being drawn
+	//------------------------
+	stage_->draw(graphics);
 
 	//---------------------------------
 	//will draw fighters here
