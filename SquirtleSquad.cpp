@@ -175,9 +175,8 @@ void SquirtleSquad::ai()
 void SquirtleSquad::collisions()
 {
 	VECTOR2 collisionVector;
-	VECTOR2 cv;
-	if (player1_->collidesWith(platform_, cv))
-		player1_->bounce(cv, platform_);
+	//if (player1_->collidesWith(platform_, collisionVector))
+		//player1_->bounce(collisionVector, platform_);
 
 	// If collision between fighters
 	if (player1_->collidesWith(*player2_, collisionVector))
