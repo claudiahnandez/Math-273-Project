@@ -217,6 +217,10 @@ Frame::Frame(Fighter_State state, Character ch)
 		case NEUTRAL_A:
 			break;
 		case NEUTRAL_B:
+			start_ = 0;
+			end_ = 2;
+			width_Start_ = 0;
+			height_Start_ = 54;
 			break;
 		case SIDE_B:
 			break;
