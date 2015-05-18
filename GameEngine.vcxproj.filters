@@ -90,9 +90,6 @@
     <ClCompile Include="Piccolo.cpp">
       <Filter>Source Files\Fighters</Filter>
     </ClCompile>
-    <ClCompile Include="Luffy.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Size.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>

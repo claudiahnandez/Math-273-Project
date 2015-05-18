@@ -18,6 +18,13 @@ Goku::Goku()
 
 	transcolor_ = GOKU_TRANSCOLOR;
 	character_ = GOKU;
+
+	// Set collision type (NONE, CIRCLE, BOX, ROTATED_BOX)
+	setCollisionType(entityNS::BOX);
+	velocity.y = 0;
+	velocity.x = 0;
+	setGravity(10);
+	setMass(1);
 }
 
 
@@ -79,7 +86,7 @@ void Goku::jumping()
 	unstandardSprite(0, jumping);
 	
 }
-void Goku::crouching()
+void Goku::blocking()
 {
 	Sprite_Info shield[3];
 	shield[0] = help_set_rect(777, 290, 49, 44);

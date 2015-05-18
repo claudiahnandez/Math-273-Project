@@ -14,10 +14,10 @@ public:
 	Goku();
 	void standing();
 	void walking();
+	void blocking();
 	void running();
 	void falling();
 	void jumping();
-	void crouching();
 	void neutralA();	// A
 	void neutralB();	// B
 	void sideB();		// <B>

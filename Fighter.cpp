@@ -25,7 +25,7 @@ Fighter::Fighter()
 	endFrame = 0;                           // last frame of animation
 	currentFrame = startFrame;
 	radius = 50;
-	collisionType = entityNS::CIRCLE;
+	collisionType = entityNS::BOX;
 	mass = 5;
 
 }//comit
@@ -50,7 +50,7 @@ void Fighter::move(const Input* input, float frameTime)
 	if (input->isKeyDown(VK_LEFT))	// If move left
 	{
 		//changes to walking
-		state_ = NEUTRAL_B;
+		state_ = WALKING;
 		//makes sure is facing the right direction
 		mirror_ = true;
 		Image::flipHorizontal(mirror_);
@@ -62,13 +62,14 @@ void Fighter::move(const Input* input, float frameTime)
 	if (input->isKeyDown(VK_UP))	// If move up
 	{
 		state_ = JUMPING;
-		Image::setY(Image::getY() - frameTime * SPEED_);
-		if (Image::getY() < -Image::getHeight()) // If offscreen top
-			Image::setY((float)GAME_HEIGHT); // Position offscreen
+		//Image::setY(Image::getY() - frameTime * SPEED_);
+		//if (Image::getY() < -Image::getHeight()) // If offscreen top
+		Image::setY(Image::getY()-100); // Position offscreen
+		//velocity.y = -100;
 	}
 	if (input->isKeyDown(VK_DOWN))
 	{
-		state_ = CROUCHING;
+		state_ = BLOCKING;
 	}
 	// bottom
 	if (!input->isKeyDown(VK_LEFT) && !input->isKeyDown(VK_RIGHT) && !input->isKeyDown(VK_DOWN))
@@ -81,7 +82,6 @@ void Fighter::move(const Input* input, float frameTime)
 
 void Fighter::setPosition(int x, int y)
 {
-	//Change so it  modifies the "internal" texture not the additional "image_"
 	Image::setX(x);
 	Image::setY(y);
 }
@@ -94,7 +94,7 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 
 	//texture=save the image
 	//Testing a back ground and transperancy
-
+	
 
 	//will initialize the texture og the fighter
 	if (!texture_.initialize(graphics, sprite_location_, transcolor_))
@@ -113,8 +113,8 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 	Image::setFrames(min_frame_, max_frame_);
 	Image::setX(200);
 	Image::setY(400);
-	//marioWalkRunImage_.setCurrentFrame(0);
 	Image::setFrameDelay(0.2);
+
 
 
 	return;
@@ -148,38 +148,51 @@ void Fighter::update(float frameTime)
 	Entity::update(frameTime);
 	spriteData.x += frameTime * velocity.x;         // move along X 
 	spriteData.y += frameTime * velocity.y;         // move along Y
-	//image_
 
 	// Bounce off walls
-	if (spriteData.x > GAME_WIDTH - 50)  // if hit right screen edge
+
+	// if hit right screen edge
+	if (spriteData.x > GAME_WIDTH - 50)  
 	{
 		spriteData.x = GAME_WIDTH - 50;  // position at right screen edge
-		velocity.x = -velocity.x;                   // reverse X direction
+		velocity.x = -velocity.x;        // reverse X direction
 	}
-	else if (spriteData.x < 0)                    // else if hit left screen edge
+	// else if hit left screen edge
+	else if (spriteData.x < 0)			
 	{
-		spriteData.x = 0;                           // position at left screen edge
-		velocity.x = -velocity.x;                   // reverse X direction
+		spriteData.x = 0;               // position at left screen edge
+		velocity.x = -velocity.x;       // reverse X direction
 	}
-	if (spriteData.y > GAME_HEIGHT - 50) // if hit bottom screen edge
+	// if hit bottom screen edge
+	if (spriteData.y > GAME_HEIGHT - getHeight()-50) 
 	{
-		spriteData.y = GAME_HEIGHT - 50; // position at bottom screen edge
-		velocity.y -= 100;
-		if (velocity.y < 1)            // if ball has small bounce
-		{
-			spriteData.y = GAME_HEIGHT / 4;
-			velocity.x = 10;
-		}
-		velocity.y = -velocity.y;                   // reverse Y direction
+		//spriteData.y = GAME_HEIGHT - 2 * getHeight()-50; // position at bottom screen edge
+		velocity.y = 0;
+		//if (velocity.y < 1)            // if ball has small bounce
+		//{
+		//	spriteData.y = GAME_HEIGHT / 4;
+		//	velocity.x = 10;
+		//}
 	}
-	else if (spriteData.y < 0)                    // else if hit top screen edge
+	// else if hit top screen edge
+	else if (spriteData.y < 0)                    
 	{
 		spriteData.y = 0;                           // position at top screen edge
 		velocity.y = -velocity.y;                   // reverse Y direction
 	}
 
-	velocity.y += frameTime * GRAVITY;              // gravity
-	velocity.y += 5;
+	//velocity.y += frameTime * GRAVITY;              // gravity
+	if (spriteData.y < GAME_HEIGHT - getHeight())
+	{
+		velocity.y += frameTime * 10;
+
+		Image::setY(Image::getY() + velocity.y);
+	}
+
+	if (velocity.x > 0)
+	{
+		velocity.x--;
+	}
 }
 
 void Fighter::setPose()
@@ -200,9 +213,6 @@ void Fighter::setPose()
 		break;
 	case FALLING:
 		falling();
-		break;
-	case CROUCHING:
-		crouching();
 		break;
 	case NEUTRAL_A:
 		neutralA();
