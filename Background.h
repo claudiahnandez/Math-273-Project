@@ -8,6 +8,7 @@ class Background :public Entity
 {
 public:
 	Background();
+	//Background(COLOR_ARGB transcolor_, std::string bk);
 	//must be included in SquirtleSquad::initialize()
 	void initialize(HWND hwnd, Graphics*& graphics);
 	//Include in SquirtlSquad::render()

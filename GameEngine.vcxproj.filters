@@ -102,6 +102,9 @@
     <ClCompile Include="Swamp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Luffy.cpp">
+      <Filter>Source Files\Fighters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.h">
