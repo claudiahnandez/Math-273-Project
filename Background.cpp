@@ -9,10 +9,10 @@ Background::Background()
 	scale_ = 1;
 	background_location_ = "";
 	max_frames = 1;
-	width_ = 516;
-	height_ = 548;
-	floor_ = 38;
-	background_location_ = BACKGROUND_IMAGE;
+	//width_ = 516;
+	//height_ = 548;
+	//floor_ = 38;
+	//background_location_ = BACKGROUND_IMAGE;
 }
 
 void Background::initialize(HWND hwnd, Graphics*& graphics)
