@@ -37,12 +37,14 @@ SquirtleSquad::~SquirtleSquad()
 //=============================================================================
 void SquirtleSquad::initialize(HWND hwnd)
 {
+
+	//use the dimmensions from stage to set game
     Game::initialize(hwnd); // throws GameError
 
 	stage_ = new Swamp;
 	stage_->initialize(hwnd, graphics);
 
-	player1_ = new Goku();
+	player1_ = new Luffy();
 	player1_->initialize(hwnd, graphics);
 	player2_ = new Goku();
 	player2_->initialize(hwnd, graphics);
@@ -82,7 +84,8 @@ void SquirtleSquad::update()
 	//Is an inherited function and is called in Game::run()
 	//So is : ai(), collisions(), and input*
     static float delay = 0;
-    delay += frameTime;
+	delay += frameTime;
+	stage_->update(frameTime);
 
 	player1_->update(frameTime);
 	player2_->update(frameTime);

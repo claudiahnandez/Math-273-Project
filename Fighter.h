@@ -50,7 +50,7 @@ public:
 	//
 	void unstandardSprite(int max_frame,Sprite_Info animation[]);
 	//helper function
-	Sprite_Info help_set_rect(int left, int bottom_y,int height, int width);
+	friend Sprite_Info help_set_rect(int left, int bottom_y,int height, int width);
 
 protected:
 	Position position_;					// x and y top left of character

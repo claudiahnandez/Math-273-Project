@@ -36,8 +36,8 @@
 const char CLASS_NAME[] = "whatever";
 const char GAME_TITLE[] = "Game Engine v4.0 Demo";
 const bool FULLSCREEN = false;              // windowed or fullscreen
-const UINT GAME_WIDTH = 750;//640;               // width of game in pixels
-const UINT GAME_HEIGHT = 550;//480;               // height of game in pixels
+const UINT GAME_WIDTH = 800;//640;               // width of game in pixels
+const UINT GAME_HEIGHT = 336;//480;               // height of game in pixels
 const int SPEED_ = 250;//pixels per second
 const int MARIO_SPEED = 250;//changed MARIO_SPEED
  
@@ -60,7 +60,7 @@ const char PICCOLO_SPRITE[] = "pictures\\PiccoloJr.png";
 const char PLATFORM_IMAGE[] = "pictures\\default_platform.png";
 
 //background images
-const char SWAMP[] = "pictures\\swamp.gif";
+const char SWAMP[] = "pictures\\Swamp_.png";
 
 
 

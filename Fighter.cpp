@@ -332,7 +332,7 @@ void Fighter::unstandardSprite(int max_frame, Sprite_Info animation[])
 
 }
 
-Sprite_Info Fighter::help_set_rect(int left, int bottom_y, int height, int width)
+Sprite_Info help_set_rect(int left, int bottom_y, int height, int width)
 {
 	Sprite_Info sprite;
 	sprite.rect.top = bottom_y - height;

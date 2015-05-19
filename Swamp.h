@@ -5,6 +5,7 @@ class Swamp :public Background
 {
 public:
 	Swamp();
+	void set_image();
 	
 };
 
