@@ -47,7 +47,7 @@ void Fighter::move(const Input* input, float frameTime)
 			Image::setX((float)-Image::getWidth()); // Position offscreen left
 		//state_ = 
 	}
-	if (input->isKeyDown(VK_LEFT))	// If move left
+	else if (input->isKeyDown(VK_LEFT))	// If move left
 	{
 		//changes to walking
 		state_ = WALKING;
@@ -59,7 +59,7 @@ void Fighter::move(const Input* input, float frameTime)
 		if (Image::getX() < -Image::getWidth()) // If offscreen left
 			Image::setX((float)GAME_WIDTH); // Position offscreen right
 	}
-	if (input->isKeyDown(VK_UP))	// If move up
+	else if (input->isKeyDown(VK_UP))	// If move up
 	{
 		state_ = JUMPING;
 		//Image::setY(Image::getY() - frameTime * SPEED_);
@@ -67,12 +67,16 @@ void Fighter::move(const Input* input, float frameTime)
 		Image::setY(Image::getY()-100); // Position offscreen
 		//velocity.y = -100;
 	}
-	if (input->isKeyDown(VK_DOWN))
+	else if (input->isKeyDown(VK_DOWN))
 	{
 		state_ = BLOCKING;
 	}
+	else if (input->isKeyDown(VK_SPACE))
+	{
+		state_ = NEUTRAL_B;
+	}
 	// bottom
-	if (!input->isKeyDown(VK_LEFT) && !input->isKeyDown(VK_RIGHT) && !input->isKeyDown(VK_DOWN))
+	else if (!input->isKeyDown(VK_LEFT) && !input->isKeyDown(VK_RIGHT) && !input->isKeyDown(VK_DOWN))
 	{
 		state_ = STANDING;
 	}
@@ -207,6 +211,9 @@ void Fighter::setPose()
 		break;
 	case RUNNING:
 		running();
+		break;
+	case BLOCKING:
+		blocking();
 		break;
 	case JUMPING:
 		jumping();

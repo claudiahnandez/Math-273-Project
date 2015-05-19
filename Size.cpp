@@ -19,6 +19,8 @@ Size::Size(Fighter_State state, Character ch)
 		{
 		case STANDING:
 			break;
+		case BLOCKING:
+			break;
 		case WALKING:
 			break;
 		case RUNNING:
@@ -50,7 +52,11 @@ Size::Size(Fighter_State state, Character ch)
 			break;
 		case WALKING:
 			width_ = 49;
-			height_ = 47;
+			height_ = 54;
+			break;
+		case BLOCKING:
+			width_ = 39;
+			height_ = 54;
 			break;
 		case RUNNING:
 			break;
@@ -58,13 +64,11 @@ Size::Size(Fighter_State state, Character ch)
 			break;
 		case FALLING:
 			break;
-		case BLOCKING:
-			width_ = 39;
-			height_ = 42;
-			break;
 		case NEUTRAL_A:
 			break;
 		case NEUTRAL_B:
+			width_ = 58;
+			height_ = 43;
 			break;
 		case SIDE_B:
 			break;
@@ -82,6 +86,8 @@ Size::Size(Fighter_State state, Character ch)
 		case STANDING:
 			break;
 		case WALKING:
+			break;
+		case BLOCKING:
 			break;
 		case RUNNING:
 			break;
@@ -109,6 +115,8 @@ Size::Size(Fighter_State state, Character ch)
 		case STANDING:
 			break;
 		case WALKING:
+			break;
+		case BLOCKING:
 			break;
 		case RUNNING:
 			break;
@@ -145,6 +153,7 @@ Frame::Frame()
 {
 	start_ = 0; 
 	end_ = 0;
+	frames_ = 0;
 	width_Start_ = 0;
 	height_Start_ = 0;
 }
@@ -152,6 +161,7 @@ Frame::Frame(int s, int e)
 {
 	start_ = s;
 	end_ = e;
+	frames_ = 0;
 	width_Start_ = 0;
 	height_Start_ = 0;
 }
@@ -159,7 +169,7 @@ Frame::Frame(Fighter_State state, Character ch)
 {
 	switch (ch)
 	{
-	
+	//Goku
 	case GOKU:
 		switch (state)
 		{
@@ -169,6 +179,8 @@ Frame::Frame(Fighter_State state, Character ch)
 			break;
 		case RUNNING:
 			break;
+		case BLOCKING:
+			break;
 		case JUMPING:
 			break;
 		case FALLING:
@@ -187,20 +199,30 @@ Frame::Frame(Fighter_State state, Character ch)
 			break;
 		}
 		break;
+	//Luffy
 	case LUFFY:
 		switch (state)
 		{
 		case STANDING:
 			start_ = 0;
 			end_ = 3;
+			frames_ = 4;
 			width_Start_ = 0;
 			height_Start_ = 0;
 			break;
 		case WALKING:
 			start_ = 7;
 			end_ = 14;
+			frames_ = 8;
 			width_Start_ = 232;
-			height_Start_ = 7;
+			height_Start_ = 0;
+			break;
+		case BLOCKING:
+			start_ = 4;
+			end_ = 6;
+			frames_ = 3;
+			width_Start_ = 112;
+			height_Start_ = 0;
 			break;
 		case RUNNING:
 			break;
@@ -208,19 +230,14 @@ Frame::Frame(Fighter_State state, Character ch)
 			break;
 		case FALLING:
 			break;
-		case BLOCKING:
-			start_ = 4;
-			end_ = 6;
-			width_Start_ = 112;
-			height_Start_ = 12;
-			break;
 		case NEUTRAL_A:
 			break;
 		case NEUTRAL_B:
 			start_ = 0;
 			end_ = 2;
+			frames_ = 3;
 			width_Start_ = 0;
-			height_Start_ = 54;
+			height_Start_ = 55;
 			break;
 		case SIDE_B:
 			break;
@@ -232,6 +249,7 @@ Frame::Frame(Fighter_State state, Character ch)
 			break;
 		}
 		break;
+	//Mario
 	case MARIO:
 		switch (state)
 		{
@@ -239,6 +257,8 @@ Frame::Frame(Fighter_State state, Character ch)
 			break;
 		case WALKING:
 			break;
+		case BLOCKING:
+			break;
 		case RUNNING:
 			break;
 		case JUMPING:
@@ -259,12 +279,15 @@ Frame::Frame(Fighter_State state, Character ch)
 			break;
 		}
 		break;
+	//piccolo
 	case PICCOLO:
 		switch (state)
 		{
 		case STANDING:
 			break;
 		case WALKING:
+			break;
+		case BLOCKING:
 			break;
 		case RUNNING:
 			break;
@@ -295,6 +318,10 @@ int Frame::start() const
 int Frame::end() const
 {
 	return end_;
+}
+int Frame::frames() const
+{
+	return frames_;
 }
 int Frame::getLeft() const
 {
