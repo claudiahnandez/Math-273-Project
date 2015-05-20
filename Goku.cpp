@@ -4,6 +4,7 @@
 Goku::Goku()
 {
 	sprite_location_ = GOKU_SPRITE;
+	scale_ = 1;
 	height_ = 49;
 	width_ = 48;
 	/*width_gap = 10;
@@ -13,7 +14,7 @@ Goku::Goku()
 	
 	min_frame_ = 0;
 	
-	position_.x = GAME_WIDTH / 3;
+	position_.x = (GAME_WIDTH / 2)+(GAME_WIDTH/4);
 	position_.y = GAME_HEIGHT-50;
 
 	transcolor_ = GOKU_TRANSCOLOR;

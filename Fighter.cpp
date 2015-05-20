@@ -115,8 +115,8 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics)
 	
 	Image::setScale(scale_);
 	Image::setFrames(min_frame_, max_frame_);
-	Image::setX(200);
-	Image::setY(400);
+	Image::setX(position_.x);
+	Image::setY(position_.y);
 	Image::setFrameDelay(0.2);
 
 
@@ -159,7 +159,7 @@ void Fighter::update(float frameTime)
 	if (spriteData.x > GAME_WIDTH - 50)  
 	{
 		spriteData.x = GAME_WIDTH - 50;  // position at right screen edge
-		velocity.x = -velocity.x;        // reverse X direction
+		//velocity.x = -velocity.x;        // reverse X direction
 	}
 	// else if hit left screen edge
 	else if (spriteData.x < 0)			

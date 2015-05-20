@@ -28,6 +28,9 @@
     <Filter Include="Source Files\Custom">
       <UniqueIdentifier>{70904717-fe1f-4436-8511-634722e23c08}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine">
+      <UniqueIdentifier>{54228e59-2e0b-4583-8c06-d30ad887f487}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game.cpp">
@@ -75,9 +78,6 @@
     <ClCompile Include="net.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SquirtleSquad.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Fighter.cpp">
       <Filter>Source Files\Fighters</Filter>
     </ClCompile>
@@ -96,68 +96,20 @@
     <ClCompile Include="Platform.cpp">
       <Filter>Source Files\Custom</Filter>
     </ClCompile>
-    <ClCompile Include="Background.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Swamp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Luffy.cpp">
       <Filter>Source Files\Fighters</Filter>
     </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>Source Files\Custom</Filter>
+    </ClCompile>
+    <ClCompile Include="SquirtleSquad.cpp">
+      <Filter>Source Files\Custom</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="constants.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="graphics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="input.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="console.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="textDX.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="image.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="audio.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="textureManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="messageDialog.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="gameError.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="dashboard.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="inputDialog.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="text.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="net.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SquirtleSquad.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Fighter.h">
       <Filter>Header Files\Fighters</Filter>
     </ClInclude>
@@ -173,17 +125,68 @@
     <ClInclude Include="Piccolo.h">
       <Filter>Header Files\Fighters</Filter>
     </ClInclude>
-    <ClInclude Include="Size.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Platform.h">
       <Filter>Header Files\Custom</Filter>
     </ClInclude>
+    <ClInclude Include="SquirtleSquad.h">
+      <Filter>Header Files\Custom</Filter>
+    </ClInclude>
     <ClInclude Include="Background.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="constants.h">
+      <Filter>Header Files\Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="audio.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="console.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="dashboard.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="entity.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="gameError.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="graphics.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="image.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="input.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="inputDialog.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="messageDialog.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="net.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="textureManager.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Size.h">
+      <Filter>Header Files\engine</Filter>
     </ClInclude>
     <ClInclude Include="Swamp.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="text.h">
+      <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="textDX.h">
+      <Filter>Header Files\engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

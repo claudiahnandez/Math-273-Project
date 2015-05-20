@@ -92,7 +92,7 @@ void SquirtleSquad::update()
 
 	//----------------------------------------------
 	//Keyboard Input
-	player1_->move(input,2*frameTime );
+	player1_->move(input,frameTime );
 	//player2_->move(input, frameTime);
 
 	//--------------------------//
