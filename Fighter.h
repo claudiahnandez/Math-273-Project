@@ -64,7 +64,7 @@ protected:
 	int images_per_column_;//the number of images per column
 	int width_;//how wide the sprite is
 	int height_;//how tall the sprite is
-	int scale_;
+	double scale_;
 	Character character_;
 	bool mirror_;
 	std::string sprite_location_;
