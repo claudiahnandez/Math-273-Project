@@ -191,7 +191,7 @@ class Image
     // Draw Image using default color filter.
     // textureN is number of texture in textureManager 
     virtual void draw(UINT textureN) { draw(graphicsNS::WHITE, textureN); }
-
+	
     // Draw this image using the specified SpriteData.
     // The current SpriteData.rect is used to select the texture.
     // textureN is number of texture in textureManager 

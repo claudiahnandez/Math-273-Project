@@ -31,53 +31,17 @@
     <Filter Include="Header Files\engine">
       <UniqueIdentifier>{54228e59-2e0b-4583-8c06-d30ad887f487}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Backgrounds">
+      <UniqueIdentifier>{c399bad2-cd77-455f-bcee-e738081f179a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine">
+      <UniqueIdentifier>{bfc34e4a-286b-422e-bb84-b79a0967847c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Backgrounds">
+      <UniqueIdentifier>{2003aa30-149f-4198-9bd8-cb44b028ed2d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="graphics.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="input.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="winmain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="entity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="console.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="textDX.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="image.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="audio.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="textureManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="messageDialog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="dashboard.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="inputDialog.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="text.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="net.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Fighter.cpp">
       <Filter>Source Files\Fighters</Filter>
     </ClCompile>
@@ -90,25 +54,70 @@
     <ClCompile Include="Piccolo.cpp">
       <Filter>Source Files\Fighters</Filter>
     </ClCompile>
-    <ClCompile Include="Size.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Platform.cpp">
       <Filter>Source Files\Custom</Filter>
     </ClCompile>
     <ClCompile Include="Luffy.cpp">
       <Filter>Source Files\Fighters</Filter>
     </ClCompile>
+    <ClCompile Include="SquirtleSquad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="Background.cpp">
-      <Filter>Source Files\Custom</Filter>
+      <Filter>Source Files\Backgrounds</Filter>
     </ClCompile>
     <ClCompile Include="Magma.cpp">
-      <Filter>Source Files\Custom</Filter>
+      <Filter>Source Files\Backgrounds</Filter>
     </ClCompile>
     <ClCompile Include="Swamp.cpp">
-      <Filter>Source Files\Custom</Filter>
+      <Filter>Source Files\Backgrounds</Filter>
     </ClCompile>
-    <ClCompile Include="SquirtleSquad.cpp">
+    <ClCompile Include="winmain.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="audio.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="console.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="dashboard.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="entity.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="graphics.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="image.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="input.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="inputDialog.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="messageDialog.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="net.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="text.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="textDX.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="textureManager.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Size.cpp">
       <Filter>Source Files\Custom</Filter>
     </ClCompile>
   </ItemGroup>
@@ -129,12 +138,6 @@
       <Filter>Header Files\Fighters</Filter>
     </ClInclude>
     <ClInclude Include="Platform.h">
-      <Filter>Header Files\Custom</Filter>
-    </ClInclude>
-    <ClInclude Include="SquirtleSquad.h">
-      <Filter>Header Files\Custom</Filter>
-    </ClInclude>
-    <ClInclude Include="Background.h">
       <Filter>Header Files\Custom</Filter>
     </ClInclude>
     <ClInclude Include="constants.h">
@@ -179,19 +182,25 @@
     <ClInclude Include="textureManager.h">
       <Filter>Header Files\engine</Filter>
     </ClInclude>
-    <ClInclude Include="Size.h">
-      <Filter>Header Files\engine</Filter>
-    </ClInclude>
-    <ClInclude Include="Swamp.h">
-      <Filter>Header Files\engine</Filter>
-    </ClInclude>
     <ClInclude Include="text.h">
       <Filter>Header Files\engine</Filter>
     </ClInclude>
     <ClInclude Include="textDX.h">
       <Filter>Header Files\engine</Filter>
     </ClInclude>
+    <ClInclude Include="SquirtleSquad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>Header Files\Backgrounds</Filter>
+    </ClInclude>
     <ClInclude Include="Magma.h">
+      <Filter>Header Files\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="Swamp.h">
+      <Filter>Header Files\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="Size.h">
       <Filter>Header Files\Custom</Filter>
     </ClInclude>
   </ItemGroup>
