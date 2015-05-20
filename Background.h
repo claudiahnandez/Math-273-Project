@@ -24,6 +24,7 @@ protected:
 	int floor_;
 	int scale_;
 	int max_frames;
+	double frame_delay_;
 	std::string background_location_;
 
 	

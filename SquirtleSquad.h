@@ -21,6 +21,7 @@
 #include "Platform.h"
 #include "Background.h"
 #include "Swamp.h"
+#include "Magma.h"
 
 //=============================================================================
 // This class is the core of the game

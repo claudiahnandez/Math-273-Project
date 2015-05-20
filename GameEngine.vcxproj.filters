@@ -105,6 +105,9 @@
     <ClCompile Include="Luffy.cpp">
       <Filter>Source Files\Fighters</Filter>
     </ClCompile>
+    <ClCompile Include="Magma.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.h">
@@ -183,6 +186,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Swamp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Magma.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
