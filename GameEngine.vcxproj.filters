@@ -34,17 +34,11 @@
     <Filter Include="Source Files\Backgrounds">
       <UniqueIdentifier>{c399bad2-cd77-455f-bcee-e738081f179a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Luis%27 classes">
-      <UniqueIdentifier>{794f147a-4854-45bb-b264-13df88f68deb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Engine">
       <UniqueIdentifier>{bfc34e4a-286b-422e-bb84-b79a0967847c}</UniqueIdentifier>
     </Filter>
     <Filter Include="Header Files\Backgrounds">
       <UniqueIdentifier>{2003aa30-149f-4198-9bd8-cb44b028ed2d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Luis%27 Classes">
-      <UniqueIdentifier>{856c5837-77d0-4449-bb92-721c3c46e505}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -77,9 +71,6 @@
     </ClCompile>
     <ClCompile Include="Swamp.cpp">
       <Filter>Source Files\Backgrounds</Filter>
-    </ClCompile>
-    <ClCompile Include="Size.cpp">
-      <Filter>Source Files\Luis%27 classes</Filter>
     </ClCompile>
     <ClCompile Include="winmain.cpp">
       <Filter>Source Files\Engine</Filter>
@@ -125,6 +116,9 @@
     </ClCompile>
     <ClCompile Include="textureManager.cpp">
       <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Size.cpp">
+      <Filter>Source Files\Custom</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -203,11 +197,11 @@
     <ClInclude Include="Magma.h">
       <Filter>Header Files\Backgrounds</Filter>
     </ClInclude>
-    <ClInclude Include="Size.h">
-      <Filter>Header Files\Luis%27 Classes</Filter>
-    </ClInclude>
     <ClInclude Include="Swamp.h">
       <Filter>Header Files\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="Size.h">
+      <Filter>Header Files\Custom</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
