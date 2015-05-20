@@ -45,7 +45,7 @@ void Fighter::move(const Input* input, float frameTime)
 		Image::setX(Image::getX() + frameTime * SPEED_);
 		if (Image::getX() > GAME_WIDTH) // If offscreen right
 			Image::setX((float)-Image::getWidth()); // Position offscreen left
-		//state_ = 
+		velocity.x = 100;
 	}
 	else if (input->isKeyDown(VK_LEFT))	// If move left
 	{
@@ -58,18 +58,29 @@ void Fighter::move(const Input* input, float frameTime)
 		Image::setX(Image::getX() - frameTime * SPEED_);
 		if (Image::getX() < -Image::getWidth()) // If offscreen left
 			Image::setX((float)GAME_WIDTH); // Position offscreen right
+		velocity.x = -100;
 	}
-	else if (input->isKeyDown(VK_UP))	// If move up
+	else if (input->isKeyDown(VK_UP) )	// If move up
 	{
-		state_ = JUMPING;
-		//Image::setY(Image::getY() - frameTime * SPEED_);
-		//if (Image::getY() < -Image::getHeight()) // If offscreen top
-		Image::setY(Image::getY()-100); // Position offscreen
-		//velocity.y = -100;
+		if (state_ == STANDING)
+		{
+			//Image::setY(Image::getY() + velocity.y);
+
+			state_ = JUMPING;
+			//Image::setY(Image::getY() - frameTime * SPEED_);
+			//if (Image::getY() < -Image::getHeight()) // If offscreen top
+			//Image::setY(Image::getY()-100); // Position offscreen
+			velocity.y = -15;
+		}
 	}
 	else if (input->isKeyDown(VK_DOWN))
 	{
 		state_ = BLOCKING;
+		if (velocity.x > 0)
+		{
+			velocity.x -= 10;
+		}
+
 	}
 	else if (input->isKeyDown(VK_SPACE))
 	{
@@ -158,7 +169,7 @@ void Fighter::update(float frameTime)
 	// if hit right screen edge
 	if (spriteData.x > GAME_WIDTH - 50)  
 	{
-		spriteData.x = GAME_WIDTH - 50;  // position at right screen edge
+		spriteData.x = GAME_WIDTH-50;  // position at right screen edge
 		//velocity.x = -velocity.x;        // reverse X direction
 	}
 	// else if hit left screen edge
@@ -171,7 +182,10 @@ void Fighter::update(float frameTime)
 	if (spriteData.y > GAME_HEIGHT - getHeight()-50) 
 	{
 		//spriteData.y = GAME_HEIGHT - 2 * getHeight()-50; // position at bottom screen edge
+		state_ = STANDING;
 		velocity.y = 0;
+		spriteData.y = GAME_HEIGHT - getHeight() - 50;
+
 		//if (velocity.y < 1)            // if ball has small bounce
 		//{
 		//	spriteData.y = GAME_HEIGHT / 4;
@@ -182,20 +196,24 @@ void Fighter::update(float frameTime)
 	else if (spriteData.y < 0)                    
 	{
 		spriteData.y = 0;                           // position at top screen edge
-		velocity.y = -velocity.y;                   // reverse Y direction
+		velocity.y = -0.1*velocity.y;               // reverse  and reduce Y velocity
 	}
 
-	//velocity.y += frameTime * GRAVITY;              // gravity
-	if (spriteData.y < GAME_HEIGHT - getHeight())
+	//gravity
+	if (spriteData.y < GAME_HEIGHT - getHeight()-50)
 	{
-		velocity.y += frameTime * 10;
-
+		velocity.y += 1;
 		Image::setY(Image::getY() + velocity.y);
 	}
 
+	//slowdown after running
 	if (velocity.x > 0)
 	{
 		velocity.x--;
+	}
+	if (velocity.x < 0)
+	{
+		velocity.x++;
 	}
 }
 
