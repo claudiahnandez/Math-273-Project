@@ -237,7 +237,7 @@ void SquirtleSquad::render()
 	//----------------------------------
 	player1_->draw(graphics);
 	player2_->draw(graphics);
-	platform_.draw();
+	//platform_.draw();
 
 	/*
 		//Original Code

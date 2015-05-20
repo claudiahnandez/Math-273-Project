@@ -8,8 +8,8 @@ Luffy::Luffy()
 	height_ = 0;
 	width_ = 0;
 	min_frame_ = 0;
-	position_.x = GAME_WIDTH / 3;
-	position_.y = GAME_HEIGHT - 50;
+	position_.x = GAME_WIDTH/2;
+	position_.y = GAME_HEIGHT/2;
 	transcolor_ = LUFFY_TRANSCOLOR;
 	character_ = LUFFY;
 	state_ = STANDING;
