@@ -4,7 +4,7 @@
 Goku::Goku()
 {
 	sprite_location_ = GOKU_SPRITE;
-	scale_ = 1;
+	scale_ = 2;
 	height_ = 49;
 	width_ = 48;
 	/*width_gap = 10;

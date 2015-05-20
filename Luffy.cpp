@@ -4,7 +4,7 @@
 Luffy::Luffy()
 {
 	sprite_location_ = LUFFY_TEST;
-	scale_ = 1;
+	scale_ = 2;
 	height_ = 0;
 	width_ = 0;
 	min_frame_ = 0;
