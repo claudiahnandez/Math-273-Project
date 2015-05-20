@@ -44,7 +44,7 @@ void SquirtleSquad::initialize(HWND hwnd)
 	stage_ = new Magma;
 	stage_->initialize(hwnd, graphics);
 
-	player1_ = new Piccolo();
+	player1_ = new Luffy();
 	player1_->initialize(hwnd, graphics);
 	player2_ = new Goku();
 	player2_->initialize(hwnd, graphics);
