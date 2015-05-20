@@ -80,7 +80,7 @@ void Luffy::fixSprite()
 	animation_.clear();
 	Image::setWidth(width_);
 	Image::setHeight(height_);
-	max_frame_ = interval_.end() - interval_.start();
+	max_frame_ = interval_.frames();
 	RECT temp;
 
 	temp.left = interval_.getLeft();
@@ -101,5 +101,5 @@ void Luffy::fixSprite()
 	Image::setVector(animation_);
 	//you forgot to change the max_frame
 	//remember it is in array notation so you have to subtract one from the actual amount
-	max_frame_ = interval_.end() - interval_.start();
+	max_frame_ = interval_.frames();
 }
