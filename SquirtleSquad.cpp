@@ -41,7 +41,7 @@ void SquirtleSquad::initialize(HWND hwnd)
 	//use the dimmensions from stage to set game
     Game::initialize(hwnd); // throws GameError
 
-	stage_ = new Swamp;
+	stage_ = new Magma;
 	stage_->initialize(hwnd, graphics);
 
 	player1_ = new Luffy();

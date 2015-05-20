@@ -61,6 +61,7 @@ const char PLATFORM_IMAGE[] = "pictures\\default_platform.png";
 
 //background images
 const char SWAMP[] = "pictures\\Swamp_.png";
+const char MAGMA[] = "pictures\\Magma.png";
 
 
 

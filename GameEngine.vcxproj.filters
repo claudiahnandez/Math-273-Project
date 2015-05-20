@@ -102,11 +102,8 @@
     <ClCompile Include="Luffy.cpp">
       <Filter>Source Files\Fighters</Filter>
     </ClCompile>
-    <ClCompile Include="Background.cpp">
-      <Filter>Source Files\Custom</Filter>
-    </ClCompile>
-    <ClCompile Include="SquirtleSquad.cpp">
-      <Filter>Source Files\Custom</Filter>
+    <ClCompile Include="Magma.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +184,9 @@
     </ClInclude>
     <ClInclude Include="textDX.h">
       <Filter>Header Files\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Magma.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

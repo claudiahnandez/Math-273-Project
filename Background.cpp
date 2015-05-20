@@ -9,6 +9,7 @@ Background::Background()
 	scale_ = 1;
 	background_location_ = "";
 	max_frames = 1;
+	frame_delay_ = 0.2;
 	//width_ = 516;
 	//height_ = 548;
 	//floor_ = 38;
@@ -31,7 +32,7 @@ void Background::initialize(HWND hwnd, Graphics*& graphics)
 	Image::setFrames(0, max_frames);
 	Image::setX(0);
 	Image::setY(0);
-	Image::setFrameDelay(0.2);
+	Image::setFrameDelay(frame_delay_);
 	Image::setScale(scale_);
 
 	//might have to set scale;
