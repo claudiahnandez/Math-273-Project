@@ -56,6 +56,7 @@ protected:
 	Position position_;					// x and y top left of character
 	Fighter_State state_;				// scene
 	Direction direction_;
+	bool jumping_;
 
 	//picture width/height should be powers of 2
 	TextureManager texture_;//saves image from sprite sheet
