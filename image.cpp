@@ -152,7 +152,7 @@ void Image::update(float frameTime)
     }
 }
 
-void Image::setVector(std::vector<RECT> animation)
+void Image::setVector(std::vector<Sprite_Info> animation)
 {
 	animation_.clear();
 
@@ -192,7 +192,9 @@ inline void Image::setRect()
 
 	if (currentFrame < animation_.size())
 	{
-		spriteData.rect = animation_[currentFrame];
+		spriteData.rect = animation_[currentFrame].rect;
+		//spriteData.height = animation_[currentFrame].height;
+		//spriteData.width = animation_[currentFrame].width;
 	}
 
 }

@@ -3,14 +3,11 @@
 
 Swamp::Swamp()
 {
-	width_ = 800;
-	height_ = 336;
+	spriteData.width = 800;
+	spriteData.height = 336;
 	background_location_ = SWAMP;
-	scale_ = 1;
-	max_frames = 6;
-	Image::setFrames(0, 6);
-	
-
+	spriteData.scale = 1;
+	endFrame = 6;
 }
 
 void Swamp::set_image()

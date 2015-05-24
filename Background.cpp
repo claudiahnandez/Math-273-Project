@@ -3,13 +3,14 @@
 
 Background::Background()
 {
-	width_ = 0;
-	height_ = 0;
 	floor_ = 0;
-	scale_ = 1;
+	spriteData.scale = 1;
+	spriteData.x = 0;
+	spriteData.y = 0;
+
 	background_location_ = "";
-	max_frames = 1;
-	frame_delay_ = 0.2;
+	endFrame = 1;
+	frameDelay = 0.2;
 	//width_ = 516;
 	//height_ = 548;
 	//floor_ = 38;
@@ -18,6 +19,8 @@ Background::Background()
 
 void Background::initialize(HWND hwnd, Graphics*& graphics)
 {
+	set_image();//virtual void function
+
 	//will initialize the texture og the fighter
 	if (!texture_.initialize(graphics, background_location_, TRANSCOLORR))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing background texture"));
@@ -25,17 +28,9 @@ void Background::initialize(HWND hwnd, Graphics*& graphics)
 	//IMAGE
 	// test image 2 (mario)
 	//width and height are marios height
-	if (!Image::initialize(graphics, width_, height_, 1, &texture_))
+	if (!Image::initialize(graphics, spriteData.width, spriteData.height, 1, &texture_))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing background image"));
 
-	set_image();
-	Image::setFrames(0, max_frames);
-	Image::setX(0);
-	Image::setY(0);
-	Image::setFrameDelay(frame_delay_);
-	Image::setScale(scale_);
-
-	//might have to set scale;
 
 }
 
@@ -52,11 +47,15 @@ void Background::update(float frameTime)
 void Background::set_animation(Sprite_Info animation[])
 {
 	animation_.clear();
-	RECT temp;
-	for (int i = 0; i <=max_frames; i++)
+	Sprite_Info temp;
+	for (int i = 0; i <=endFrame; i++)
 	{
 		animation_.push_back(temp);
-		animation_[i] = animation[i].rect;
+		animation_[i].rect = animation[i].rect;
 	}
+}
 
+int Background::get_floor()
+{
+	return floor_;
 }

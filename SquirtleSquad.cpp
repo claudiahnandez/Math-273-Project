@@ -45,9 +45,9 @@ void SquirtleSquad::initialize(HWND hwnd)
 	stage_->initialize(hwnd, graphics);
 
 	player1_ = new Luffy();
-	player1_->initialize(hwnd, graphics);
+	player1_->initialize(hwnd, graphics,stage_->get_floor());
 	player2_ = new Goku();
-	player2_->initialize(hwnd, graphics);
+	player2_->initialize(hwnd, graphics, stage_->get_floor());
 
 	//player1_->flipHorizontal(true);
 	//player1_->setVelocity(VECTOR2(10, -10));
@@ -92,7 +92,7 @@ void SquirtleSquad::update()
 
 	//----------------------------------------------
 	//Keyboard Input
-	player1_->move(input,frameTime );
+	player2_->move(input,frameTime );
 	//player2_->move(input, frameTime);
 
 	//--------------------------//
@@ -237,7 +237,7 @@ void SquirtleSquad::render()
 	//----------------------------------
 	player1_->draw(graphics);
 	player2_->draw(graphics);
-	platform_.draw();
+	//platform_.draw();
 
 	/*
 		//Original Code

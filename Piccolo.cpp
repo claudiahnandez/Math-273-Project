@@ -7,11 +7,7 @@ Piccolo::Piccolo()
 	
 	state_ = STANDING;
 
-	scale_ = 1;
-	min_frame_ = 0;
-
-	position_.x = GAME_WIDTH / 3;
-	position_.y = GAME_HEIGHT - 200;
+	spriteData.scale = 1;
 
 	transcolor_ = PICCOLO_TRANSCOLOR;
 	character_ = PICCOLO;
@@ -34,6 +30,7 @@ void Piccolo::standing()
 	standing2[3] = help_set_rect(692, bottom_y, 103, 92);//100
 	standing2[4] = help_set_rect(787, bottom_y, 103, 87);//100
 	standing2[5] = help_set_rect(878, bottom_y, 103, 83);//101
+	spriteData.height= 103;
 	unstandardSprite(5, standing2);
 
 

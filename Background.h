@@ -16,17 +16,11 @@ public:
 	void update(float frameTime);
 	virtual void set_image() = 0;
 	void set_animation(Sprite_Info animation[]);
+	int get_floor();
 	
 protected:
 	TextureManager texture_;
-	int width_;
-	int height_;
 	int floor_;
-	int scale_;
-	int max_frames;
-	double frame_delay_;
 	std::string background_location_;
-
-	
 };
 
