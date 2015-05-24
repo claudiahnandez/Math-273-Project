@@ -61,6 +61,8 @@ Size::Size(Fighter_State state, Character ch)
 		case RUNNING:
 			break;
 		case JUMPING:
+			width_ = 39;
+			height_ = 47;
 			break;
 		case FALLING:
 			break;
@@ -71,6 +73,8 @@ Size::Size(Fighter_State state, Character ch)
 			height_ = 43;
 			break;
 		case SIDE_B:
+			width_ = 107;
+			height_ = 50;
 			break;
 		case UP_B:
 			break;
@@ -227,6 +231,11 @@ Frame::Frame(Fighter_State state, Character ch)
 		case RUNNING:
 			break;
 		case JUMPING:
+			start_ = 0;
+			end_ = 8;
+			frames_ = 9;
+			width_Start_ = 0;
+			height_Start_ = 215;
 			break;
 		case FALLING:
 			break;
@@ -240,6 +249,11 @@ Frame::Frame(Fighter_State state, Character ch)
 			height_Start_ = 55;
 			break;
 		case SIDE_B:
+			start_ = 0;
+			end_ = 7;
+			frames_ = 7;
+			width_Start_ = 0;
+			height_Start_ = 99;
 			break;
 		case UP_B:
 			break;

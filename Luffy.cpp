@@ -37,7 +37,9 @@ void Luffy::falling()
 }
 void Luffy::jumping()
 {
-
+	animation_.clear();
+	state_ = JUMPING;
+	fixSprite();
 }
 void Luffy::neutralA()	// A
 {

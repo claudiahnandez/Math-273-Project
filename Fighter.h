@@ -55,6 +55,7 @@ public:
 protected:				
 	Fighter_State state_;				// scene
 	Direction direction_;
+	bool jumping_;
 
 	TextureManager texture_;//saves image from sprite sheet
 	Character character_;
