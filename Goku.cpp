@@ -5,27 +5,38 @@ Goku::Goku()
 {
 	sprite_location_ = GOKU_SPRITE;
 	scale_ = 2;
-	height_ = 49;
-	width_ = 48;
-	/*width_gap = 10;
-	height_gap = 26;*/
-
-	state_ = STANDING;
-	
+	height_ = 0;
+	width_ = 0;
+	position_.x = GAME_WIDTH / 2;
+	position_.y = GAME_HEIGHT / 2;
+	acceleration_ = 20;
+	max_speed_ = 120;
 	min_frame_ = 0;
-	
-	position_.x = (GAME_WIDTH / 2)+(GAME_WIDTH/4);
-	position_.y = GAME_HEIGHT-50;
-
 	transcolor_ = GOKU_TRANSCOLOR;
 	character_ = GOKU;
+	state_ = STANDING;
 
-	// Set collision type (NONE, CIRCLE, BOX, ROTATED_BOX)
-	setCollisionType(entityNS::BOX);
-	velocity.y = 0;
-	velocity.x = 0;
-	setGravity(10);
-	setMass(1);
+	//scale_ = 2;
+	//height_ = 49;
+	//width_ = 48;
+	///*width_gap = 10;
+	//height_gap = 26;*/
+
+	//state_ = STANDING;
+	//
+	//min_frame_ = 0;
+	//
+	//position_.x = (GAME_WIDTH / 2)+(GAME_WIDTH/4);
+	//position_.y = GAME_HEIGHT-50;
+
+
+
+	//// Set collision type (NONE, CIRCLE, BOX, ROTATED_BOX)
+	//setCollisionType(entityNS::BOX);
+	//velocity.y = 0;
+	//velocity.x = 0;
+	//setGravity(10);
+	//setMass(1);
 }
 
 
@@ -33,10 +44,12 @@ void Goku::standing()
 {
 	//use spritecow.com to get coordinates
 	Sprite_Info standing[4];
-	standing[0] = help_set_rect(10, 61, 49, 47);
-	standing[1] = help_set_rect(68, 61, 49, 46);
-	standing[2] = help_set_rect(124, 61, 49, 47);
-	standing[3] = help_set_rect(181, 61, 49, 46);
+	int bottom = 50;
+	int height = 55;
+	standing[0] = help_set_rect(10, bottom, height, 47);
+	standing[1] = help_set_rect(68, bottom, height, 46);
+	standing[2] = help_set_rect(124, bottom, height, 47);
+	standing[3] = help_set_rect(181, bottom, height, 46);
 
 	unstandardSprite(3, standing);
 }

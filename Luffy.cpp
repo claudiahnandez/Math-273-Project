@@ -7,9 +7,11 @@ Luffy::Luffy()
 	scale_ = 2;
 	height_ = 0;
 	width_ = 0;
-	min_frame_ = 0;
 	position_.x = GAME_WIDTH/2;
 	position_.y = GAME_HEIGHT/2;
+	acceleration_ = 0;
+	max_speed_ = 120;
+	min_frame_ = 0;
 	transcolor_ = LUFFY_TRANSCOLOR;
 	character_ = LUFFY;
 	state_ = STANDING;
@@ -75,6 +77,7 @@ void Luffy::standardAttack()
 //helper function
 void Luffy::fixSprite()
 {
+	frameDelay = .12;
 	Size spriteSize_(state_, character_);
 	Frame interval_(state_, character_);
 	width_ = spriteSize_.width();

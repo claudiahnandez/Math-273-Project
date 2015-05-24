@@ -188,16 +188,16 @@ void SquirtleSquad::collisions()
 		//player1_->bounce(collisionVector, platform_);
 
 	// If collision between fighters
-	if (player1_->collidesWith(*player2_, collisionVector))
-	{
+	//if (player1_->collidesWith(*player2_, collisionVector))
+	//{
 		// Bounce off player2
-		player1_->bounce(collisionVector, *player2_);
+		////player1_->bounce(collisionVector, *player2_);
 		//player1_.damage(ATTACK_A);
 
 		// Change the direction of the collisionVector for player2
-		player2_->bounce(collisionVector*-1, *player1_);
+		////player2_->bounce(collisionVector*-1, *player1_);
 		//player2_.damage(ATTACK_A);
-	}
+	//}
 
 	//// If collision between ship and planet
 	//if (player1_.collidesWith(player2_, collisionVector))
@@ -206,16 +206,6 @@ void SquirtleSquad::collisions()
 	//	player1_.bounce(collisionVector, player2_);
 	//	ship1.damage(PLANET);
 	//}
-
-	//if (ship2.collidesWith(planet, collisionVector))
-	//{
-	//	// Bounce off planet
-	//	ship2.bounce(collisionVector, planet);
-	//	ship2.damage(PLANET);
-	//}
-
-
-
 }
 
 //=============================================================================

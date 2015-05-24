@@ -57,14 +57,16 @@ protected:
 	Fighter_State state_;				// scene
 	Direction direction_;
 	bool jumping_;
+	double acceleration_ = 100;
+	double max_speed_ = 1000;
 
 	//picture width/height should be powers of 2
 	TextureManager texture_;//saves image from sprite sheet
 	int max_frame_;//up to what frame do you want to show
 	int min_frame_;//from where do you want to start
+	int width_;
+	int height_;
 	int images_per_column_;//the number of images per column
-	int width_;//how wide the sprite is
-	int height_;//how tall the sprite is
 	double scale_;
 	Character character_;
 	bool mirror_;

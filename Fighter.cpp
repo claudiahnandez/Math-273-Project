@@ -19,13 +19,13 @@ Fighter::Fighter()
 	direction_ = RIGHT;
 	mirror_ = false;
 
-	velocity.x = 10;                 // velocity X
-	velocity.y = 10;                 // velocity Y
+	velocity.x = 0;                 // velocity X
+	velocity.y = 0;                 // velocity Y
 	frameDelay = 1;
-	startFrame = 0;                             // first frame of animation
-	endFrame = 0;                           // last frame of animation
-	currentFrame = startFrame;
-	radius = 50;
+	//startFrame = 0;                             // first frame of animation
+	//endFrame = 0;                           // last frame of animation
+	//currentFrame = startFrame;
+	//radius = 50;
 	collisionType = entityNS::BOX;
 	mass = 5;
 
@@ -36,33 +36,47 @@ void Fighter::move(const Input* input, float frameTime)
 	//Move Right;
 	if (input->isKeyDown(VK_RIGHT))	// If move right
 	{
-		//changes to walking state
-		state_ = WALKING;
-
-		//makes sure is facing the right direction
+		//makes sure its facing the right direction
 		mirror_ = false;
 		Image::flipHorizontal(mirror_);
 
-		Image::setX(Image::getX() + frameTime * SPEED_);
-		if (Image::getX() > GAME_WIDTH) // If offscreen right
-			Image::setX((float)-Image::getWidth()); // Position offscreen left
+		//if not jumping
+		if (!jumping_)
+		{
+			//change to walking state
+			state_ = WALKING;
+		}
 
-		velocity.x = 100;
+		//increase velocity
+		if (velocity.x < max_speed_)
+		{
+			//acceleration_+=100*frameTime;
+			//deltaV.x = acceleration_;
+			deltaV.x = 600;
+		}
+
 	}
 
 	//Move Left
 	else if (input->isKeyDown(VK_LEFT))	// If move left
 	{
-		//changes to walking
-		state_ = WALKING;
-		//makes sure is facing the right direction
+		//makes sure its facing the right direction
 		mirror_ = true;
 		Image::flipHorizontal(mirror_);
 
-		Image::setX(Image::getX() - frameTime * SPEED_);
-		if (Image::getX() < -Image::getWidth()) // If offscreen left
-			Image::setX((float)GAME_WIDTH); // Position offscreen right
-		velocity.x = -100;
+		//if not jumping
+		if (!jumping_)
+		{
+			//change to walking state
+			state_ = WALKING;
+		}
+
+		//increase velocity
+		if (abs(velocity.x) < max_speed_)
+		{
+			//deltaV.x = -acceleration_;
+			deltaV.x = -600;
+		}
 	}
 
 	//Jump
@@ -71,7 +85,9 @@ void Fighter::move(const Input* input, float frameTime)
 		if (!jumping_)
 		{
 			jumping_ = true;
-			velocity.y = -2*Image::getHeight()*frameTime;
+			state_ = JUMPING;
+			//velocity.y = -2*Image::getHeight();
+			velocity.y = -30;
 		}
 	}
 
@@ -83,7 +99,6 @@ void Fighter::move(const Input* input, float frameTime)
 		{
 			velocity.x -= 10;
 		}
-
 	}
 	else if (input->isKeyDown(VK_SPACE))
 	{
@@ -92,7 +107,28 @@ void Fighter::move(const Input* input, float frameTime)
 	// bottom
 	else if (!input->isKeyDown(VK_LEFT) && !input->isKeyDown(VK_RIGHT) && !input->isKeyDown(VK_DOWN))
 	{
-		state_ = STANDING;
+		acceleration_ = 0;
+		int deceleration = 4;
+
+		if (velocity.x<500 && velocity.x >-500)
+		{
+			state_ = STANDING;
+		}
+
+		//slowdown
+		if (velocity.x >= 10)
+		{
+			velocity.x -= deceleration;
+		}
+		else if (velocity.x <= -10)
+		{
+			velocity.x += deceleration;
+		}
+		else if (velocity.x<10 && velocity.x >-10)
+		{
+			velocity.x = 0;
+		}
+
 	}
 
 
@@ -148,71 +184,46 @@ void Fighter::draw(Graphics*& graphics)
 void Fighter::update(float frameTime)
 {
 	//will need to be changed due to position
-	Image::update(frameTime);
-
-	//image_.setX(image_.getX() + frameTime * MARIO_SPEED); // Move mario right
-	//if (image_.getX() > GAME_WIDTH) // If offscreen right
-	//{
-	//	image_.setX((float)-image_.getWidth());// Position off screen left
-	//}
-	//	image_.setY(image_.getY() + frameTime * SPEED_);
-	//	if (image_.getY() > GAME_HEIGHT) // If offscreen bottom
-	//		image_.setY((float)-image_.getHeight());// Position offscreen top
-	//
-
 	Entity::update(frameTime);
-	spriteData.x += frameTime * velocity.x;         // move along X 
-	spriteData.y += frameTime * velocity.y;         // move along Y
+
+	Entity::move(frameTime);
 
 	//Walls
 
 	//Stop at Right edge of screen
-	if (spriteData.x > GAME_WIDTH - 50)  
+	if (spriteData.x > GAME_WIDTH - spriteData.width)  
 	{
-		spriteData.x = GAME_WIDTH-50;  // position at right screen edge
-		//velocity.x = -velocity.x;        // reverse X direction
+		spriteData.x = GAME_WIDTH - spriteData.width; // position at right screen edge
+		velocity.x = 0;
 	}
 
 	//Stop at Left edge of screen
 	else if (spriteData.x < 0)
 	{
 		spriteData.x = 0;               // position at left screen edge
-		velocity.x = -velocity.x;       // reverse X direction
+		velocity.x = 0;
 	}
 
 	//Stop at Bottom edge of screen
-	if (spriteData.y > GAME_HEIGHT - getHeight() - 50)
+	if (spriteData.y > GAME_HEIGHT - getHeight() - 100)
 	{
-		//spriteData.y = GAME_HEIGHT - 2 * getHeight()-50; // position at bottom screen edge
 		jumping_ = false;
-		state_ = STANDING;
 		velocity.y = 0;
-		spriteData.y = GAME_HEIGHT - getHeight() - 50;
 	}
 
 	//Stop Top edge of screen
 	else if (spriteData.y < 0)
 	{
 		spriteData.y = 0;                           // position at top screen edge
-		velocity.y = -0.1*velocity.y;               // reverse  and reduce Y velocity
 	}
 
 	//gravity
-	if (spriteData.y < GAME_HEIGHT - getHeight()-50)
+	if (spriteData.y < GAME_HEIGHT - getHeight()-100)
 	{
-		velocity.y += frameTime*GRAVITY;
+		velocity.y += GRAVITY;
 		Image::setY(Image::getY() + (velocity.y));
 	}
 
-	//slowdown after running
-	if (velocity.x > 0)
-	{
-		velocity.x--;
-	}
-	if (velocity.x < 0)
-	{
-		velocity.x++;
-	}
 }
 
 void Fighter::setPose()
