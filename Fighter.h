@@ -18,7 +18,6 @@ public:
 	// Pure virtual functions
 	// All characters must have these functions
 	void move(Direction direction);
-	void setPosition(int x, int y);
 
 	//Pure virtual functions
 	//All characters must have these functions
@@ -38,38 +37,32 @@ public:
 	void draw(Graphics*& graphic);
 	void setPose();
 	//must be included in SquirtleSquad::initialize()
-	void initialize(HWND hwnd, Graphics*& graphics);
+	void initialize(HWND hwnd, Graphics*& graphics, int floor);
 	//include in SquirtleSquade::update();
 	//will be need to be updated with movement
 	void update(float frameTime);
 	void setState(int state);
 	void mirror(bool state);
-	void setStandardSprite(int max_frame, int height, int width, int width_gap, int height_gap);
-	///Claudia's fancy function
-	void settingStandardSprite(int max_frame, int height, int width, int gap, int x, int y);
-	//
-	void unstandardSprite(int max_frame,Sprite_Info animation[]);
+	//void setStandardSprite(int max_frame, int height, int width, int width_gap, int height_gap);
+	void unstandardSprite(int max_frame,RECT animation[]);
+	//used to make fighter stick to ground
+	void stick_to_floor();
 	//helper function
-	friend Sprite_Info help_set_rect(int left, int bottom_y,int height, int width);
+	friend RECT help_set_rect(int left, int bottom_y,int height, int width);
+
+
 
 protected:
-	Position position_;					// x and y top left of character
 	Fighter_State state_;				// scene
 	Direction direction_;
 	bool jumping_;
 	double acceleration_ = 100;
 	double max_speed_ = 1000;
 
-	//picture width/height should be powers of 2
 	TextureManager texture_;//saves image from sprite sheet
-	int max_frame_;//up to what frame do you want to show
-	int min_frame_;//from where do you want to start
-	int width_;
-	int height_;
-	int images_per_column_;//the number of images per column
-	double scale_;
 	Character character_;
 	bool mirror_;
+	int floor_;
 	std::string sprite_location_;
 	//Option 2 get a vector of RECTS
 	//Rect will be set within the state;

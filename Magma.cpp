@@ -3,18 +3,18 @@
 
 Magma::Magma()
 {
-	width_ = 800;
-	height_ = 336;
+	spriteData.width = 800;
+	spriteData.height = 336;
 	background_location_ = MAGMA;
-	scale_ = 1;
-	max_frames = 7;
-	frame_delay_ = 0.22;
-	Image::setFrames(0, 6);
+	spriteData.scale = 1;
+	endFrame = 7;
+	floor_ = 310;
+	frameDelay = 0.22;
 }
 
 void Magma::set_image()
 {
-	Sprite_Info magma[8];
+	RECT magma[8];
 	magma[0] = help_set_rect(0, 336, 336, 800);
 	magma[1] = help_set_rect(0, 672, 336, 800);
 	magma[2] = help_set_rect(0, 1008, 336, 800);

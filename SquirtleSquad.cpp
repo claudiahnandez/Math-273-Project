@@ -45,9 +45,9 @@ void SquirtleSquad::initialize(HWND hwnd)
 	stage_->initialize(hwnd, graphics);
 
 	player1_ = new Luffy();
-	player1_->initialize(hwnd, graphics);
+	player1_->initialize(hwnd, graphics,stage_->get_floor());
 	player2_ = new Goku();
-	player2_->initialize(hwnd, graphics);
+	player2_->initialize(hwnd, graphics, stage_->get_floor());
 
 	//player1_->flipHorizontal(true);
 	//player1_->setVelocity(VECTOR2(10, -10));

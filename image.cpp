@@ -193,6 +193,8 @@ inline void Image::setRect()
 	if (currentFrame < animation_.size())
 	{
 		spriteData.rect = animation_[currentFrame];
+		//spriteData.height = animation_[currentFrame].height;
+		//spriteData.width = animation_[currentFrame].width;
 	}
 
 }
