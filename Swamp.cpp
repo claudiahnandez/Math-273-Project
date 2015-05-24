@@ -12,7 +12,7 @@ Swamp::Swamp()
 
 void Swamp::set_image()
 {
-	Sprite_Info swamp[7];
+	RECT swamp[7];
 	swamp[0] = help_set_rect(0, 336, 336, 800);
 	swamp[1] = help_set_rect(0, 672, 336, 800);
 	swamp[2] = help_set_rect(0, 1008, 336, 800);

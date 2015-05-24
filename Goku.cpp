@@ -25,7 +25,7 @@ void Goku::standing()
 	//use spritecow.com to get coordinates
 	int bottom_y = 51;
 	spriteData.height = 39;
-	Sprite_Info standing[4];
+	RECT standing[4];
 	standing[0] = help_set_rect(10, bottom_y, spriteData.height, 47);
 	standing[1] = help_set_rect(68, bottom_y, spriteData.height, 46);
 	standing[2] = help_set_rect(124, bottom_y, spriteData.height, 47);
@@ -37,7 +37,7 @@ void Goku::walking()
 {
 	spriteData.height = 32;
 	int bottom_y = 100;
-	Sprite_Info walking[4];
+	RECT walking[4];
 	walking[0] = help_set_rect(11,bottom_y, spriteData.height, 54);
 	walking[1] = help_set_rect(76,bottom_y,spriteData.height,52);
 	walking[2] = help_set_rect(139,bottom_y,spriteData.height,52);//37
@@ -49,7 +49,7 @@ void Goku::walking()
 }
 void Goku::running()
 {
-	Sprite_Info sprinting[2];
+	RECT sprinting[2];
 	sprinting[0] = help_set_rect(9,150,38,61);
 	sprinting[1] = help_set_rect(80,150,38,63);
 	unstandardSprite(1, sprinting);
@@ -60,7 +60,7 @@ void Goku::falling()
 	int bottom_y=800;
 	spriteData.height = 57;
 	//getting punched
-	Sprite_Info punched[4];
+	RECT punched[4];
 	punched[0] = help_set_rect(16, bottom_y, spriteData.height, 50);
 	punched[1] = help_set_rect(73, bottom_y, spriteData.height, 44);
 	punched[2] = help_set_rect(125, bottom_y, spriteData.height, 41);
@@ -71,7 +71,7 @@ void Goku::falling()
 void Goku::jumping()
 {
 	
-	Sprite_Info jumping[7];
+	RECT jumping[7];
 	jumping[0] = help_set_rect(10, 210, 41, 44);//41 abaout to jump
 	jumping[1] = help_set_rect(64, 210, 57, 40);//57 going up
 	jumping[2] = help_set_rect(114, 210, 40, 36);//40 reached highest point
@@ -85,7 +85,7 @@ void Goku::jumping()
 }
 void Goku::blocking()
 {
-	Sprite_Info shield[3];
+	RECT shield[3];
 	shield[0] = help_set_rect(777, 290, 49, 44);
 	shield[1] = help_set_rect(829, 290, 47, 43);//47
 	shield[2] = help_set_rect(879, 290, 49, 43);
@@ -95,7 +95,7 @@ void Goku::blocking()
 void Goku::neutralA()
 {
 	//Image::setFrames(0, 14);
-	Sprite_Info gtfo[15];
+	RECT gtfo[15];
 	gtfo[0] = help_set_rect(15, 1105, 47, 41);
 	gtfo[1] = help_set_rect(65, 1105, 44, 40);//44
 	gtfo[2] = help_set_rect(115, 1105, 43, 40);//43
@@ -118,7 +118,7 @@ void Goku::neutralB()
 {
 	int bottom_y = 357;
 	spriteData.height = 40;
-	Sprite_Info punch[6];
+	RECT punch[6];
 	punch[0] = help_set_rect(13, bottom_y, spriteData.height, 44);//50
 	punch[1] = help_set_rect(67, bottom_y, spriteData.height, 43);
 	punch[2] = help_set_rect(120, bottom_y, spriteData.height, 42);//48;
@@ -129,7 +129,7 @@ void Goku::neutralB()
 }
 void Goku::sideB()
 {
-	//Sprite_Info air_kick[13];
+	//RECT air_kick[13];
 	//air_kick[0] = help_set_rect(14,470,45,42);
 	//air_kick[1] = help_set_rect(66, 470, 52, 38);
 	//air_kick[2] = help_set_rect(114, 470, 57, 52);
@@ -144,7 +144,7 @@ void Goku::sideB()
 	//air_kick[11] = help_set_rect(730, 470, 48, 41);
 	//air_kick[12] = help_set_rect(784, 470, 52, 43);
 
-	Sprite_Info kick[11];
+	RECT kick[11];
 	kick[0] = help_set_rect(13, 415, 49, 44);//49
 	kick[1] = help_set_rect(67, 415, 50, 43);//50
 	kick[2] = help_set_rect(120, 415, 51, 41);
@@ -164,7 +164,7 @@ void Goku::sideB()
 void Goku::upB()
 {
 	//Image::setFrames(1, 1);
-	Sprite_Info slash[5];
+	RECT slash[5];
 	slash[0] = help_set_rect(16, 1003, 64, 39);
 	slash[1] = help_set_rect(65, 1003, 57, 43);//57
 	slash[2] = help_set_rect(118, 1003, 61, 54);//61
@@ -177,7 +177,7 @@ void Goku::upB()
 }			
 void Goku::downB()
 {
-	Sprite_Info ball[8];
+	RECT ball[8];
 	ball[0] = help_set_rect(17, 942, 30, 38);//30
 	ball[1] = help_set_rect(68, 942, 58, 49);//58
 	ball[2] = help_set_rect(127, 942, 30, 49);//30
@@ -190,7 +190,7 @@ void Goku::downB()
 	unstandardSprite(7, ball);
 
 	//int bottom_height = 1187;
-	//Sprite_Info power_up[7];
+	//RECT power_up[7];
 	//power_up[0] = help_set_rect(16, bottom_height, 87, 44);//49
 	//power_up[1] = help_set_rect(70, bottom_height, 87, 44);//47
 	//power_up[2] = help_set_rect(123, bottom_height, 87, 70);//73
@@ -201,7 +201,7 @@ void Goku::downB()
 	//unstandardSprite(6, power_up);
 
 	//int bottom_y = 855;
-	//Sprite_Info k_o[11];
+	//RECT k_o[11];
 	//k_o[0] = help_set_rect(16, bottom_y, 56, 60);//35
 	//k_o[1] = help_set_rect(90, bottom_y, 56, 60);//37
 	//k_o[2] = help_set_rect(158, bottom_y, 56, 58);//31
@@ -221,7 +221,7 @@ void Goku::standardAttack()
 	Image::setFrames(0, 8);
 	Image::setWidth(43);
 
-	Sprite_Info kame[9];
+	RECT kame[9];
 	kame[0] = help_set_rect(15,535,43,43);//43
 	kame[1] = help_set_rect(68, 535, 46, 46);//46
 	kame[2] = help_set_rect(124, 535, 49, 46);//49

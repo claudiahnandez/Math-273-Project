@@ -44,14 +44,14 @@ void Background::update(float frameTime)
 {
 	Entity::update(frameTime);
 }
-void Background::set_animation(Sprite_Info animation[])
+void Background::set_animation(RECT animation[])
 {
 	animation_.clear();
-	Sprite_Info temp;
+	RECT temp;
 	for (int i = 0; i <=endFrame; i++)
 	{
 		animation_.push_back(temp);
-		animation_[i].rect = animation[i].rect;
+		animation_[i]= animation[i];
 	}
 }
 

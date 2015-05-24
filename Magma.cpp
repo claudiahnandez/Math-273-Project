@@ -14,7 +14,7 @@ Magma::Magma()
 
 void Magma::set_image()
 {
-	Sprite_Info magma[8];
+	RECT magma[8];
 	magma[0] = help_set_rect(0, 336, 336, 800);
 	magma[1] = help_set_rect(0, 672, 336, 800);
 	magma[2] = help_set_rect(0, 1008, 336, 800);

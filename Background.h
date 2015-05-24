@@ -15,7 +15,7 @@ public:
 	void draw(Graphics*& graphic);
 	void update(float frameTime);
 	virtual void set_image() = 0;
-	void set_animation(Sprite_Info animation[]);
+	void set_animation(RECT animation[]);
 	int get_floor();
 	
 protected:

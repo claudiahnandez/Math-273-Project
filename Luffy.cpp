@@ -76,21 +76,21 @@ void Luffy::fixSprite()
 	spriteData.height = spriteSize_.height();
 	animation_.clear();
 	endFrame = interval_.frames();
-	Sprite_Info temp;
+	RECT temp;
 
-	temp.rect.left = interval_.getLeft();
-	temp.rect.top = interval_.getTop();
-	temp.rect.right = temp.rect.left + spriteData.width;
-	temp.rect.bottom = temp.rect.top + spriteData.height;
+	temp.left = interval_.getLeft();
+	temp.top = interval_.getTop();
+	temp.right = temp.left + spriteData.width;
+	temp.bottom = temp.top + spriteData.height;
 	animation_.push_back(temp);
 
 	for (int i = 1; i <endFrame; i++)
 	{
 		animation_.push_back(temp);
-		animation_[i].rect.left = animation_[i - 1].rect.right + 1;
-		animation_[i].rect.top = animation_[i - 1].rect.top;
-		animation_[i].rect.right = animation_[i].rect.left + spriteData.width;
-		animation_[i].rect.bottom = animation_[i - 1].rect.bottom;
+		animation_[i].left = animation_[i - 1].right + 1;
+		animation_[i].top = animation_[i - 1].top;
+		animation_[i].right = animation_[i].left + spriteData.width;
+		animation_[i].bottom = animation_[i - 1].bottom;
 		//need to set your heigh and width
 	}
 	Image::setVector(animation_);

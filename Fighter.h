@@ -44,11 +44,11 @@ public:
 	void setState(int state);
 	void mirror(bool state);
 	//void setStandardSprite(int max_frame, int height, int width, int width_gap, int height_gap);
-	void unstandardSprite(int max_frame,Sprite_Info animation[]);
+	void unstandardSprite(int max_frame,RECT animation[]);
 	//used to make fighter stick to ground
 	void stick_to_floor();
 	//helper function
-	friend Sprite_Info help_set_rect(int left, int bottom_y,int height, int width);
+	friend RECT help_set_rect(int left, int bottom_y,int height, int width);
 
 
 
@@ -64,7 +64,7 @@ protected:
 	std::string sprite_location_;
 	//Option 2 get a vector of RECTS
 	//Rect will be set within the state;
-	std::vector<Sprite_Info> animation_;
+	std::vector<RECT> animation_;
 	COLOR_ARGB transcolor_;
 	Size spriteSize_;
 	Frame interval_;

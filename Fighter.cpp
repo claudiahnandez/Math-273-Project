@@ -241,7 +241,7 @@ void Fighter::mirror(bool state)
 	Image::flipHorizontal(state);
 }
 
-void Fighter::unstandardSprite(int max_frame, Sprite_Info animation[])
+void Fighter::unstandardSprite(int max_frame, RECT animation[])
 {
 	animation_.clear();
 	endFrame = max_frame;
@@ -257,15 +257,13 @@ void Fighter::unstandardSprite(int max_frame, Sprite_Info animation[])
 
 }
 
-Sprite_Info help_set_rect(int left, int bottom_y, int height, int width)
+RECT help_set_rect(int left, int bottom_y, int height, int width)
 {
-	Sprite_Info sprite;
-	sprite.rect.top = bottom_y - height;
-	sprite.rect.left = left;
-	sprite.rect.bottom = bottom_y;
-	sprite.rect.right = left + width;
-	sprite.width = width;
-	sprite.height = height;
+	RECT sprite;
+	sprite.top = bottom_y - height;
+	sprite.left = left;
+	sprite.bottom = bottom_y;
+	sprite.right = left + width;
 
 	return sprite;
 }
