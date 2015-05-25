@@ -34,6 +34,7 @@ class Image
     bool    visible;        // true when visible
     bool    initialized;    // true when successfully initialized
     bool    animComplete;   // true when loop is false and endFrame has finished displaying
+	bool	flipped;		//true when x is altered
 	std::vector<RECT> animation_;
 
   public:
@@ -176,7 +177,24 @@ class Image
                                     int ncols, TextureManager *textureM);
 
     // Flip image horizontally (mirror)
-    virtual void flipHorizontal(bool flip)  {spriteData.flipHorizontal = flip;}
+    virtual void flipHorizontal(bool flip) 
+	{
+		spriteData.flipHorizontal = flip;
+
+		//will alter the x postion so that it position is constant
+		if (flip == true && flipped == false)
+		{
+			spriteData.x += spriteData.width;
+			flipped = true;
+		}
+
+		//will alter the x postion so that it position is constant
+		else if (flip = false && flipped == true)
+		{
+			spriteData.x += spriteData.width;
+			flipped = false;
+		}
+	}
 
     // Flip image vertically
     virtual void flipVertical(bool flip)    {spriteData.flipVertical = flip;}

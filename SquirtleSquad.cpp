@@ -44,9 +44,9 @@ void SquirtleSquad::initialize(HWND hwnd)
 	stage_ = new Magma;
 	stage_->initialize(hwnd, graphics);
 
-	player1_ = new Luffy();
+	player1_ = new Goku();
 	player1_->initialize(hwnd, graphics,stage_->get_floor());
-	player2_ = new Goku();
+	player2_ = new Piccolo();
 	player2_->initialize(hwnd, graphics, stage_->get_floor());
 
 	//player1_->flipHorizontal(true);

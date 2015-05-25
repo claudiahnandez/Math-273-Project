@@ -42,7 +42,6 @@ public:
 	//will be need to be updated with movement
 	void update(float frameTime);
 	void setState(int state);
-	void mirror(bool state);
 	//void setStandardSprite(int max_frame, int height, int width, int width_gap, int height_gap);
 	void unstandardSprite(int max_frame,RECT animation[]);
 	//used to make fighter stick to ground
@@ -61,7 +60,6 @@ protected:
 
 	TextureManager texture_;//saves image from sprite sheet
 	Character character_;
-	bool mirror_;
 	int floor_;
 	std::string sprite_location_;
 	//Option 2 get a vector of RECTS

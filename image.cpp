@@ -37,6 +37,7 @@ Image::Image()
     animComplete = false;
     graphics = NULL;                // link to graphics system
     colorFilter = graphicsNS::WHITE; // WHITE for no change
+	flipped = false;
 }
 
 //=============================================================================

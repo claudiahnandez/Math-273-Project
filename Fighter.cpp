@@ -10,7 +10,6 @@ Fighter::Fighter()
 	sprite_location_ = "";
 	transcolor_ = TRANSCOLORR;
 	direction_ = RIGHT;
-	mirror_ = false;
 	floor_ = GAME_HEIGHT;
 
 	velocity.x = 0;                 // velocity X
@@ -31,8 +30,7 @@ void Fighter::move(const Input* input, float frameTime)
 	if (input->isKeyDown(VK_RIGHT))	// If move right
 	{
 		//makes sure its facing the right direction
-		mirror_ = false;
-		Image::flipHorizontal(mirror_);
+		Image::flipHorizontal(false);
 
 		//if not jumping
 		if (!jumping_)
@@ -55,8 +53,7 @@ void Fighter::move(const Input* input, float frameTime)
 	else if (input->isKeyDown(VK_LEFT))	// If move left
 	{
 		//makes sure its facing the right direction
-		mirror_ = true;
-		Image::flipHorizontal(mirror_);
+		Image::flipHorizontal(true);
 
 		//if not jumping
 		if (!jumping_)
@@ -247,16 +244,12 @@ void Fighter::setPose()
 	}
 }
 
-void Fighter::mirror(bool state)
-{
-	Image::flipHorizontal(state);
-}
-
 void Fighter::unstandardSprite(int max_frame, RECT animation[])
 {
 	animation_.clear();
 	endFrame = max_frame;
 	startFrame = 0;
+
 
 	//will set the rects
 	for (int i = 0; i <= max_frame; i++)

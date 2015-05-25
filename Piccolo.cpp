@@ -14,13 +14,8 @@ Piccolo::Piccolo()
 }
 void Piccolo::standing()
 {
-	//settingStandardSprite(1, 5, 5, 1, 0);
-	/*int bottom_y = 242;
-	RECT standing[3];
-	standing[0] = help_set_rect(9,bottom_y,101, 83);
-	standing[1] = help_set_rect(98, bottom_y, 101, 84);
-	standing[2] = help_set_rect(187, bottom_y, 101, 83);
-	unstandardSprite(2, standing);*/
+	spriteData.height = 103;
+	spriteData.width = 92;
 
 	int bottom_y = 242;
 	RECT standing2[6];
@@ -30,13 +25,15 @@ void Piccolo::standing()
 	standing2[3] = help_set_rect(692, bottom_y, 103, 92);//100
 	standing2[4] = help_set_rect(787, bottom_y, 103, 87);//100
 	standing2[5] = help_set_rect(878, bottom_y, 103, 83);//101
-	spriteData.height= 103;
 	unstandardSprite(5, standing2);
 
 
 }
 void Piccolo::walking()
 {
+	spriteData.height = 103;
+	spriteData.width = 110;
+
 	int bottom_y = 356;
 	RECT walking[3];
 	walking[0] = help_set_rect(476, bottom_y, 93, 81);

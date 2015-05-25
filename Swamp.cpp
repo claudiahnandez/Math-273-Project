@@ -8,6 +8,7 @@ Swamp::Swamp()
 	background_location_ = SWAMP;
 	spriteData.scale = 1;
 	endFrame = 6;
+	floor_ = 320;
 }
 
 void Swamp::set_image()
