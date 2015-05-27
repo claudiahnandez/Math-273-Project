@@ -44,7 +44,7 @@ void Fighter::move(const Input* input, float frameTime)
 		{
 			//acceleration_+=100*frameTime;
 			//deltaV.x = acceleration_;
-			deltaV.x = 600;
+			deltaV.x = 50;
 		}
 
 	}
@@ -66,7 +66,7 @@ void Fighter::move(const Input* input, float frameTime)
 		if (abs(velocity.x) < max_speed_)
 		{
 			//deltaV.x = -acceleration_;
-			deltaV.x = -600;
+			deltaV.x = -50;
 		}
 	}
 
@@ -78,7 +78,7 @@ void Fighter::move(const Input* input, float frameTime)
 			jumping_ = true;
 			state_ = JUMPING;
 			//velocity.y = -2*Image::getHeight();
-			velocity.y = -30;
+			velocity.y = -100;
 		}
 	}
 
@@ -99,14 +99,14 @@ void Fighter::move(const Input* input, float frameTime)
 	else if (!input->isKeyDown(VK_LEFT) && !input->isKeyDown(VK_RIGHT) && !input->isKeyDown(VK_DOWN))
 	{
 		acceleration_ = 0;
-		int deceleration = 4;
+		int deceleration = 5;
 
 		if (velocity.x<500 && velocity.x >-500)
 		{
 			state_ = STANDING;
 		}
 
-		//slowdown
+		//Gradual Slowdown
 		if (velocity.x >= 10)
 		{
 			velocity.x -= deceleration;
@@ -119,6 +119,9 @@ void Fighter::move(const Input* input, float frameTime)
 		{
 			velocity.x = 0;
 		}
+		//Instant Stop
+		//velocity.x = 0;
+
 
 	}
 

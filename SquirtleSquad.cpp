@@ -220,7 +220,7 @@ void SquirtleSquad::render()
 	//------------------------
 	//backgroundis being drawn
 	//------------------------
-	stage_->draw(graphics);
+	//stage_->draw(graphics);
 
 	//---------------------------------
 	//will draw fighters here
