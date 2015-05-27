@@ -48,7 +48,7 @@ void Luffy::neutralA()	// A
 void Luffy::neutralB()	// B
 {
 	animation_.clear();
-	state_ = NEUTRAL_B;
+	state_ = SIDE_B;
 	fixSprite();
 }
 void Luffy::sideB()		// <B>

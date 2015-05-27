@@ -8,7 +8,7 @@ Goku::Goku()
 
 	state_ = STANDING;
 	
-	transcolor_ = GOKU_TRANSCOLOR;
+	transcolor_ = TRANSCOLORR;
 	character_ = GOKU;
 
 	// Set collision type (NONE, CIRCLE, BOX, ROTATED_BOX)
@@ -98,6 +98,7 @@ void Goku::blocking()
 	shield[1] = help_set_rect(829, 290, spriteData.height, 43);//47
 	shield[2] = help_set_rect(879, 290, spriteData.height, 43);
 	unstandardSprite(2, shield);
+
 }
 void Goku::neutralA()
 {
@@ -153,18 +154,22 @@ void Goku::sideB()
 	//air_kick[11] = help_set_rect(730, 470, 48, 41);
 	//air_kick[12] = help_set_rect(784, 470, 52, 43);
 
+
+	int bottom_y = 408;
+	spriteData.height = 41;
+	spriteData.width = 44;
 	RECT kick[11];
-	kick[0] = help_set_rect(13, 415, 49, 44);//49
-	kick[1] = help_set_rect(67, 415, 50, 43);//50
-	kick[2] = help_set_rect(120, 415, 51, 41);
-	kick[3] = help_set_rect(171, 415, 42, 59);//42
-	kick[4] = help_set_rect(240, 415, 44, 58);//44
-	kick[5] = help_set_rect(308, 415, 42, 63);//42
-	kick[6] = help_set_rect(382, 415, 44, 61);//44
-	kick[7] = help_set_rect(453, 415, 42, 59);//42
-	kick[8] = help_set_rect(523, 415, 51, 41);//51
-	kick[9] = help_set_rect(574, 415, 50, 43);//50
-	kick[10] = help_set_rect(628, 415, 49, 44);//49
+	kick[0] = help_set_rect(13, bottom_y, spriteData.height, 44);//49
+	kick[1] = help_set_rect(67, bottom_y, spriteData.height, 43);//50
+	kick[2] = help_set_rect(120, bottom_y, spriteData.height, 41);
+	kick[3] = help_set_rect(171, bottom_y, spriteData.height, 59);//42
+	kick[4] = help_set_rect(240, bottom_y, spriteData.height, 58);//44
+	kick[5] = help_set_rect(308, bottom_y, spriteData.height, 63);//42
+	kick[6] = help_set_rect(382, bottom_y, spriteData.height, 61);//44
+	kick[7] = help_set_rect(453, bottom_y, spriteData.height, 59);//42
+	kick[8] = help_set_rect(523, bottom_y, spriteData.height, 41);//51
+	kick[9] = help_set_rect(574, bottom_y, spriteData.height, 43);//50
+	kick[10] = help_set_rect(628, bottom_y, spriteData.height, 44);//49
 	spriteData.height = 51;
 
 	unstandardSprite(10, kick);

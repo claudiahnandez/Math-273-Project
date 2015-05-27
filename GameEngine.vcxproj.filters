@@ -210,4 +210,9 @@
     </None>
     <None Include="ClassDiagram.cd" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Piccolo High def values.txt">
+      <Filter>Documentation</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

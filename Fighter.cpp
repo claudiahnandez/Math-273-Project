@@ -5,12 +5,15 @@ Fighter::Fighter()
 	state_ = STANDING;
 	startFrame = 0;
 	jumping_ = false;
+	mirror_ = false;
 
 	spriteData.scale = 1;
+	spriteData.x = GAME_WIDTH / 2;
 	sprite_location_ = "";
 	transcolor_ = TRANSCOLORR;
 	direction_ = RIGHT;
 	floor_ = GAME_HEIGHT;
+	old_width_ = 0;
 
 	velocity.x = 0;                 // velocity X
 	velocity.y = 0;                 // velocity Y
@@ -30,7 +33,9 @@ void Fighter::move(const Input* input, float frameTime)
 	if (input->isKeyDown(VK_RIGHT))	// If move right
 	{
 		//makes sure its facing the right direction
-		Image::flipHorizontal(false);
+		mirror_ = false;
+		Image::flipHorizontal(mirror_);
+
 
 		//if not jumping
 		if (!jumping_)
@@ -53,8 +58,9 @@ void Fighter::move(const Input* input, float frameTime)
 	else if (input->isKeyDown(VK_LEFT))	// If move left
 	{
 		//makes sure its facing the right direction
-		Image::flipHorizontal(true);
-
+		mirror_ = true;
+		Image::flipHorizontal(mirror_);
+	
 		//if not jumping
 		if (!jumping_)
 		{
@@ -95,6 +101,7 @@ void Fighter::move(const Input* input, float frameTime)
 	{
 		state_ = NEUTRAL_B;
 	}
+
 	// bottom
 	else if (!input->isKeyDown(VK_LEFT) && !input->isKeyDown(VK_RIGHT) && !input->isKeyDown(VK_DOWN))
 	{
@@ -107,20 +114,25 @@ void Fighter::move(const Input* input, float frameTime)
 		}
 
 		//slowdown
-		if (velocity.x >= 10)
-		{
-			velocity.x -= deceleration;
-		}
-		else if (velocity.x <= -10)
-		{
-			velocity.x += deceleration;
-		}
-		else if (velocity.x<10 && velocity.x >-10)
-		{
+		//if (velocity.x >= 10)
+		//{
+		//	velocity.x -= deceleration;
+		//}
+		//else if (velocity.x <= -10)
+		//{
+		//	velocity.x += deceleration;
+		//}
+		//else if (velocity.x<10 && velocity.x >-10)
+		//{
+		//	velocity.x = 0;
+		//}
 			velocity.x = 0;
-		}
 
+		//if standing looping is true
+		loop = true;
 	}
+
+	
 
 
 }
@@ -142,8 +154,6 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics, int floor)
 	if (!Image::initialize(graphics, spriteData.width, spriteData.height, 0, &texture_))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing menu"));
 
-
-	spriteData.x = GAME_WIDTH / 2;
 	frameDelay=0.2;
 
 	return;
@@ -151,8 +161,28 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics, int floor)
 
 void Fighter::draw(Graphics*& graphics)
 {
+	
+	// fixes the looping of images
+	if (currentFrame == endFrame && !(state_==STANDING || state_==WALKING) && loop==true)
+	{
+		loop = false;
+		//currentFrame = 0;
+		state_ = STANDING;
+	}
+
 	setPose();
+
+
+	if (mirror_ == true && flipped == false && !(state_ == STANDING || state_ == WALKING))
+	{
+ 		spriteData.x -= spriteData.width;
+		flipped = true;
+	}
+	
+
+
 	stick_to_floor();
+
 	Image::draw();
 }
 
@@ -203,6 +233,7 @@ void Fighter::update(float frameTime)
 
 void Fighter::setPose()
 {
+	old_width_ = spriteData.width;
 	switch (state_)
 	{
 	case STANDING:
@@ -239,7 +270,7 @@ void Fighter::setPose()
 		downB();
 		break;
 	case STANDARD:
-		standardAttack();
+         standardAttack();
 		break;
 	}
 }
