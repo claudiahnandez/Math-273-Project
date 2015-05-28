@@ -29,6 +29,7 @@ SquirtleSquad::~SquirtleSquad()
 	delete player1_;
 	delete player2_;
 	delete player3_;
+	delete player4_;
 	delete stage_;
     releaseAll();           // call onLostDevice() for every graphics item
     safeDelete(dxFont_);
@@ -63,7 +64,7 @@ void SquirtleSquad::initialize(HWND hwnd)
 
 	player1_->setX(100);
 	player2_->setX(200);
-	player2_->setX(300);
+	player3_->setX(300);
 
 	//From Pedro: Please don't delete - I will move it to its own class later
 	//--------------------//

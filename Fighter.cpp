@@ -18,8 +18,8 @@ Fighter::Fighter()
 	velocity.x = 0;                 // velocity X
 	velocity.y = 0;                 // velocity Y
 	frameDelay = 1;
-	//startFrame = 0;                             // first frame of animation
-	//endFrame = 0;                           // last frame of animation
+	//startFrame = 0;				// first frame of animation
+	//endFrame = 0;                 // last  frame of animation
 	//currentFrame = startFrame;
 	//radius = 50;
 	collisionType = entityNS::BOX;
