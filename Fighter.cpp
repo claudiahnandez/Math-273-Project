@@ -27,10 +27,10 @@ Fighter::Fighter()
 
 }//comit
 
-void Fighter::move(const Input* input, float frameTime)
+void Fighter::move(const Input* input, float frameTime, const int controller)
 {
 	//Move Right;
-	if (input->isKeyDown(VK_RIGHT))	// If move right
+	if (input->isKeyDown(VK_RIGHT) ^ const_cast<Input*>(input)->getGamepadDPadRight(controller))	// If move right
 	{
 		//makes sure its facing the right direction
 		mirror_ = false;
@@ -54,7 +54,7 @@ void Fighter::move(const Input* input, float frameTime)
 	}
 
 	//Move Left
-	else if (input->isKeyDown(VK_LEFT))	// If move left
+	else if (input->isKeyDown(VK_LEFT) ^ const_cast<Input*>(input)->getGamepadDPadLeft(controller))	// If move left
 	{
 		//makes sure its facing the right direction
 		mirror_ = true;
@@ -76,7 +76,7 @@ void Fighter::move(const Input* input, float frameTime)
 	}
 
 	//Jump
-	else if (input->isKeyDown(VK_UP) )
+	else if (input->isKeyDown(VK_UP) ^ const_cast<Input*>(input)->getGamepadDPadUp(controller))
 	{
 		if (!jumping_)
 		{
@@ -88,7 +88,7 @@ void Fighter::move(const Input* input, float frameTime)
 	}
 
 	//Crouch or Fall quick
-	else if (input->isKeyDown(VK_DOWN))
+	else if (input->isKeyDown(VK_DOWN) ^ const_cast<Input*>(input)->getGamepadDPadDown(controller))
 	{
 		state_ = BLOCKING;
 		if (velocity.x > 0)
@@ -96,7 +96,7 @@ void Fighter::move(const Input* input, float frameTime)
 			velocity.x -= 10;
 		}
 	}
-	else if (input->isKeyDown(VK_SPACE) )
+	else if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(controller))
 	{
 		state_ = NEUTRAL_A;
 	}

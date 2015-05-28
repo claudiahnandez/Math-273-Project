@@ -102,26 +102,28 @@ void Goku::blocking()
 }
 void Goku::neutralA()
 {
-	
+	int bottom_y = 1098;
+	spriteData.height = 35;
+	spriteData.width = 43;
 	
 	RECT gtfo[15];
-	gtfo[0] = help_set_rect(15, 1105, 47, 41);
-	gtfo[1] = help_set_rect(65, 1105, 44, 40);//44
-	gtfo[2] = help_set_rect(115, 1105, 43, 40);//43
-	gtfo[3] = help_set_rect(165, 1105, 44, 40);//44
-	gtfo[4] = help_set_rect(215, 1105, 43, 40);//43
-	gtfo[5] = help_set_rect(265, 1105, 44, 40);//44
-	gtfo[6] = help_set_rect(315, 1105, 43, 84);//43
-	gtfo[7] = help_set_rect(409, 1105, 43, 112);//43
-	gtfo[8] = help_set_rect(533, 1105, 41, 148);//41
-	gtfo[9] = help_set_rect(691, 1105, 41, 158);//41
-	gtfo[10] = help_set_rect(861, 1105, 41, 168);//41
-	gtfo[11] = help_set_rect(1040, 1105, 41, 166);//41
-	gtfo[12] = help_set_rect(1215, 1105, 41, 165);//41
-	gtfo[13] = help_set_rect(1392, 1105, 41, 51);//41
-	gtfo[14] = help_set_rect(1453, 1105, 43, 43);//43
-	spriteData.height = 47;
+	gtfo[0] = help_set_rect(15, bottom_y, spriteData.height, 41);
+	gtfo[1] = help_set_rect(65, bottom_y, spriteData.height, 40);//44
+	gtfo[2] = help_set_rect(115, bottom_y, spriteData.height, 40);//43
+	gtfo[3] = help_set_rect(165, bottom_y, spriteData.height, 40);//44
+	gtfo[4] = help_set_rect(215, bottom_y, spriteData.height, 40);//43
+	gtfo[5] = help_set_rect(265, bottom_y, spriteData.height, 40);//44
+	gtfo[6] = help_set_rect(315, bottom_y, spriteData.height, 84);//43
+	gtfo[7] = help_set_rect(409, bottom_y, spriteData.height, 112);//43
+	gtfo[8] = help_set_rect(533, bottom_y, spriteData.height, 148);//41
+	gtfo[9] = help_set_rect(691, bottom_y, spriteData.height, 158);//41
+	gtfo[10] = help_set_rect(861, bottom_y, spriteData.height, 168);//41
+	gtfo[11] = help_set_rect(1040, bottom_y, spriteData.height, 166);//41
+	gtfo[12] = help_set_rect(1215, bottom_y, spriteData.height, 165);//41
+	gtfo[13] = help_set_rect(1392, bottom_y, spriteData.height, 51);//41
+	gtfo[14] = help_set_rect(1453, bottom_y, spriteData.height, 43);//43
 	unstandardSprite(14,gtfo);
+
 }
 void Goku::neutralB()
 {
