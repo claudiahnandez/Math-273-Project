@@ -120,9 +120,16 @@ void SquirtleSquad::update()
 
 	//----------------------------------------------
 	//Keyboard Input
-	player1_->move(input,frameTime );
-	player2_->move(input, frameTime);
-	player3_->move(input, frameTime);
+	input->readControllers();
+	/*if (input->getGamepadConnected(0))
+	{
+		input->gamePadVibrateLeft(0, 65535, 1.0);
+	}*/
+
+
+	player1_->move(input,frameTime, 0 );
+	player2_->move(input, frameTime, 1);
+	player3_->move(input, frameTime, 2);
 
 
 	//--------------------------//
