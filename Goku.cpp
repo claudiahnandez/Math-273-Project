@@ -25,7 +25,7 @@ void Goku::standing()
 	//use spritecow.com to get coordinates
 	int bottom_y = 51;
 	spriteData.height = 39;
-	spriteData.width = 47;
+	spriteData.width = 46;
 	RECT standing[4];
 	standing[0] = help_set_rect(10, bottom_y, spriteData.height, 47);
 	standing[1] = help_set_rect(68, bottom_y, spriteData.height, 46);
@@ -37,7 +37,7 @@ void Goku::standing()
 void Goku::walking()
 {
 	spriteData.height = 32;
-	spriteData.width = 54;
+	spriteData.width = 53;
 	int bottom_y = 100;
 	RECT walking[4];
 	walking[0] = help_set_rect(11,bottom_y, spriteData.height, 54);

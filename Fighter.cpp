@@ -96,9 +96,9 @@ void Fighter::move(const Input* input, float frameTime)
 			velocity.x -= 10;
 		}
 	}
-	else if (input->isKeyDown(VK_SPACE))
+	else if (input->isKeyDown(VK_SPACE) )
 	{
-		state_ = NEUTRAL_B;
+		state_ = NEUTRAL_A;
 	}
 
 	// bottom
