@@ -8,7 +8,7 @@ Fighter::Fighter()
 
 	spriteData.scale = 1;
 	sprite_location_ = "";
-	transcolor_ = TRANSCOLORR;
+	transcolor_ = GOKU_TRANSCOLOR;
 	direction_ = RIGHT;
 	floor_ = GAME_HEIGHT;
 
@@ -78,7 +78,7 @@ void Fighter::move(const Input* input, float frameTime)
 			jumping_ = true;
 			state_ = JUMPING;
 			//velocity.y = -2*Image::getHeight();
-			velocity.y = -100;
+			velocity.y = -10;
 		}
 	}
 
@@ -133,7 +133,7 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics, int floor)
 	setPose();
 
 	floor_ = floor;
-	stick_to_floor();
+	//stick_to_floor();
 
 	//will initialize the texture og the fighter
 	if (!texture_.initialize(graphics, sprite_location_, transcolor_))
@@ -155,8 +155,9 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics, int floor)
 void Fighter::draw(Graphics*& graphics)
 {
 	setPose();
-	stick_to_floor();
+	//stick_to_floor();
 	Image::draw();
+
 }
 
 void Fighter::update(float frameTime)
@@ -183,22 +184,25 @@ void Fighter::update(float frameTime)
 	}
 
 	//Stop at Bottom edge of screen
-	if (spriteData.y > GAME_HEIGHT - getHeight() - 100)
+	if (spriteData.y >= GAME_HEIGHT - (spriteData.height*spriteData.scale) - floor_)
 	{
 		jumping_ = false;
 		velocity.y = 0;
+		//Image::setY(GAME_HEIGHT - getHeight() - floor_);
+		spriteData.y = GAME_HEIGHT - (spriteData.height*spriteData.scale) - floor_;
+
 	}
 
 	//Stop Top edge of screen
 	else if (spriteData.y < 0)                    
 	{
-		spriteData.y = 0;                           // position at top screen edge
+		spriteData.y = 0;
 	}
 
 	//gravity
-	if (spriteData.y < GAME_HEIGHT - getHeight()-100)
+	if (spriteData.y < GAME_HEIGHT - (spriteData.height*spriteData.scale) - floor_)
 	{
-		velocity.y += GRAVITY;
+		velocity.y += .4;
 		Image::setY(Image::getY() + (velocity.y));
 	}
 
@@ -280,7 +284,8 @@ void Fighter::stick_to_floor()
 	//if the fighter is not jumping then it has to stick to the floor
 	if (state_ != JUMPING)
 	{
-		spriteData.y = floor_ - (spriteData.height*spriteData.scale);
+		//spriteData.y = floor_ - (spriteData.height*spriteData.scale);
+		spriteData.y = GAME_HEIGHT - (spriteData.height*spriteData.scale)-floor_;
 	}
 }
 

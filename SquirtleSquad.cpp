@@ -44,10 +44,15 @@ void SquirtleSquad::initialize(HWND hwnd)
 	stage_ = new Magma;
 	stage_->initialize(hwnd, graphics);
 
-	player1_ = new Goku();
-	player1_->initialize(hwnd, graphics,stage_->get_floor());
-	player2_ = new Piccolo();
+
+	player1_ = new Piccolo();
+	player1_->initialize(hwnd, graphics, stage_->get_floor());
+	player2_ = new Goku();
 	player2_->initialize(hwnd, graphics, stage_->get_floor());
+	player3_ = new Luffy();
+	player3_->initialize(hwnd, graphics, stage_->get_floor());
+
+
 
 	//player1_->flipHorizontal(true);
 	//player1_->setVelocity(VECTOR2(10, -10));
@@ -55,9 +60,9 @@ void SquirtleSquad::initialize(HWND hwnd)
 	//player2_->flipHorizontal(false);
 	//player2_->setVelocity(VECTOR2(10, -10));
 
-	//player1_->setPosition(20, 400);
-	//player2_->setPosition(GAME_WIDTH-150, 400);
-
+	player1_->setX(100);
+	player2_->setX(200);
+	player2_->setX(300);
 
 
 	//From Pedro: Please don't delete - I will move it to its own class later
@@ -89,11 +94,14 @@ void SquirtleSquad::update()
 
 	player1_->update(frameTime);
 	player2_->update(frameTime);
+	player3_->update(frameTime);
 
 	//----------------------------------------------
 	//Keyboard Input
 	player1_->move(input,frameTime );
-	//player2_->move(input, frameTime);
+	player2_->move(input, frameTime);
+	player3_->move(input, frameTime);
+
 
 	//--------------------------//
 	//--Test Code for platform--//
@@ -187,16 +195,16 @@ void SquirtleSquad::collisions()
 	//if (player1_->collidesWith(platform_, collisionVector))
 		//player1_->bounce(collisionVector, platform_);
 
-	// If collision between fighters
+	////If collision between fighters
 	//if (player1_->collidesWith(*player2_, collisionVector))
 	//{
-		// Bounce off player2
-		////player1_->bounce(collisionVector, *player2_);
-		//player1_.damage(ATTACK_A);
+	//	//Bounce off player2
+	//	//player1_->bounce(collisionVector, *player2_);
+	//	player1_.damage(ATTACK_A);
 
-		// Change the direction of the collisionVector for player2
-		////player2_->bounce(collisionVector*-1, *player1_);
-		//player2_.damage(ATTACK_A);
+	//	// Change the direction of the collisionVector for player2
+	//	//player2_->bounce(collisionVector*-1, *player1_);
+	//	player2_.damage(ATTACK_A);
 	//}
 
 	//// If collision between ship and planet
@@ -220,13 +228,14 @@ void SquirtleSquad::render()
 	//------------------------
 	//backgroundis being drawn
 	//------------------------
-	//stage_->draw(graphics);
+	stage_->draw(graphics);
 
 	//---------------------------------
 	//will draw fighters here
 	//----------------------------------
 	player1_->draw(graphics);
 	player2_->draw(graphics);
+	player3_->draw(graphics);
 	//platform_.draw();
 
 	/*

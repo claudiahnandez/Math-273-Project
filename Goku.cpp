@@ -8,7 +8,7 @@ Goku::Goku()
 
 	state_ = STANDING;
 	
-	transcolor_ = TRANSCOLORR;
+	transcolor_ = GOKU_TRANSCOLOR;
 	character_ = GOKU;
 
 	// Set collision type (NONE, CIRCLE, BOX, ROTATED_BOX)

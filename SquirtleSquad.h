@@ -52,7 +52,7 @@ private:
 	Fighter* player2_;
 	Background* stage_;
 	//stretch goals
-	//Fighter* player3_;
+	Fighter* player3_;
 	//Fighter* player4_;
 
 	TextureManager platformTexture_;   //platform texture
