@@ -55,6 +55,8 @@ protected:
 	Fighter_State state_;				// scene
 	Direction direction_;
 	bool jumping_;
+	bool mirror_;
+	int old_width_;
 	double acceleration_ = 100;
 	double max_speed_ = 500;
 

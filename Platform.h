@@ -9,8 +9,8 @@
 
 namespace platformNS
 {
-	const int WIDTH = 120;                  // image width
-	const int HEIGHT = 30;                  // image height
+	const int WIDTH = 100;                  // image width
+	const int HEIGHT = 25;                  // image height
 	const int X = GAME_WIDTH / 2 - WIDTH/2;   // location on screen
 	const int Y = GAME_HEIGHT - HEIGHT;
 	const float SPEED = 200;                // pixels per second

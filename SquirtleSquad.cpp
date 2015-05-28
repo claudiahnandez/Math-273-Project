@@ -14,6 +14,8 @@ SquirtleSquad::SquirtleSquad() : Game()
 {
 	player1_ = NULL;
 	player2_ = NULL;
+	player3_ = NULL;
+	player4_ = NULL;
 	stage_ = NULL;
     dxFont_ = new TextDX();  // DirectX font
     messageY_ = 0;
@@ -26,6 +28,7 @@ SquirtleSquad::~SquirtleSquad()
 {
 	delete player1_;
 	delete player2_;
+	delete player3_;
 	delete stage_;
     releaseAll();           // call onLostDevice() for every graphics item
     safeDelete(dxFont_);
@@ -52,8 +55,6 @@ void SquirtleSquad::initialize(HWND hwnd)
 	player3_ = new Luffy();
 	player3_->initialize(hwnd, graphics, stage_->get_floor());
 
-
-
 	//player1_->flipHorizontal(true);
 	//player1_->setVelocity(VECTOR2(10, -10));
 
@@ -64,7 +65,6 @@ void SquirtleSquad::initialize(HWND hwnd)
 	player2_->setX(200);
 	player2_->setX(300);
 
-
 	//From Pedro: Please don't delete - I will move it to its own class later
 	//--------------------//
 	//--platform texture--//
@@ -73,10 +73,32 @@ void SquirtleSquad::initialize(HWND hwnd)
 	if (!platformTexture_.initialize(graphics, PLATFORM_IMAGE, SETCOLOR_ARGB(0, 0, 0, 0)))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing platform texture"));
 
-	//image
-	if (!platform_.initialize(this, platformNS::WIDTH, platformNS::HEIGHT, 0, &platformTexture_))
+	//image1
+	if (!platform1_.initialize(this, platformNS::WIDTH, platformNS::HEIGHT, 0, &platformTexture_))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing paddle"));
-	//--------------------//
+
+	//image2
+	if (!platform2_.initialize(this, platformNS::WIDTH, platformNS::HEIGHT, 0, &platformTexture_))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing paddle"));
+
+	//image3
+	if (!platform3_.initialize(this, platformNS::WIDTH, platformNS::HEIGHT, 0, &platformTexture_))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing paddle"));
+
+	//image4
+	if (!platform4_.initialize(this, platformNS::WIDTH, platformNS::HEIGHT, 0, &platformTexture_))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing paddle"));
+
+	//image5
+	if (!platform5_.initialize(this, platformNS::WIDTH, platformNS::HEIGHT, 0, &platformTexture_))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing paddle"));
+
+	platform1_.setX(0);
+	platform2_.setX(200);
+	platform3_.setX(400);
+	platform4_.setX(600);
+	platform5_.setX(800);
+
 
     return;
 }
@@ -111,7 +133,12 @@ void SquirtleSquad::update()
 	//	platform_.setX(platform_.getX() - platformNS::SPEED*frameTime);
 	//else if (input->isKeyDown(VK_RIGHT))
 	//	platform_.setX(platform_.getX() + platformNS::SPEED*frameTime);
-	platform_.update(frameTime);
+	platform1_.update(frameTime);
+	platform2_.update(frameTime);
+	platform3_.update(frameTime);
+	platform4_.update(frameTime);
+	platform5_.update(frameTime);
+
 	//------------------------------
 
 /*//Old input code (moved to fighter class)
@@ -226,23 +253,21 @@ void SquirtleSquad::render()
 
     graphics->spriteBegin();                // begin drawing sprites
 	//------------------------
-	//backgroundis being drawn
+	//background is being drawn
 	//------------------------
 	stage_->draw(graphics);
+	platform1_.draw();
+	platform2_.draw();
+	platform3_.draw();
+	platform4_.draw();
+	//platform5_.draw();
 
 	//---------------------------------
-	//will draw fighters here
+	//draw fighters here
 	//----------------------------------
 	player1_->draw(graphics);
 	player2_->draw(graphics);
 	player3_->draw(graphics);
-	//platform_.draw();
-
-	/*
-		//Original Code
-		//background_.draw(graphicsNS::ALPHA50);
-		//menu_.draw();
-	*/
 
     dxFont_->setFontColor(graphicsNS::ORANGE);
     dxFont_->print(message_,20,(int)messageY_);

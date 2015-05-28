@@ -182,18 +182,18 @@ class Image
 		spriteData.flipHorizontal = flip;
 
 		//will alter the x postion so that it position is constant
-		if (flip == true && flipped == false)
-		{
-			spriteData.x += spriteData.width;
-			flipped = true;
-		}
+		//if (flip == true && flipped == false )
+		//{
+		//	spriteData.x +=spriteData.width;
+		//	flipped = true;
+		//}
 
-		//will alter the x postion so that it position is constant
-		else if (flip = false && flipped == true)
-		{
-			spriteData.x += spriteData.width;
-			flipped = false;
-		}
+		////will alter the x postion so that it position is constant
+		//else if (flip = false && flipped == true)
+		//{
+		//	spriteData.x -= spriteData.width;
+		//	flipped = false;
+		//}
 	}
 
     // Flip image vertically

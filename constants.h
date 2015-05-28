@@ -21,9 +21,9 @@
 #define ICHIAGO_TRANSCOLOR SETCOLOR_ARGB (255,0,128,0)
 #define KENSHIN_TRANSCOLOR SETCOLOR_ARGB (255,115,57,132)
 #define LUFFY_TRANSCOLOR SETCOLOR_ARGB (255,0,128,128)
-#define FIRE_MARIO__TRANSCOLOR SETCOLOR_ARGB (255,130,192,255)
+#define FIRE_MARIO_TRANSCOLOR SETCOLOR_ARGB (255,130,192,255)
 #define NARUTO_TRANSCOLOR SETCOLOR_ARGB (255,0,128,0)
-#define PICCOLO_TRANSCOLOR SETCOLOR_ARGB(255,120,98,157)
+#define PICCOLO_TRANSCOLOR SETCOLOR_ARGB(255,57,115,255)
 #define SANJI_TRANSCOLOR SETCOLOR_ARGB (255,82,100,148)
 #define TSUNA_TRANSCOLOR SETCOLOR_ARGB (255,82,100,148)
 #define YUGI_TRANSCOLOR SETCOLOR_ARGB (255,0,102,0)
@@ -56,14 +56,12 @@ const char BACKGROUND_IMAGE[] = "pictures\\NarutoBackgroundTest.png";  // backgr
 const char TEST_IMAGE1[] = "pictures\\test1.png";
 const char GOKU_SPRITE[] = "pictures\\Goku.png";
 const char LUFFY_TEST[] = "pictures\\testLuffyStrip.png";
-const char PICCOLO_SPRITE[] = "pictures\\PiccoloJr.png";
+const char PICCOLO_SPRITE[] = "pictures\\Piccolo.png";
 const char PLATFORM_IMAGE[] = "pictures\\default_platform.png";
 
 //background images
 const char SWAMP[] = "pictures\\Swamp_.png";
 const char MAGMA[] = "pictures\\Magma.png";
-
-
 
 // audio files required by audio.cpp
 // WAVE_BANK must be location of .xwb file.
