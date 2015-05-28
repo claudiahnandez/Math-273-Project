@@ -58,7 +58,7 @@ protected:
 	bool mirror_;
 	int old_width_;
 	double acceleration_ = 100;
-	double max_speed_ = 1000;
+	double max_speed_ = 500;
 
 	TextureManager texture_;//saves image from sprite sheet
 	Character character_;

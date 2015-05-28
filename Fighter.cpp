@@ -10,7 +10,7 @@ Fighter::Fighter()
 	spriteData.scale = 1;
 	spriteData.x = GAME_WIDTH / 2;
 	sprite_location_ = "";
-	transcolor_ = TRANSCOLORR;
+	transcolor_ = GOKU_TRANSCOLOR;
 	direction_ = RIGHT;
 	floor_ = GAME_HEIGHT;
 	old_width_ = 0;
@@ -36,7 +36,6 @@ void Fighter::move(const Input* input, float frameTime)
 		mirror_ = false;
 		Image::flipHorizontal(mirror_);
 
-
 		//if not jumping
 		if (!jumping_)
 		{
@@ -49,7 +48,7 @@ void Fighter::move(const Input* input, float frameTime)
 		{
 			//acceleration_+=100*frameTime;
 			//deltaV.x = acceleration_;
-			deltaV.x = 600;
+			deltaV.x = 50;
 		}
 
 	}
@@ -60,7 +59,7 @@ void Fighter::move(const Input* input, float frameTime)
 		//makes sure its facing the right direction
 		mirror_ = true;
 		Image::flipHorizontal(mirror_);
-	
+
 		//if not jumping
 		if (!jumping_)
 		{
@@ -72,7 +71,7 @@ void Fighter::move(const Input* input, float frameTime)
 		if (abs(velocity.x) < max_speed_)
 		{
 			//deltaV.x = -acceleration_;
-			deltaV.x = -600;
+			deltaV.x = -50;
 		}
 	}
 
@@ -84,7 +83,7 @@ void Fighter::move(const Input* input, float frameTime)
 			jumping_ = true;
 			state_ = JUMPING;
 			//velocity.y = -2*Image::getHeight();
-			velocity.y = -30;
+			velocity.y = -10;
 		}
 	}
 
@@ -106,33 +105,33 @@ void Fighter::move(const Input* input, float frameTime)
 	else if (!input->isKeyDown(VK_LEFT) && !input->isKeyDown(VK_RIGHT) && !input->isKeyDown(VK_DOWN))
 	{
 		acceleration_ = 0;
-		int deceleration = 4;
+		int deceleration = 5;
 
 		if (velocity.x<500 && velocity.x >-500)
 		{
 			state_ = STANDING;
 		}
 
-		//slowdown
-		//if (velocity.x >= 10)
-		//{
-		//	velocity.x -= deceleration;
-		//}
-		//else if (velocity.x <= -10)
-		//{
-		//	velocity.x += deceleration;
-		//}
-		//else if (velocity.x<10 && velocity.x >-10)
-		//{
-		//	velocity.x = 0;
-		//}
+		//Gradual Slowdown
+		if (velocity.x >= 10)
+		{
+			velocity.x -= deceleration;
+		}
+		else if (velocity.x <= -10)
+		{
+			velocity.x += deceleration;
+		}
+		else if (velocity.x<10 && velocity.x >-10)
+		{
 			velocity.x = 0;
 
 		//if standing looping is true
 		loop = true;
-	}
+		}
+		//Instant Stop
+		//velocity.x = 0;
 
-	
+	}
 
 
 }
@@ -142,7 +141,7 @@ void Fighter::initialize(HWND hwnd, Graphics*& graphics, int floor)
 	setPose();
 
 	floor_ = floor;
-	stick_to_floor();
+	//stick_to_floor();
 
 	//will initialize the texture og the fighter
 	if (!texture_.initialize(graphics, sprite_location_, transcolor_))
@@ -178,11 +177,6 @@ void Fighter::draw(Graphics*& graphics)
  		spriteData.x -= spriteData.width;
 		flipped = true;
 	}
-	
-
-
-	stick_to_floor();
-
 	Image::draw();
 }
 
@@ -210,22 +204,25 @@ void Fighter::update(float frameTime)
 	}
 
 	//Stop at Bottom edge of screen
-	if (spriteData.y > GAME_HEIGHT - getHeight() - 100)
+	if (spriteData.y >= GAME_HEIGHT - (spriteData.height*spriteData.scale) - floor_)
 	{
 		jumping_ = false;
 		velocity.y = 0;
+		//Image::setY(GAME_HEIGHT - getHeight() - floor_);
+		spriteData.y = GAME_HEIGHT - (spriteData.height*spriteData.scale) - floor_;
+
 	}
 
 	//Stop Top edge of screen
 	else if (spriteData.y < 0)                    
 	{
-		spriteData.y = 0;                           // position at top screen edge
+		spriteData.y = 0;
 	}
 
 	//gravity
-	if (spriteData.y < GAME_HEIGHT - getHeight()-100)
+	if (spriteData.y < GAME_HEIGHT - (spriteData.height*spriteData.scale) - floor_)
 	{
-		velocity.y += GRAVITY;
+		velocity.y += .4;
 		Image::setY(Image::getY() + (velocity.y));
 	}
 
@@ -270,7 +267,7 @@ void Fighter::setPose()
 		downB();
 		break;
 	case STANDARD:
-         standardAttack();
+		standardAttack();
 		break;
 	}
 }
@@ -308,7 +305,8 @@ void Fighter::stick_to_floor()
 	//if the fighter is not jumping then it has to stick to the floor
 	if (state_ != JUMPING)
 	{
-		spriteData.y = floor_ - (spriteData.height*spriteData.scale);
+		//spriteData.y = floor_ - (spriteData.height*spriteData.scale);
+		spriteData.y = GAME_HEIGHT - (spriteData.height*spriteData.scale)-floor_;
 	}
 }
 

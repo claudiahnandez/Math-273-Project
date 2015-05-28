@@ -8,7 +8,7 @@ Magma::Magma()
 	background_location_ = MAGMA;
 	spriteData.scale = 1;
 	endFrame = 7;
-	floor_ = 310;
+	floor_ = 25;
 	frameDelay = 0.22;
 }
 

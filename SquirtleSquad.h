@@ -51,19 +51,20 @@ private:
 	Fighter* player1_;
 	Fighter* player2_;
 	Background* stage_;
+
 	//stretch goals
-	//Fighter* player3_;
-	//Fighter* player4_;
+	Fighter* player3_;
+	Fighter* player4_;
 
 	TextureManager platformTexture_;   //platform texture
-	Platform platform_;
-
-
+	Platform platform1_;
+	Platform platform2_;
+	Platform platform3_;
+	Platform platform4_;
+	Platform platform5_;
 
     TextDX  *dxFont_;            // DirectX font
     std::string  message_;
     float messageY_;
 };
-
-
 #endif
