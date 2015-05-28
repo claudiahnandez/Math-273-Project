@@ -13,7 +13,7 @@ class Fighter : public Entity
 {
 public:
 	Fighter();
-	void move(const Input* input, float frameTime, const int controller);
+	void move(const Input* input, float frameTime);
 
 	// Pure virtual functions
 	// All characters must have these functions
