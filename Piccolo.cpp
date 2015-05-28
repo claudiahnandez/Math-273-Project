@@ -76,13 +76,62 @@ void Piccolo::blocking()
 }
 void Piccolo::neutralA()
 {
+	int bottom_y = 468;
+	spriteData.height = 96;
+	spriteData.width = 50;
 
+	RECT light[12];
+	light[0] = help_set_rect(16, bottom_y, spriteData.height, 52);//48
+	light[1] = help_set_rect(83, bottom_y, spriteData.height, 59);//53
+	light[2] = help_set_rect(166, bottom_y, spriteData.height, 62);//47->reached top
+	light[3] = help_set_rect(245, bottom_y, spriteData.height, 59);//49
+	light[4] = help_set_rect(325, bottom_y, spriteData.height, 83);//62
+	light[5] = help_set_rect(418, bottom_y, spriteData.height, 114);//96
+	light[6] = help_set_rect(550, bottom_y, spriteData.height, 139);//71
+	light[7] = help_set_rect(693, bottom_y, spriteData.height, 164);//54->reached top
+	light[8] = help_set_rect(876, bottom_y, spriteData.height, 173);//49
+	light[9] = help_set_rect(1059, bottom_y, spriteData.height, 59);//49
+	light[10] = help_set_rect(1132, bottom_y, spriteData.height, 58);//49
+	light[11] = help_set_rect(1200, bottom_y, spriteData.height, 50);//48
+	unstandardSprite(11, light);
 }
 void Piccolo::neutralB()
 {
+	int bottom_y = 267;
+	spriteData.height = 54;
+	spriteData.width = 59;
+
+	RECT smack[5];
+	smack[0] = help_set_rect(22, bottom_y, spriteData.height, 47);//54
+	smack[1] = help_set_rect(81, bottom_y, spriteData.height, 84);//52
+	smack[2] = help_set_rect(175, bottom_y, spriteData.height, 68);//52->reached top
+	smack[3] = help_set_rect(266, bottom_y, spriteData.height, 60);//49
+	smack[4] = help_set_rect(345, bottom_y, spriteData.height, 59);//47
+	unstandardSprite(4, smack);
 
 }	// B
 void Piccolo::sideB(){}		
 void Piccolo::upB(){}			// ^B
-void Piccolo::downB(){}		// vB
-void Piccolo::standardAttack(){}
+void Piccolo::downB(){}	
+// vB
+void Piccolo::standardAttack()
+{
+	int bottom_y = 816;
+	spriteData.height = 60;
+	spriteData.width = 48;
+
+	RECT lightning[12];
+	lightning[0] = help_set_rect(24, bottom_y, spriteData.height, 49);//51
+	lightning[1] = help_set_rect(84, bottom_y, spriteData.height, 52);//55
+	lightning[2] = help_set_rect(150, bottom_y, spriteData.height, 52);//48->reached top
+	lightning[3] = help_set_rect(216, bottom_y, spriteData.height, 76);//57
+	lightning[4] = help_set_rect(303, bottom_y, spriteData.height, 92);//57
+	lightning[5] = help_set_rect(413, bottom_y, spriteData.height, 108);//58
+	lightning[6] = help_set_rect(537, bottom_y, spriteData.height, 124);//59
+	lightning[7] = help_set_rect(673, bottom_y, spriteData.height, 123);//58->reached top
+	lightning[8] = help_set_rect(811, bottom_y, spriteData.height, 123);//60
+	lightning[9] = help_set_rect(944, bottom_y, spriteData.height, 51);//48
+	lightning[10] = help_set_rect(1008, bottom_y, spriteData.height,51);//48
+	lightning[11] = help_set_rect(1075, bottom_y, spriteData.height, 48);//48
+	unstandardSprite(11, lightning);
+}
