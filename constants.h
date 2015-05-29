@@ -17,7 +17,7 @@
 
 //=============================================================================
 //Useful Macros, TRANCPERANCY COLORS FOR SPRITES
-#define GOKU_TRANSCOLOR SETCOLOR_ARGB(255,0,64,128)
+#define GOKU_TRANSCOLOR SETCOLOR_ARGB(255,0,128,0)
 #define ICHIAGO_TRANSCOLOR SETCOLOR_ARGB (255,0,128,0)
 #define KENSHIN_TRANSCOLOR SETCOLOR_ARGB (255,115,57,132)
 #define LUFFY_TRANSCOLOR SETCOLOR_ARGB (255,0,128,128)
@@ -54,7 +54,7 @@ const float GRAVITY = 2; // Acceleration of gravity pixels/sec
 const char MENU_IMAGE[] =     "pictures\\menu.png";      // menu texture
 const char BACKGROUND_IMAGE[] = "pictures\\NarutoBackgroundTest.png";  // background
 const char TEST_IMAGE1[] = "pictures\\test1.png";
-const char GOKU_SPRITE[] = "pictures\\Goku.png";
+const char GOKU_SPRITE[] = "pictures\\Goku_2.png";
 const char LUFFY_TEST[] = "pictures\\testLuffyStrip.png";
 const char PICCOLO_SPRITE[] = "pictures\\Piccolo.png";
 const char PLATFORM_IMAGE[] = "pictures\\default_platform.png";

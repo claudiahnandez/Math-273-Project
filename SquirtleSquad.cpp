@@ -29,6 +29,7 @@ SquirtleSquad::~SquirtleSquad()
 	delete player1_;
 	delete player2_;
 	delete player3_;
+	delete player4_;
 	delete stage_;
     releaseAll();           // call onLostDevice() for every graphics item
     safeDelete(dxFont_);

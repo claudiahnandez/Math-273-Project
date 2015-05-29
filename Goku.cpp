@@ -23,27 +23,27 @@ Goku::Goku()
 void Goku::standing()
 {
 	//use spritecow.com to get coordinates
-	int bottom_y = 51;
-	spriteData.height = 39;
-	spriteData.width = 46;
+	int bottom_y = 149;
+	spriteData.height = 49;
+	spriteData.width = 47;
 	RECT standing[4];
-	standing[0] = help_set_rect(10, bottom_y, spriteData.height, 47);
-	standing[1] = help_set_rect(68, bottom_y, spriteData.height, 46);
-	standing[2] = help_set_rect(124, bottom_y, spriteData.height, 47);
-	standing[3] = help_set_rect(181, bottom_y, spriteData.height, 46);
+	standing[0] = help_set_rect(25, bottom_y, spriteData.height, 46);//49
+	standing[1] = help_set_rect(88, bottom_y, spriteData.height, 47);//49
+	standing[2] = help_set_rect(152, bottom_y, spriteData.height, 46);//48
+	standing[3] = help_set_rect(216, bottom_y, spriteData.height, 47);//49
 
 	unstandardSprite(3, standing);
 }
 void Goku::walking()
 {
-	spriteData.height = 32;
+	spriteData.height = 39;
 	spriteData.width = 53;
-	int bottom_y = 100;
+	int bottom_y = 227;
 	RECT walking[4];
-	walking[0] = help_set_rect(11,bottom_y, spriteData.height, 54);
-	walking[1] = help_set_rect(76,bottom_y,spriteData.height,52);
-	walking[2] = help_set_rect(139,bottom_y,spriteData.height,52);//37
-	walking[3] = help_set_rect(202,bottom_y,spriteData.height,53);//37
+	walking[0] = help_set_rect(19,bottom_y, spriteData.height, 54);//39
+	walking[1] = help_set_rect(112,bottom_y,spriteData.height,52);//39
+	walking[2] = help_set_rect(200,bottom_y,spriteData.height,52);//37
+	walking[3] = help_set_rect(273,bottom_y,spriteData.height,53);//37
 	unstandardSprite(3, walking);
 
 
@@ -53,50 +53,53 @@ void Goku::running()
 {
 	spriteData.height = 38;
 	spriteData.width = 63;
+	int bottom_y = 230;
 	RECT sprinting[2];
-	sprinting[0] = help_set_rect(9,150,38,61);
-	sprinting[1] = help_set_rect(80,150,38,63);
+	sprinting[0] = help_set_rect(356, bottom_y, 38, 60);
+	sprinting[1] = help_set_rect(439, bottom_y, 38, 63);
 	unstandardSprite(1, sprinting);
 }
 void Goku::falling()
 {
 
-	int bottom_y=800;
+	int bottom_y=614;
 	spriteData.height = 57;
-	spriteData.width = 50;
+	spriteData.width = 43;
 	//getting punched
 	RECT punched[4];
-	punched[0] = help_set_rect(16, bottom_y, spriteData.height, 50);
-	punched[1] = help_set_rect(73, bottom_y, spriteData.height, 44);
-	punched[2] = help_set_rect(125, bottom_y, spriteData.height, 41);
-	punched[3] = help_set_rect(174, bottom_y, spriteData.height, 43);
+	punched[0] = help_set_rect(35, bottom_y, spriteData.height, 50);//51
+	punched[1] = help_set_rect(92, bottom_y, spriteData.height, 44);//51
+	punched[2] = help_set_rect(144, bottom_y, spriteData.height, 41);//55
+	punched[3] = help_set_rect(193, bottom_y, spriteData.height, 43);//57
 	unstandardSprite(3, punched);
 
 }
 void Goku::jumping()
 {
-	
+	int bottom_y =321 ;
+	spriteData.height =62 ;
+	spriteData.width =41 ;
 	RECT jumping[7];
-	jumping[0] = help_set_rect(10, 210, 41, 44);//41 abaout to jump
-	jumping[1] = help_set_rect(64, 210, 57, 40);//57 going up
-	jumping[2] = help_set_rect(114, 210, 40, 36);//40 reached highest point
-	jumping[3] = help_set_rect(160, 210, 62, 40);//62 coming down
-	jumping[4] = help_set_rect(210, 210, 41, 44);//41 REACHED BUTTOM
-	jumping[5] = help_set_rect(264, 210, 35, 47);//35
-	jumping[6] = help_set_rect(320, 210, 41, 44);//41
-	spriteData.height = 62;
+	jumping[0] = help_set_rect(20, bottom_y, spriteData.height, 44);//41 abaout to jump
+	jumping[1] = help_set_rect(76, bottom_y, spriteData.height, 40);//57 going up
+	jumping[2] = help_set_rect(131, bottom_y, spriteData.height, 36);//40 reached highest point
+	jumping[3] = help_set_rect(177, bottom_y, spriteData.height, 40);//62 coming down
+	jumping[4] = help_set_rect(224, bottom_y, spriteData.height, 44);//41 REACHED BUTTOM
+	jumping[5] = help_set_rect(284, bottom_y, spriteData.height, 47);//35
+	jumping[6] = help_set_rect(345, bottom_y, spriteData.height, 44);//41
 	unstandardSprite(6, jumping);
 	
 }
 void Goku::blocking()
 {
+	int bottom_y = 515;
 	spriteData.height = 49;
 	spriteData.width = 43;
 
 	RECT shield[3];
-	shield[0] = help_set_rect(777, 290, spriteData.height, 44);
-	shield[1] = help_set_rect(829, 290, spriteData.height, 43);//47
-	shield[2] = help_set_rect(879, 290, spriteData.height, 43);
+	shield[0] = help_set_rect(275, bottom_y, spriteData.height, 44);//49
+	shield[1] = help_set_rect(336, bottom_y, spriteData.height, 43);//47
+	shield[2] = help_set_rect(390, bottom_y, spriteData.height, 43);//49
 	unstandardSprite(2, shield);
 
 }
@@ -127,16 +130,16 @@ void Goku::neutralA()
 }
 void Goku::neutralB()
 {
-	int bottom_y = 357;
-	spriteData.height = 40;
-	spriteData.width = 44;
+	int bottom_y = 1658;
+	spriteData.height = 52;
+	spriteData.width = 43;
 	RECT punch[6];
-	punch[0] = help_set_rect(13, bottom_y, spriteData.height, 44);//50
-	punch[1] = help_set_rect(67, bottom_y, spriteData.height, 43);
-	punch[2] = help_set_rect(120, bottom_y, spriteData.height, 42);//48;
-	punch[3] = help_set_rect(172, bottom_y, spriteData.height, 63);//48
-	punch[4] = help_set_rect(245, bottom_y, spriteData.height, 63);//48
-	punch[5] = help_set_rect(318, bottom_y, spriteData.height, 43);//50
+	punch[0] = help_set_rect(12, bottom_y, spriteData.height, 44);//50
+	punch[1] = help_set_rect(72, bottom_y, spriteData.height, 43);//52
+	punch[2] = help_set_rect(125, bottom_y, spriteData.height, 42);//48;
+	punch[3] = help_set_rect(177, bottom_y, spriteData.height, 63);//48
+	punch[4] = help_set_rect(250, bottom_y, spriteData.height, 63);//48
+	punch[5] = help_set_rect(323, bottom_y, spriteData.height, 43);//50
 	unstandardSprite(5, punch);
 }
 void Goku::sideB()
@@ -193,17 +196,18 @@ void Goku::upB()
 }			
 void Goku::downB()
 {
-	RECT ball[8];
-	ball[0] = help_set_rect(17, 942, 30, 38);//30
-	ball[1] = help_set_rect(68, 942, 58, 49);//58
-	ball[2] = help_set_rect(127, 942, 30, 49);//30
-	ball[3] = help_set_rect(186, 942, 58, 53);//58
-	ball[4] = help_set_rect(249, 942, 30, 39);//30
-	ball[5] = help_set_rect(298, 942, 58, 44);//58
-	ball[6] = help_set_rect(352, 942, 30, 47);//30
-	ball[7] = help_set_rect(408, 942, 58, 44);//58
-	spriteData.height = 58;
-	unstandardSprite(7, ball);
+	int bottom_y = 2237;
+	spriteData.height = 57;
+	spriteData.width = 44;
+
+	RECT ball[6];
+	ball[0] = help_set_rect(6, bottom_y, spriteData.height, 38);//29
+	ball[1] = help_set_rect(50, bottom_y, spriteData.height, 46);//55
+	ball[2] = help_set_rect(117, bottom_y, spriteData.height, 49);//57
+	ball[3] = help_set_rect(186, bottom_y, spriteData.height, 48);//29
+	ball[4] = help_set_rect(250, bottom_y, spriteData.height, 46);//36
+	ball[5] = help_set_rect(315, bottom_y, spriteData.height, 44);//35
+	unstandardSprite(5, ball);
 
 	//int bottom_height = 1187;
 	//RECT power_up[7];
@@ -234,20 +238,22 @@ void Goku::downB()
 }	
 void Goku::standardAttack()
 {
+	int bottom_y = 2799;
 	spriteData.height = 64;
-	spriteData.width = 172;
+	spriteData.width = 42;
 
 	RECT kame[9];
-	kame[0] = help_set_rect(15, 535, spriteData.height, 43);//43,46
-	kame[1] = help_set_rect(68, 535, spriteData.height, 46);//46,46
-	kame[2] = help_set_rect(124, 535, spriteData.height, 46);//49,46
-	kame[3] = help_set_rect(181, 535, spriteData.height, 46);//52,46
-	kame[4] = help_set_rect(237, 535, spriteData.height, 86);//54,86
-	kame[5] = help_set_rect(332, 535, spriteData.height, 93);//54,93
-	kame[6] = help_set_rect(436, 535, spriteData.height, 99);//58,99
-	kame[7] = help_set_rect(542, 535, spriteData.height, 103);//,103
-	kame[8] = help_set_rect(711, 535, spriteData.height, 172);//48,172
+	kame[0] = help_set_rect(13, bottom_y, spriteData.height, 42);//51,46
+	kame[1] = help_set_rect(67, bottom_y, spriteData.height, 44);//48,46
+	kame[2] = help_set_rect(121, bottom_y, spriteData.height, 46);//52,46
+	kame[3] = help_set_rect(177, bottom_y, spriteData.height, 86);//54,46
+	kame[4] = help_set_rect(272, bottom_y, spriteData.height, 93);//54,86
+	kame[5] = help_set_rect(376, bottom_y, spriteData.height, 99);//58,93
+	kame[6] = help_set_rect(482, bottom_y, spriteData.height, 103);//64,99
+	kame[7] = help_set_rect(596, bottom_y, spriteData.height, 171);//,51
+	kame[8] = help_set_rect(13, bottom_y, spriteData.height, 42);//,51
+
 	
-	unstandardSprite(7, kame);
+	unstandardSprite(8, kame);
 
 }
