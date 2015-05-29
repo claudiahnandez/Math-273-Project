@@ -59,12 +59,9 @@ void SquirtleSquad::initialize(HWND hwnd)
 	//player1_->flipHorizontal(true);
 	//player1_->setVelocity(VECTOR2(10, -10));
 
-	//player2_->flipHorizontal(false);
-	//player2_->setVelocity(VECTOR2(10, -10));
-
 	player1_->setX(100);
 	player2_->setX(200);
-	player2_->setX(300);
+	player3_->setX(300);
 
 	//From Pedro: Please don't delete - I will move it to its own class later
 	//--------------------//
