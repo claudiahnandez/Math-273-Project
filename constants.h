@@ -55,7 +55,7 @@ const char MENU_IMAGE[] =     "pictures\\menu.png";      // menu texture
 const char BACKGROUND_IMAGE[] = "pictures\\NarutoBackgroundTest.png";  // background
 const char TEST_IMAGE1[] = "pictures\\test1.png";
 const char GOKU_SPRITE[] = "pictures\\Goku_2.png";
-const char LUFFY_TEST[] = "pictures\\Luffy.png";
+const char LUFFY_TEST[] = "pictures\\testLuffyStrip.png";
 const char PICCOLO_SPRITE[] = "pictures\\Piccolo.png";
 const char PLATFORM_IMAGE[] = "pictures\\default_platform.png";
 
