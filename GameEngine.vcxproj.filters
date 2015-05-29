@@ -214,5 +214,8 @@
     <Text Include="Piccolo High def values.txt">
       <Filter>Documentation</Filter>
     </Text>
+    <Text Include="Luffy Luis%27 Code.txt">
+      <Filter>Documentation</Filter>
+    </Text>
   </ItemGroup>
 </Project>

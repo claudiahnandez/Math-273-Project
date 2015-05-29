@@ -148,6 +148,7 @@
     <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Luffy Luis%27 Code.txt" />
     <Text Include="Piccolo High def values.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
