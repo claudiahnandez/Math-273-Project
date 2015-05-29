@@ -63,39 +63,84 @@ void SquirtleSquad::initialize(HWND hwnd)
 	player2_->setX(200);
 	player3_->setX(300);
 
-	//From Pedro: Please don't delete - I will move it to its own class later
-	//--------------------//
-	//--platform texture--//
-	//--------------------//
+	//From Pedro: Please don't delete
+	//------------------------
+	//--Test platforms texture
+	//------------------------
+
 	//texture
 	if (!platformTexture_.initialize(graphics, PLATFORM_IMAGE, SETCOLOR_ARGB(0, 0, 0, 0)))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing platform texture"));
 
 	//image1
 	if (!platform1_.initialize(this, platformNS::WIDTH, platformNS::HEIGHT, 0, &platformTexture_))
-		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing paddle"));
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing platform"));
 
 	//image2
 	if (!platform2_.initialize(this, platformNS::WIDTH, platformNS::HEIGHT, 0, &platformTexture_))
-		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing paddle"));
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing platform"));
 
 	//image3
 	if (!platform3_.initialize(this, platformNS::WIDTH, platformNS::HEIGHT, 0, &platformTexture_))
-		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing paddle"));
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing platform"));
 
 	//image4
 	if (!platform4_.initialize(this, platformNS::WIDTH, platformNS::HEIGHT, 0, &platformTexture_))
-		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing paddle"));
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing platform"));
 
 	//image5
 	if (!platform5_.initialize(this, platformNS::WIDTH, platformNS::HEIGHT, 0, &platformTexture_))
-		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing paddle"));
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing platform"));
 
 	platform1_.setX(0);
 	platform2_.setX(200);
 	platform3_.setX(400);
 	platform4_.setX(600);
 	platform5_.setX(800);
+
+	//--------------
+	//Energy Attacks
+	//--------------
+	//temporary game textures
+	if (!gameTextures.initialize(graphics, TEXTURES_IMAGE, SETCOLOR_ARGB(0, 0, 0, 0)))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing game textures"));
+
+	// attack 1
+	if (!Energy_Attack_1_.initialize(this, Energy_AttackNS::WIDTH, Energy_AttackNS::HEIGHT, Energy_AttackNS::TEXTURE_COLS, &gameTextures))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing Energy_Attack1"));
+
+
+	Energy_Attack_1_.setFrames(Energy_AttackNS::START_FRAME, Energy_AttackNS::END_FRAME);
+	Energy_Attack_1_.setCurrentFrame(Energy_AttackNS::START_FRAME);
+	Energy_Attack_1_.setColorFilter(SETCOLOR_ARGB(255, 128, 128, 255));   // light blue
+
+	// attack 2
+	if (!Energy_Attack_1_.initialize(this, Energy_AttackNS::WIDTH, Energy_AttackNS::HEIGHT, Energy_AttackNS::TEXTURE_COLS, &gameTextures))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing Energy_Attack1"));
+
+	Energy_Attack_2_.setFrames(Energy_AttackNS::START_FRAME, Energy_AttackNS::END_FRAME);
+	Energy_Attack_2_.setCurrentFrame(Energy_AttackNS::START_FRAME);
+	Energy_Attack_2_.setColorFilter(SETCOLOR_ARGB(255, 255, 255, 64));     // light yellow
+
+	// attack 3
+	if (!Energy_Attack_3_.initialize(this, Energy_AttackNS::WIDTH, Energy_AttackNS::HEIGHT, Energy_AttackNS::TEXTURE_COLS, &gameTextures))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing Energy_Attack1"));
+
+
+	Energy_Attack_3_.setFrames(Energy_AttackNS::START_FRAME, Energy_AttackNS::END_FRAME);
+	Energy_Attack_3_.setCurrentFrame(Energy_AttackNS::START_FRAME);
+	Energy_Attack_3_.setColorFilter(SETCOLOR_ARGB(255, 128, 128, 255));   // light blue
+
+	// attack 4
+	if (!Energy_Attack_4_.initialize(this, Energy_AttackNS::WIDTH, Energy_AttackNS::HEIGHT, Energy_AttackNS::TEXTURE_COLS, &gameTextures))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing Energy_Attack1"));
+
+	Energy_Attack_4_.setFrames(Energy_AttackNS::START_FRAME, Energy_AttackNS::END_FRAME);
+	Energy_Attack_4_.setCurrentFrame(Energy_AttackNS::START_FRAME);
+	Energy_Attack_4_.setColorFilter(SETCOLOR_ARGB(255, 255, 255, 64));     // light yellow
+
+	// health bar
+	//healthBar.initialize(graphics, &gameTextures, 0, spacewarNS::HEALTHBAR_Y, 2.0f, graphicsNS::WHITE);
 
 
     return;
@@ -129,6 +174,22 @@ void SquirtleSquad::update()
 	player2_->move(input, frameTime, 1);
 	player3_->move(input, frameTime, 2);
 
+	if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(0))
+	{
+		Energy_Attack_1_.fire(*&player1_);                  // fire projectile
+	}
+	//if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(1))
+	//{
+	//	Energy_Attack_2_.fire(*&player2_);                  // fire projectile
+	//}	
+	//if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(2))
+	//{
+	//	Energy_Attack_3_.fire(*&player3_);                  // fire projectile
+	//}
+	//if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(3))
+	//{
+	//	Energy_Attack_4_.fire(*&player4_);                  // fire projectile
+	//}
 
 	//--------------------------//
 	//--Test Code for platform--//
@@ -224,28 +285,22 @@ void SquirtleSquad::ai()
 void SquirtleSquad::collisions()
 {
 	VECTOR2 collisionVector;
-	//if (player1_->collidesWith(platform_, collisionVector))
-		//player1_->bounce(collisionVector, platform_);
+	// if collision between energy attack and player2_
+	if (Energy_Attack_1_.collidesWith((Entity&)player2_, collisionVector))
+	{
+		player2_->damage(ENERGY_ATTACK);
+		Energy_Attack_1_.setVisible(false);
+		Energy_Attack_1_.setActive(false);
+		input->gamePadVibrateRight(1, 20000, 0.5);
+	}
+	if (Energy_Attack_1_.collidesWith((Entity&)player1_, collisionVector))
+	{
+		player1_->damage(ENERGY_ATTACK);
+		Energy_Attack_2_.setVisible(false);
+		Energy_Attack_2_.setActive(false);
+		input->gamePadVibrateRight(0, 20000, 0.5);
+	}
 
-	////If collision between fighters
-	//if (player1_->collidesWith(*player2_, collisionVector))
-	//{
-	//	//Bounce off player2
-	//	//player1_->bounce(collisionVector, *player2_);
-	//	player1_.damage(ATTACK_A);
-
-	//	// Change the direction of the collisionVector for player2
-	//	//player2_->bounce(collisionVector*-1, *player1_);
-	//	player2_.damage(ATTACK_A);
-	//}
-
-	//// If collision between ship and planet
-	//if (player1_.collidesWith(player2_, collisionVector))
-	//{
-	//	// Bounce off planet
-	//	player1_.bounce(collisionVector, player2_);
-	//	ship1.damage(PLANET);
-	//}
 }
 
 //=============================================================================

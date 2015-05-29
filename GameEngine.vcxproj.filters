@@ -120,6 +120,9 @@
     <ClCompile Include="Size.cpp">
       <Filter>Source Files\Custom</Filter>
     </ClCompile>
+    <ClCompile Include="Energy_Attack.cpp">
+      <Filter>Source Files\Custom</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fighter.h">
@@ -201,6 +204,9 @@
       <Filter>Header Files\Backgrounds</Filter>
     </ClInclude>
     <ClInclude Include="Size.h">
+      <Filter>Header Files\Custom</Filter>
+    </ClInclude>
+    <ClInclude Include="Energy_Attack.h">
       <Filter>Header Files\Custom</Filter>
     </ClInclude>
   </ItemGroup>

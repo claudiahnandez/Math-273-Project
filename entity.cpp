@@ -234,6 +234,7 @@ bool Entity::collidesWith(Entity &ent, VECTOR2 &collisionVector)
     return true;                    // Entites are colliding.
 }
 
+
 //=============================================================================
 // Circular collision detection method.
 // Called by collision(), default collision detection method.
