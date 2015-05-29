@@ -25,7 +25,7 @@ Fighter::Fighter()
 	collisionType = entityNS::BOX;
 	mass = 5;
 
-}//comit
+}
 
 void Fighter::move(const Input* input, float frameTime)
 {
