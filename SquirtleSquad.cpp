@@ -55,13 +55,18 @@ void SquirtleSquad::initialize(HWND hwnd)
 	player2_->initialize(hwnd, graphics, stage_->get_floor());
 	player3_ = new Naruto();
 	player3_->initialize(hwnd, graphics, stage_->get_floor());
+	player4_ = new Luffy();
+	player4_->initialize(hwnd, graphics, stage_->get_floor());
 
-	//player1_->flipHorizontal(true);
-	//player1_->setVelocity(VECTOR2(10, -10));
+
+	player3_->flipHorizontal(true);
+	player4_->flipHorizontal(true);
+	//player4_->setVelocity(VECTOR2(10, -10));
 
 	player1_->setX(100);
-	player2_->setX(200);
-	player3_->setX(300);
+	player2_->setX(300);
+	player3_->setX(500);
+	player4_->setX(700);
 
 	//From Pedro: Please don't delete
 	//------------------------
@@ -160,6 +165,7 @@ void SquirtleSquad::update()
 	player1_->update(frameTime);
 	player2_->update(frameTime);
 	player3_->update(frameTime);
+	player4_->update(frameTime);
 
 	//----------------------------------------------
 	//Keyboard Input
@@ -173,6 +179,8 @@ void SquirtleSquad::update()
 	player1_->move(input,frameTime, 0 );
 	player2_->move(input, frameTime, 1);
 	player3_->move(input, frameTime, 2);
+	player4_->move(input, frameTime, 3);
+
 
 	if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(0))
 	{
@@ -328,6 +336,8 @@ void SquirtleSquad::render()
 	player1_->draw(graphics);
 	player2_->draw(graphics);
 	player3_->draw(graphics);
+	player4_->draw(graphics);
+
 
     dxFont_->setFontColor(graphicsNS::ORANGE);
     dxFont_->print(message_,20,(int)messageY_);
