@@ -107,7 +107,7 @@ void SquirtleSquad::initialize(HWND hwnd)
 	//Energy Attacks
 	//--------------
 	//temporary game textures
-	if (!gameTextures.initialize(graphics, TEXTURES_IMAGE, SETCOLOR_ARGB(0, 0, 0, 0)))
+	if (!gameTextures.initialize(graphics, TEXTURES_IMAGE, TRANSCOLORR))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing game textures"));
 
 	// attack 1
@@ -118,6 +118,7 @@ void SquirtleSquad::initialize(HWND hwnd)
 	Energy_Attack_1_.setFrames(Energy_AttackNS::START_FRAME, Energy_AttackNS::END_FRAME);
 	Energy_Attack_1_.setCurrentFrame(Energy_AttackNS::START_FRAME);
 	Energy_Attack_1_.setColorFilter(SETCOLOR_ARGB(255, 128, 128, 255));   // light blue
+	Energy_Attack_1_.setScale(2);
 
 	// attack 2
 	if (!Energy_Attack_1_.initialize(this, Energy_AttackNS::WIDTH, Energy_AttackNS::HEIGHT, Energy_AttackNS::TEXTURE_COLS, &gameTextures))
@@ -212,6 +213,8 @@ void SquirtleSquad::update()
 	platform3_.update(frameTime);
 	platform4_.update(frameTime);
 	platform5_.update(frameTime);
+
+	Energy_Attack_1_.update(frameTime);
 
 	//------------------------------
 
@@ -338,6 +341,7 @@ void SquirtleSquad::render()
 	player3_->draw(graphics);
 	player4_->draw(graphics);
 
+	Energy_Attack_1_.draw();
 
     dxFont_->setFontColor(graphicsNS::ORANGE);
     dxFont_->print(message_,20,(int)messageY_);

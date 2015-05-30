@@ -100,7 +100,7 @@ void Fighter::move(const Input* input, float frameTime, const int controller)
 	//Attack
 	else if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(controller))
 	{
-		state_ = FALLING;
+		state_ = STANDARD;
 	}
 
 	// bottom
