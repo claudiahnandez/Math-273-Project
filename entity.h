@@ -591,6 +591,8 @@ class Entity : public Image
     //  r*r  =   (Ax - Bx)   +  (Ay - By)
     //=============================================================================
     void gravityForce(Entity *other, float frameTime);
+
+	Entity* get_entity(){ return this; }
 };
 
 #endif

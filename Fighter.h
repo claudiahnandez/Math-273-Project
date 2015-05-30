@@ -46,6 +46,8 @@ public:
 	void unstandardSprite(int max_frame,RECT animation[]);
 	//used to make fighter stick to ground
 	void stick_to_floor();
+
+	Fighter* get_fighter(){ return this; }
 	//helper function
 	friend RECT help_set_rect(int left, int bottom_y,int height, int width);
 
