@@ -190,12 +190,11 @@ enum Fighter_State
 	SIDE_B,
 	UP_B,
 	DOWN_B,
-	STANDARD
+	STANDARD,
+	HIT,
+	KNOCKED_OUT
 };
 
 // weapon types
 enum WEAPON { ENERGY_ATTACK, PUNCH, BAT, TORPEDO,  SHIP, PLANET };
-
-//can you see it now?
-const bool claudia_nagging = true;
 #endif
