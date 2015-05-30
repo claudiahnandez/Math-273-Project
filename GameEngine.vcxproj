@@ -101,6 +101,7 @@
     <ClCompile Include="Magma.cpp" />
     <ClCompile Include="Mario.cpp" />
     <ClCompile Include="messageDialog.cpp" />
+    <ClCompile Include="Naruto.cpp" />
     <ClCompile Include="net.cpp" />
     <ClCompile Include="Piccolo.cpp" />
     <ClCompile Include="Platform.cpp" />
@@ -131,6 +132,7 @@
     <ClInclude Include="Magma.h" />
     <ClInclude Include="Mario.h" />
     <ClInclude Include="messageDialog.h" />
+    <ClInclude Include="Naruto.h" />
     <ClInclude Include="net.h" />
     <ClInclude Include="Piccolo.h" />
     <ClInclude Include="Platform.h" />

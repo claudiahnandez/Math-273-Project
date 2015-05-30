@@ -53,7 +53,7 @@ void SquirtleSquad::initialize(HWND hwnd)
 	player1_->initialize(hwnd, graphics, stage_->get_floor());
 	player2_ = new Goku();
 	player2_->initialize(hwnd, graphics, stage_->get_floor());
-	player3_ = new Luffy();
+	player3_ = new Naruto();
 	player3_->initialize(hwnd, graphics, stage_->get_floor());
 
 	//player1_->flipHorizontal(true);

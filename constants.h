@@ -57,6 +57,7 @@ const char TEST_IMAGE1[] = "pictures\\test1.png";
 const char GOKU_SPRITE[] = "pictures\\Goku_2.png";
 const char LUFFY_TEST[] = "pictures\\testLuffyStrip.png";
 const char PICCOLO_SPRITE[] = "pictures\\Piccolo.png";
+const char NARUTO_SPRITE[] = "pictures\\Naruto(test).png";
 const char PLATFORM_IMAGE[] = "pictures\\default_platform.png";
 
 //background images
@@ -149,7 +150,8 @@ enum Character
 	GOKU,
 	LUFFY,
 	MARIO,
-	PICCOLO
+	PICCOLO,
+	NARRUTO
 };
 
 //this does not compensate for all the moves

@@ -53,7 +53,16 @@ void Piccolo::running()
 }
 void Piccolo::falling()
 {
+	int bottom_y = 1952;
+	spriteData.height = 62;
+	spriteData.width = 56;
 
+	RECT jumping[4];
+	jumping[0] = help_set_rect(26, bottom_y, spriteData.height, 55);//41
+	jumping[1] = help_set_rect(96, bottom_y, spriteData.height, 51);//49
+	jumping[2] = help_set_rect(163, bottom_y, spriteData.height, 49);//62->reached top
+	jumping[3] = help_set_rect(221, bottom_y, spriteData.height, 56);//56
+	unstandardSprite(3, jumping);
 }
 void Piccolo::jumping()
 {
@@ -72,6 +81,15 @@ void Piccolo::jumping()
 }
 void Piccolo::blocking()
 {
+	int bottom_y = 88;
+	spriteData.height = 47;
+	spriteData.width = 47;
+
+	RECT dashing[3];
+	dashing[0] = help_set_rect(300, bottom_y, spriteData.height, 45);//47
+	dashing[1] = help_set_rect(356, bottom_y, spriteData.height, 50);//45
+	dashing[2] = help_set_rect(415, bottom_y, spriteData.height, 47);//47
+	unstandardSprite(1, dashing);
 
 }
 void Piccolo::neutralA()

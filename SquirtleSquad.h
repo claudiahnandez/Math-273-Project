@@ -22,6 +22,7 @@
 #include "Background.h"
 #include "Swamp.h"
 #include "Magma.h"
+#include "Naruto.h"
 
 //=============================================================================
 // This class is the core of the game
