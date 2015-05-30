@@ -59,6 +59,7 @@ const char LUFFY_TEST[] = "pictures\\testLuffyStrip.png";
 const char PICCOLO_SPRITE[] = "pictures\\Piccolo.png";
 const char NARUTO_SPRITE[] = "pictures\\Naruto(test).png";
 const char PLATFORM_IMAGE[] = "pictures\\default_platform.png";
+const char TEXTURES_IMAGE[] = "pictures\\textures.png";  // game textures
 
 //background images
 const char SWAMP[] = "pictures\\Swamp_.png";
@@ -191,4 +192,7 @@ enum Fighter_State
 	DOWN_B,
 	STANDARD
 };
+
+// weapon types
+enum WEAPON { ENERGY_ATTACK, PUNCH, BAT, TORPEDO,  SHIP, PLANET };
 #endif

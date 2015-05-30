@@ -528,6 +528,7 @@ class Entity : public Image
     //=============================================================================
     virtual bool intersects(Entity &ent, VECTOR2 &collisionVector);
 
+
     //=============================================================================
     // Perform collision detection between this entity and the other Entity.
     // Calls intersects function.
@@ -551,6 +552,7 @@ class Entity : public Image
     //         onto a box, the collision vector would point up (-Y).
     //=============================================================================
     virtual bool collidesWith(Entity &ent, VECTOR2 &collisionVector);
+
 
     //=============================================================================
     // damage

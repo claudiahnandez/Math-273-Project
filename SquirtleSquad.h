@@ -22,6 +22,7 @@
 #include "Background.h"
 #include "Swamp.h"
 #include "Magma.h"
+#include "Energy_Attack.h"
 #include "Naruto.h"
 
 //=============================================================================
@@ -45,17 +46,16 @@ public:
 
 private:
     // game items
-    TextureManager menuTexture_, backgroundTexture_; // textures
+	TextureManager menuTexture_, backgroundTexture_, gameTextures; // textures
     Image   menu_;               // menu image
-    Image   background_;         // background image
+    //Image   background_;         // background image
 
 	Fighter* player1_;
 	Fighter* player2_;
-	Background* stage_;
-
-	//stretch goals
 	Fighter* player3_;
 	Fighter* player4_;
+
+	Background* stage_;
 
 	TextureManager platformTexture_;   //platform texture
 	Platform platform1_;
@@ -63,6 +63,11 @@ private:
 	Platform platform3_;
 	Platform platform4_;
 	Platform platform5_;
+
+	Enery_Attack Energy_Attack_1_;
+	Enery_Attack Energy_Attack_2_;
+	Enery_Attack Energy_Attack_3_;
+	Enery_Attack Energy_Attack_4_;
 
     TextDX  *dxFont_;            // DirectX font
     std::string  message_;

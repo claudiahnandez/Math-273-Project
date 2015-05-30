@@ -123,6 +123,9 @@
     <ClCompile Include="Naruto.cpp">
       <Filter>Source Files\Fighters</Filter>
     </ClCompile>
+    <ClCompile Include="Energy_Attack.cpp">
+      <Filter>Source Files\Custom</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fighter.h">
@@ -208,6 +211,9 @@
     </ClInclude>
     <ClInclude Include="Naruto.h">
       <Filter>Header Files\Fighters</Filter>
+    </ClInclude>
+    <ClInclude Include="Energy_Attack.h">
+      <Filter>Header Files\Custom</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
