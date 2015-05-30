@@ -242,20 +242,20 @@ void Naruto::downB()
 }
 void Naruto::standardAttack()
 {
-	int bottom_y = 2799;
+	int bottom_y = 2789;
 	spriteData.height = 64;
 	spriteData.width = 42;
 
 	RECT kame[9];
-	kame[0] = help_set_rect(13, bottom_y, spriteData.height, 42);//51,46
-	kame[1] = help_set_rect(67, bottom_y, spriteData.height, 44);//48,46
-	kame[2] = help_set_rect(121, bottom_y, spriteData.height, 46);//52,46
-	kame[3] = help_set_rect(177, bottom_y, spriteData.height, 86);//54,46
-	kame[4] = help_set_rect(272, bottom_y, spriteData.height, 93);//54,86
-	kame[5] = help_set_rect(376, bottom_y, spriteData.height, 99);//58,93
-	kame[6] = help_set_rect(482, bottom_y, spriteData.height, 103);//64,99
-	kame[7] = help_set_rect(596, bottom_y, spriteData.height, 171);//,51
-	kame[8] = help_set_rect(13, bottom_y, spriteData.height, 42);//,51
+	kame[0] = help_set_rect(18, bottom_y, spriteData.height, 32);//50
+	kame[1] = help_set_rect(65, bottom_y, spriteData.height, 39);//48
+	kame[2] = help_set_rect(117, bottom_y, spriteData.height, 39);//48
+	kame[3] = help_set_rect(185, bottom_y, spriteData.height, 48);//43
+	kame[4] = help_set_rect(248, bottom_y, spriteData.height, 49);//43
+	kame[5] = help_set_rect(325, bottom_y, spriteData.height, 60);//41
+	kame[6] = help_set_rect(398, bottom_y, spriteData.height, 57);//41
+	kame[7] = help_set_rect(468, bottom_y, spriteData.height, 54);//40
+	kame[8] = help_set_rect(534, bottom_y, spriteData.height, 54);//40
 
 
 	unstandardSprite(8, kame);
