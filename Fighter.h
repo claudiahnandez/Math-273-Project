@@ -49,7 +49,7 @@ public:
 
 	Fighter* get_fighter(){ return this; }
 	//helper function
-	friend RECT help_set_rect(int left, int bottom_y,int height, int width)
+	friend RECT help_set_rect(int left, int bottom_y, int height, int width);
 	//calculates damage and aplies it to the entity health
 	void damage(WEAPON);
 
