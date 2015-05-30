@@ -294,16 +294,16 @@ void SquirtleSquad::collisions()
 {
 	VECTOR2 collisionVector;
 	// if collision between energy attack and player2_
-	if (Energy_Attack_1_.collidesWith((Entity&)player2_, collisionVector))
+	if (Energy_Attack_1_.collidesWith(*(Entity*)(player2_->get_entity()), collisionVector))
 	{
-		player2_->damage(ENERGY_ATTACK);
+		//player2_->damage(ENERGY_ATTACK);
 		Energy_Attack_1_.setVisible(false);
 		Energy_Attack_1_.setActive(false);
 		input->gamePadVibrateRight(1, 20000, 0.5);
 	}
-	if (Energy_Attack_1_.collidesWith((Entity&)player1_, collisionVector))
+	if (Energy_Attack_1_.collidesWith(*(Entity*)(player1_->get_entity()), collisionVector))
 	{
-		player1_->damage(ENERGY_ATTACK);
+		//player1_->damage(ENERGY_ATTACK);
 		Energy_Attack_2_.setVisible(false);
 		Energy_Attack_2_.setActive(false);
 		input->gamePadVibrateRight(0, 20000, 0.5);
