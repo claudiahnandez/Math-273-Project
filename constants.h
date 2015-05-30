@@ -195,4 +195,7 @@ enum Fighter_State
 
 // weapon types
 enum WEAPON { ENERGY_ATTACK, PUNCH, BAT, TORPEDO,  SHIP, PLANET };
+
+//can you see it now?
+const bool claudia_nagging = true;
 #endif
