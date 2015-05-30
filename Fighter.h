@@ -49,8 +49,9 @@ public:
 
 	Fighter* get_fighter(){ return this; }
 	//helper function
-	friend RECT help_set_rect(int left, int bottom_y,int height, int width);
-
+	friend RECT help_set_rect(int left, int bottom_y, int height, int width);
+	//calculates damage and aplies it to the entity health
+	void damage(WEAPON);
 
 
 protected:
@@ -61,6 +62,7 @@ protected:
 	int old_width_;
 	double acceleration_ = 100;
 	double max_speed_ = 500;
+	bool shieldOn_;
 
 	TextureManager texture_;//saves image from sprite sheet
 	Character character_;

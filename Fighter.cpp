@@ -312,3 +312,29 @@ void Fighter::stick_to_floor()
 	}
 }
 
+void Fighter::damage(WEAPON weapon)
+{
+	if (shieldOn_)
+		return;
+
+	switch (weapon)
+	{
+	case TORPEDO:
+		//audio->playCue(TORPEDO_HIT);
+		// -= FighterNS::TORPEDO_DAMAGE;
+		break;
+	case SHIP:
+		//audio->playCue(COLLIDE);    // play sound
+		//health -= shipNS::SHIP_DAMAGE;
+		break;
+	case PLANET:
+		health = 0;
+		break;
+	}
+	if (health <= 0)
+	{
+		//explode();
+	}
+	else
+		shieldOn_ = true;
+}
