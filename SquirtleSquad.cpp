@@ -156,7 +156,7 @@ void SquirtleSquad::initialize(HWND hwnd)
 
 	audio->playCue(ACTION_THEME);
 	//audio->playCue(BOSS_BATTLE_THEME);
-
+	//test
 	
 
     return;
