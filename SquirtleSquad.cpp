@@ -118,7 +118,7 @@ void SquirtleSquad::initialize(HWND hwnd)
 	Energy_Attack_1_.setFrames(Energy_AttackNS::START_FRAME, Energy_AttackNS::END_FRAME);
 	Energy_Attack_1_.setCurrentFrame(Energy_AttackNS::START_FRAME);
 	Energy_Attack_1_.setColorFilter(SETCOLOR_ARGB(255, 128, 128, 255));   // light blue
-	Energy_Attack_1_.setScale(2);
+	Energy_Attack_1_.setScale(4);
 
 	// attack 2
 	if (!Energy_Attack_1_.initialize(this, Energy_AttackNS::WIDTH, Energy_AttackNS::HEIGHT, Energy_AttackNS::TEXTURE_COLS, &gameTextures))
@@ -127,15 +127,18 @@ void SquirtleSquad::initialize(HWND hwnd)
 	Energy_Attack_2_.setFrames(Energy_AttackNS::START_FRAME, Energy_AttackNS::END_FRAME);
 	Energy_Attack_2_.setCurrentFrame(Energy_AttackNS::START_FRAME);
 	Energy_Attack_2_.setColorFilter(SETCOLOR_ARGB(255, 255, 255, 64));     // light yellow
+	Energy_Attack_2_.setScale(1);
+
 
 	// attack 3
 	if (!Energy_Attack_3_.initialize(this, Energy_AttackNS::WIDTH, Energy_AttackNS::HEIGHT, Energy_AttackNS::TEXTURE_COLS, &gameTextures))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing Energy_Attack1"));
 
-
 	Energy_Attack_3_.setFrames(Energy_AttackNS::START_FRAME, Energy_AttackNS::END_FRAME);
 	Energy_Attack_3_.setCurrentFrame(Energy_AttackNS::START_FRAME);
 	Energy_Attack_3_.setColorFilter(SETCOLOR_ARGB(255, 128, 128, 255));   // light blue
+	Energy_Attack_3_.setScale(1);
+
 
 	// attack 4
 	if (!Energy_Attack_4_.initialize(this, Energy_AttackNS::WIDTH, Energy_AttackNS::HEIGHT, Energy_AttackNS::TEXTURE_COLS, &gameTextures))
@@ -144,6 +147,8 @@ void SquirtleSquad::initialize(HWND hwnd)
 	Energy_Attack_4_.setFrames(Energy_AttackNS::START_FRAME, Energy_AttackNS::END_FRAME);
 	Energy_Attack_4_.setCurrentFrame(Energy_AttackNS::START_FRAME);
 	Energy_Attack_4_.setColorFilter(SETCOLOR_ARGB(255, 255, 255, 64));     // light yellow
+	Energy_Attack_4_.setScale(1);
+
 
 	// health bar
 	//healthBar.initialize(graphics, &gameTextures, 0, spacewarNS::HEALTHBAR_Y, 2.0f, graphicsNS::WHITE);

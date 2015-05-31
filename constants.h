@@ -191,7 +191,9 @@ enum Fighter_State
 	SIDE_B,
 	UP_B,
 	DOWN_B,
-	STANDARD
+	STANDARD,
+	HIT,
+	KNOCKED_OUT
 };
 
 // weapon types
