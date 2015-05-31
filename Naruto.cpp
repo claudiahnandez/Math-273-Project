@@ -243,8 +243,8 @@ void Naruto::downB()
 void Naruto::standardAttack()
 {
 	int bottom_y = 2789;
-	spriteData.height = 64;
-	spriteData.width = 42;
+	spriteData.height = 48;
+	spriteData.width = 54;
 
 	RECT kame[9];
 	kame[0] = help_set_rect(18, bottom_y, spriteData.height, 32);//50

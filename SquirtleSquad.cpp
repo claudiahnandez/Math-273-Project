@@ -107,7 +107,7 @@ void SquirtleSquad::initialize(HWND hwnd)
 	//Energy Attacks
 	//--------------
 	//temporary game textures
-	if (!gameTextures.initialize(graphics, TEXTURES_IMAGE, TRANSCOLORR))
+	if (!gameTextures.initialize(graphics, BALL, NARUTO_TRANSCOLOR))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing game textures"));
 
 	// attack 1

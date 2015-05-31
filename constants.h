@@ -60,6 +60,7 @@ const char PICCOLO_SPRITE[] = "pictures\\Piccolo.png";
 const char NARUTO_SPRITE[] = "pictures\\Naruto(test).png";
 const char PLATFORM_IMAGE[] = "pictures\\default_platform.png";
 const char TEXTURES_IMAGE[] = "pictures\\textures.png";  // game textures
+const char BALL[] = "pictures\\ball_test.png"; 
 
 //background images
 const char SWAMP[] = "pictures\\Swamp_.png";
@@ -195,7 +196,4 @@ enum Fighter_State
 
 // weapon types
 enum WEAPON { ENERGY_ATTACK, PUNCH, BAT, TORPEDO,  SHIP, PLANET };
-
-//can you see it now?
-const bool claudia_nagging = true;
 #endif

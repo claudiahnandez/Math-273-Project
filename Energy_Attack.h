@@ -6,15 +6,15 @@
 
 namespace Energy_AttackNS
 {
-	const int   WIDTH = 32;             // image width
-	const int   HEIGHT = 32;           // image height
+	const int   WIDTH = 16;             // image width
+	const int   HEIGHT = 22;           // image height
 	const int   COLLISION_RADIUS = 4;   // for circular collision
-	const float SPEED = 200;            // pixels per second
+	const float SPEED = 400;            // pixels per second
 	const float MASS = 300.0f;          // mass
-	const float FIRE_DELAY = 4.0f;      // 4 seconds between torpedo firing
-	const int   TEXTURE_COLS = 8;       // texture has 8 columns
-	const int   START_FRAME = 40;       // starts at frame 40
-	const int   END_FRAME = 43;         // animation frames 40,41,42,43
+	const float FIRE_DELAY = 2.0f;      // 4 seconds between torpedo firing
+	const int   TEXTURE_COLS = 3;       // texture has 8 columns
+	const int   START_FRAME = 2;       // starts at frame 40
+	const int   END_FRAME = 2;         // animation frames 40,41,42,43
 	const float ANIMATION_DELAY = 0.1f; // time between frames
 }
 
