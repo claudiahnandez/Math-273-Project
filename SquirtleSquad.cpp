@@ -17,6 +17,7 @@ SquirtleSquad::SquirtleSquad() : Game()
 	player3_ = NULL;
 	player4_ = NULL;
 	stage_ = NULL;
+	musicOff = false;
     dxFont_ = new TextDX();  // DirectX font
     messageY_ = 0;
 }
@@ -153,6 +154,10 @@ void SquirtleSquad::initialize(HWND hwnd)
 	// health bar
 	//healthBar.initialize(graphics, &gameTextures, 0, spacewarNS::HEALTHBAR_Y, 2.0f, graphicsNS::WHITE);
 
+	audio->playCue(ACTION_THEME);
+	//audio->playCue(BOSS_BATTLE_THEME);
+
+	
 
     return;
 }
