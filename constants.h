@@ -67,11 +67,24 @@ const char MAGMA[] = "pictures\\Magma.png";
 
 // audio files required by audio.cpp
 // WAVE_BANK must be location of .xwb file.
-const char WAVE_BANK[]  = "";
+const char WAVE_BANK[] = "audio\\Win\\waveBank.xwb";
 // SOUND_BANK must be location of .xsb file.
-const char SOUND_BANK[] = "";
+const char SOUND_BANK[] = "audio\\Win\\soundBank.xsb";
 // XGS_FILE must be location of .xgs file.
-const char XGS_FILE[]   = "";
+const char XGS_FILE[] = "audio\\Win\\SpaceWar.xgs";
+
+// audio cues
+const char CHEER[] = "cheer";
+const char COLLIDE[] = "collide";
+const char EXPLODE[] = "explode";
+const char ENGINE1[] = "engine1";
+const char ENGINE2[] = "engine2";
+const char TORPEDO_CRASH[] = "torpedoCrash";
+const char TORPEDO_FIRE[] = "torpedoFire";
+const char TORPEDO_HIT[] = "torpedoHit";
+const char ACTION_THEME[] = "actionTheme";
+const char BOSS_BATTLE_THEME[] = "8-Bit_Boss_Battle4-ByEliteFerrex";
+const char PACIFIC_THEME[] = "pacificTheme";
 
 // audio cues
 

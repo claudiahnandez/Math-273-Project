@@ -48,6 +48,8 @@ private:
     // game items
 	TextureManager menuTexture_, backgroundTexture_, gameTextures; // textures
     Image   menu_;               // menu image
+	bool    musicOff;           // true to turn music off
+
     //Image   background_;         // background image
 
 	Fighter* player1_;
