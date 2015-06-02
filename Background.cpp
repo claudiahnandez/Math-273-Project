@@ -3,18 +3,28 @@
 
 Background::Background()
 {
-	floor_ = 0;
+	/*floor_ = 0;
 	spriteData.scale = 1;
 	spriteData.x = 0;
 	spriteData.y = 0;
-
+	
 	background_location_ = "";
 	endFrame = 1;
 	frameDelay = 0.2;
+*/
 	//width_ = 516;
 	//height_ = 548;
 	//floor_ = 38;
 	//background_location_ = BACKGROUND_IMAGE;
+
+	floor_ = 25;
+	background_location_ = "";
+	spriteData.width = 516;
+	spriteData.height = 400;
+	spriteData.scale = 1;
+	endFrame = 0;
+	frameDelay = 0.22;
+
 }
 
 void Background::initialize(HWND hwnd, Graphics*& graphics)
@@ -58,4 +68,11 @@ void Background::set_animation(RECT animation[])
 int Background::get_floor()
 {
 	return floor_;
+}
+
+void Background::set_image()
+{
+	RECT image[1];
+	image[0] = help_set_rect(0, spriteData.height, spriteData.height, spriteData.width);
+	set_animation(image);
 }

@@ -89,6 +89,7 @@
   <ItemGroup>
     <ClCompile Include="audio.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="Budakai.cpp" />
     <ClCompile Include="console.cpp" />
     <ClCompile Include="dashboard.cpp" />
     <ClCompile Include="Energy_Attack.cpp" />
@@ -98,6 +99,7 @@
     <ClCompile Include="Goku.cpp" />
     <ClCompile Include="graphics.cpp" />
     <ClCompile Include="inputDialog.cpp" />
+    <ClCompile Include="Kenshin_Stage.cpp" />
     <ClCompile Include="Luffy.cpp" />
     <ClCompile Include="Magma.cpp" />
     <ClCompile Include="Mario.cpp" />
@@ -114,11 +116,13 @@
     <ClCompile Include="SquirtleSquad.cpp" />
     <ClCompile Include="image.cpp" />
     <ClCompile Include="textDX.cpp" />
+    <ClCompile Include="Training_Stage.cpp" />
     <ClCompile Include="winmain.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="audio.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="Budakai.h" />
     <ClInclude Include="console.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="dashboard.h" />
@@ -130,6 +134,7 @@
     <ClInclude Include="Goku.h" />
     <ClInclude Include="graphics.h" />
     <ClInclude Include="inputDialog.h" />
+    <ClInclude Include="Kenshin_Stage.h" />
     <ClInclude Include="Luffy.h" />
     <ClInclude Include="Magma.h" />
     <ClInclude Include="Mario.h" />
@@ -146,6 +151,7 @@
     <ClInclude Include="SquirtleSquad.h" />
     <ClInclude Include="image.h" />
     <ClInclude Include="textDX.h" />
+    <ClInclude Include="Training_Stage.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Change log.txt" />

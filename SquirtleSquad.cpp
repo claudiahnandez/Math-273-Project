@@ -18,6 +18,7 @@ SquirtleSquad::SquirtleSquad() : Game()
 	player4_ = NULL;
 	stage_ = NULL;
 	musicOff = false;
+	menuOn = true;
     dxFont_ = new TextDX();  // DirectX font
     messageY_ = 0;
 }
@@ -46,7 +47,7 @@ void SquirtleSquad::initialize(HWND hwnd)
 	//use the dimmensions from stage to set game
     Game::initialize(hwnd); // throws GameError
 
-	stage_ = new Magma;
+	stage_ = new Budakai;
 	stage_->initialize(hwnd, graphics);
 
 
@@ -183,9 +184,9 @@ void SquirtleSquad::update()
 	input->readControllers();
 	/*if (input->getGamepadConnected(0))
 	{
-		input->gamePadVibrateLeft(0, 65535, 1.0);
-	}*/
-
+		input->gamePadVibrateLeft(1, 65535, 1.0);
+	}
+*/
 
 	player1_->move(input,frameTime, 0 );
 	player2_->move(input, frameTime, 1);
@@ -348,8 +349,8 @@ void SquirtleSquad::render()
 	//----------------------------------
 	player1_->draw(graphics);
 	player2_->draw(graphics);
-	player3_->draw(graphics);
-	player4_->draw(graphics);
+	//player3_->draw(graphics);
+	//player4_->draw(graphics);
 
 	Energy_Attack_1_.draw();
 

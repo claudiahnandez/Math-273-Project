@@ -24,6 +24,9 @@
 #include "Magma.h"
 #include "Energy_Attack.h"
 #include "Naruto.h"
+#include "Training_Stage.h"
+#include "Kenshin_Stage.h"
+#include "Budakai.h"
 
 //=============================================================================
 // This class is the core of the game
@@ -49,6 +52,7 @@ private:
 	TextureManager menuTexture_, backgroundTexture_, gameTextures; // textures
     Image   menu_;               // menu image
 	bool    musicOff;           // true to turn music off
+	bool menuOn;
 
     //Image   background_;         // background image
 

@@ -36,8 +36,8 @@
 const char CLASS_NAME[] = "whatever";
 const char GAME_TITLE[] = "Game Engine v4.0 Demo";
 const bool FULLSCREEN = false;              // windowed or fullscreen
-const UINT GAME_WIDTH = 800;//640;               // width of game in pixels
-const UINT GAME_HEIGHT = 336;//480;               // height of game in pixels
+const UINT GAME_WIDTH = 516;//640;               // width of game in pixels
+const UINT GAME_HEIGHT = 400;//480;               // height of game in pixels
 const int SPEED_ = 250;//pixels per second
 const int MARIO_SPEED = 250;//changed MARIO_SPEED
  
@@ -65,6 +65,10 @@ const char BALL[] = "pictures\\ball_test.png";
 //background images
 const char SWAMP[] = "pictures\\Swamp_.png";
 const char MAGMA[] = "pictures\\Magma.png";
+const char TRAINING_STAGE[] = "pictures\\backgrounds\\TrainingStage_.png";
+const char KESHIN_STAGE[] = "pictures\\backgrounds\\KenshinStage.png";
+const char BUDAKAI[] = "pictures\\backgrounds\\Budakai.png";
+
 
 // audio files required by audio.cpp
 // WAVE_BANK must be location of .xwb file.
