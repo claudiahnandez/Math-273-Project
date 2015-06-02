@@ -90,6 +90,7 @@
     <ClCompile Include="audio.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Budakai.cpp" />
+    <ClCompile Include="Character_Menu.cpp" />
     <ClCompile Include="console.cpp" />
     <ClCompile Include="dashboard.cpp" />
     <ClCompile Include="Energy_Attack.cpp" />
@@ -123,6 +124,7 @@
     <ClInclude Include="audio.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Budakai.h" />
+    <ClInclude Include="Character_Menu.h" />
     <ClInclude Include="console.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="dashboard.h" />

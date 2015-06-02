@@ -84,35 +84,6 @@ Size::Size(Fighter_State state, Character ch)
 			break;
 		}
 		break;
-	case MARIO:
-		switch (state)
-		{
-		case STANDING:
-			break;
-		case WALKING:
-			break;
-		case BLOCKING:
-			break;
-		case RUNNING:
-			break;
-		case JUMPING:
-			break;
-		case FALLING:
-			break;
-		case NEUTRAL_A:
-			break;
-		case NEUTRAL_B:
-			break;
-		case SIDE_B:
-			break;
-		case UP_B:
-			break;
-		case DOWN_B:
-			break;
-		case STANDARD:
-			break;
-		}
-		break;
 	case PICCOLO:
 		switch (state)
 		{
@@ -254,36 +225,6 @@ Frame::Frame(Fighter_State state, Character ch)
 			frames_ = 7;
 			width_Start_ = 0;
 			height_Start_ = 99;
-			break;
-		case UP_B:
-			break;
-		case DOWN_B:
-			break;
-		case STANDARD:
-			break;
-		}
-		break;
-	//Mario
-	case MARIO:
-		switch (state)
-		{
-		case STANDING:
-			break;
-		case WALKING:
-			break;
-		case BLOCKING:
-			break;
-		case RUNNING:
-			break;
-		case JUMPING:
-			break;
-		case FALLING:
-			break;
-		case NEUTRAL_A:
-			break;
-		case NEUTRAL_B:
-			break;
-		case SIDE_B:
 			break;
 		case UP_B:
 			break;

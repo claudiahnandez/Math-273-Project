@@ -27,6 +27,11 @@
 #include "Training_Stage.h"
 #include "Kenshin_Stage.h"
 #include "Budakai.h"
+#include "Character_Menu.h"
+
+
+const char FONT[] = "Arial Bold";  // font
+const COLOR_ARGB FONT_COLOR = graphicsNS::YELLOW;
 
 //=============================================================================
 // This class is the core of the game
@@ -49,10 +54,12 @@ public:
 
 private:
     // game items
-	TextureManager menuTexture_, backgroundTexture_, gameTextures; // textures
+	TextureManager s_menuTexture_, backgroundTexture_, gameTextures; // textures
+	Image s_menuImage;
     Image   menu_;               // menu image
 	bool    musicOff;           // true to turn music off
 	bool menuOn;
+	bool char_select;
 
     //Image   background_;         // background image
 
@@ -62,6 +69,7 @@ private:
 	Fighter* player4_;
 
 	Background* stage_;
+	Character_Menu char_selection;
 
 	TextureManager platformTexture_;   //platform texture
 	Platform platform1_;

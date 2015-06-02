@@ -61,6 +61,8 @@ const char NARUTO_SPRITE[] = "pictures\\Naruto(test).png";
 const char PLATFORM_IMAGE[] = "pictures\\default_platform.png";
 const char TEXTURES_IMAGE[] = "pictures\\textures.png";  // game textures
 const char BALL[] = "pictures\\ball_test.png"; 
+const char START_MENU[] = "pictures\\start_menu.png";
+const char CHARACTER_SELECTION[] = "pictures\\Character Select.png";
 
 //background images
 const char SWAMP[] = "pictures\\Swamp_.png";
@@ -168,10 +170,9 @@ inline void safeOnResetDevice(T& ptr)
 enum Character
 {
 	GOKU,
-	LUFFY,
-	MARIO,
 	PICCOLO,
-	NARRUTO
+	NARRUTO,
+	LUFFY
 };
 
 //this does not compensate for all the moves

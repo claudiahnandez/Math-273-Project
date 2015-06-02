@@ -24,6 +24,7 @@ Background::Background()
 	spriteData.scale = 1;
 	endFrame = 0;
 	frameDelay = 0.22;
+	
 
 }
 

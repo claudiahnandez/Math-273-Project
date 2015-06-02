@@ -135,6 +135,9 @@
     <ClCompile Include="Budakai.cpp">
       <Filter>Source Files\Backgrounds</Filter>
     </ClCompile>
+    <ClCompile Include="Character_Menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fighter.h">
@@ -232,6 +235,9 @@
     </ClInclude>
     <ClInclude Include="Budakai.h">
       <Filter>Header Files\Backgrounds</Filter>
+    </ClInclude>
+    <ClInclude Include="Character_Menu.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
