@@ -15,8 +15,6 @@ SquirtleSquad::SquirtleSquad() : Game()
 	
 	player1_ = NULL;
 	player2_ = NULL;
-	//player3_ = NULL;
-	//player4_ = NULL;
 	stage_ = NULL;
 	musicOff = false;
 	menuOn = true;
@@ -49,42 +47,12 @@ void SquirtleSquad::initialize(HWND hwnd)
 	//use the dimmensions from stage to set game
     Game::initialize(hwnd); // throws GameError
 
-	stage_ = new Budakai;
+	stage_ = new Kenshin_Stage();
 	stage_->initialize(hwnd, graphics);
 	play1_select.initialize(hwnd, graphics, false);//player 1 character selection
 	play2_select.initialize(hwnd, graphics, true);//player 2 character selection
 
-	//player1_ = new Piccolo();
-	//player1_->initialize(hwnd, graphics, stage_->get_floor());
-	//player2_ = new Goku();
-	//player2_->initialize(hwnd, graphics, stage_->get_floor());
-	///*player3_ = new Naruto();
-	//player3_->initialize(hwnd, graphics, stage_->get_floor());
-	//player4_ = new Luffy();
-	//player4_->initialize(hwnd, graphics, stage_->get_floor());*/
-
-
-	//player3_->flipHorizontal(true);
-	//player4_->flipHorizontal(true);
-	//player4_->setVelocity(VECTOR2(10, -10));
-
-	/*player1_->setX(100);
-	player2_->setX(300);*/
-	/*player3_->setX(500);
-	player4_->setX(700);*/
-
-	//player1_->setCollisionType(entityNS::BOX);
-	//player2_->setCollisionType(entityNS::BOX);
-	//player3_->setCollisionType(entityNS::BOX);
-	//player4_->setCollisionType(entityNS::BOX);
-
-	//player1_->setActive(true);
-	//player2_->setActive(true);
-	//player3_->setActive(true);
-	//player4_->setActive(true);
-
-
-
+	
 	//From Pedro: Please don't delete
 	//------------------------
 	//--Test platforms texture
@@ -209,9 +177,6 @@ void SquirtleSquad::initialize(HWND hwnd)
 	hitbox3_.disable();
 	hitbox4_.disable();
 
-	// health bar
-	//healthBar.initialize(graphics, &gameTextures, 0, spacewarNS::HEALTHBAR_Y, 2.0f, graphicsNS::WHITE);
-
 	//audio->playCue(ACTION_THEME);
 	//audio->playCue(BOSS_BATTLE_THEME);
 
@@ -227,7 +192,7 @@ void SquirtleSquad::update()
 {
 	if (menuOn)
 	{
-		if (input->anyKeyPressed())
+		if (input->anyKeyPressed() ^ (input->getGamepadStart(0) || input->getGamepadStart(1)))
 		{
 			menuOn = false;
 			char_select = true;
@@ -256,15 +221,15 @@ void SquirtleSquad::update()
 
 		//player 2 choose
 		//player 1 choose
-		if (input->isKeyDown(VK_LEFT))
+		if (input->getGamepadLeftShoulder(1))
 		{
 			play2_select.left_change_character();
 		}
-		if (input->isKeyDown(VK_RIGHT))
+		if (input->getGamepadRightShoulder(1))
 		{
 			play2_select.right_change_character();
 		}
-		if (input->isKeyDown(VK_SPACE))
+		if (input->getGamepadA(1))
 		{
 			player2 = play2_select.chosen_character();
 			play2_selected = true;
@@ -308,6 +273,11 @@ void SquirtleSquad::update()
 			}
 			player2_->initialize(hwnd, graphics, stage_->get_floor());
 
+			//addding health bar
+			player1_bar.initialize(hwnd, graphics, false, player1);
+			player2_bar.initialize(hwnd, graphics, true, player2);
+
+
 			player1_->setCollisionType(entityNS::BOX);
 			player2_->setCollisionType(entityNS::BOX);
 
@@ -336,21 +306,17 @@ void SquirtleSquad::update()
 
 	player1_->update(frameTime);
 	player2_->update(frameTime);
-		/*player3_->update(frameTime);
-		player4_->update(frameTime);*/
+
+	player1_bar.update(frameTime);
+	player2_bar.update(frameTime);
 
 	//----------------------------------------------
 	//Keyboard Input
 	input->readControllers();
-	/*if (input->getGamepadConnected(0))
-	{
-		input->gamePadVibrateLeft(0, 65535, 1.0);
-	}*/
 
 		player1_->move(input, frameTime, 0);
 		player2_->move(input, frameTime, 1);
-	/*	player3_->move(input, frameTime, 2);
-		player4_->move(input, frameTime, 3);*/
+	
 
 		//-------------------------------
 		//move hitbox to players position
@@ -376,27 +342,12 @@ void SquirtleSquad::update()
 	{
 		Energy_Attack_1_.fire(*&player1_);                  // fire projectile
 	}
-	//if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(1))
-	//{
-	//	Energy_Attack_2_.fire(*&player2_);                  // fire projectile
-	//}	
-	//if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(2))
-	//{
-	//	Energy_Attack_3_.fire(*&player3_);                  // fire projectile
-	//}
-	//if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(3))
-	//{
-	//	Energy_Attack_4_.fire(*&player4_);                  // fire projectile
-	//}
-
+	
 	//--------------------------//
 	//--Test Code for platform--//
 	//--------------------------//
 
-	//if (input->isKeyDown(VK_LEFT))
-	//	platform_.setX(platform_.getX() - platformNS::SPEED*frameTime);
-	//else if (input->isKeyDown(VK_RIGHT))
-	//	platform_.setX(platform_.getX() + platformNS::SPEED*frameTime);
+
 	platform1_.update(frameTime);
 	platform2_.update(frameTime);
 	platform3_.update(frameTime);
@@ -407,70 +358,6 @@ void SquirtleSquad::update()
 
 	//------------------------------
 
-/*//Old input code (moved to fighter class)
-
-	if (input->isKeyDown(VK_RIGHT))	// If move right
-	{
-		marioWalkRunImage_.setX(marioWalkRunImage_.getX() + frameTime * SPEED_);
-		if (marioWalkRunImage_.getX() > GAME_WIDTH) // If offscreen right
-			marioWalkRunImage_.setX((float)-marioWalkRunImage_.getWidth()); // Position offscreen left
-	}
-	if (input->isKeyDown(VK_LEFT))	// If move left
-	{
-		marioWalkRunImage_.setX(marioWalkRunImage_.getX() - frameTime * SPEED_);
-		if (marioWalkRunImage_.getX() < -marioWalkRunImage_.getWidth()) // If offscreen left
-			marioWalkRunImage_.setX((float)GAME_WIDTH); // Position offscreen right
-	}
-	if (input->isKeyDown(VK_UP))	// If move up
-	{
-		marioWalkRunImage_.setY(marioWalkRunImage_.getY() - frameTime * SPEED_);
-		if (marioWalkRunImage_.getY() < -marioWalkRunImage_.getHeight()) // If offscreen top
-			marioWalkRunImage_.setY((float)GAME_HEIGHT); // Position offscreen
-		// bottom
-	}
-	if (input->isKeyDown(VK_DOWN))	// If move down
-	{
-		marioWalkRunImage_.setY(marioWalkRunImage_.getY() + frameTime * SPEED_);
-		if (marioWalkRunImage_.getY() > GAME_HEIGHT) // If offscreen bottom
-			marioWalkRunImage_.setY((float)-marioWalkRunImage_.getHeight());// Position offscreen top
-	}
-*/
-
-
-/*// Automatic walk (left here for future reference)
-
-	marioWalkRunImage_.setX(marioWalkRunImage_.getX() + frameTime * MARIO_SPEED); // Move mario right
-	if (marioWalkRunImage_.getX() > GAME_WIDTH) // If offscreen right
-	{
-		marioWalkRunImage_.setX((float)-marioWalkRunImage_.getWidth());// Position off screen left
-	}
-*/
-
-/*
-	//Original Code (rotates text)
-
-    //if(menu_.getDegrees() > 0)
-    //{
-    //    menu_.setDegrees(menu_.getDegrees() - frameTime * 120);
-    //    menu_.setScale(menu_.getScale() + frameTime * 0.4f);
-    //}
-    //else
-    //    menu_.setDegrees(0);
-    //if(delay > 15)           // start over
-    //{
-    //    menu_.setDegrees(300);
-    //    menu_.setScale(0.002861f);
-    //    menu_.setY(0);
-    //    delay = 0;
-    //    messageY_ = GAME_HEIGHT;
-    //}
-    //else if(delay > 5)
-    //{
-    //    menu_.setY(menu_.getY() - frameTime * 300);
-    //    if (messageY_ > 10)
-    //        messageY_ -= frameTime * 300;
-    //}
-*/
 }
 
 }
@@ -545,10 +432,10 @@ void SquirtleSquad::render()
 	//background is being drawn
 	//------------------------
 	stage_->draw(graphics);
-	platform1_.draw();
-	platform2_.draw();
-	platform3_.draw();
-	platform4_.draw();
+	//platform1_.draw();
+	//platform2_.draw();
+	//platform3_.draw();
+	//platform4_.draw();
 	//platform5_.draw();
 
 	//---------------------------------
@@ -556,6 +443,9 @@ void SquirtleSquad::render()
 	//----------------------------------
 	player1_->draw(graphics);
 	player2_->draw(graphics);
+
+	player1_bar.draw(graphics);
+	player2_bar.draw(graphics);
 		//player3_->draw(graphics);
 		//player4_->draw(graphics);
 

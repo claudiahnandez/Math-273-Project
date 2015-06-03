@@ -4,7 +4,7 @@
 // createThisClass.h
 
 #ifndef _CREATETHIS_H           // Prevent multiple definitions if this 
-#define _CREATETHIS_H           // file is included in more than one place
+#define _CREATETHIS_H         // file is included in more than one place
 #define WIN32_LEAN_AND_MEAN
 
 #include <string>
@@ -28,6 +28,7 @@
 #include "Kenshin_Stage.h"
 #include "Budakai.h"
 #include "Character_Menu.h"
+#include "Health_Bar.h"
 
 
 const char FONT[] = "Arial Bold";  // font
@@ -58,10 +59,10 @@ private:
 	Image s_menuImage;
     Image   menu_;               // menu image
 	bool    musicOff;           // true to turn music off
-	bool menuOn=false;
-	bool char_select = true;
-	bool play1_selected = true;
-	bool play2_selected = true;
+	bool menuOn=true;
+	bool char_select = false;
+	bool play1_selected = false;
+	bool play2_selected = false;
 
     //Image   background_;         // background image
 
@@ -78,6 +79,10 @@ private:
 	Background* stage_;
 	Character_Menu play1_select;
 	Character_Menu play2_select;
+
+	Health_Bar player1_bar;
+	Health_Bar player2_bar;
+
 
 	Character player1=PICCOLO;
 	Character player2=GOKU;

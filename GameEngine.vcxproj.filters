@@ -135,8 +135,11 @@
     <ClCompile Include="Budakai.cpp">
       <Filter>Source Files\Backgrounds</Filter>
     </ClCompile>
+    <ClCompile Include="Health_Bar.cpp">
+      <Filter>Source Files\Custom</Filter>
+    </ClCompile>
     <ClCompile Include="Character_Menu.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Custom</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -236,8 +239,11 @@
     <ClInclude Include="Budakai.h">
       <Filter>Header Files\Backgrounds</Filter>
     </ClInclude>
+    <ClInclude Include="Health_Bar.h">
+      <Filter>Header Files\Custom</Filter>
+    </ClInclude>
     <ClInclude Include="Character_Menu.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Custom</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
