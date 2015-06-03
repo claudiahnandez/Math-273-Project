@@ -51,7 +51,6 @@ public:
     void render();      // "
     void releaseAll();
     void resetAll();
-	void setCharacter(Fighter* player, Character choosen);
 
 private:
     // game items

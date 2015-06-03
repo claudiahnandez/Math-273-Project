@@ -73,16 +73,16 @@ void SquirtleSquad::initialize(HWND hwnd)
 	/*player3_->setX(500);
 	player4_->setX(700);*/
 
-	player1_->setCollisionType(entityNS::BOX);
-	player2_->setCollisionType(entityNS::BOX);
-	player3_->setCollisionType(entityNS::BOX);
-	player4_->setCollisionType(entityNS::BOX);
+	/*player1_->setCollisionType(entityNS::BOX);
+	player2_->setCollisionType(entityNS::BOX);*/
+	/*player3_->setCollisionType(entityNS::BOX);
+	player4_->setCollisionType(entityNS::BOX);*/
 
-	player1_->setActive(true);
-	player2_->setActive(true);
-	player3_->setActive(true);
+	/*player1_->setActive(true);
+	player2_->setActive(true);*/
+	/*player3_->setActive(true);
 	player4_->setActive(true);
-
+*/
 
 
 	//From Pedro: Please don't delete
@@ -308,6 +308,13 @@ void SquirtleSquad::update()
 			}
 			player2_->initialize(hwnd, graphics, stage_->get_floor());
 
+			player1_->setCollisionType(entityNS::BOX);
+			player2_->setCollisionType(entityNS::BOX);
+
+			player1_->setActive(true);
+			player2_->setActive(true);
+
+
 			player1_->setX(100);
 			player2_->setX(300);
 			player2_->flipHorizontal(true);
@@ -317,63 +324,64 @@ void SquirtleSquad::update()
 	}
 	else
 	{
-	//Is an inherited function and is called in Game::run()
-	//So is : ai(), collisions(), and input*
-    static float delay = 0;
-	delay += frameTime;
-	stage_->update(frameTime);
+		//Is an inherited function and is called in Game::run()
+		//So is : ai(), collisions(), and input*
+		static float delay = 0;
+		delay += frameTime;
+		stage_->update(frameTime);
 
-	player1_->update(frameTime);
-	player2_->update(frameTime);
+		player1_->update(frameTime);
+		player2_->update(frameTime);
 		/*player3_->update(frameTime);
 		player4_->update(frameTime);*/
 
-	//----------------------------------------------
-	//Keyboard Input
-	input->readControllers();
-	/*if (input->getGamepadConnected(0))
-	{
+		//----------------------------------------------
+		//Keyboard Input
+		input->readControllers();
+		/*if (input->getGamepadConnected(0))
+		{
 		input->gamePadVibrateLeft(0, 65535, 1.0);
-	}*/
+		}*/
 
 		player1_->move(input, frameTime, 0);
 		player2_->move(input, frameTime, 1);
-	/*	player3_->move(input, frameTime, 2);
-		player4_->move(input, frameTime, 3);*/
+		/*	player3_->move(input, frameTime, 2);
+			player4_->move(input, frameTime, 3);*/
 
 
-	if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(0))
-	{
-		Energy_Attack_1_.fire(*&player1_);                  // fire projectile
+		if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(0))
+		{
+			Energy_Attack_1_.fire(*&player1_);                  // fire projectile
+		}
+		//if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(1))
+		//{
+		//	Energy_Attack_2_.fire(*&player2_);                  // fire projectile
+		//}	
+		//if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(2))
+		//{
+		//	Energy_Attack_3_.fire(*&player3_);                  // fire projectile
+		//}
+		//if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(3))
+		//{
+		//	Energy_Attack_4_.fire(*&player4_);                  // fire projectile
+		//}
+
+		//--------------------------//
+		//--Test Code for platform--//
+		//--------------------------//
+
+		//if (input->isKeyDown(VK_LEFT))
+		//	platform_.setX(platform_.getX() - platformNS::SPEED*frameTime);
+		//else if (input->isKeyDown(VK_RIGHT))
+		//	platform_.setX(platform_.getX() + platformNS::SPEED*frameTime);
+		platform1_.update(frameTime);
+		platform2_.update(frameTime);
+		platform3_.update(frameTime);
+		platform4_.update(frameTime);
+		platform5_.update(frameTime);
+
+		Energy_Attack_1_.update(frameTime);
 	}
-	//if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(1))
-	//{
-	//	Energy_Attack_2_.fire(*&player2_);                  // fire projectile
-	//}	
-	//if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(2))
-	//{
-	//	Energy_Attack_3_.fire(*&player3_);                  // fire projectile
-	//}
-	//if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(3))
-	//{
-	//	Energy_Attack_4_.fire(*&player4_);                  // fire projectile
-	//}
-
-	//--------------------------//
-	//--Test Code for platform--//
-	//--------------------------//
-
-	//if (input->isKeyDown(VK_LEFT))
-	//	platform_.setX(platform_.getX() - platformNS::SPEED*frameTime);
-	//else if (input->isKeyDown(VK_RIGHT))
-	//	platform_.setX(platform_.getX() + platformNS::SPEED*frameTime);
-	platform1_.update(frameTime);
-	platform2_.update(frameTime);
-	platform3_.update(frameTime);
-	platform4_.update(frameTime);
-	platform5_.update(frameTime);
-
-	Energy_Attack_1_.update(frameTime);
 
 	//------------------------------
 
@@ -506,7 +514,7 @@ void SquirtleSquad::render()
 
 	else
 	{
-		// begin drawing sprites
+		// begin drawing sprites11
 	//------------------------
 	//background is being drawn
 	//------------------------
@@ -565,23 +573,4 @@ void SquirtleSquad::resetAll()
     dxFont_->onResetDevice();
     Game::resetAll();
     return;
-}
-
-void SquirtleSquad::setCharacter(Fighter* player, Character choosen)
-{
-	switch (choosen)
-	{
-	case GOKU:
-		player = new Goku();
-		break;
-	case PICCOLO:
-		player = new Piccolo();
-		break;
-	case NARRUTO:
-		player = new Naruto();
-		break;
-	case LUFFY:
-		player = new Luffy();
-		break;
-	}
 }
