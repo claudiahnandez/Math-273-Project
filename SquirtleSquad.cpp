@@ -12,6 +12,7 @@
 //=============================================================================
 SquirtleSquad::SquirtleSquad() : Game()
 {
+	
 	player1_ = NULL;
 	player2_ = NULL;
 	player3_ = NULL;
@@ -50,26 +51,27 @@ void SquirtleSquad::initialize(HWND hwnd)
 
 	stage_ = new Budakai;
 	stage_->initialize(hwnd, graphics);
-	char_selection.initialize(hwnd,graphics);
+	play1_select.initialize(hwnd,graphics,false);//player 1 character selection
+	play2_select.initialize(hwnd, graphics, true);//player 2 character selection
 	
-	player1_ = new Piccolo();
-	player1_->initialize(hwnd, graphics, stage_->get_floor());
-	player2_ = new Goku();
-	player2_->initialize(hwnd, graphics, stage_->get_floor());
-	player3_ = new Naruto();
-	player3_->initialize(hwnd, graphics, stage_->get_floor());
-	player4_ = new Luffy();
-	player4_->initialize(hwnd, graphics, stage_->get_floor());
+	//player1_ = new Piccolo();
+	//player1_->initialize(hwnd, graphics, stage_->get_floor());
+	//player2_ = new Goku();
+	//player2_->initialize(hwnd, graphics, stage_->get_floor());
+	///*player3_ = new Naruto();
+	//player3_->initialize(hwnd, graphics, stage_->get_floor());
+	//player4_ = new Luffy();
+	//player4_->initialize(hwnd, graphics, stage_->get_floor());*/
 
 
-	player3_->flipHorizontal(true);
-	player4_->flipHorizontal(true);
+	//player3_->flipHorizontal(true);
+	//player4_->flipHorizontal(true);
 	//player4_->setVelocity(VECTOR2(10, -10));
 
-	player1_->setX(100);
-	player2_->setX(300);
-	player3_->setX(500);
-	player4_->setX(700);
+	/*player1_->setX(100);
+	player2_->setX(300);*/
+	/*player3_->setX(500);
+	player4_->setX(700);*/
 
 	//From Pedro: Please don't delete
 	//------------------------
@@ -199,18 +201,83 @@ void SquirtleSquad::update()
 	}
 	else if(char_select)
 	{
-		char_selection.update(frameTime);
+		play1_select.update(frameTime);
+		play2_select.update(frameTime);
 
+		//player 1 choose
+		if (input->getGamepadA(0))
+		{
+			play1_select.left_change_character();
+		}
+		if (const_cast<Input*>(input)->getGamepadY(0))
+		{
+			play1_select.right_change_character();
+		}
+		if (input->getGamepadStart(0))
+		{
+			player1 = play1_select.chosen_character();
+			play1_selected = true;
+		}
+
+		//player 2 choose
+		//player 1 choose
 		if (input->isKeyDown(VK_LEFT))
 		{
-			char_selection.left_change_character();
-			input->clearAll();
-			//char_select = false;
+			play2_select.left_change_character();
 		}
 		if (input->isKeyDown(VK_RIGHT))
 		{
-			char_selection.right_change_character();
-			input->clearAll();
+			play2_select.right_change_character();
+		}
+		if (input->isKeyDown(VK_SPACE))
+		{
+			player2 = play2_select.chosen_character();
+			play2_selected = true;
+		}
+		input->clearAll();
+
+		if (play1_selected && play2_selected)
+		{
+			char_select = false;
+			switch (player1)
+			{
+			case GOKU:
+				player1_ = new Goku();
+				break;
+			case PICCOLO:
+				player1_ = new Piccolo();
+				break;
+			case NARRUTO:
+				player1_ = new Naruto();
+				break;
+			case LUFFY:
+				player1_ = new Luffy();
+				break;
+			}
+			player1_->initialize(hwnd, graphics, stage_->get_floor());
+			
+			switch (player2)
+			{
+			case GOKU:
+				player2_ = new Goku();
+				break;
+			case PICCOLO:
+				player2_ = new Piccolo();
+				break;
+			case NARRUTO:
+				player2_ = new Naruto();
+				break;
+			case LUFFY:
+				player2_ = new Luffy();
+				break;
+			}
+			player2_->initialize(hwnd, graphics, stage_->get_floor());
+
+			player1_->setX(100);
+			player2_->setX(300);
+			player2_->flipHorizontal(true);
+
+
 		}
 	}
 	else
@@ -223,8 +290,8 @@ void SquirtleSquad::update()
 
 		player1_->update(frameTime);
 		player2_->update(frameTime);
-		player3_->update(frameTime);
-		player4_->update(frameTime);
+		/*player3_->update(frameTime);
+		player4_->update(frameTime);*/
 
 		//----------------------------------------------
 		//Keyboard Input
@@ -237,8 +304,8 @@ void SquirtleSquad::update()
 
 		player1_->move(input, frameTime, 0);
 		player2_->move(input, frameTime, 1);
-		player3_->move(input, frameTime, 2);
-		player4_->move(input, frameTime, 3);
+	/*	player3_->move(input, frameTime, 2);
+		player4_->move(input, frameTime, 3);*/
 
 
 		if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(0))
@@ -388,7 +455,8 @@ void SquirtleSquad::render()
 	}
 	else if (char_select)
 	{
-		char_selection.draw(graphics);
+		play1_select.draw(graphics);
+		play2_select.draw(graphics);
 	}
 	
 	else
@@ -427,7 +495,8 @@ void SquirtleSquad::render()
 //=============================================================================
 void SquirtleSquad::releaseAll()
 {
-	char_selection.onLostDevice();
+	play1_select.onLostDevice();
+	play2_select.onLostDevice();
 	platformTexture_.onLostDevice();
     dxFont_->onLostDevice();
     s_menuTexture_.onLostDevice();
@@ -446,4 +515,23 @@ void SquirtleSquad::resetAll()
     dxFont_->onResetDevice();
     Game::resetAll();
     return;
+}
+
+void SquirtleSquad::setCharacter(Fighter* player, Character choosen)
+{
+	switch (choosen)
+	{
+	case GOKU:
+		player = new Goku();
+		break;
+	case PICCOLO:
+		player = new Piccolo();
+		break;
+	case NARRUTO:
+		player = new Naruto();
+		break;
+	case LUFFY:
+		player = new Luffy();
+		break;
+	}
 }

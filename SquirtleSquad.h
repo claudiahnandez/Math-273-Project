@@ -51,6 +51,7 @@ public:
     void render();      // "
     void releaseAll();
     void resetAll();
+	void setCharacter(Fighter* player, Character choosen);
 
 private:
     // game items
@@ -59,7 +60,9 @@ private:
     Image   menu_;               // menu image
 	bool    musicOff;           // true to turn music off
 	bool menuOn;
-	bool char_select;
+	bool char_select = false;
+	bool play1_selected = false;
+	bool play2_selected = false;
 
     //Image   background_;         // background image
 
@@ -69,7 +72,11 @@ private:
 	Fighter* player4_;
 
 	Background* stage_;
-	Character_Menu char_selection;
+	Character_Menu play1_select;
+	Character_Menu play2_select;
+
+	Character player1;
+	Character player2;
 
 	TextureManager platformTexture_;   //platform texture
 	Platform platform1_;
