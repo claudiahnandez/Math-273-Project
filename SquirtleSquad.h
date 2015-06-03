@@ -79,8 +79,8 @@ private:
 	Character_Menu play1_select;
 	Character_Menu play2_select;
 
-	Character player1=GOKU;
-	Character player2=PICCOLO;
+	Character player1=PICCOLO;
+	Character player2=GOKU;
 
 	TextureManager platformTexture_;   //platform texture
 	Platform platform1_;
