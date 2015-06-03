@@ -58,10 +58,10 @@ private:
 	Image s_menuImage;
     Image   menu_;               // menu image
 	bool    musicOff;           // true to turn music off
-	bool menuOn;
-	bool char_select = false;
-	bool play1_selected = false;
-	bool play2_selected = false;
+	bool menuOn=false;
+	bool char_select = true;
+	bool play1_selected = true;
+	bool play2_selected = true;
 
     //Image   background_;         // background image
 
@@ -79,8 +79,8 @@ private:
 	Character_Menu play1_select;
 	Character_Menu play2_select;
 
-	Character player1;
-	Character player2;
+	Character player1=PICCOLO;
+	Character player2=GOKU;
 
 	TextureManager platformTexture_;   //platform texture
 	Platform platform1_;
