@@ -6,6 +6,7 @@
 #include "image.h"
 #include "entity.h"
 #include "Size.h"
+#include "Platform.h"
 
 
 
@@ -14,6 +15,8 @@ class Fighter : public Entity
 public:
 	Fighter();
 	void move(const Input* input, float frameTime, const int controller);
+	void move(const Input* input, float frameTime, const int controller, Platform& hitbox);
+
 
 	// Pure virtual functions
 	// All characters must have these functions
@@ -42,16 +45,21 @@ public:
 	//will be need to be updated with movement
 	void update(float frameTime);
 	void setState(int state);
+	void setState(Fighter_State state){ state_ = state; }
 	//void setStandardSprite(int max_frame, int height, int width, int width_gap, int height_gap);
 	void unstandardSprite(int max_frame,RECT animation[]);
 	//used to make fighter stick to ground
 	void stick_to_floor();
 
 	Fighter* get_fighter(){ return this; }
+	Character getCharacter(){ return character_; }
+	bool getDirection(){ return mirror_; }
+
 	//helper function
 	friend RECT help_set_rect(int left, int bottom_y, int height, int width);
 	//calculates damage and aplies it to the entity health
 	void damage(WEAPON);
+
 
 
 protected:

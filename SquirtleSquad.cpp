@@ -69,6 +69,18 @@ void SquirtleSquad::initialize(HWND hwnd)
 	player3_->setX(500);
 	player4_->setX(700);
 
+	player1_->setCollisionType(entityNS::BOX);
+	player2_->setCollisionType(entityNS::BOX);
+	player3_->setCollisionType(entityNS::BOX);
+	player4_->setCollisionType(entityNS::BOX);
+
+	player1_->setActive(true);
+	player2_->setActive(true);
+	player3_->setActive(true);
+	player4_->setActive(true);
+
+
+
 	//From Pedro: Please don't delete
 	//------------------------
 	//--Test platforms texture
@@ -150,11 +162,41 @@ void SquirtleSquad::initialize(HWND hwnd)
 	Energy_Attack_4_.setColorFilter(SETCOLOR_ARGB(255, 255, 255, 64));     // light yellow
 	Energy_Attack_4_.setScale(1);
 
+	//image1
+	if (!hitbox1_.initialize(this, platformNS::WIDTH, platformNS::HEIGHT, 0, &platformTexture_))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing hitbox"));
+
+	//image2
+	if (!hitbox2_.initialize(this, platformNS::WIDTH, platformNS::HEIGHT, 0, &platformTexture_))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing hitbox"));
+
+	//image3
+	if (!hitbox3_.initialize(this, platformNS::WIDTH, platformNS::HEIGHT, 0, &platformTexture_))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing hitbox"));
+
+	//image4
+	if (!hitbox4_.initialize(this, platformNS::WIDTH, platformNS::HEIGHT, 0, &platformTexture_))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing hitbox"));
+
+	hitbox1_.setX(0);
+	hitbox2_.setX(0);
+	hitbox3_.setX(0);
+	hitbox4_.setX(0);
+
+	hitbox1_.setY(GAME_HEIGHT/2);
+	hitbox2_.setY(GAME_HEIGHT / 2);
+	hitbox3_.setY(GAME_HEIGHT / 2);
+	hitbox4_.setY(GAME_HEIGHT / 2);
+
+	hitbox1_.enable();
+	hitbox2_.disable();
+	hitbox3_.disable();
+	hitbox4_.disable();
 
 	// health bar
 	//healthBar.initialize(graphics, &gameTextures, 0, spacewarNS::HEALTHBAR_Y, 2.0f, graphicsNS::WHITE);
 
-	audio->playCue(ACTION_THEME);
+	//audio->playCue(ACTION_THEME);
 	//audio->playCue(BOSS_BATTLE_THEME);
 
 	
@@ -187,10 +229,25 @@ void SquirtleSquad::update()
 	}*/
 
 
-	player1_->move(input,frameTime, 0 );
-	player2_->move(input, frameTime, 1);
-	player3_->move(input, frameTime, 2);
-	player4_->move(input, frameTime, 3);
+	player1_->move(input,frameTime, 0, hitbox1_);
+	//player2_->move(input, frameTime, 1);
+	//player3_->move(input, frameTime, 2);
+	//player4_->move(input, frameTime, 3);
+
+	//move hitbox to players position
+	hitbox1_.setX(player1_->getX());
+	hitbox1_.setY(player1_->getY() + player1_->getHeight()*.3);
+
+	//adjust hitbox based on direction the fighter is facing
+	if (player1_->getDirection())
+	{
+		hitbox1_.setX(hitbox1_.getX() - player1_->getWidth()*player1_->getScale());
+	}
+	else
+	{
+		hitbox1_.setX(hitbox1_.getX() + player1_->getWidth()*player1_->getScale());
+	}
+
 
 
 	if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(0))
@@ -314,12 +371,24 @@ void SquirtleSquad::collisions()
 		Energy_Attack_1_.setActive(false);
 		input->gamePadVibrateRight(1, 20000, 0.5);
 	}
-	if (Energy_Attack_1_.collidesWith(*(Entity*)(player1_->get_entity()), collisionVector))
+	if (Energy_Attack_2_.collidesWith(*(Entity*)(player1_->get_entity()), collisionVector))
 	{
 		//player1_->damage(ENERGY_ATTACK);
 		Energy_Attack_2_.setVisible(false);
 		Energy_Attack_2_.setActive(false);
 		input->gamePadVibrateRight(0, 20000, 0.5);
+	}
+	//--------------
+	//Player1 hitbox
+	//--------------
+
+	//vs Player2
+	if (hitbox1_.collidesWith(*(Entity*)(player2_->get_entity()), collisionVector))
+	{
+		player2_->setState(FALLING);
+		player2_->setY(100);
+		input->gamePadVibrateRight(0, 20000, 0.5);
+
 	}
 
 }
@@ -350,6 +419,11 @@ void SquirtleSquad::render()
 	player2_->draw(graphics);
 	player3_->draw(graphics);
 	player4_->draw(graphics);
+
+	hitbox1_.draw();
+	hitbox2_.draw();
+	hitbox3_.draw();
+	hitbox4_.draw();
 
 	Energy_Attack_1_.draw();
 

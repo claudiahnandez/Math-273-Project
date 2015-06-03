@@ -57,6 +57,11 @@ private:
 	Fighter* player3_;
 	Fighter* player4_;
 
+	Platform hitbox1_;
+	Platform hitbox2_;
+	Platform hitbox3_;
+	Platform hitbox4_;
+
 	Background* stage_;
 
 	TextureManager platformTexture_;   //platform texture
@@ -70,6 +75,10 @@ private:
 	Enery_Attack Energy_Attack_2_;
 	Enery_Attack Energy_Attack_3_;
 	Enery_Attack Energy_Attack_4_;
+
+	//Bar     healthBar;          // health bar for ships
+	//Bar     healthBar;          // health bar for ships
+
 
     TextDX  *dxFont_;            // DirectX font
     std::string  message_;
