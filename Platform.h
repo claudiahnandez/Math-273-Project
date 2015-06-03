@@ -26,6 +26,14 @@ public:
 
 	// inherited member functions
 	void update(float frameTime);
+
+	void disable() { visible = false; active = false; }
+	void enable()  { visible = true; active = true; }
+
+	void activate() { active = true; }
+	void deactivate() { active = false; }
+	void makeVisible() { visible = true; }
+	void makeInvisible(){ visible = false; }
 };
 #endif
 

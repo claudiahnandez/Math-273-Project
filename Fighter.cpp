@@ -138,6 +138,127 @@ void Fighter::move(const Input* input, float frameTime, const int controller)
 
 }
 
+//move function Version 2
+void Fighter::move(const Input* input, float frameTime, const int controller, Platform &hitbox)
+{
+	//Move Right;
+	if (input->isKeyDown(VK_RIGHT) ^ const_cast<Input*>(input)->getGamepadDPadRight(controller))	// If move right
+	{
+		//makes sure its facing the right direction
+		mirror_ = false;
+		Image::flipHorizontal(mirror_);
+
+		//if not jumping
+		if (!jumping_)
+		{
+			//change to walking state
+			state_ = WALKING;
+		}
+
+		//increase velocity
+		if (velocity.x < max_speed_)
+		{
+			//acceleration_+=100*frameTime;
+			//deltaV.x = acceleration_;
+			deltaV.x = 50;
+		}
+
+	}
+
+	//Move Left
+	else if (input->isKeyDown(VK_LEFT) ^ const_cast<Input*>(input)->getGamepadDPadLeft(controller))	// If move left
+	{
+		//makes sure its facing the right direction
+		mirror_ = true;
+		Image::flipHorizontal(mirror_);
+
+		//if not jumping
+		if (!jumping_)
+		{
+			//change to walking state
+			state_ = WALKING;
+		}
+
+		//increase velocity
+		if (abs(velocity.x) < max_speed_)
+		{
+			//deltaV.x = -acceleration_;
+			deltaV.x = -50;
+		}
+	}
+
+	//Jump
+	else if (input->isKeyDown(VK_UP) ^ const_cast<Input*>(input)->getGamepadDPadUp(controller))
+	{
+		if (!jumping_)
+		{
+			jumping_ = true;
+			state_ = JUMPING;
+			//velocity.y = -2*Image::getHeight();
+			velocity.y = -10;
+		}
+	}
+
+	//Crouch or Fall quick
+	else if (input->isKeyDown(VK_DOWN) ^ const_cast<Input*>(input)->getGamepadDPadDown(controller))
+	{
+		state_ = BLOCKING;
+		if (velocity.x > 0)
+		{
+			velocity.x -= 10;
+		}
+	}
+
+	//Attack
+	else if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(controller))
+	{
+
+		state_ = STANDARD;
+		hitbox.activate();
+		hitbox.makeVisible();
+	}
+
+	// bottom
+	else if (!input->isKeyDown(VK_LEFT) && !input->isKeyDown(VK_RIGHT) && !input->isKeyDown(VK_DOWN))
+	{
+		acceleration_ = 0;
+		int deceleration = 5;
+
+		if (velocity.x<500 && velocity.x >-500)
+		{
+			state_ = STANDING;
+		}
+
+		//Gradual Slowdown
+		if (velocity.x >= 10)
+		{
+			velocity.x -= deceleration;
+		}
+		else if (velocity.x <= -10)
+		{
+			velocity.x += deceleration;
+		}
+		else if (velocity.x<10 && velocity.x >-10)
+		{
+			velocity.x = 0;
+
+			//if standing looping is true
+			loop = true;
+		}
+		//Instant Stop
+		//velocity.x = 0;
+
+	}
+
+	//Disable hitbox
+	if (state_ != STANDARD)
+	{
+		hitbox.deactivate();
+		hitbox.makeInvisible();
+	}
+
+}
+
 void Fighter::initialize(HWND hwnd, Graphics*& graphics, int floor)
 {
 	setPose();
@@ -164,7 +285,7 @@ void Fighter::draw(Graphics*& graphics)
 {
 	
 	// fixes the looping of images
-	if (currentFrame == endFrame && !(state_==STANDING || state_==WALKING) && loop==true)
+	if (currentFrame == endFrame && !(state_ == STANDING || state_ == WALKING || state_ == FALLING) && loop == true)
 	{
 		loop = false;
 		//currentFrame = 0;

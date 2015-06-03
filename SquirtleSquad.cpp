@@ -53,7 +53,7 @@ void SquirtleSquad::initialize(HWND hwnd)
 	stage_->initialize(hwnd, graphics);
 	play1_select.initialize(hwnd,graphics,false);//player 1 character selection
 	play2_select.initialize(hwnd, graphics, true);//player 2 character selection
-	
+
 	//player1_ = new Piccolo();
 	//player1_->initialize(hwnd, graphics, stage_->get_floor());
 	//player2_ = new Goku();
@@ -72,6 +72,18 @@ void SquirtleSquad::initialize(HWND hwnd)
 	player2_->setX(300);*/
 	/*player3_->setX(500);
 	player4_->setX(700);*/
+
+	player1_->setCollisionType(entityNS::BOX);
+	player2_->setCollisionType(entityNS::BOX);
+	player3_->setCollisionType(entityNS::BOX);
+	player4_->setCollisionType(entityNS::BOX);
+
+	player1_->setActive(true);
+	player2_->setActive(true);
+	player3_->setActive(true);
+	player4_->setActive(true);
+
+
 
 	//From Pedro: Please don't delete
 	//------------------------
@@ -101,8 +113,6 @@ void SquirtleSquad::initialize(HWND hwnd)
 	//image5
 	if (!platform5_.initialize(this, platformNS::WIDTH, platformNS::HEIGHT, 0, &platformTexture_))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing platform"));
-	//image5
-
 
 	platform1_.setX(0);
 	platform2_.setX(200);
@@ -168,17 +178,42 @@ void SquirtleSquad::initialize(HWND hwnd)
 	Energy_Attack_4_.setColorFilter(SETCOLOR_ARGB(255, 255, 255, 64));     // light yellow
 	Energy_Attack_4_.setScale(1);
 
-	
+	//image1
+	if (!hitbox1_.initialize(this, platformNS::WIDTH, platformNS::HEIGHT, 0, &platformTexture_))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing hitbox"));
 
+	//image2
+	if (!hitbox2_.initialize(this, platformNS::WIDTH, platformNS::HEIGHT, 0, &platformTexture_))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing hitbox"));
+
+	//image3
+	if (!hitbox3_.initialize(this, platformNS::WIDTH, platformNS::HEIGHT, 0, &platformTexture_))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing hitbox"));
+
+	//image4
+	if (!hitbox4_.initialize(this, platformNS::WIDTH, platformNS::HEIGHT, 0, &platformTexture_))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing hitbox"));
+
+	hitbox1_.setX(0);
+	hitbox2_.setX(0);
+	hitbox3_.setX(0);
+	hitbox4_.setX(0);
+
+	hitbox1_.setY(GAME_HEIGHT/2);
+	hitbox2_.setY(GAME_HEIGHT / 2);
+	hitbox3_.setY(GAME_HEIGHT / 2);
+	hitbox4_.setY(GAME_HEIGHT / 2);
+
+	hitbox1_.enable();
+	hitbox2_.disable();
+	hitbox3_.disable();
+	hitbox4_.disable();
 
 	// health bar
 	//healthBar.initialize(graphics, &gameTextures, 0, spacewarNS::HEALTHBAR_Y, 2.0f, graphicsNS::WHITE);
 
-	audio->playCue(ACTION_THEME);
+	//audio->playCue(ACTION_THEME);
 	//audio->playCue(BOSS_BATTLE_THEME);
-
-
-
 
 	
 
@@ -282,25 +317,24 @@ void SquirtleSquad::update()
 	}
 	else
 	{
-		//Is an inherited function and is called in Game::run()
-		//So is : ai(), collisions(), and input*
-		static float delay = 0;
-		delay += frameTime;
-		stage_->update(frameTime);
+	//Is an inherited function and is called in Game::run()
+	//So is : ai(), collisions(), and input*
+    static float delay = 0;
+	delay += frameTime;
+	stage_->update(frameTime);
 
-		player1_->update(frameTime);
-		player2_->update(frameTime);
+	player1_->update(frameTime);
+	player2_->update(frameTime);
 		/*player3_->update(frameTime);
 		player4_->update(frameTime);*/
 
-		//----------------------------------------------
-		//Keyboard Input
-		input->readControllers();
-		/*if (input->getGamepadConnected(0))
-		{
-		input->gamePadVibrateLeft(1, 65535, 1.0);
-		}
-		*/
+	//----------------------------------------------
+	//Keyboard Input
+	input->readControllers();
+	/*if (input->getGamepadConnected(0))
+	{
+		input->gamePadVibrateLeft(0, 65535, 1.0);
+	}*/
 
 		player1_->move(input, frameTime, 0);
 		player2_->move(input, frameTime, 1);
@@ -308,39 +342,38 @@ void SquirtleSquad::update()
 		player4_->move(input, frameTime, 3);*/
 
 
-		if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(0))
-		{
-			Energy_Attack_1_.fire(*&player1_);                  // fire projectile
-		}
-		//if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(1))
-		//{
-		//	Energy_Attack_2_.fire(*&player2_);                  // fire projectile
-		//}	
-		//if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(2))
-		//{
-		//	Energy_Attack_3_.fire(*&player3_);                  // fire projectile
-		//}
-		//if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(3))
-		//{
-		//	Energy_Attack_4_.fire(*&player4_);                  // fire projectile
-		//}
-
-		//--------------------------//
-		//--Test Code for platform--//
-		//--------------------------//
-
-		//if (input->isKeyDown(VK_LEFT))
-		//	platform_.setX(platform_.getX() - platformNS::SPEED*frameTime);
-		//else if (input->isKeyDown(VK_RIGHT))
-		//	platform_.setX(platform_.getX() + platformNS::SPEED*frameTime);
-		platform1_.update(frameTime);
-		platform2_.update(frameTime);
-		platform3_.update(frameTime);
-		platform4_.update(frameTime);
-		platform5_.update(frameTime);
-
-		Energy_Attack_1_.update(frameTime);
+	if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(0))
+	{
+		Energy_Attack_1_.fire(*&player1_);                  // fire projectile
 	}
+	//if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(1))
+	//{
+	//	Energy_Attack_2_.fire(*&player2_);                  // fire projectile
+	//}	
+	//if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(2))
+	//{
+	//	Energy_Attack_3_.fire(*&player3_);                  // fire projectile
+	//}
+	//if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(3))
+	//{
+	//	Energy_Attack_4_.fire(*&player4_);                  // fire projectile
+	//}
+
+	//--------------------------//
+	//--Test Code for platform--//
+	//--------------------------//
+
+	//if (input->isKeyDown(VK_LEFT))
+	//	platform_.setX(platform_.getX() - platformNS::SPEED*frameTime);
+	//else if (input->isKeyDown(VK_RIGHT))
+	//	platform_.setX(platform_.getX() + platformNS::SPEED*frameTime);
+	platform1_.update(frameTime);
+	platform2_.update(frameTime);
+	platform3_.update(frameTime);
+	platform4_.update(frameTime);
+	platform5_.update(frameTime);
+
+	Energy_Attack_1_.update(frameTime);
 
 	//------------------------------
 
@@ -430,12 +463,24 @@ void SquirtleSquad::collisions()
 		Energy_Attack_1_.setActive(false);
 		input->gamePadVibrateRight(1, 20000, 0.5);
 	}
-	if (Energy_Attack_1_.collidesWith(*(Entity*)(player1_->get_entity()), collisionVector))
+	if (Energy_Attack_2_.collidesWith(*(Entity*)(player1_->get_entity()), collisionVector))
 	{
 		//player1_->damage(ENERGY_ATTACK);
 		Energy_Attack_2_.setVisible(false);
 		Energy_Attack_2_.setActive(false);
 		input->gamePadVibrateRight(0, 20000, 0.5);
+	}
+	//--------------
+	//Player1 hitbox
+	//--------------
+
+	//vs Player2
+	if (hitbox1_.collidesWith(*(Entity*)(player2_->get_entity()), collisionVector))
+	{
+		player2_->setState(FALLING);
+		player2_->setY(100);
+		input->gamePadVibrateRight(0, 20000, 0.5);
+
 	}
 
 }
@@ -458,31 +503,36 @@ void SquirtleSquad::render()
 		play1_select.draw(graphics);
 		play2_select.draw(graphics);
 	}
-	
+
 	else
 	{
 		// begin drawing sprites
-		//------------------------
-		//background is being drawn
-		//------------------------
-		stage_->draw(graphics);
-		platform1_.draw();
-		platform2_.draw();
-		platform3_.draw();
-		platform4_.draw();
-		//platform5_.draw();
+	//------------------------
+	//background is being drawn
+	//------------------------
+	stage_->draw(graphics);
+	platform1_.draw();
+	platform2_.draw();
+	platform3_.draw();
+	platform4_.draw();
+	//platform5_.draw();
 
-		//---------------------------------
-		//draw fighters here
-		//----------------------------------
-		player1_->draw(graphics);
-		player2_->draw(graphics);
+	//---------------------------------
+	//draw fighters here
+	//----------------------------------
+	player1_->draw(graphics);
+	player2_->draw(graphics);
 		//player3_->draw(graphics);
 		//player4_->draw(graphics);
 
-		Energy_Attack_1_.draw();
+	hitbox1_.draw();
+	hitbox2_.draw();
+	hitbox3_.draw();
+	hitbox4_.draw();
 
-		dxFont_->setFontColor(graphicsNS::ORANGE);
+	Energy_Attack_1_.draw();
+
+    dxFont_->setFontColor(graphicsNS::ORANGE);
 		dxFont_->print(message_, 20, (int)messageY_);
 	}
 
