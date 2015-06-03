@@ -12,12 +12,15 @@
 //=============================================================================
 SquirtleSquad::SquirtleSquad() : Game()
 {
+	
 	player1_ = NULL;
 	player2_ = NULL;
 	player3_ = NULL;
 	player4_ = NULL;
 	stage_ = NULL;
 	musicOff = false;
+	menuOn = true;
+	char_select = false;//turns on character selection
     dxFont_ = new TextDX();  // DirectX font
     messageY_ = 0;
 }
@@ -46,28 +49,29 @@ void SquirtleSquad::initialize(HWND hwnd)
 	//use the dimmensions from stage to set game
     Game::initialize(hwnd); // throws GameError
 
-	stage_ = new Magma;
+	stage_ = new Budakai;
 	stage_->initialize(hwnd, graphics);
+	play1_select.initialize(hwnd,graphics,false);//player 1 character selection
+	play2_select.initialize(hwnd, graphics, true);//player 2 character selection
+
+	//player1_ = new Piccolo();
+	//player1_->initialize(hwnd, graphics, stage_->get_floor());
+	//player2_ = new Goku();
+	//player2_->initialize(hwnd, graphics, stage_->get_floor());
+	///*player3_ = new Naruto();
+	//player3_->initialize(hwnd, graphics, stage_->get_floor());
+	//player4_ = new Luffy();
+	//player4_->initialize(hwnd, graphics, stage_->get_floor());*/
 
 
-	player1_ = new Piccolo();
-	player1_->initialize(hwnd, graphics, stage_->get_floor());
-	player2_ = new Goku();
-	player2_->initialize(hwnd, graphics, stage_->get_floor());
-	player3_ = new Naruto();
-	player3_->initialize(hwnd, graphics, stage_->get_floor());
-	player4_ = new Luffy();
-	player4_->initialize(hwnd, graphics, stage_->get_floor());
-
-
-	player3_->flipHorizontal(true);
-	player4_->flipHorizontal(true);
+	//player3_->flipHorizontal(true);
+	//player4_->flipHorizontal(true);
 	//player4_->setVelocity(VECTOR2(10, -10));
 
-	player1_->setX(100);
-	player2_->setX(300);
-	player3_->setX(500);
-	player4_->setX(700);
+	/*player1_->setX(100);
+	player2_->setX(300);*/
+	/*player3_->setX(500);
+	player4_->setX(700);*/
 
 	player1_->setCollisionType(entityNS::BOX);
 	player2_->setCollisionType(entityNS::BOX);
@@ -116,10 +120,22 @@ void SquirtleSquad::initialize(HWND hwnd)
 	platform4_.setX(600);
 	platform5_.setX(800);
 
-	//--------------
+	//------------------------
+	//initializing start menu
+	//------------------------
+
+	//initializing start menu
+	if (!s_menuImage.initialize(graphics,GAME_WIDTH,GAME_HEIGHT,0,&s_menuTexture_))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing start menu"));
+
+	if (!s_menuTexture_.initialize(graphics, START_MENU,TRANSCOLORR))
+		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing start menu texture"));
+
+	//-------------
 	//Energy Attacks
 	//--------------
 	//temporary game textures
+
 	if (!gameTextures.initialize(graphics, BALL, NARUTO_TRANSCOLOR))
 		throw(GameError(gameErrorNS::FATAL_ERROR, "Error initializing game textures"));
 
@@ -209,6 +225,98 @@ void SquirtleSquad::initialize(HWND hwnd)
 //=============================================================================
 void SquirtleSquad::update()
 {
+	if (menuOn)
+	{
+		if (input->anyKeyPressed())
+		{
+			menuOn = false;
+			char_select = true;
+			input->clearAll();
+		}
+	}
+	else if(char_select)
+	{
+		play1_select.update(frameTime);
+		play2_select.update(frameTime);
+
+		//player 1 choose
+		if (input->getGamepadA(0))
+		{
+			play1_select.left_change_character();
+		}
+		if (const_cast<Input*>(input)->getGamepadY(0))
+		{
+			play1_select.right_change_character();
+		}
+		if (input->getGamepadStart(0))
+		{
+			player1 = play1_select.chosen_character();
+			play1_selected = true;
+		}
+
+		//player 2 choose
+		//player 1 choose
+		if (input->isKeyDown(VK_LEFT))
+		{
+			play2_select.left_change_character();
+		}
+		if (input->isKeyDown(VK_RIGHT))
+		{
+			play2_select.right_change_character();
+		}
+		if (input->isKeyDown(VK_SPACE))
+		{
+			player2 = play2_select.chosen_character();
+			play2_selected = true;
+		}
+		input->clearAll();
+
+		if (play1_selected && play2_selected)
+		{
+			char_select = false;
+			switch (player1)
+			{
+			case GOKU:
+				player1_ = new Goku();
+				break;
+			case PICCOLO:
+				player1_ = new Piccolo();
+				break;
+			case NARRUTO:
+				player1_ = new Naruto();
+				break;
+			case LUFFY:
+				player1_ = new Luffy();
+				break;
+			}
+			player1_->initialize(hwnd, graphics, stage_->get_floor());
+			
+			switch (player2)
+			{
+			case GOKU:
+				player2_ = new Goku();
+				break;
+			case PICCOLO:
+				player2_ = new Piccolo();
+				break;
+			case NARRUTO:
+				player2_ = new Naruto();
+				break;
+			case LUFFY:
+				player2_ = new Luffy();
+				break;
+			}
+			player2_->initialize(hwnd, graphics, stage_->get_floor());
+
+			player1_->setX(100);
+			player2_->setX(300);
+			player2_->flipHorizontal(true);
+
+
+		}
+	}
+	else
+	{
 	//Is an inherited function and is called in Game::run()
 	//So is : ai(), collisions(), and input*
     static float delay = 0;
@@ -217,8 +325,8 @@ void SquirtleSquad::update()
 
 	player1_->update(frameTime);
 	player2_->update(frameTime);
-	player3_->update(frameTime);
-	player4_->update(frameTime);
+		/*player3_->update(frameTime);
+		player4_->update(frameTime);*/
 
 	//----------------------------------------------
 	//Keyboard Input
@@ -228,26 +336,10 @@ void SquirtleSquad::update()
 		input->gamePadVibrateLeft(0, 65535, 1.0);
 	}*/
 
-
-	player1_->move(input,frameTime, 0, hitbox1_);
-	//player2_->move(input, frameTime, 1);
-	//player3_->move(input, frameTime, 2);
-	//player4_->move(input, frameTime, 3);
-
-	//move hitbox to players position
-	hitbox1_.setX(player1_->getX());
-	hitbox1_.setY(player1_->getY() + player1_->getHeight()*.3);
-
-	//adjust hitbox based on direction the fighter is facing
-	if (player1_->getDirection())
-	{
-		hitbox1_.setX(hitbox1_.getX() - player1_->getWidth()*player1_->getScale());
-	}
-	else
-	{
-		hitbox1_.setX(hitbox1_.getX() + player1_->getWidth()*player1_->getScale());
-	}
-
+		player1_->move(input, frameTime, 0);
+		player2_->move(input, frameTime, 1);
+	/*	player3_->move(input, frameTime, 2);
+		player4_->move(input, frameTime, 3);*/
 
 
 	if (input->isKeyDown(VK_SPACE) ^ const_cast<Input*>(input)->getGamepadA(0))
@@ -400,8 +492,21 @@ void SquirtleSquad::render()
 {
 	//part of Game::renderGame(); (probably called in while(!done) in WinMain
 
+	//draws start menu
+    graphics->spriteBegin();      
+	if (menuOn)
+	{
+		s_menuImage.draw();
+	}
+	else if (char_select)
+	{
+		play1_select.draw(graphics);
+		play2_select.draw(graphics);
+	}
 
-    graphics->spriteBegin();                // begin drawing sprites
+	else
+	{
+		// begin drawing sprites
 	//------------------------
 	//background is being drawn
 	//------------------------
@@ -417,8 +522,8 @@ void SquirtleSquad::render()
 	//----------------------------------
 	player1_->draw(graphics);
 	player2_->draw(graphics);
-	player3_->draw(graphics);
-	player4_->draw(graphics);
+		//player3_->draw(graphics);
+		//player4_->draw(graphics);
 
 	hitbox1_.draw();
 	hitbox2_.draw();
@@ -428,7 +533,8 @@ void SquirtleSquad::render()
 	Energy_Attack_1_.draw();
 
     dxFont_->setFontColor(graphicsNS::ORANGE);
-    dxFont_->print(message_,20,(int)messageY_);
+		dxFont_->print(message_, 20, (int)messageY_);
+	}
 
     graphics->spriteEnd();                  // end drawing sprites
 }
@@ -439,9 +545,11 @@ void SquirtleSquad::render()
 //=============================================================================
 void SquirtleSquad::releaseAll()
 {
+	play1_select.onLostDevice();
+	play2_select.onLostDevice();
 	platformTexture_.onLostDevice();
     dxFont_->onLostDevice();
-    menuTexture_.onLostDevice();
+    s_menuTexture_.onLostDevice();
     Game::releaseAll();
     return;
 }
@@ -453,8 +561,27 @@ void SquirtleSquad::releaseAll()
 void SquirtleSquad::resetAll()
 {
 	platformTexture_.onResetDevice();
-    menuTexture_.onResetDevice();
+    s_menuTexture_.onResetDevice();
     dxFont_->onResetDevice();
     Game::resetAll();
     return;
+}
+
+void SquirtleSquad::setCharacter(Fighter* player, Character choosen)
+{
+	switch (choosen)
+	{
+	case GOKU:
+		player = new Goku();
+		break;
+	case PICCOLO:
+		player = new Piccolo();
+		break;
+	case NARRUTO:
+		player = new Naruto();
+		break;
+	case LUFFY:
+		player = new Luffy();
+		break;
+	}
 }

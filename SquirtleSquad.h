@@ -24,6 +24,14 @@
 #include "Magma.h"
 #include "Energy_Attack.h"
 #include "Naruto.h"
+#include "Training_Stage.h"
+#include "Kenshin_Stage.h"
+#include "Budakai.h"
+#include "Character_Menu.h"
+
+
+const char FONT[] = "Arial Bold";  // font
+const COLOR_ARGB FONT_COLOR = graphicsNS::YELLOW;
 
 //=============================================================================
 // This class is the core of the game
@@ -43,12 +51,18 @@ public:
     void render();      // "
     void releaseAll();
     void resetAll();
+	void setCharacter(Fighter* player, Character choosen);
 
 private:
     // game items
-	TextureManager menuTexture_, backgroundTexture_, gameTextures; // textures
+	TextureManager s_menuTexture_, backgroundTexture_, gameTextures; // textures
+	Image s_menuImage;
     Image   menu_;               // menu image
 	bool    musicOff;           // true to turn music off
+	bool menuOn;
+	bool char_select = false;
+	bool play1_selected = false;
+	bool play2_selected = false;
 
     //Image   background_;         // background image
 
@@ -63,6 +77,11 @@ private:
 	Platform hitbox4_;
 
 	Background* stage_;
+	Character_Menu play1_select;
+	Character_Menu play2_select;
+
+	Character player1;
+	Character player2;
 
 	TextureManager platformTexture_;   //platform texture
 	Platform platform1_;

@@ -14,7 +14,7 @@ public:
 	//Include in SquirtlSquad::render()
 	void draw(Graphics*& graphic);
 	void update(float frameTime);
-	virtual void set_image() = 0;
+	virtual void set_image();
 	void set_animation(RECT animation[]);
 	int get_floor();
 	
