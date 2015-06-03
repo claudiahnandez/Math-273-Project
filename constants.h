@@ -51,21 +51,21 @@ const double PI = 3.14159265;
 const float GRAVITY = 2; // Acceleration of gravity pixels/sec
 
 // graphic images
-const char MENU_IMAGE[] =     "pictures\\menu.png";      // menu texture
-const char BACKGROUND_IMAGE[] = "pictures\\NarutoBackgroundTest.png";  // background
-const char TEST_IMAGE1[] = "pictures\\test1.png";
-const char GOKU_SPRITE[] = "pictures\\Goku_2.png";
-const char LUFFY_TEST[] = "pictures\\testLuffyStrip.png";
-const char PICCOLO_SPRITE[] = "pictures\\Piccolo.png";
-const char NARUTO_SPRITE[] = "pictures\\Naruto(test).png";
-const char PLATFORM_IMAGE[] = "pictures\\default_platform.png";
-const char TEXTURES_IMAGE[] = "pictures\\textures.png";  // game textures
-const char BALL[] = "pictures\\ball_test.png"; 
-const char START_MENU[] = "pictures\\start_menu.png";
-const char CHARACTER_SELECTION[] = "pictures\\Character Select.png";
+//const char MENU_IMAGE[] =     "pictures\\extras\\menu.png";      // menu texture
+const char BACKGROUND_IMAGE[] = "pictures\\backgrounds\\KanohaStage.png";  // background
+//const char TEST_IMAGE1[] = "pictures\\test1.png";
+const char GOKU_SPRITE[] = "pictures\\CharacterSprites\\Goku_2.png";
+const char LUFFY_TEST[] = "pictures\\CharacterSprites\\testLuffyStrip.png";
+const char PICCOLO_SPRITE[] = "pictures\\CharacterSprites\\Piccolo.png";
+const char NARUTO_SPRITE[] = "pictures\\CharacterSprites\\Naruto(test).png";
+const char PLATFORM_IMAGE[] = "pictures\\extras\\default_platform.png";
+//const char TEXTURES_IMAGE[] = "pictures\\pictures\\textures.png";  // game textures
+const char BALL[] = "pictures\\CharacterSprites\\ball_test.png"; 
+const char START_MENU[] = "pictures\\extras\\start_menu.png";
+//const char CHARACTER_SELECTION[] = "pictures\\Character Select.png";
 
 //background images
-const char SWAMP[] = "pictures\\Swamp_.png";
+//const char SWAMP[] = "pictures\\Swamp_.png";
 const char MAGMA[] = "pictures\\Magma.png";
 const char TRAINING_STAGE[] = "pictures\\backgrounds\\TrainingStage_.png";
 const char KESHIN_STAGE[] = "pictures\\backgrounds\\KenshinStage.png";
