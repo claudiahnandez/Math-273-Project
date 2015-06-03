@@ -205,15 +205,15 @@ void SquirtleSquad::update()
 		play2_select.update(frameTime);
 
 		//player 1 choose
-		if (input->getGamepadA(0))
+		if (input->getGamepadLeftShoulder(0))
 		{
 			play1_select.left_change_character();
 		}
-		if (const_cast<Input*>(input)->getGamepadY(0))
+		if (input->getGamepadRightShoulder(0))
 		{
 			play1_select.right_change_character();
 		}
-		if (input->getGamepadStart(0))
+		if (input->getGamepadA(0))
 		{
 			player1 = play1_select.chosen_character();
 			play1_selected = true;
