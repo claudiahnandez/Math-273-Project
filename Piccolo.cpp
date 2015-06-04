@@ -131,7 +131,20 @@ void Piccolo::neutralB()
 
 }	// B
 void Piccolo::sideB(){}		
-void Piccolo::upB(){}			// ^B
+void Piccolo::upB()
+{
+	int bottom_y = 267;
+	spriteData.height = 54;
+	spriteData.width = 59;
+
+	RECT smack[5];
+	smack[0] = help_set_rect(22, bottom_y, spriteData.height, 47);//54
+	smack[1] = help_set_rect(81, bottom_y, spriteData.height, 84);//52
+	smack[2] = help_set_rect(175, bottom_y, spriteData.height, 68);//52->reached top
+	smack[3] = help_set_rect(266, bottom_y, spriteData.height, 60);//49
+	smack[4] = help_set_rect(345, bottom_y, spriteData.height, 59);//47
+	unstandardSprite(4, smack);
+}			// ^B
 void Piccolo::downB(){}	
 // vB
 void Piccolo::standardAttack()

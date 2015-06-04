@@ -58,10 +58,10 @@ const char GOKU_SPRITE[] = "pictures\\CharacterSprites\\Goku_2.png";
 const char LUFFY_TEST[] = "pictures\\CharacterSprites\\testLuffyStrip.png";
 const char PICCOLO_SPRITE[] = "pictures\\CharacterSprites\\Piccolo.png";
 const char NARUTO_SPRITE[] = "pictures\\CharacterSprites\\Naruto(test).png";
-const char PLATFORM_IMAGE[] = "pictures\\extras\\default_platform.png";
+const char PLATFORM_IMAGE[] = "pictures\\default_platform.png";
 //const char TEXTURES_IMAGE[] = "pictures\\pictures\\textures.png";  // game textures
 const char BALL[] = "pictures\\CharacterSprites\\ball_test.png"; 
-const char START_MENU[] = "pictures\\extras\\start_menu.png";
+const char START_MENU[] = "pictures\\start_menu.png";
 //const char CHARACTER_SELECTION[] = "pictures\\Character Select.png";
 
 //background images

@@ -47,7 +47,7 @@ void SquirtleSquad::initialize(HWND hwnd)
 	//use the dimmensions from stage to set game
     Game::initialize(hwnd); // throws GameError
 
-	stage_ = new Kenshin_Stage();
+	stage_ = new Magma();
 	stage_->initialize(hwnd, graphics);
 	play1_select.initialize(hwnd, graphics, false);//player 1 character selection
 	play2_select.initialize(hwnd, graphics, true);//player 2 character selection
@@ -177,7 +177,7 @@ void SquirtleSquad::initialize(HWND hwnd)
 	hitbox3_.disable();
 	hitbox4_.disable();
 
-	//audio->playCue(ACTION_THEME);
+	audio->playCue(ACTION_THEME);
 	//audio->playCue(BOSS_BATTLE_THEME);
 
 	
@@ -449,12 +449,12 @@ void SquirtleSquad::render()
 		//player3_->draw(graphics);
 		//player4_->draw(graphics);
 
-	hitbox1_.draw();
+	/*hitbox1_.draw();
 	hitbox2_.draw();
 	hitbox3_.draw();
-	hitbox4_.draw();
+	hitbox4_.draw();*/
 
-	Energy_Attack_1_.draw();
+	//Energy_Attack_1_.draw();
 
     dxFont_->setFontColor(graphicsNS::ORANGE);
 		dxFont_->print(message_, 20, (int)messageY_);

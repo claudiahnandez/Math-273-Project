@@ -102,6 +102,14 @@ void Fighter::move(const Input* input, float frameTime, const int controller)
 	{
 		state_ = STANDARD;
 	}
+	else if (const_cast<Input*>(input)->getGamepadB(controller))
+	{
+		state_ = NEUTRAL_B;
+	}
+	else if (const_cast<Input*>(input)->getGamepadY(controller))
+	{
+		state_ = NEUTRAL_A;
+	} 
 
 	// bottom
 	else if (!input->isKeyDown(VK_LEFT) && !input->isKeyDown(VK_RIGHT) && !input->isKeyDown(VK_DOWN))
