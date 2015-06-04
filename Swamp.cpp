@@ -5,7 +5,7 @@ Swamp::Swamp()
 {
 	spriteData.width = 800;
 	spriteData.height = 336;
-	background_location_ = SWAMP;
+	background_location_ = MAGMA;//swiched this, no more swamp stage
 	spriteData.scale = 1;
 	endFrame = 6;
 	floor_ = 320;

@@ -99,6 +99,7 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="Goku.cpp" />
     <ClCompile Include="graphics.cpp" />
+    <ClCompile Include="Health_Bar.cpp" />
     <ClCompile Include="inputDialog.cpp" />
     <ClCompile Include="Kenshin_Stage.cpp" />
     <ClCompile Include="Luffy.cpp" />
@@ -135,6 +136,7 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="Goku.h" />
     <ClInclude Include="graphics.h" />
+    <ClInclude Include="Health_Bar.h" />
     <ClInclude Include="inputDialog.h" />
     <ClInclude Include="Kenshin_Stage.h" />
     <ClInclude Include="Luffy.h" />
