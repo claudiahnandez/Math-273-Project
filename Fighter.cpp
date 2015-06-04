@@ -22,8 +22,15 @@ Fighter::Fighter()
 	//endFrame = 0;                           // last frame of animation
 	//currentFrame = startFrame;
 	//radius = 50;
-	collisionType = entityNS::BOX;
 	mass = 5;
+	
+	collisionType = entityNS::BOX;
+	radius = 20;
+	edge.left = -25;
+	edge.top = -50;
+	edge.right = 25;
+	edge.bottom = 50;
+	active = true;
 
 }
 
@@ -253,8 +260,8 @@ void Fighter::move(const Input* input, float frameTime, const int controller, Pl
 	//Disable hitbox
 	if (state_ != STANDARD)
 	{
-		hitbox.deactivate();
-		hitbox.makeInvisible();
+		//hitbox.deactivate();
+		//hitbox.makeInvisible();
 	}
 
 }

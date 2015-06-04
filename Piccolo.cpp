@@ -9,10 +9,18 @@ Piccolo::Piccolo()
 
 	spriteData.scale = 2;
 
-	//transcolor_ = PICCOLO_TRANSCOLOR;
-	transcolor_ = TRANSCOLORR;
+	transcolor_ = PICCOLO_TRANSCOLOR;
+	//transcolor_ = TRANSCOLORR;
 
 	character_ = PICCOLO;
+
+	collisionType = entityNS::BOX;
+	radius = 20;
+	//edge.left = -100;
+	//edge.top = -100;
+	//edge.right = 20;
+	//edge.bottom = 20;
+	active = true;
 }
 void Piccolo::standing()
 {

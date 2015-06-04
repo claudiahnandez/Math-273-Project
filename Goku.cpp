@@ -11,12 +11,18 @@ Goku::Goku()
 	transcolor_ = GOKU_TRANSCOLOR;
 	character_ = GOKU;
 
-	// Set collision type (NONE, CIRCLE, BOX, ROTATED_BOX)
-	setCollisionType(entityNS::BOX);
 	velocity.y = 0;
 	velocity.x = 0;
 	setGravity(10);
 	setMass(1);
+
+	collisionType = entityNS::BOX;
+	radius = 20;
+	//edge.left = -100;
+	//edge.top = -100;
+	//edge.right = 20;
+	//edge.bottom = 20;
+	active = true;
 }
 
 

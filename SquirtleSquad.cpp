@@ -342,8 +342,7 @@ void SquirtleSquad::update()
 		}*/
 
 		player1_->move(input, frameTime, 0, hitbox1_);
-		//player1_->move(input, frameTime, 0);
-		player2_->move(input, frameTime, 1);
+		//player2_->move(input, frameTime, 1);
 		/*	player3_->move(input, frameTime, 2);
 			player4_->move(input, frameTime, 3);*/
 
@@ -499,17 +498,27 @@ void SquirtleSquad::collisions()
 			Energy_Attack_2_.setActive(false);
 			input->gamePadVibrateRight(0, 65535, 0.5);
 		}
+
+
 		//--------------
 		//Player1 hitbox
 		//--------------
 
-		//vs Player2
+		//hitbox1 vs Player2
 		if (hitbox1_.collidesWith(*(Entity*)(player2_->get_entity()), collisionVector))
 		{
 			player2_->setState(FALLING);
 			player2_->setY(100);
 			input->gamePadVibrateRight(0, 65535, 0.5);
 
+		}
+
+		//player1 vs Player2
+		if (player1_->collidesWith(*(Entity*)(player2_->get_entity()), collisionVector))
+		{
+			player1_->setState(FALLING);
+			player2_->setState(FALLING);
+			input->gamePadVibrateRight(0, 65535, 0.5);
 		}
 	}
 }
@@ -540,10 +549,10 @@ void SquirtleSquad::render()
 		//background is being drawn
 		//------------------------
 		stage_->draw(graphics);
-		platform1_.draw();
-		platform2_.draw();
-		platform3_.draw();
-		platform4_.draw();
+		//platform1_.draw();
+		//platform2_.draw();
+		//platform3_.draw();
+		//platform4_.draw();
 		//platform5_.draw();
 
 		//---------------------------------

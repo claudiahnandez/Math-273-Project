@@ -25,6 +25,11 @@ Platform::Platform() : Entity()
 	edge.right = platformNS::WIDTH / 2;
 	collisionType = entityNS::ROTATED_BOX;
 	mass = platformNS::MASS;
+	edge.left = -20;
+	edge.top = -20;
+	edge.right = 20;
+	edge.bottom = 20;
+	active = true;
 }
 
 //=============================================================================
