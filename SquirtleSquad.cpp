@@ -314,8 +314,10 @@ void SquirtleSquad::update()
 	//Keyboard Input
 	input->readControllers();
 
-		player1_->move(input, frameTime, 0);
-		player2_->move(input, frameTime, 1);
+		player1_->move(input, frameTime, 0, hitbox1_);
+		//player2_->move(input, frameTime, 1);
+		/*	player3_->move(input, frameTime, 2);
+			player4_->move(input, frameTime, 3);*/
 	
 
 		//-------------------------------
@@ -391,17 +393,27 @@ void SquirtleSquad::collisions()
 		Energy_Attack_2_.setActive(false);
 			input->gamePadVibrateRight(0, 65535, 0.5);
 	}
+
+
 	//--------------
 	//Player1 hitbox
 	//--------------
 
-	//vs Player2
+		//hitbox1 vs Player2
 	if (hitbox1_.collidesWith(*(Entity*)(player2_->get_entity()), collisionVector))
 	{
 		player2_->setState(FALLING);
 		player2_->setY(100);
 			input->gamePadVibrateRight(0, 65535, 0.5);
 
+		}
+
+		//player1 vs Player2
+		if (player1_->collidesWith(*(Entity*)(player2_->get_entity()), collisionVector))
+		{
+			player1_->setState(FALLING);
+			player2_->setState(FALLING);
+			input->gamePadVibrateRight(0, 65535, 0.5);
 	}
 	}
 }
@@ -449,12 +461,12 @@ void SquirtleSquad::render()
 		//player3_->draw(graphics);
 		//player4_->draw(graphics);
 
-	/*hitbox1_.draw();
+	hitbox1_.draw();
 	hitbox2_.draw();
 	hitbox3_.draw();
-	hitbox4_.draw();*/
+	hitbox4_.draw();
 
-	//Energy_Attack_1_.draw();
+	Energy_Attack_1_.draw();
 
     dxFont_->setFontColor(graphicsNS::ORANGE);
 		dxFont_->print(message_, 20, (int)messageY_);
